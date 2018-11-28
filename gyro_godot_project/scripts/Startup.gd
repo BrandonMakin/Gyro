@@ -13,7 +13,15 @@ var qr
 func _ready():
 	print("LOOK HERE")
 	#server_pid = OS.execute('../node_server/icon.png', [], true);
-	server_pid = OS.execute('../node_server/index-win.exe', PoolStringArray(), false);
+	match OS.get_name():
+		"Windows":
+			server_pid = OS.execute('../node_server/index-win.exe', PoolStringArray(), false);
+		"OSX":
+			server_pid = OS.execute('../node_server/index-macos', PoolStringArray(), false);
+		"X11":
+			server_pid = OS.execute('../node_server/index-linux', PoolStringArray(), false);
+		_:
+			print("Operating system not supported by the node server")
 	#request("http://localhost:8000/qr")
 	start();
 
