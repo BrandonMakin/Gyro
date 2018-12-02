@@ -24,3 +24,5 @@ func _on_message(msg):
 	var data = JSON.parse(msg).result
 	players[data.id].rotated(data.x, data.y, data.z, data.w);
 	
+func _on_button(id, name, state):
+	print("Button " + name + " turned " + state)
