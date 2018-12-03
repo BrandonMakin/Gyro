@@ -23,6 +23,12 @@ func _on_disconnect(msg):
 func _on_message(msg):
 	var data = JSON.parse(msg).result
 	players[data.id].rotated(data.x, data.y, data.z, data.w);
+#	print(players[data.id].get_rotation())
 	
 func _on_button(id, name, state):
 	print("Button " + name + " turned " + state)
+	print(players[id].rotation)
+
+func _input(event):
+	for p in players:
+		print(players[p].transform.basis)

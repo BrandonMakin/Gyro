@@ -72,6 +72,53 @@ function newConnection(socket)
 
   function on_rotate(data)
   {
+  // Orientations: x=beta, y=gamma, z=alpha
+  // Ignore alpha, only use gamma to determine correct adjustment for beta
+  let angle = data.x;
+  let tilt = 0.5;
+  // Landscape-left, tilted away from user, counter-clockwise or clockwise
+  if(data.y < 0 && data.x < 90 && data.x > -90){
+    // Speed
+    tilt = (((data.y + 90) / 90) / 2) + 0.5;
+  }
+  // Landscape-left, tilted toward user, counter-clockwise
+  if(data.y > 0 && data.x < -90){
+    // Steering
+    angle = -180 - data.x;
+    // Speed
+    tilt = (data.y / 90) / 2;
+  }
+  // Landscape-left, tilted toward user, clockwise
+  if(data.y > 0 && data.x > 90){
+    // Steering
+    angle = 180 - data.x;
+    // Speed
+    tilt = (data.y / 90) / 2;
+  }
+  // Landscape-right, tilted away from user, counter-clockwise or clockwise
+  if(data.y > 0 && data.x < 90 && data.x > -90){
+    // Steering
+    angle = -data.x;
+    // Speed
+    tilt = (((90 - data.y) / 90) / 2) + 0.5;
+  }
+  // Landscape-right, tilted toward user, counter-clockwise
+  if(data.y < 0 && data.x > 90){
+    // Steering
+    angle = data.x - 180;
+    // Speed
+    tilt = (Math.abs(data.y) / 90) / 2;
+  }
+  // Landscape-right, tilted toward user, clockwise
+  if(data.y < 0 && data.x < -90){
+    // Steering
+    angle = data.x + 180;
+    // Speed
+    tilt = (Math.abs(data.y) / 90) / 2;
+  }
+  // Set speed from tilt
+  console.log(Math.round(angle), Math.round(tilt * 100));
+    // Other stuff...
     let rad = Math.PI / 180;
     let quat = quaternion.fromEuler(data.z * rad, data.x * rad, data.y * rad, 'ZXY');
 
