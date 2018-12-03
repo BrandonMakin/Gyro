@@ -8,15 +8,13 @@
 
 config_version=3
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
+_global_script_classes=null
+_global_script_class_icons=null
 
 [application]
 
 config/name="Gyro Game"
-run/main_scene="res://level 001/Level 1.tscn"
+run/main_scene="res://demo level/Demo Level.tscn"
 config/icon="res://icon.png"
 
 [autoload]

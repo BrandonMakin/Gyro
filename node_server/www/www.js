@@ -14,12 +14,12 @@ function setup() {
   button_accel = createButton('ACCELERATE');
   
   button_shoot.position(0, 0);
-  button_shock.position(width/5, 0);
-  button_accel.position(4*width/5, 0);
+  button_shock.position(0, height/5);
+  button_accel.position(0, 4*height/5);
   
-  button_shoot.size(width/5, height)
-  button_shock.size(3*width/5, height)
-  button_accel.size(width/5, height)
+  button_shoot.size(width, height/5)
+  button_shock.size(width, 3*height/5)
+  button_accel.size(width, height/5)
   
   button_shoot.mousePressed(on_button_shoot);
   button_shock.mousePressed(on_button_shock);

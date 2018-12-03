@@ -6,13 +6,6 @@ New Messengers should basically be formatted like this.
 A Messenger is the thingy that waits runs code when player do stuff,
 like rotating their phone or quitting the game.
 
-A Messenger can also send messages back to the node server
-by doing something like this:
-	- request("http://localhost:8000/put_whatever_here")
-
-Because of that, Messengers have to use nodes of type HTTPRequest.
-
-
 All classes that inherit from this Messenger.gd must define these functions:
 
 _on_connect(info):		Runs every time a new player connects
@@ -24,7 +17,7 @@ _on_message(info):		Runs for all generic messages (like rotations)
 """
 
 
-extends HTTPRequest
+extends Node
 
 # member variables go here
 # example: var foo

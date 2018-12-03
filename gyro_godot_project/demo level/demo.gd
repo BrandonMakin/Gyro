@@ -1,6 +1,6 @@
-extends HTTPRequest
+extends Node
 
-var platforms = preload("res://level 001/Platform.tscn")
+var platforms = preload("res://demo level/Platform.tscn")
 signal rotate
 var players = {}
 
@@ -13,7 +13,11 @@ func _on_connect(new_id):
 	add_child(players[new_id])
 	players[new_id].translation.x = randi() % 20 - 10
 	players[new_id].translation.y = randi() % 10 - 5
-	
+
+func _process(delta):
+	if players.size() != 0:
+		$"../Position3D".translation = players.values()[-1].translation
+		$"../Position3D".translation.z += 10
 
 func _on_disconnect(msg):
 	print("goodbye player")
@@ -24,17 +28,8 @@ func _on_disconnect(msg):
 #	var data = JSON.parse(msg).result
 #	players[data.id].rotated(data.x, data.y, data.z, data.w);
 
-func _process(delta):
-	for p in players:
-		players[p].translation.x += -players[p].rotation.z * 30 * delta
-
 func _on_rotate(id, angle, tilt):
-	players[id].rotation = Vector3(0, 0, -angle/30)
+	players[id]._on_rotate(angle, tilt)
 
 func _on_button(id, name, state):
 	print("Button " + name + " turned " + state)
-	print(players[id].rotation)
-
-func _input(event):
-	for p in players:
-		print(players[p].transform.basis)
