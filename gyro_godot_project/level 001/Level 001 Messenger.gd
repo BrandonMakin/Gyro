@@ -20,11 +20,17 @@ func _on_disconnect(msg):
 	players[msg].queue_free()
 	players.erase(msg)
 
-func _on_message(msg):
-	var data = JSON.parse(msg).result
-	players[data.id].rotated(data.x, data.y, data.z, data.w);
-#	print(players[data.id].get_rotation())
-	
+#func _on_message(msg):
+#	var data = JSON.parse(msg).result
+#	players[data.id].rotated(data.x, data.y, data.z, data.w);
+
+func _process(delta):
+	for p in players:
+		players[p].translation.x += -players[p].rotation.z * 30 * delta
+
+func _on_rotate(id, angle, tilt):
+	players[id].rotation = Vector3(0, 0, -angle/30)
+
 func _on_button(id, name, state):
 	print("Button " + name + " turned " + state)
 	print(players[id].rotation)

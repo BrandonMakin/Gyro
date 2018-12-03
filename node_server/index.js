@@ -1,6 +1,6 @@
 webPort = 8000;
 gdPort = webPort + 1;
-let GD_CODE = Object.freeze({"misc": 0, "connect":1, "disconnect":2, "button":3, "qr":8, "ping":9})
+let GD_CODE = Object.freeze({"connect":1, "disconnect":2, "button":3, "rotate":4, "qr":8, "ping":9})
 
 console.log("Server is starting up...")
 
@@ -72,61 +72,58 @@ function newConnection(socket)
 
   function on_rotate(data)
   {
-  // Orientations: x=beta, y=gamma, z=alpha
-  // Ignore alpha, only use gamma to determine correct adjustment for beta
-  let angle = data.x;
-  let tilt = 0.5;
-  // Landscape-left, tilted away from user, counter-clockwise or clockwise
-  if(data.y < 0 && data.x < 90 && data.x > -90){
-    // Speed
-    tilt = (((data.y + 90) / 90) / 2) + 0.5;
-  }
-  // Landscape-left, tilted toward user, counter-clockwise
-  if(data.y > 0 && data.x < -90){
-    // Steering
-    angle = -180 - data.x;
-    // Speed
-    tilt = (data.y / 90) / 2;
-  }
-  // Landscape-left, tilted toward user, clockwise
-  if(data.y > 0 && data.x > 90){
-    // Steering
-    angle = 180 - data.x;
-    // Speed
-    tilt = (data.y / 90) / 2;
-  }
-  // Landscape-right, tilted away from user, counter-clockwise or clockwise
-  if(data.y > 0 && data.x < 90 && data.x > -90){
-    // Steering
-    angle = -data.x;
-    // Speed
-    tilt = (((90 - data.y) / 90) / 2) + 0.5;
-  }
-  // Landscape-right, tilted toward user, counter-clockwise
-  if(data.y < 0 && data.x > 90){
-    // Steering
-    angle = data.x - 180;
-    // Speed
-    tilt = (Math.abs(data.y) / 90) / 2;
-  }
-  // Landscape-right, tilted toward user, clockwise
-  if(data.y < 0 && data.x < -90){
-    // Steering
-    angle = data.x + 180;
-    // Speed
-    tilt = (Math.abs(data.y) / 90) / 2;
-  }
-  // Set speed from tilt
-  console.log(Math.round(angle), Math.round(tilt * 100));
-    // Other stuff...
-    let rad = Math.PI / 180;
-    let quat = quaternion.fromEuler(data.z * rad, data.x * rad, data.y * rad, 'ZXY');
+    // Orientations: x=beta, y=gamma, z=alpha
+    // Ignore alpha, only use gamma to determine correct adjustment for beta
+    let angle = data.x;
+    let tilt = 0.5;
+    // Landscape-left, tilted away from user, counter-clockwise or clockwise
+    if(data.y < 0 && data.x < 90 && data.x > -90){
+      // Speed
+      tilt = (((data.y + 90) / 90) / 2) + 0.5;
+    }
+    // Landscape-left, tilted toward user, counter-clockwise
+    if(data.y > 0 && data.x < -90){
+      // Steering
+      angle = -180 - data.x;
+      // Speed
+      tilt = (data.y / 90) / 2;
+    }
+    // Landscape-left, tilted toward user, clockwise
+    if(data.y > 0 && data.x > 90){
+      // Steering
+      angle = 180 - data.x;
+      // Speed
+      tilt = (data.y / 90) / 2;
+    }
+    // Landscape-right, tilted away from user, counter-clockwise or clockwise
+    if(data.y > 0 && data.x < 90 && data.x > -90){
+      // Steering
+      angle = -data.x;
+      // Speed
+      tilt = (((90 - data.y) / 90) / 2) + 0.5;
+    }
+    // Landscape-right, tilted toward user, counter-clockwise
+    if(data.y < 0 && data.x > 90){
+      // Steering
+      angle = data.x - 180;
+      // Speed
+      tilt = (Math.abs(data.y) / 90) / 2;
+    }
+    // Landscape-right, tilted toward user, clockwise
+    if(data.y < 0 && data.x < -90){
+      // Steering
+      angle = data.x + 180;
+      // Speed
+      tilt = (Math.abs(data.y) / 90) / 2;
+    }
+    // Set speed from tilt
+    console.log(Math.round(angle), Math.round(tilt * 100));
 
-    // socket.broadcast.emit('mouse', data)
-    quat.id = socket.id;
-    let msg = JSON.stringify(quat)
-    // console.log(msg)
-    sendToGodot(msg, GD_CODE.misc)
+    // // Uncomment to get a quaternion:
+    // let quat = get_quat(data, socket.id);
+    // let msg = JSON.stringify(quat)
+    let msg = JSON.stringify({id:socket.id, a:angle, t:tilt});
+    sendToGodot(msg, GD_CODE.rotate)
   }
 
   function on_disconnect(reason)
@@ -205,6 +202,14 @@ function sendToGodot(msg, code) { //code must be a member of GD_CODE; expected t
       // console.log('UDP message sent to localhost:'+ gdPort);
       // client.close();
   });
+}
+
+function get_quat(data, id)
+{
+    let rad = Math.PI / 180;
+    let quat = quaternion.fromEuler(data.z * rad, data.x * rad, data.y * rad, 'ZXY');
+    quat.id = id;
+    return quat
 }
 /////////////////////
 // UNCOMMENT IF YOU WANT GODOT TO BE ABLE TO SEND UDP MESSAGES TO NODE

@@ -46,8 +46,8 @@ func _process(delta):
 			"8":
 				qr = packet
 				print(qr)
-			"0":
-				get_tree().call_group("messengers", "_on_message", packet)
+#			"0":
+#				get_tree().call_group("messengers", "_on_message", packet)
 			"1":
 				get_tree().call_group("messengers", "_on_connect", packet)
 			"2":
@@ -55,6 +55,9 @@ func _process(delta):
 			"3":
 				var data = JSON.parse(packet).result #data contains i (id), n (name), and s (state)
 				get_tree().call_group("messengers", "_on_button", data.i, data.n, data.s)
+			"4":
+				var data = JSON.parse(packet).result #data contains id, a (angle), and t (tilt)
+				get_tree().call_group("messengers", "_on_rotate", data.id, data.a, data.t)
 			_:
 				print("Unknown message: " + packet)
 
