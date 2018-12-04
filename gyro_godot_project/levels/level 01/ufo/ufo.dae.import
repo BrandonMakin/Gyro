@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/biplane.dae-e50117a0a5bd44e44c2ffe55cf7d2929.scn"
+path="res://.import/ufo.dae-72053064d5a8f0361f1c66708394b51e.scn"
 
 [deps]
 
-source_file="res://demo level/biplane.dae"
-dest_files=[ "res://.import/biplane.dae-e50117a0a5bd44e44c2ffe55cf7d2929.scn" ]
+source_file="res://levels/level 01/ufo/ufo.dae"
+dest_files=[ "res://.import/ufo.dae-72053064d5a8f0361f1c66708394b51e.scn" ]
 
 [params]
 

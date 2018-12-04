@@ -14,7 +14,7 @@ _global_script_class_icons=null
 [application]
 
 config/name="Gyro Game"
-run/main_scene="res://demo level/Demo Level.tscn"
+run/main_scene="res://levels/level 01/Level01.tscn"
 config/icon="res://icon.png"
 
 [autoload]
