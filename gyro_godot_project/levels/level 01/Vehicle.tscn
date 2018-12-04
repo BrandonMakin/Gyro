@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://levels/demo level/Platform.gd" type="Script" id=1]
+[ext_resource path="res://levels/level 01/Vehicle.gd" type="Script" id=1]
 [ext_resource path="res://levels/demo level/biplane.dae" type="PackedScene" id=2]
 [ext_resource path="res://levels/demo level/ufo.dae" type="PackedScene" id=3]
 
@@ -23,7 +23,7 @@ axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-vehicle_type = 0
+vehicle_type = 1
 
 [node name="Biplane" parent="." index="0" instance=ExtResource( 2 )]
 
