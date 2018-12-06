@@ -20,7 +20,9 @@ func _ready():
 		"Windows":
 			server_pid = OS.execute('../node_server/index-win.exe', PoolStringArray(), false);
 		"OSX":
-			server_pid = OS.execute('../node_server/index-macos', PoolStringArray(), false);
+			#server_pid = OS.execute('../node_server/index-macos', PoolStringArray(), false);
+			# type: node index.js
+			pass
 		"X11":
 			server_pid = OS.execute('../node_server/index-linux', PoolStringArray(), false);
 		_:
@@ -46,6 +48,7 @@ func _process(delta):
 			"8":
 				qr = packet
 				print(qr)
+				# AKASH GO HERE
 #			"0":
 #				get_tree().call_group("messengers", "_on_message", packet)
 			"1":

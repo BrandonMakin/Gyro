@@ -70,7 +70,7 @@ function on_button_shock_release()
 
 function on_button_accel_release()
 {
-  emit("baccel", "on")
+  emit("baccel", "off")
 }
 
 //function newMovement(data)
