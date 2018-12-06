@@ -23,7 +23,7 @@ axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-vehicle_type = 0
+vehicle_type = 1
 
 [node name="Biplane" parent="." index="0" instance=ExtResource( 2 )]
 
