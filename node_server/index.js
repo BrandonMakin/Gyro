@@ -134,17 +134,17 @@ function newConnection(socket)
 
   function on_button_shoot(data)
   {
-      console.log("BUTTON - shoot")
+      // console.log("BUTTON - shoot - " + data)
       sendToGodot('{"n":"shoot","s":"' + data + '","i":"' + socket.id + '"}', GD_CODE.button)
   }
   function on_button_shock(data)
   {
-      console.log("BUTTON - shock")
+      // console.log("BUTTON - shock - " + data)
       sendToGodot('{"n":"shock","s":"' + data + '","i":"' + socket.id + '"}', GD_CODE.button)
   }
   function on_button_accel(data)
   {
-      console.log("BUTTON - accel")
+      // console.log("BUTTON - accel - " + data)
       sendToGodot('{"n":"accel","s":"' + data + '","i":"' + socket.id + '"}', GD_CODE.button)
   }
 

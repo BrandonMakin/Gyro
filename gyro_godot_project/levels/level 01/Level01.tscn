@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://levels/demo level/Messenger.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/level 01/Vehicle.tscn" type="PackedScene" id=2]
-[ext_resource path="res://levels/level 01/Vehicle.gd" type="Script" id=3]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -27,6 +26,7 @@ subdivide_depth = 0
 [node name="TestSphere" type="MeshInstance" parent="." index="1"]
 
 transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 0, 0 )
+visible = false
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -82,40 +82,13 @@ material/0 = null
 
 [node name="vehicles" type="Node" parent="." index="5"]
 
-[node name="vehicle1" type="KinematicBody" parent="vehicles" index="0" instance=ExtResource( 2 )]
+[node name="vehicle1" parent="vehicles" index="0" instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818448, 6.22218, 8.30285 )
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-axis_lock_linear_x = false
-axis_lock_linear_y = false
-axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
-axis_lock_angular_z = false
-collision/safe_margin = 0.001
-script = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
-vehicle_type = null
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 8 )
 
-[node name="vehicle2" type="KinematicBody" parent="vehicles" index="1" instance=ExtResource( 2 )]
+[node name="vehicle2" parent="vehicles" index="1" instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64824, 4.95222, 7.40721 )
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-axis_lock_linear_x = false
-axis_lock_linear_y = false
-axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
-axis_lock_angular_z = false
-collision/safe_margin = 0.001
-script = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10602, 4.70603, 8.12036 )
 vehicle_type = 1
 
 

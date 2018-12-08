@@ -2,25 +2,37 @@ extends Node
 
 var Vehicles = preload("res://levels/level 01/Vehicle.tscn")
 signal rotate
-var player_slots = []
+onready var vehicle_parent = $"../vehicles"
+var vehicles_available = []
+var vehicles_occupied = []
 var players = {}
 var max_players = 2
 
 func _ready():
 	add_to_group("messengers")
-	player_slots.append($"../player1")
-	player_slots.append($"../player2")
-
+	for child in vehicle_parent.get_children():
+		vehicles_available.append(child)
+	printerr(vehicles_available)
+	
 func _on_connect(new_id):
-	if players.size() < max_players:
-		players[new_id] = player_slots[players.size()-1]
+	# When a new player connects: if there are any available vehicles,
+	# then match a player to a vehicle and make the vehicle occupied. 
+	if (vehicles_available.size()):
+		players[new_id] = vehicles_available[-1]
+		vehicles_occupied.append(vehicles_available[-1])
+		vehicles_available.remove(0)
+	printerr(vehicles_available)
 
 func _physics_process(delta):
 	pass
 
 func _on_disconnect(id):
+	printerr("deleting " + id)
 	if players.has(id):
+		vehicles_available.append(players[id])
+		vehicles_occupied.remove( vehicles_occupied.find(players[id]) )
 		players.erase(id)
+	printerr(vehicles_available)
 
 func _on_rotate(id, angle, tilt):
 	players[id]._on_rotate(angle, tilt)
