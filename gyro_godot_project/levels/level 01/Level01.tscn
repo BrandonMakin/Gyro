@@ -26,7 +26,6 @@ subdivide_depth = 0
 [node name="TestSphere" type="MeshInstance" parent="." index="1"]
 
 transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 0, 0 )
-visible = false
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -84,11 +83,19 @@ material/0 = null
 
 [node name="vehicle1" parent="vehicles" index="0" instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818448, 6.22218, 8.30285 )
+
+[node name="CamTarget" type="Spatial" parent="vehicles/vehicle1" index="3"]
+
+transform = Transform( 1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3, 8 )
 
 [node name="vehicle2" parent="vehicles" index="1" instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10602, 4.70603, 8.12036 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64824, 4.95222, 7.40721 )
 vehicle_type = 1
+
+[node name="CamTarget" type="Spatial" parent="vehicles/vehicle2" index="3"]
+
+transform = Transform( 1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3, 8 )
 
 

@@ -17,7 +17,7 @@ func _ready():
 func _on_rotate(angle, tilt):
 	rotation = Vector3((.5-tilt), 0, -angle/30)
 	velocity.x = angle / 2
-	print(tilt)
+#	print(tilt)
 	velocity.y = (tilt-.5) * -40
 
 func _on_button(name, state): #3 possible names for a button: accel, shoot, shock
