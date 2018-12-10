@@ -12,34 +12,34 @@ function setup() {
   button_shoot = createButton('SHOOT');
   button_shock = createButton('SHOCK');
   button_accel = createButton('ACCELERATE');
-  
+
   button_shoot.position(0, 0);
-  button_shock.position(0, height/5);
-  button_accel.position(0, 4*height/5);
-  
-  button_shoot.size(width, height/5)
-  button_shock.size(width, 3*height/5)
-  button_accel.size(width, height/5)
-  
+  button_shock.position(width/5, 0);
+  button_accel.position(4*width/5, 0);
+
+  button_shoot.size(width/5, height)
+  button_shock.size(3*width/5, height)
+  button_accel.size(width/5, height)
+
   button_shoot.mousePressed(on_button_shoot);
   button_shock.mousePressed(on_button_shock);
   button_accel.mousePressed(on_button_accel);
-  
+
   button_shoot.mouseReleased(on_button_shoot_release);
   button_shock.mouseReleased(on_button_shock_release);
   button_accel.mouseReleased(on_button_accel_release);
-  
+
   button_shoot.style('background-color', "224422")
   button_shock.style('background-color', "40c080")
   button_accel.style('background-color', "224422")
-  
+
   button_shoot.style('color', "ffffff")
   button_accel.style('color', "ffffff")
-  
+
   //button_shoot
   //button_shock
   //button_accel
-  
+
   //document.addEventListener('click', enableNoSleep, false);
 }
 
