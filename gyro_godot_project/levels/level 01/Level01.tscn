@@ -19,7 +19,7 @@ size = Vector2( 2, 2 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[node name="Level 1" type="Spatial" index="0"]
+[node name="Level 1" type="Spatial"]
 
 [node name="Messenger" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -85,17 +85,9 @@ material/0 = null
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818448, 6.22218, 8.30285 )
 
-[node name="CamTarget" type="Spatial" parent="vehicles/vehicle1" index="3"]
-
-transform = Transform( 1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3, 8 )
-
 [node name="vehicle2" parent="vehicles" index="1" instance=ExtResource( 2 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64824, 4.95222, 7.40721 )
 vehicle_type = 1
-
-[node name="CamTarget" type="Spatial" parent="vehicles/vehicle2" index="3"]
-
-transform = Transform( 1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3, 8 )
 
 

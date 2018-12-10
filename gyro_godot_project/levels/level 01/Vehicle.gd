@@ -33,6 +33,7 @@ func _on_button(name, state): #3 possible names for a button: accel, shoot, shoc
 func _physics_process(delta):
 	rotation = rotation.linear_interpolate(desired_rotation, delta * 15)
 	move_and_slide(velocity)
+	$CamTarget.rotation = -rotation # stabilize camera rotation
 
 func reset():
 	print("RESET")

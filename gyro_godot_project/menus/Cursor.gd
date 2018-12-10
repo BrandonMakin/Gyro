@@ -5,6 +5,7 @@ var color
 onready var target_position = position
 var speed = 1000
 var velocity = Vector2()
+var radius = 20
 
 func _ready():
 	color = Color()
@@ -15,6 +16,14 @@ func _ready():
 	update()
 
 func _process(delta):
+	if (velocity.y > 0 and position.y + radius >= get_viewport_rect().size.y) \
+	or (velocity.y < 0 and position.y - radius <= 0):
+		velocity.y = 0
+	
+	if (velocity.x > 0 and position.x + radius >= get_viewport_rect().size.x) \
+	or (velocity.x < 0 and position.x - radius <= 0):
+		velocity.x = 0
+	
 	position += velocity * delta * speed
 
 func _move(x, y):
