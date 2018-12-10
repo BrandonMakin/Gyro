@@ -3,7 +3,7 @@
 [ext_resource path="res://levels/level 01/InterpolatedCamera.gd" type="Script" id=1]
 [ext_resource path="res://levels/level 01/Level01.tscn" type="PackedScene" id=2]
 
-[node name="Splitscreen" type="Node" index="0"]
+[node name="Splitscreen" type="Node"]
 
 [node name="Viewports" type="HBoxContainer" parent="." index="0"]
 
