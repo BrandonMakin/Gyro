@@ -8,7 +8,7 @@
 
 extents = Vector3( 1.83558, 1.61688, 0.660998 )
 
-[node name="Vehicle" type="KinematicBody" index="0"]
+[node name="Vehicle" type="KinematicBody"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -41,6 +41,11 @@ _sections_unfolded = [ "Transform" ]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.128997, 0 )
 shape = SubResource( 1 )
 disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CamTarget" type="Spatial" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 8 )
 _sections_unfolded = [ "Transform" ]
 
 
