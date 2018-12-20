@@ -8,6 +8,7 @@ var velocity = Vector2()
 var radius = 20
 
 func _ready():
+	randomize() # reseed random number generator 
 	color = Color()
 	
 	color.v = 1
