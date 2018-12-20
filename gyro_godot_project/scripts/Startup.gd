@@ -56,7 +56,7 @@ func _process(delta):
 #				get_tree().call_group("messengers", "_on_message", packet)
 			"1": # On player connect
 				players.append(packet)
-				print("Startup - players: " + str(players))
+				print("Global - players: " + str(players))
 				get_tree().call_group("messengers", "_on_connect", packet)
 			"2": # On player disconnect
 				players.remove(players.find(packet))
