@@ -3,7 +3,7 @@
 [ext_resource path="res://levels/level 01/InterpolatedCamera.gd" type="Script" id=1]
 [ext_resource path="res://levels/level 01/Level01.tscn" type="PackedScene" id=2]
 
-[node name="Splitscreen" type="Node"]
+[node name="Splitscreen" type="Node" index="0"]
 
 [node name="Viewports" type="HBoxContainer" parent="." index="0"]
 
@@ -76,10 +76,10 @@ current = true
 fov = 70.0
 size = 1.0
 near = 0.05
-far = 200.0
+far = 500.0
 target = NodePath("")
-speed = 5.0
-enabled = true
+speed = 1.0
+enabled = false
 script = ExtResource( 1 )
 id = 1
 
@@ -143,10 +143,10 @@ current = true
 fov = 70.0
 size = 1.0
 near = 0.05
-far = 200.0
+far = 500.0
 target = NodePath("")
-speed = 5.0
-enabled = true
+speed = 1.0
+enabled = false
 script = ExtResource( 1 )
 id = 2
 

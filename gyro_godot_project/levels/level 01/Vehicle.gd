@@ -20,9 +20,6 @@ func _ready():
 
 func _on_rotate(angle, tilt):
 	desired_rotation = Vector3((-tilt), angle * -2, angle * -2)
-	velocity.x = angle * 45
-#	print(tilt)
-	velocity.y = (tilt) * -40
 
 func _on_button(name, state): #3 possible names for a button: accel, shoot, shock
 	#2 states for a button: on, off
@@ -44,6 +41,7 @@ func _physics_process(delta):
 	desired_rotation.y = rotation.y
 	rotation = rotation.linear_interpolate(desired_rotation, delta * 15)
 	desired_rotation.y = rot_y
+	
 
 	move_and_slide(velocity)
 	$CamTarget.rotation.x = -rotation.x # stabilize camera rotation

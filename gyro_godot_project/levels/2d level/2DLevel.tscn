@@ -4,7 +4,7 @@
 [ext_resource path="res://levels/2d level/track.png" type="Texture" id=2]
 [ext_resource path="res://levels/2d level/2DVehicle.tscn" type="PackedScene" id=3]
 
-[node name="2DLevel" type="Node2D" index="0"]
+[node name="2DLevel" type="Node2D"]
 
 script = ExtResource( 1 )
 vehicle_parent = NodePath("vehicles")
@@ -23,6 +23,5 @@ position = Vector2( 648.813, 231.095 )
 sharpest_steering_radius_when_fast = 14
 sharpest_steering_radius_when_slow = 1
 current_sharpest_steering_radius = 0
-current_steering = 0
 
 

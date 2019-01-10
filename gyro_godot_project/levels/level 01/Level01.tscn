@@ -45,26 +45,7 @@ _sections_unfolded = [ "Transform" ]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.4188 )
 
-[node name="InterpolatedCamera" type="InterpolatedCamera" parent="." index="3"]
-
-transform = Transform( 1, 0, 0, 0, 1, 2.8026e-045, 0, -2.8026e-045, 1, 1.4013e-045, 1.4013e-045, 16.4188 )
-keep_aspect = 1
-cull_mask = 1048575
-environment = null
-h_offset = 0.0
-v_offset = 3.0
-doppler_tracking = 0
-projection = 0
-current = false
-fov = 70.0
-size = 1.0
-near = 0.05
-far = 150.0
-target = NodePath("../Position3D")
-speed = 2.0
-enabled = true
-
-[node name="floor" type="MeshInstance" parent="." index="4"]
+[node name="floor" type="MeshInstance" parent="." index="3"]
 
 transform = Transform( 6.12061, 0, 0, 0, 1, 0, 0, 0, 6.12061, 0, 0, 0 )
 visible = false
@@ -81,20 +62,26 @@ mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 
-[node name="vehicles" type="Node" parent="." index="5"]
+[node name="vehicles" type="Node" parent="." index="4"]
 
 [node name="vehicle1" parent="vehicles" index="0" instance=ExtResource( 2 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5, 8 )
+sharpest_steering_radius_when_fast = 5
+sharpest_steering_radius_when_slow = 0.1
+current_sharpest_steering_radius = 0
 
 [node name="vehicle2" parent="vehicles" index="1" instance=ExtResource( 2 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 8 )
+sharpest_steering_radius_when_fast = 5
+sharpest_steering_radius_when_slow = 0.1
+current_sharpest_steering_radius = 0
 vehicle_type = 1
 
-[node name="Track" parent="." index="6" instance=ExtResource( 3 )]
+[node name="Track" parent="." index="5" instance=ExtResource( 3 )]
 
-transform = Transform( 75, 0, 0, 0, 75, 0, 0, 0, 75, -437.452, -251.674, -828.075 )
+transform = Transform( 149.346, 8.03371, -11.4529, -7.70023, 149.731, 4.61853, 11.6798, -4.01047, 149.491, -621.441, -536.532, -402.782 )
 _sections_unfolded = [ "Transform" ]
 
 
