@@ -78,12 +78,14 @@ size = 1.0
 near = 0.05
 far = 500.0
 target = NodePath("")
-speed = 1.0
-enabled = false
+speed = 5.0
+enabled = true
 script = ExtResource( 1 )
 id = 1
 
 [node name="Level 1" parent="Viewports/ViewportContainer1/Viewport1" index="1" instance=ExtResource( 2 )]
+
+_sections_unfolded = [ "Transform" ]
 
 [node name="ViewportContainer2" type="ViewportContainer" parent="Viewports" index="1"]
 
@@ -145,8 +147,8 @@ size = 1.0
 near = 0.05
 far = 500.0
 target = NodePath("")
-speed = 1.0
-enabled = false
+speed = 5.0
+enabled = true
 script = ExtResource( 1 )
 id = 2
 
