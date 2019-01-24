@@ -117,7 +117,7 @@ function newConnection(socket)
       tilt = (Math.abs(data.y) / 90) / 2;
     }
     // Set speed from tilt
-    console.log(Math.round(angle), Math.round(tilt * 100));
+    // console.log(Math.round(angle), Math.round(tilt * 100));
 
     // // Uncomment to get a quaternion:
     // let quat = get_quat(data, socket.id);

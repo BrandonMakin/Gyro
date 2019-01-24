@@ -68,16 +68,10 @@ material/0 = null
 [node name="vehicle1" parent="vehicles" index="0" instance=ExtResource( 2 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5, 8 )
-sharpest_steering_radius_when_fast = 5
-sharpest_steering_radius_when_slow = 0.1
-current_sharpest_steering_radius = 0
 
 [node name="vehicle2" parent="vehicles" index="1" instance=ExtResource( 2 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 8 )
-sharpest_steering_radius_when_fast = 5
-sharpest_steering_radius_when_slow = 0.1
-current_sharpest_steering_radius = 0
 vehicle_type = 1
 
 [node name="Track" parent="." index="5" instance=ExtResource( 3 )]

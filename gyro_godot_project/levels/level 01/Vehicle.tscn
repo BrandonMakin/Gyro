@@ -23,6 +23,10 @@ axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+sharpest_steering_radius_when_fast = 5
+sharpest_steering_radius_when_slow = 0.1
+speed = 0
+current_sharpest_steering_radius = 0
 vehicle_type = 0
 
 [node name="Biplane" parent="." index="0" instance=ExtResource( 2 )]

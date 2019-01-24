@@ -5,6 +5,8 @@ and exists for the entirety of the game.
 
 extends HTTPRequest
 
+var static_url = "website"
+var is_remote = true
 var players = []
 var port = 8001
 var udp = PacketPeerUDP.new()
@@ -51,7 +53,6 @@ func _process(delta):
 				qr = packet
 #				print(packet)
 				print(qr)
-				# AKASH GO HERE
 #			"0":
 #				get_tree().call_group("messengers", "_on_message", packet)
 			"1": # On player connect
