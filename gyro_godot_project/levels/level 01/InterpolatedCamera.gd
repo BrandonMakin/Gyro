@@ -8,7 +8,7 @@ var lerp_amount = 5
 
 
 func _ready():
-	world = $"../../../../Level 1"
+	world = $"../../../../Level/Level 1"
 	set_target(world.get_node("vehicles/vehicle%s/CamTarget" % id))
 	cam_offset = get_node(target).transform.origin
 
