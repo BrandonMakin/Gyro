@@ -21,7 +21,7 @@ size = Vector2( 2, 2 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[node name="Level 1" type="Spatial"]
+[node name="Level 1" type="Spatial" index="0"]
 
 [node name="Messenger" parent="." index="0" instance=ExtResource( 1 )]
 

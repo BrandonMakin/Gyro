@@ -10,12 +10,13 @@ var desired_rotation = Vector3(0,0,0)
 var velocity = Vector2()
 var steering_wheel_angle = 0
 var drifting_direction = 0
-var drifting_multiplier = 2 # higher multiplier means more responsive steering
+var drifting_multiplier = 2 # higher multiplier means more responsive steering [no units, multiplier]
+var min_drifting_speed_level = .2 # minimum speed_level wherein drifting is still possible [no units, range: 0-1]
 
 export(int) var seconds_for_zero_to_max = 5 # time it takes to accelerate from zero to max_speed [seconds]
 export(int) var seconds_for_max_to_zero = 5 # time it takes to brake from max_speed to zero [seconds]
 export(float) var speed_level = 0 # represents some the current speed at value from 0 to 1, before interpolation. 0 means not moving and 1 means moving at max speed,
-					# ...but depending on your interpolation, the values in between may not correlate linearly to the speeds they represent. [no units]
+					# ...but depending on your interpolation, the values in between may not correlate linearly to the speeds they represent. [no units, range: 0-1]
 
 enum MovementInputFlags {
 	NO_INPUT = 0,
@@ -93,8 +94,8 @@ func _physics_process(delta):
 	rotation.z = lerp(rotation.z, desired_rotation.z, delta*15)
 	
 	#handle rotation around the y axis (this is the complex one) 
-	if drifting_direction != 0:
-		steering_wheel_angle += -.02 * drifting_direction
+	if drifting_direction != 0 && speed_level > min_drifting_speed_level:
+		rotation.y += .02 * drifting_direction
 	rotation.y -= steering_wheel_angle * delta / (2 * PI * sharpest_steering_radius)
 	move_and_slide(-transform.basis.z * speed)
 
