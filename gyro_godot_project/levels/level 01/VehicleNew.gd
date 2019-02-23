@@ -14,7 +14,7 @@ var drifting_multiplier = 2 # higher multiplier means more responsive steering
 
 export(int) var seconds_for_zero_to_max = 5 # time it takes to accelerate from zero to max_speed [seconds]
 export(int) var seconds_for_max_to_zero = 5 # time it takes to brake from max_speed to zero [seconds]
-var speed_level = 0 # represents some the current speed at value from 0 to 1, before interpolation. 0 means not moving and 1 means moving at max speed,
+export(float) var speed_level = 0 # represents some the current speed at value from 0 to 1, before interpolation. 0 means not moving and 1 means moving at max speed,
 					# ...but depending on your interpolation, the values in between may not correlate linearly to the speeds they represent. [no units]
 
 enum MovementInputFlags {
@@ -60,7 +60,7 @@ func _on_button(name, state): #3 possible names for a button: accel, shoot, shoc
 	#SHOOT button
 	if name == "shoot":
 		if state == "on":
-			current_movement_input != MovementInputFlags.BRAKING # add BRAKING flag
+			current_movement_input |= MovementInputFlags.BRAKING # add BRAKING flag
 			start_drifting()
 		else:
 			current_movement_input &= ~ MovementInputFlags.BRAKING # remove BRAKING flag
@@ -70,6 +70,7 @@ func _physics_process(delta):
 	
 	# Handle forward acceleration and braking. The current behavior is that braking overrides any acceleration input.  A player only accelerates if the player is not braking.
 	if current_movement_input & MovementInputFlags.BRAKING == MovementInputFlags.BRAKING:  # check for BRAKING flag
+		print("braking")
 		if speed_level >= 0:
 			speed_level -= delta / seconds_for_max_to_zero # I think this is the correct way to make speed_level go from 1 to 0 in seconds_for_max_to_zero seconds, but I'm not sure.
 		else:
@@ -79,6 +80,7 @@ func _physics_process(delta):
 		speed = speed_level * max_speed
 	
 	elif current_movement_input & MovementInputFlags.ACCELERATING == MovementInputFlags.ACCELERATING: # else check for ACCELERATING flag
+		print("accelerating")
 		if speed_level < 1:
 			speed_level += delta / seconds_for_zero_to_max  # I think this is the correct way to make speed_level go from 0 to 1 in seconds_for_max_to_zero seconds, but I'm not sure.
 		
