@@ -183,7 +183,7 @@ function getIPAddr(callback)
 }
 /////////////////////////////////////////////////////////////////////////
 //code to communicate with godot
-let client = require('dgram').createSocket('udp4');
+let client = require('dgram').createSocket('udp6');
 
 ///////////////////////
 // UNCOMMENT IF YOU WANT THE UDP CLIENT TO BE BOUND TO A SPECIFIC PORT

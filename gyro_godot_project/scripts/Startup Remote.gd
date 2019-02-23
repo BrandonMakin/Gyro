@@ -5,7 +5,8 @@ and exists for the entirety of the game.
 
 extends HTTPRequest
 
-var static_url_and_port = "http://localhost:8000"
+var static_url_and_port = "http://ec2-54-193-74-3.us-west-1.compute.amazonaws.com:8000"
+#var static_url_and_port = "http://localhost:8000"
 var is_remote = true
 var players = []
 var port = 8001
@@ -21,7 +22,6 @@ func _ready():
 	
 	request(static_url_and_port + "/start")
 	
-
 func _process(delta):
 	
 	while(udp.get_available_packet_count() > 0):
