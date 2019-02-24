@@ -82,42 +82,43 @@ function newConnection(socket)
       tilt = (((data.y + 90) / 90) / 2) + 0.5;
     }
     // Landscape-left, tilted toward user, counter-clockwise
-    if(data.y > 0 && data.x < -90){
+    else if(data.y > 0 && data.x < -90){
       // Steering
       angle = -180 - data.x;
       // Speed
       tilt = (data.y / 90) / 2;
     }
     // Landscape-left, tilted toward user, clockwise
-    if(data.y > 0 && data.x > 90){
+    else if(data.y > 0 && data.x > 90){
       // Steering
       angle = 180 - data.x;
       // Speed
       tilt = (data.y / 90) / 2;
     }
     // Landscape-right, tilted away from user, counter-clockwise or clockwise
-    if(data.y > 0 && data.x < 90 && data.x > -90){
+    else if(data.y > 0 && data.x < 90 && data.x > -90){
       // Steering
-      angle = -data.x;
+      angle = data.x;
       // Speed
       tilt = (((90 - data.y) / 90) / 2) + 0.5;
     }
     // Landscape-right, tilted toward user, counter-clockwise
-    if(data.y < 0 && data.x > 90){
+    else if(data.y < 0 && data.x > 90){
       // Steering
-      angle = data.x - 180;
+      angle = 180 - data.x;
       // Speed
       tilt = (Math.abs(data.y) / 90) / 2;
     }
     // Landscape-right, tilted toward user, clockwise
-    if(data.y < 0 && data.x < -90){
+    else if(data.y < 0 && data.x < -90){
       // Steering
-      angle = data.x + 180;
+      angle = -180 - data.x;
       // Speed
       tilt = (Math.abs(data.y) / 90) / 2;
     }
     // Set speed from tilt
     // console.log(Math.round(angle), Math.round(tilt * 100));
+    console.log(Math.round(data.x), Math.round(data.y), "-", Math.round(angle), Math.round(tilt * 100))
 
     // // Uncomment to get a quaternion:
     // let quat = get_quat(data, socket.id);
