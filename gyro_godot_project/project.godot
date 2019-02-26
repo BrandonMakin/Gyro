@@ -8,6 +8,11 @@
 
 config_version=3
 
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
 [application]
 
 config/name="Gyro Game"
@@ -16,7 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://scripts/Startup Remote.gd"
+Global="*res://scripts/Startup.gd"
 
 [rendering]
 
