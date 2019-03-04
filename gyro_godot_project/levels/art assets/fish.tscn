@@ -204,7 +204,7 @@ surfaces/0 = {
 "vertex_count": 364
 }
 
-[node name="Scene Root" type="Spatial"]
+[node name="Scene Root" type="Spatial" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
