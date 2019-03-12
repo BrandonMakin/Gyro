@@ -9,9 +9,12 @@ var forward_acceleration = 0
 var desired_rotation = Vector3(0,0,0)
 var velocity = Vector2()
 var steering_wheel_angle = 0
-var drifting_direction = 0
+var drifting_direction_x = 0
+var drifting_direction_y = 0
 var drifting_multiplier = 2 # higher multiplier means more responsive steering [no units, multiplier]
 var min_drifting_speed_level = .2 # minimum speed_level wherein drifting is still possible [no units, range: 0-1]
+var is_side_drifting = false
+var is_vertical_drifting = false
 
 export(int) var seconds_for_zero_to_max = 5 # time it takes to accelerate from zero to max_speed [seconds]
 export(int) var seconds_for_max_to_zero = 5 # time it takes to brake from max_speed to zero [seconds]
@@ -90,12 +93,20 @@ func _physics_process(delta):
 	
 	
 	#handle rotation around x and z axes (these are directly based on how you hold the phone)
-	rotation.x = lerp(rotation.x, desired_rotation.x, delta*15)
+	if drifting_direction_x != 0 && speed_level > min_drifting_speed_level:
+		desired_rotation.x *= 2
+		if desired_rotation.x > 0.99:
+			desired_rotation.x = 0.99
+		elif desired_rotation.x < -0.99:
+			desired_rotation.x = -0.99
+		rotation.x = lerp(rotation.x, desired_rotation.x, delta*15)
+	else:
+		rotation.x = lerp(rotation.x, desired_rotation.x, delta*15)
 	rotation.z = lerp(rotation.z, desired_rotation.z, delta*15)
 	
 	#handle rotation around the y axis (this is the complex one) 
-	if drifting_direction != 0 && speed_level > min_drifting_speed_level:
-		rotation.y += .02 * drifting_direction
+	if drifting_direction_y != 0 && speed_level > min_drifting_speed_level:
+		rotation.y += .02 * drifting_direction_y
 	rotation.y -= steering_wheel_angle * delta / (2 * PI * sharpest_steering_radius)
 	move_and_slide(-transform.basis.z * speed)
 
@@ -106,11 +117,29 @@ func reset():
 	forward_acceleration = 0
 
 func start_drifting():
-	drifting_direction = sign(desired_rotation.y)
-	$Biplane.rotate_y(PI/5 * drifting_direction)
-	$UFO.rotate_y(PI/5 * drifting_direction)
+	if sign(desired_rotation.y) != 0:
+		is_side_drifting = true
+		drifting_direction_y = sign(desired_rotation.y)
+		$Biplane.rotate_y(PI/5 * drifting_direction_y)
+		$UFO.rotate_y(PI/5 * drifting_direction_y)
+		
+	print (desired_rotation.x)
+	if desired_rotation.x > 0.3 || desired_rotation.x < -0.3:
+		is_vertical_drifting = true
+		drifting_direction_x = sign(desired_rotation.x)
+		$Biplane.rotate_x(PI/5 * drifting_direction_x)
+		$UFO.rotate_x(PI/5 * drifting_direction_x)
 
 func stop_drifting():
-	$Biplane.rotate_y(-PI/5 * drifting_direction)
-	$UFO.rotate_y(-PI/5 * drifting_direction)
-	drifting_direction = 0
+	
+	if (is_vertical_drifting):
+		$Biplane.rotate_x(-PI/5 * drifting_direction_x)
+		$UFO.rotate_x(-PI/5 * drifting_direction_x)
+		drifting_direction_x = 0
+		is_vertical_drifting = false
+	
+	if (is_side_drifting):
+		$Biplane.rotate_y(-PI/5 * drifting_direction_y)
+		$UFO.rotate_y(-PI/5 * drifting_direction_y)
+		drifting_direction_y = 0
+		is_side_drifting = false
