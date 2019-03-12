@@ -56,23 +56,36 @@ func _process(delta):
 #			"0":
 #				get_tree().call_group("messengers", "_on_message", packet)
 			"1": # On player connect
-				players.append(packet)
-				print("Global - players: " + str(players))
-				get_tree().call_group("messengers", "_on_connect", packet)
+				add_player(packet)
 			"2": # On player disconnect
 				players.remove(players.find(packet))
 				printerr(players)
 				get_tree().call_group("messengers", "_on_disconnect", packet)
 			"3": # On player phone button press
 				var data = JSON.parse(packet).result #data contains i (id), n (name), and s (state)
+				
+				# @TODO Remove the following check because it's probably slow.  Replace it with a different solution of resetting the server when the game starts.
+				if not players.has(data.i):  # if this player isn't in the "players" dictionary, add them.
+					add_player(data.i)
+				
 				get_tree().call_group("messengers", "_on_button", data.i, data.n, data.s)
 			"4": # On player phone rotation
 				var data = JSON.parse(packet).result #data contains id, a (angle), and t (tilt)
+				
+				# @TODO Remove the following check because it's probably slow.
+				if not players.has(data.id):  # if this player isn't in the "players" dictionary, add them.
+					add_player(data.id)
+				
 				var angle = clean_angle_data(data.a)
 				var tilt = clean_tilt_data(data.t)
 				get_tree().call_group("messengers", "_on_rotate", data.id, angle, tilt)
 			_:
 				print("Unknown message: " + packet)
+
+func add_player(id):
+	players.append(id)
+	print("Global - players: " + str(players))
+	get_tree().call_group("messengers", "_on_connect", id)
 
 func start():
 	var err = udp.listen(port)
