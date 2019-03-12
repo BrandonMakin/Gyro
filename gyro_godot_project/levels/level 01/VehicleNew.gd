@@ -71,7 +71,7 @@ func _physics_process(delta):
 	
 	# Handle forward acceleration and braking. The current behavior is that braking overrides any acceleration input.  A player only accelerates if the player is not braking.
 	if current_movement_input & MovementInputFlags.BRAKING == MovementInputFlags.BRAKING:  # check for BRAKING flag
-		print("braking")
+#		print("braking")
 		if speed_level >= 0:
 			speed_level -= delta / seconds_for_max_to_zero # I think this is the correct way to make speed_level go from 1 to 0 in seconds_for_max_to_zero seconds, but I'm not sure.
 		else:
@@ -81,7 +81,7 @@ func _physics_process(delta):
 		speed = speed_level * max_speed
 	
 	elif current_movement_input & MovementInputFlags.ACCELERATING == MovementInputFlags.ACCELERATING: # else check for ACCELERATING flag
-		print("accelerating")
+#		print("accelerating")
 		if speed_level < 1:
 			speed_level += delta / seconds_for_zero_to_max  # I think this is the correct way to make speed_level go from 0 to 1 in seconds_for_max_to_zero seconds, but I'm not sure.
 		
