@@ -37,7 +37,7 @@ let pong = true;
 function ping()
 {
   sendToGodot("", GD_CODE.ping)
-  setTimeout(ping, 6000);
+  setTimeout(ping, 20000);
   if (pong == false)
   {
     console.log("The game didn't reply to my ping. Shutting down.")
@@ -118,7 +118,7 @@ function newConnection(socket)
     }
     // Set speed from tilt
     // console.log(Math.round(angle), Math.round(tilt * 100));
-    console.log(Math.round(data.x), Math.round(data.y), "-", Math.round(angle), Math.round(tilt * 100))
+    // console.log(Math.round(data.x), Math.round(data.y), "-", Math.round(angle), Math.round(tilt * 100))
 
     // // Uncomment to get a quaternion:
     // let quat = get_quat(data, socket.id);
