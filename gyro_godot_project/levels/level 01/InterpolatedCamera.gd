@@ -7,8 +7,8 @@ var cam_offset
 var lerp_amount = 5
 var target_vehicle
 
-var min_speed_FOV = 70
-var max_speed_FOV = 120
+var min_speed_FOV = 35
+var max_speed_FOV = 60
 
 
 func _ready():
