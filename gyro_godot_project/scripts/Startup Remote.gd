@@ -18,7 +18,13 @@ var server_pid
 var qr
 var DEADZONE_RADIUS = 0.05
 
+signal player_connected(player_id)
+signal player_disconnected(player_id)
+signal player_rotated(player_id, phone_angle, phone_tilt)
+signal player_button_pressed(player_id, button_name, button_state)
+
 func _ready():
+	
 	OS.center_window()
 #	var err = udp.listen(port)
 
@@ -44,23 +50,23 @@ func _process(delta):
 ##				print(packet)
 #				print(qr)
 #			"0":
-#				get_tree().call_group("messengers", "_on_message", packet)
+#				emit_signal("_on_message", packet)
 			"1": # On player connect
 				players.append(packet)
 				print("Global - players: " + str(players))
-				get_tree().call_group("messengers", "_on_connect", packet)
+				emit_signal("_on_connect", packet)
 			"2": # On player disconnect
 				players.remove(players.find(packet))
 				printerr(players)
-				get_tree().call_group("messengers", "_on_disconnect", packet)
+				emit_signal("_on_disconnect", packet)
 			"3": # On player phone button press
 				var data = JSON.parse(packet).result #data contains i (id), n (name), and s (state)
-				get_tree().call_group("messengers", "_on_button", data.i, data.n, data.s)
+				emit_signal("_on_button", data.i, data.n, data.s)
 			"4": # On player phone rotation
 				var data = JSON.parse(packet).result #data contains id, a (angle), and t (tilt)
 				var angle = clean_angle_data(data.a)
 				var tilt = clean_tilt_data(data.t)
-				get_tree().call_group("messengers", "_on_rotate", data.id, angle, tilt)
+				emit_signal("_on_rotate", data.id, angle, tilt)
 			_:
 				print("Unknown message: " + packet)
 	

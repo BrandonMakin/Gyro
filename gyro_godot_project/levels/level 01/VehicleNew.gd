@@ -1,6 +1,6 @@
 extends KinematicBody
 
-
+var player_id : String = ""
 const max_speed = 50  # [meters per second] 
 const acceleration_strength = 7
 export var sharpest_steering_radius = .1
@@ -33,6 +33,9 @@ enum Vehicle {BIPLANE, UFO}
 export(Vehicle) var vehicle_type = Vehicle.BIPLANE
 
 func _ready():
+	Global.connect("player_rotated", self, "_on_rotate")
+	Global.connect("player_button_pressed", self, "_on_button")
+	
 	$Biplane.visible = false
 	$UFO.visible = false
 	if vehicle_type == Vehicle.UFO:
@@ -40,12 +43,16 @@ func _ready():
 	else:
 		$Biplane.visible = true
 
-func _on_rotate(angle, tilt):
+func _on_rotate(id, angle, tilt):
+	if id != player_id:
+		return
 	desired_rotation = Vector3((-tilt), angle * -2, angle * -2)
 	steering_wheel_angle = angle# max(min(angle*1.7, .5), -.5) # ranges from -.5 to .5
 
 
-func _on_button(name, state): #3 possible names for a button: accel, shoot, shock
+func _on_button(id, name, state): #3 possible names for a button: accel, shoot, shock
+	if id != player_id:
+		return
 	#2 states for a button: on, off
 	
 #	print("button: " + name + "! (" + state + ")")

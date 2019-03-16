@@ -1,14 +1,15 @@
 extends Node
 
 var Vehicles = preload("res://levels/level 01/Vehicle.tscn")
-signal rotate
 onready var vehicle_parent = $"../vehicles"
 var vehicles_available = []  # array of boolean values. true means available.
 onready var max_players_allowed = vehicles_available.size()
 var players_in_level = {}
 
 func _ready():
-	add_to_group("messengers")
+	Global.connect("player_connected", self, "_on_connect")
+	Global.connect("player_disconnected", self, "_on_disconnect")
+	
 	for i in range(vehicle_parent.get_child_count()):
 		vehicles_available.append(true)
 	printerr("_ready: Global.players: " + str(Global.players))
@@ -20,15 +21,6 @@ func _on_connect(new_id):
 
 func _on_disconnect(id):
 	_remove_player(id)
-
-func _on_rotate(id, angle, tilt):
-	if players_in_level.has(id):
-		players_in_level[id]._on_rotate(angle, tilt)
-
-func _on_button(id, name, state):
-	if players_in_level.has(id):
-		players_in_level[id]._on_button(name, state)
-	#print("Button " + name + " turned " + state)
 
 func _fill_vehicles():
 	for i in range(Global.players.size()): #for every player
@@ -48,6 +40,8 @@ func _fill_vehicles():
 		
 		# Assign a vehicle to this player.
 		players_in_level[Global.players[i]] = vehicle_parent.get_child(vehicle_index)
+		# Tell that vehicle the ID of this player.
+		vehicle_parent.get_child(vehicle_index).player_id = Global.players[i]
 		# Mark that vehicle as unavailable.
 		vehicles_available[vehicle_index] = false
 

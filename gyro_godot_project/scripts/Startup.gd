@@ -5,14 +5,19 @@ and exists for the entirety of the game.
 
 extends HTTPRequest
 
-var static_url = "website"
-var is_remote = true
+#var static_url = "website"
+#var is_remote = false
 var players = []
 var port = 8001
 var udp = PacketPeerUDP.new()
 var server_pid
 var qr
 var DEADZONE_RADIUS = 0.05
+
+signal player_connected(player_id)
+signal player_disconnected(player_id)
+signal player_rotated(player_id, phone_angle, phone_tilt)
+signal player_button_pressed(player_id, button_name, button_state)
 
 func _ready():
 	OS.center_window()
@@ -22,7 +27,8 @@ func _ready():
 	
 	
 #	yield(start_local_server())
-	#request("http://localhost:8000/qr")
+	start_local_server()
+	request("http://localhost:8000/qr")
 	start();
 
 func _notification(what):
@@ -44,13 +50,13 @@ func _process(delta):
 #				print(packet)
 				print(qr)
 #			"0":
-#				get_tree().call_group("messengers", "_on_message", packet)
+#				get_tree().call_group("observers", "_on_message", packet)
 			"1": # On player connect
-				add_player(packet)
+				add_player(packet)  # packet contains the player id
 			"2": # On player disconnect
 				players.remove(players.find(packet))
 				printerr(players)
-				get_tree().call_group("messengers", "_on_disconnect", packet)
+				emit_signal("player_disconnected", packet)
 			"3": # On player phone button press
 				var data = JSON.parse(packet).result #data contains i (id), n (name), and s (state)
 				
@@ -58,7 +64,7 @@ func _process(delta):
 				if not players.has(data.i):  # if this player isn't in the "players" dictionary, add them.
 					add_player(data.i)
 				
-				get_tree().call_group("messengers", "_on_button", data.i, data.n, data.s)
+				emit_signal("player_button_pressed", data.i, data.n, data.s)
 			"4": # On player phone rotation
 				var data = JSON.parse(packet).result #data contains id, a (angle), and t (tilt)
 				
@@ -68,14 +74,14 @@ func _process(delta):
 				
 				var angle = clean_angle_data(data.a)
 				var tilt = clean_tilt_data(data.t)
-				get_tree().call_group("messengers", "_on_rotate", data.id, angle, tilt)
+				emit_signal("player_rotated", data.id, angle, tilt)
 			_:
 				print("Unknown message: " + packet)
 
 func add_player(id):
 	players.append(id)
 	print("Global - players: " + str(players))
-	get_tree().call_group("messengers", "_on_connect", id)
+	emit_signal("player_connected", id)
 
 func start_local_server():
 	match OS.get_name():
