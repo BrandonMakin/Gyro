@@ -1,4 +1,4 @@
-extends KinematicBody
+extends Node
 
 var player_id : String = ""
 const max_speed = 50  # [meters per second] 
@@ -7,18 +7,18 @@ export var sharpest_steering_radius = .1
 export var speed = 0
 var forward_acceleration = 0
 var desired_rotation = Vector3(0,0,0)
-var velocity = Vector2()
 var steering_wheel_angle = 0
 var drifting_direction_x = 0
 var drifting_direction_y = 0
 var drifting_multiplier = 2 # higher multiplier means more responsive steering [no units, multiplier]
-var min_drifting_speed_level = .2 # minimum speed_level wherein drifting is still possible [no units, range: 0-1]
+var min_drifting_speed_level = .2 # minimum fish_king.speed_level wherein drifting is still possible [no units, range: 0-1]
 var is_side_drifting = false
 var is_vertical_drifting = false
+onready var fish_king = $"../.."
 
 export(int) var seconds_for_zero_to_max = 5 # time it takes to accelerate from zero to max_speed [seconds]
 export(int) var seconds_for_max_to_zero = 5 # time it takes to brake from max_speed to zero [seconds]
-export(float) var speed_level = 0 # represents some the current speed at value from 0 to 1, before interpolation. 0 means not moving and 1 means moving at max speed,
+
 					# ...but depending on your interpolation, the values in between may not correlate linearly to the speeds they represent. [no units, range: 0-1]
 
 enum MovementInputFlags {
@@ -27,32 +27,18 @@ enum MovementInputFlags {
 	BRAKING = 2,
 	ACCELERATING_AND_BRAKING = 3  # This equals the bitwise union of accelerating and braking, i.e. ACCELERATING_AND_BRAKING == ACCELERATING | BRAKING
 	}
+	
 var current_movement_input = MovementInputFlags.NO_INPUT
 
-enum Vehicle {BIPLANE, UFO}
-export(Vehicle) var vehicle_type = Vehicle.BIPLANE
-
 func _ready():
-	Global.connect("player_rotated", self, "_on_rotate")
-	Global.connect("player_button_pressed", self, "_on_button")
-	
-	$Biplane.visible = false
-	$UFO.visible = false
-	if vehicle_type == Vehicle.UFO:
-		$UFO.visible = true
-	else:
-		$Biplane.visible = true
+	pass
 
 func _on_rotate(id, angle, tilt):
-	if id != player_id:
-		return
 	desired_rotation = Vector3((-tilt), angle * -2, angle * -2)
-	steering_wheel_angle = angle# max(min(angle*1.7, .5), -.5) # ranges from -.5 to .5
+	steering_wheel_angle = angle # max(min(angle*1.7, .5), -.5) # ranges from -.5 to .5
 
 
 func _on_button(id, name, state): #3 possible names for a button: accel, shoot, shock
-	if id != player_id:
-		return
 	#2 states for a button: on, off
 	
 #	print("button: " + name + "! (" + state + ")")
@@ -77,45 +63,45 @@ func _on_button(id, name, state): #3 possible names for a button: accel, shoot, 
 			current_movement_input &= ~ MovementInputFlags.BRAKING # remove BRAKING flag
 			stop_drifting()
 	
-func _physics_process(delta):
+func _state_physics_process(delta):
 	
 	# Handle forward acceleration and braking. The current behavior is that braking overrides any acceleration input.  A player only accelerates if the player is not braking.
 	if current_movement_input & MovementInputFlags.BRAKING == MovementInputFlags.BRAKING:  # check for BRAKING flag
 #		print("braking")
-		if speed_level >= 0:
-			speed_level -= delta / seconds_for_max_to_zero # I think this is the correct way to make speed_level go from 1 to 0 in seconds_for_max_to_zero seconds, but I'm not sure.
+		if fish_king.speed_level >= 0:
+			fish_king.speed_level -= delta / seconds_for_max_to_zero # I think this is the correct way to make fish_king.speed_level go from 1 to 0 in seconds_for_max_to_zero seconds, but I'm not sure.
 		else:
-			 speed_level = 0
+			 fish_king.speed_level = 0
 		
-		# Set the speed based on the speed_level.  If you want to control the BRACKING acceleration curve, do it here:
-		speed = speed_level * max_speed
+		# Set the speed based on the fish_king.speed_level.  If you want to control the BRACKING acceleration curve, do it here:
+		speed = fish_king.speed_level * max_speed
 	
 	elif current_movement_input & MovementInputFlags.ACCELERATING == MovementInputFlags.ACCELERATING: # else check for ACCELERATING flag
 #		print("accelerating")
-		if speed_level < 1:
-			speed_level += delta / seconds_for_zero_to_max  # I think this is the correct way to make speed_level go from 0 to 1 in seconds_for_max_to_zero seconds, but I'm not sure.
+		if fish_king.speed_level < 1:
+			fish_king.speed_level += delta / seconds_for_zero_to_max  # I think this is the correct way to make fish_king.speed_level go from 0 to 1 in seconds_for_max_to_zero seconds, but I'm not sure.
 		
-		# Set the speed based on the speed_level.  If you want to control the ACCELERATING acceleration curve, do it here:
-		speed = speed_level * max_speed
+		# Set the speed based on the fish_king.speed_level.  If you want to control the ACCELERATING acceleration curve, do it here:
+		speed = fish_king.speed_level * max_speed
 	
 	
-	#handle rotation around x and z axes (these are directly based on how you hold the phone)
-	if drifting_direction_x != 0 && speed_level > min_drifting_speed_level:
+	#handle fish_king.rotation around x and z axes (these are directly based on how you hold the phone)
+	if drifting_direction_x != 0 && fish_king.speed_level > min_drifting_speed_level:
 		desired_rotation.x *= 2
 		if desired_rotation.x > 0.99:
 			desired_rotation.x = 0.99
 		elif desired_rotation.x < -0.99:
 			desired_rotation.x = -0.99
-		rotation.x = lerp(rotation.x, desired_rotation.x, delta*15)
+		fish_king.rotation.x = lerp(fish_king.rotation.x, desired_rotation.x, delta*15)
 	else:
-		rotation.x = lerp(rotation.x, desired_rotation.x, delta*15)
-	rotation.z = lerp(rotation.z, desired_rotation.z, delta*15)
+		fish_king.rotation.x = lerp(fish_king.rotation.x, desired_rotation.x, delta*15)
+	fish_king.rotation.z = lerp(fish_king.rotation.z, desired_rotation.z, delta*15)
 	
-	#handle rotation around the y axis (this is the complex one) 
-	if drifting_direction_y != 0 && speed_level > min_drifting_speed_level:
-		rotation.y += .02 * drifting_direction_y
-	rotation.y -= steering_wheel_angle * delta / (2 * PI * sharpest_steering_radius)
-	move_and_slide(-transform.basis.z * speed)
+	#handle fish_king.rotation around the y axis (this is the complex one) 
+	if drifting_direction_y != 0 && fish_king.speed_level > min_drifting_speed_level:
+		fish_king.rotation.y += .02 * drifting_direction_y
+	fish_king.rotation.y -= steering_wheel_angle * delta / (2 * PI * sharpest_steering_radius)
+	fish_king.move_and_slide(-fish_king.transform.basis.z * speed)
 
 func reset():
 	print("RESET")
@@ -127,26 +113,22 @@ func start_drifting():
 	if sign(desired_rotation.y) != 0:
 		is_side_drifting = true
 		drifting_direction_y = sign(desired_rotation.y)
-		$Biplane.rotate_y(PI/5 * drifting_direction_y)
-		$UFO.rotate_y(PI/5 * drifting_direction_y)
+		$"../../Fish".rotate_y(PI/5 * drifting_direction_y)
 		
 	print (desired_rotation.x)
 	if desired_rotation.x > 0.3 || desired_rotation.x < -0.3:
 		is_vertical_drifting = true
 		drifting_direction_x = sign(desired_rotation.x)
-		$Biplane.rotate_x(PI/5 * drifting_direction_x)
-		$UFO.rotate_x(PI/5 * drifting_direction_x)
+		$"../../Fish".rotate_x(PI/5 * drifting_direction_x)
 
 func stop_drifting():
 	
 	if (is_vertical_drifting):
-		$Biplane.rotate_x(-PI/5 * drifting_direction_x)
-		$UFO.rotate_x(-PI/5 * drifting_direction_x)
+		$"../../Fish".rotate_x(-PI/5 * drifting_direction_x)
 		drifting_direction_x = 0
 		is_vertical_drifting = false
 	
 	if (is_side_drifting):
-		$Biplane.rotate_y(-PI/5 * drifting_direction_y)
-		$UFO.rotate_y(-PI/5 * drifting_direction_y)
+		$"../../Fish".rotate_y(-PI/5 * drifting_direction_y)
 		drifting_direction_y = 0
 		is_side_drifting = false
