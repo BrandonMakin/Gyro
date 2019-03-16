@@ -15,23 +15,13 @@ var qr
 var DEADZONE_RADIUS = 0.05
 
 func _ready():
+	OS.center_window()
 	print("LOOK HERE")
 #	server_pid = OS.execute('../node_server/icon.png', [], true);
 #	server_pid = OS.execute('node', [], false);
 	
 	
-	match OS.get_name():
-		"Windows":
-			server_pid = OS.execute('../node_server/index-win.exe', PoolStringArray(), false);
-		"OSX":
-			#server_pid = OS.execute('../node_server/index-macos', PoolStringArray(), false);
-			# type: node index.js
-			pass
-		"X11":
-			server_pid = OS.execute('../node_server/index-linux', PoolStringArray(), false);
-		_:
-			print("Operating system not supported by the node server")
-	
+#	yield(start_local_server())
 	#request("http://localhost:8000/qr")
 	start();
 
@@ -86,6 +76,19 @@ func add_player(id):
 	players.append(id)
 	print("Global - players: " + str(players))
 	get_tree().call_group("messengers", "_on_connect", id)
+
+func start_local_server():
+	match OS.get_name():
+		"Windows":
+			server_pid = OS.execute('../node_server/index-win.exe', PoolStringArray(), false);
+		"OSX":
+			#server_pid = OS.execute('../node_server/index-macos', PoolStringArray(), false);
+			# type: node index.js
+			pass
+		"X11":
+			server_pid = OS.execute('../node_server/index-linux', PoolStringArray(), false);
+		_:
+			print("Operating system not supported by the node server")
 
 func start():
 	var err = udp.listen(port)
