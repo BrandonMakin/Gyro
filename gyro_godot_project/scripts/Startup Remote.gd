@@ -9,12 +9,12 @@ var static_server_url = "ec2-54-193-74-3.us-west-1.compute.amazonaws.com"
 var server_port = 8000
 #var static_url_and_port = "http://ec2-54-193-74-3.us-west-1.compute.amazonaws.com:8000"
 #var static_url_and_port = "http://localhost:8000"
-var is_remote = true
+#var is_remote = true
 var players = []
 #var port = 8001
 #var udp = PacketPeerUDP.new()
 var tcp = StreamPeerTCP.new()
-var server_pid
+#var server_pid
 var qr
 var DEADZONE_RADIUS = 0.05
 
@@ -34,16 +34,19 @@ func _ready():
 #
 #	request(static_url_and_port + "/start")
 	
+#func _process(delta):
+#	if tcp.get_available_bytes() > 0:
+#		print(tcp.get_string(tcp.get_available_bytes()))
+
 func _process(delta):
 	
 	while(tcp.get_available_bytes()) > 0:
-		var packet = tcp.get_utf8_string(-1)
-		print("packet: " + packet)
+		var packet = tcp.get_utf8_string(tcp.get_available_bytes())
 		var code = packet.left(1)
 		packet = packet.right(1)
 		match code:
 #			"9":
-#				#print("pong")
+#				#print("pongeval $(/home/ec2-user/.linuxbrew/bin/brew shellenv)")
 #				request(static_url_and_port + "/pong")
 #			"8":
 #				qr = packet

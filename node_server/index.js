@@ -33,17 +33,17 @@ function generateQR()
   })
 }
 
-let pong = true;
+let pong = 0;
 function ping()
 {
   sendToGodot("", GD_CODE.ping)
   setTimeout(ping, 20000);
-  if (pong == false)
+  if (pong == 2)
   {
     console.log("The game didn't reply to my ping. Shutting down.")
     process.exit(1);
   }
-  pong = false;
+  pong++;
 }
 
 app.get("/qr", function(req, res)
@@ -55,7 +55,7 @@ app.get("/qr", function(req, res)
 app.get('/pong', function(req, res)
 {
   res.send("");
-  pong = true;
+  pong = 0;
   //console.log("pong")
 })
 

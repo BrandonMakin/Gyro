@@ -43,7 +43,7 @@ func _process(delta):
 		packet = packet.right(1)
 		match code:
 			"9":
-				#print("pong")
+				print("pong")
 				request("http://localhost:8000/pong")
 			"8":
 				qr = packet
