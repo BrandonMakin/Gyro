@@ -57,13 +57,14 @@ func _on_button(id, name, state): #3 possible names for a button: accel, shoot, 
 	#SHOOT button
 	if name == "shoot":
 		if state == "on":
-			current_movement_input |= MovementInputFlags.BRAKING # add BRAKING flag
+			#current_movement_input |= MovementInputFlags.BRAKING # add BRAKING flag
 			start_drifting()
 		else:
-			current_movement_input &= ~ MovementInputFlags.BRAKING # remove BRAKING flag
+			#current_movement_input &= ~ MovementInputFlags.BRAKING # remove BRAKING flag
 			stop_drifting()
 	
 func _state_physics_process(delta):
+	
 	
 	# Handle forward acceleration and braking. The current behavior is that braking overrides any acceleration input.  A player only accelerates if the player is not braking.
 	if current_movement_input & MovementInputFlags.BRAKING == MovementInputFlags.BRAKING:  # check for BRAKING flag
@@ -84,22 +85,24 @@ func _state_physics_process(delta):
 		# Set the speed based on the fish_king.speed_level.  If you want to control the ACCELERATING acceleration curve, do it here:
 		speed = fish_king.speed_level * max_speed
 	
-	
+	#DEPRECATED VERTICAL DRIFTING CODE
+	#	if drifting_direction_x != 0 && fish_king.speed_level > min_drifting_speed_level:
+#		desired_rotation.x *= 2
+#		if desired_rotation.x > 0.99:
+#			desired_rotation.x = 0.99
+#		elif desired_rotation.x < -0.99:
+#			desired_rotation.x = -0.99
+#		fish_king.rotation.x = lerp(fish_king.rotation.x, desired_rotation.x, delta*15)
+#	else:
+
 	#handle fish_king.rotation around x and z axes (these are directly based on how you hold the phone)
-	if drifting_direction_x != 0 && fish_king.speed_level > min_drifting_speed_level:
-		desired_rotation.x *= 2
-		if desired_rotation.x > 0.99:
-			desired_rotation.x = 0.99
-		elif desired_rotation.x < -0.99:
-			desired_rotation.x = -0.99
-		fish_king.rotation.x = lerp(fish_king.rotation.x, desired_rotation.x, delta*15)
-	else:
-		fish_king.rotation.x = lerp(fish_king.rotation.x, desired_rotation.x, delta*15)
+
+	fish_king.rotation.x = lerp(fish_king.rotation.x, desired_rotation.x, delta*15)
 	fish_king.rotation.z = lerp(fish_king.rotation.z, desired_rotation.z, delta*15)
 	
 	#handle fish_king.rotation around the y axis (this is the complex one) 
 	if drifting_direction_y != 0 && fish_king.speed_level > min_drifting_speed_level:
-		fish_king.rotation.y += .02 * drifting_direction_y
+		fish_king.rotation.y += .01 * drifting_direction_y
 	fish_king.rotation.y -= steering_wheel_angle * delta / (2 * PI * sharpest_steering_radius)
 	fish_king.move_and_slide(-fish_king.transform.basis.z * speed)
 
@@ -114,19 +117,21 @@ func start_drifting():
 		is_side_drifting = true
 		drifting_direction_y = sign(desired_rotation.y)
 		$"../../Fish".rotate_y(PI/5 * drifting_direction_y)
-		
-	print (desired_rotation.x)
-	if desired_rotation.x > 0.3 || desired_rotation.x < -0.3:
-		is_vertical_drifting = true
-		drifting_direction_x = sign(desired_rotation.x)
-		$"../../Fish".rotate_x(PI/5 * drifting_direction_x)
+	
+#	DEPRECATED VERTICAL DRIFTING CODE	
+#	print (desired_rotation.x)
+#	if desired_rotation.x > 0.3 || desired_rotation.x < -0.3:
+#		is_vertical_drifting = true
+#		drifting_direction_x = sign(desired_rotation.x)
+#		$"../../Fish".rotate_x(PI/5 * drifting_direction_x)
 
 func stop_drifting():
 	
-	if (is_vertical_drifting):
-		$"../../Fish".rotate_x(-PI/5 * drifting_direction_x)
-		drifting_direction_x = 0
-		is_vertical_drifting = false
+	#DEPRECATED VERTICAL DRIFTING CODE
+#	if (is_vertical_drifting):
+#		$"../../Fish".rotate_x(-PI/5 * drifting_direction_x)
+#		drifting_direction_x = 0
+#		is_vertical_drifting = false
 	
 	if (is_side_drifting):
 		$"../../Fish".rotate_y(-PI/5 * drifting_direction_y)
