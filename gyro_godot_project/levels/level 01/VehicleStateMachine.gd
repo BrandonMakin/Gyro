@@ -3,7 +3,9 @@ extends Spatial
 export(String) var START_STATE
 var state_name
 var current_state = null
+var swim_state
 var player_id
+var coins_collected = 0
 
 #variables that all states MIGHT need...
 export(float) var speed_level = 0 # represents some the current speed at value from 0 to 1, before interpolation. 0 means not moving and 1 means moving at max speed,
@@ -12,6 +14,7 @@ var state_stack : Array =  []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	swim_state = get_node("States/Swimming")
 	state_stack.push_front(START_STATE)
 	state_name = state_stack[0]
 	current_state = get_node("States/" + state_name)

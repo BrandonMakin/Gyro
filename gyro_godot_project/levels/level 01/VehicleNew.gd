@@ -1,7 +1,7 @@
 extends Node
 
 var player_id : String = ""
-const max_speed = 50  # [meters per second] 
+var max_speed = 50  # [meters per second] 
 const acceleration_strength = 7
 export var sharpest_steering_radius = .1
 export var speed = 0

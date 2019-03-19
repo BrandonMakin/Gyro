@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/demo level/Messenger.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/level 01/Vehicle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/level 01/terrain/ship.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/level 01/Collectible.gd" type="Script" id=4]
 
-[sub_resource type="SphereMesh" id=1]
+[sub_resource type="PlaneMesh" id=1]
 
-[sub_resource type="PlaneMesh" id=2]
-
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=2]
 background_mode = 1
 background_color = Color( 0.0271442, 0.0344762, 0.214844, 1 )
 ambient_light_color = Color( 0.425781, 0.425781, 0.425781, 1 )
@@ -22,14 +21,13 @@ adjustment_enabled = true
 adjustment_brightness = 0.7
 adjustment_contrast = 1.1
 
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="SphereShape" id=4]
+
 [node name="Level 1" type="Spatial"]
 
 [node name="Messenger" parent="." instance=ExtResource( 1 )]
-
-[node name="TestSphere" type="MeshInstance" parent="."]
-transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = null
 
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.4188 )
@@ -37,7 +35,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.4188 )
 [node name="floor" type="MeshInstance" parent="."]
 transform = Transform( 6.12061, 0, 0, 0, 1, 0, 0, 0, 6.12061, 0, 0, 0 )
 visible = false
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="vehicles" type="Node" parent="."]
@@ -49,7 +47,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 34.2517, 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 34.2517, 8 )
 
 [node name="Ship" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 transform = Transform( -1.09278e-006, 0, 25, 0, 25, 0, -25, 0, -1.09278e-006, -24.7094, -47.4327, -280.337 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -72,7 +69,104 @@ transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 25.
 extents = Vector3( 61.4408, 57.4076, 79.4606 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( 2 )
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="Collectible1" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.8707, -14.9306 )
+contacts_reported = 1
+contact_monitor = true
+sleeping = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible1"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible1"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="Collectible2" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.8707, -20.9306 )
+contacts_reported = 1
+contact_monitor = true
+sleeping = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible2"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible2"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="Collectible3" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 41.8707, -26.9306 )
+contacts_reported = 1
+contact_monitor = true
+sleeping = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible3"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible3"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="Collectible4" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 42.8707, -31.9306 )
+contacts_reported = 1
+contact_monitor = true
+sleeping = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible4"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible4"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="Collectible5" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43.8707, -36.9306 )
+contacts_reported = 1
+contact_monitor = true
+sleeping = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible5"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible5"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="Collectible6" type="RigidBody" parent="Collectibles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44.8707, -41.9306 )
+contacts_reported = 1
+contact_monitor = true
+sleeping = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible6"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible6"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+shape = SubResource( 4 )
 
 
 [editable path="Ship"]
