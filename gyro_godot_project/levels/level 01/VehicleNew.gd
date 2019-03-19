@@ -47,7 +47,9 @@ func _on_button(id, name, state): #3 possible names for a button: accel, shoot, 
 	if name == "accel": # set ACCELERATING bit of current_movement_input
 		if state == "on":
 			current_movement_input |= MovementInputFlags.ACCELERATING  # movement OR accelerating means keep current movement and add accelerating flag
+			current_movement_input &= ~ MovementInputFlags.BRAKING
 		else:
+			current_movement_input |= MovementInputFlags.BRAKING
 			current_movement_input &= ~ MovementInputFlags.ACCELERATING # movement AND NOT accelerating means keep everything except for the accelerating flag
 	
 	#SHOCK button
