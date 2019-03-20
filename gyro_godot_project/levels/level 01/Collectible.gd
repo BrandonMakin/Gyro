@@ -15,11 +15,11 @@ func _ready():
 
 func _on_body_enter(body):
 	#in the future, swap this for an if it's a vehicle, then go forth with the functions via tags or something (IDK How and this works)
-	if body.name == "StaticBody": #It was colliding by default with a bunch of StaticBodies so I'm ignoring those collisions
-		return
-	print("Collectible Obtained!")
-	body.coins_collected += 1
-	print("Collectibles collected: %d" % body.coins_collected)
-	body.swim_state.max_speed += 5
-	print("Max Speed: %d" % body.swim_state.max_speed)
-	get_parent().remove_child(self)
+	if body.is_in_group("players"): #It was colliding by default with a bunch of StaticBodies so I'm ignoring those collisions
+		print("Collectible Obtained!")
+		body.coins_collected += 1
+		print("Collectibles collected: %d" % body.coins_collected)
+		body.swim_state.max_speed += 5
+		print("Max Speed: %d" % body.swim_state.max_speed)
+		get_parent().remove_child(self)
+	

@@ -14,6 +14,7 @@ var state_stack : Array =  []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("players")
 	swim_state = get_node("States/Swimming")
 	state_stack.push_front(START_STATE)
 	state_name = state_stack[0]
