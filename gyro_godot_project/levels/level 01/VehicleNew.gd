@@ -11,7 +11,9 @@ var steering_wheel_angle = 0
 var drifting_direction_x = 0
 var drifting_direction_y = 0
 var min_drifting_speed_level = .2 # minimum fish_king.speed_level wherein drifting is still possible [no units, range: 0-1]
+var min_drafting_speed_level = .2 # minimum fish_king.speed_level wherein drafting is still possible [no units, range: 0-1]
 var is_side_drifting = false
+var drafting_speed_boost = false
 onready var fish_king = $"../.."
 
 export(int) var seconds_for_zero_to_max = 5 # time it takes to accelerate from zero to max_speed [seconds]
@@ -24,7 +26,7 @@ enum MovementInputFlags {
 	ACCELERATING_AND_BRAKING = 3  # This equals the bitwise union of accelerating and braking, i.e. ACCELERATING_AND_BRAKING == ACCELERATING | BRAKING
 	}
 	
-var current_movement_input = MovementInputFlags.NO_INPUT
+var current_movement_input = MovementInputFlags.BRAKING
 
 #Called when phone is rotated from VehicleStateMachine
 func _on_rotate(id, angle, tilt):
@@ -69,12 +71,28 @@ func _state_physics_process(delta):
 		speed = fish_king.speed_level * max_speed
 	
 	elif current_movement_input & MovementInputFlags.ACCELERATING == MovementInputFlags.ACCELERATING: # else check for ACCELERATING flag
+		
+		#Drafting code relies on a drafting_timer: when it hits 0, you get the drafting speed boost, but if you exit the draftBox, it gets reset
+		if fish_king.is_drafting && fish_king.speed_level > min_drafting_speed_level:
+			if fish_king.drafting_timer > 0:
+				fish_king.drafting_timer -= 1
+			else:
+				drafting_speed_boost = true
+				#print("Drafting!") First trigger of Drafting occuring (For future use with particle FX and stuff)
+		
 		if fish_king.speed_level < 1:
 			fish_king.speed_level += delta / seconds_for_zero_to_max  # I think this is the correct way to make fish_king.speed_level go from 0 to 1 in seconds_for_max_to_zero seconds, but I'm not sure.
-		
+		elif fish_king.speed_level > 1 && !drafting_speed_boost:
+			fish_king.speed_level -= delta / seconds_for_max_to_zero # Code stolen from the braking bit flag
+			
+		#Apply drafting speed boost if necessary (120% at the moment).
+		if drafting_speed_boost:
+			if fish_king.speed_level < 1.2:
+				fish_king.speed_level += delta / seconds_for_zero_to_max # Code stolen from accel bit flag.
+				
 		# Set the speed based on the fish_king.speed_level.  If you want to control the ACCELERATING acceleration curve, do it here:
 		speed = fish_king.speed_level * max_speed
-
+			
 	#Handle fish_king.rotation around x and z axes (these are directly based on how you hold the phone)
 
 	fish_king.rotation.x = lerp(fish_king.rotation.x, desired_rotation.x, delta*15)

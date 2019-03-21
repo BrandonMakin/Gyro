@@ -51,6 +51,6 @@ func _remove_player(player_id):
 		var vehicle = players_in_level[player_id]
 		vehicles_available[ vehicle.get_index() ] = true
 		# Reset the vehicle
-		players_in_level[player_id].reset()
+		players_in_level[player_id].swim_state.reset()
 		# And remove the player from the level.
 		players_in_level.erase(player_id)
