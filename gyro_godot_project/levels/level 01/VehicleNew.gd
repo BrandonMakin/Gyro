@@ -1,19 +1,19 @@
 extends Node
 
 var player_id : String = ""
-var max_speed = 50  # [meters per second] 
-const acceleration_strength = 7
-export var sharpest_steering_radius = .1
-export var speed = 0
-var forward_acceleration = 0
-var desired_rotation = Vector3(0,0,0)
-var steering_wheel_angle = 0
-var drifting_direction_x = 0
-var drifting_direction_y = 0
-var min_drifting_speed_level = .2 # minimum fish_king.speed_level wherein drifting is still possible [no units, range: 0-1]
-var min_drafting_speed_level = .2 # minimum fish_king.speed_level wherein drafting is still possible [no units, range: 0-1]
-var is_side_drifting = false
-var drafting_speed_boost = false
+var max_speed : int = 50  # [meters per second] 
+const acceleration_strength : int = 7
+export var sharpest_steering_radius : float = .1
+export var speed : float = 0
+#var forward_acceleration = 0 REMOVE THIS IF NO ERRORS
+var desired_rotation : Vector3 = Vector3(0,0,0)
+var steering_wheel_angle : float = 0
+var drifting_direction_x : float = 0
+var drifting_direction_y : float = 0
+var min_drifting_speed_level : float = .2 # minimum fish_king.speed_level wherein drifting is still possible [no units, range: 0-1]
+var min_drafting_speed_level : float = .2 # minimum fish_king.speed_level wherein drafting is still possible [no units, range: 0-1]
+var is_side_drifting : bool = false
+var drafting_speed_boost : bool = false
 onready var fish_king = $"../.."
 
 export(int) var seconds_for_zero_to_max = 5 # time it takes to accelerate from zero to max_speed [seconds]
@@ -108,7 +108,7 @@ func reset():
 	print("RESET")
 	desired_rotation = Vector3()
 	speed = 0
-	forward_acceleration = 0
+	#forward_acceleration = 0
 
 #Called when a player begins drifting, and rotates their model appropriately
 func start_drifting():

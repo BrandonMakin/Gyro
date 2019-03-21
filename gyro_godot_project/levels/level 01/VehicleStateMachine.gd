@@ -1,14 +1,14 @@
 extends Spatial
 
 export(String) var START_STATE
-var state_name
+var state_name : String
 var current_state = null
 var swim_state #Here so Collectible.gd has a guaranteed reference to swim_state to appropriately modify max_speed as necessary
-var player_id
-var coins_collected = 0
-var is_drafting = false
+var player_id : String
+var coins_collected : int = 0
+var is_drafting : bool = false
 export(int) var drafting_timer_max = 100
-var drafting_timer = drafting_timer_max
+var drafting_timer : int = drafting_timer_max
 
 #variables that all states MIGHT need...
 export(float) var speed_level = 0 # represents some the current speed at value from 0 to 1, before interpolation. 0 means not moving and 1 means moving at max speed,

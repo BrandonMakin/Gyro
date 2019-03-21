@@ -7,10 +7,10 @@ func _ready():
 # Called on collision with another object. 'body' is the colliding object
 func _on_body_enter(body):
 	if body.is_in_group("players"): #Using groups so this code only operates on players
-		print("Collectible Obtained!")
+		print("%s Collectible Obtained!" % body.name)
 		body.coins_collected += 1
-		print("Collectibles collected: %d" % body.coins_collected)
+		print("%s Collectibles collected: %d" % [body.name, body.coins_collected])
 		body.swim_state.max_speed += 5
-		print("Max Speed: %d" % body.swim_state.max_speed)
+		print("%s Max Speed: %d" % [body.name, body.swim_state.max_speed])
 		get_parent().remove_child(self)
 	

@@ -1,14 +1,14 @@
 extends InterpolatedCamera
 
-export var id = 0
+export var id : int = 0
 
 var world = null
-var cam_offset
-var lerp_amount = 5
+var cam_offset : Vector3
+var lerp_amount : int = 5
 var target_vehicle
 
-var min_speed_FOV = 50
-var max_speed_FOV = 70 
+var min_speed_FOV : int = 50
+var max_speed_FOV : int = 70 
 
 
 func _ready():
