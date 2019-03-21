@@ -5,7 +5,6 @@ var max_speed : int = 50  # [meters per second]
 const acceleration_strength : int = 7
 export var sharpest_steering_radius : float = .1
 export var speed : float = 0
-#var forward_acceleration = 0 REMOVE THIS IF NO ERRORS
 var desired_rotation : Vector3 = Vector3(0,0,0)
 var steering_wheel_angle : float = 0
 var drifting_direction_x : float = 0
@@ -108,7 +107,6 @@ func reset():
 	print("RESET")
 	desired_rotation = Vector3()
 	speed = 0
-	#forward_acceleration = 0
 
 #Called when a player begins drifting, and rotates their model appropriately
 func start_drifting():
