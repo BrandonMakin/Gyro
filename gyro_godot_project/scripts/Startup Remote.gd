@@ -71,7 +71,7 @@ func _process(delta):
 				var tilt = clean_tilt_data(data.t)
 				emit_signal("_on_rotate", data.id, angle, tilt)
 			_:
-				print("Unknown message: " + packet)
+				print("Unknown message with code ' " + code + " ': " + packet)
 	
 func clean_angle_data(angle):
 	# PRECONDITION: angle ranges from -90 to 90

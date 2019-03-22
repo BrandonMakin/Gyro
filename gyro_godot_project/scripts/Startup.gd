@@ -76,7 +76,7 @@ func _process(delta):
 				var tilt = clean_tilt_data(data.t)
 				emit_signal("player_rotated", data.id, angle, tilt)
 			_:
-				print("Unknown message: " + packet)
+				print("Unknown message with code ' " + code + " ': " + packet)
 
 func add_player(id):
 	players.append(id)
