@@ -72,7 +72,6 @@ func _state_physics_process(delta):
 		
 		#Apply drafting speed boost if necessary (120% at the moment).
 		if fish_king.is_drafting && fish_king.speed_level > min_drafting_speed_level:
-			print("Drafting!")
 			if fish_king.speed_level < 1.2:
 				fish_king.speed_level += 1.5 * (delta / seconds_for_zero_to_max) # Code stolen from below
 		#If not drafting, deal with speed level normally
