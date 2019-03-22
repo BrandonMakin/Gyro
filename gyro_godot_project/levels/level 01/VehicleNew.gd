@@ -10,9 +10,8 @@ var steering_wheel_angle : float = 0
 var drifting_direction_x : float = 0
 var drifting_direction_y : float = 0
 var min_drifting_speed_level : float = .2 # minimum fish_king.speed_level wherein drifting is still possible [no units, range: 0-1]
-var min_drafting_speed_level : float = .2 # minimum fish_king.speed_level wherein drafting is still possible [no units, range: 0-1]
+var min_drafting_speed_level : float = .5 # minimum fish_king.speed_level wherein drafting is allowed [no units, range: 0-1]
 var is_side_drifting : bool = false
-var drafting_speed_boost : bool = false
 onready var fish_king = $"../.."
 
 export(int) var seconds_for_zero_to_max = 5 # time it takes to accelerate from zero to max_speed [seconds]
@@ -71,23 +70,18 @@ func _state_physics_process(delta):
 	
 	elif current_movement_input & MovementInputFlags.ACCELERATING == MovementInputFlags.ACCELERATING: # else check for ACCELERATING flag
 		
-		#Drafting code relies on a drafting_timer: when it hits 0, you get the drafting speed boost, but if you exit the draftBox, it gets reset
+		#Apply drafting speed boost if necessary (120% at the moment).
 		if fish_king.is_drafting && fish_king.speed_level > min_drafting_speed_level:
-			if fish_king.drafting_timer > 0:
-				fish_king.drafting_timer -= 1
-			else:
-				drafting_speed_boost = true
-				#print("Drafting!") First trigger of Drafting occuring (For future use with particle FX and stuff)
-		
-		if fish_king.speed_level < 1:
+			print("Drafting!")
+			if fish_king.speed_level < 1.2:
+				fish_king.speed_level += 1.5 * (delta / seconds_for_zero_to_max) # Code stolen from below
+		#If not drafting, deal with speed level normally
+		elif fish_king.speed_level < 1:
 			fish_king.speed_level += delta / seconds_for_zero_to_max  # I think this is the correct way to make fish_king.speed_level go from 0 to 1 in seconds_for_max_to_zero seconds, but I'm not sure.
-		elif fish_king.speed_level > 1 && !drafting_speed_boost:
+		elif fish_king.speed_level > 1:
 			fish_king.speed_level -= delta / seconds_for_max_to_zero # Code stolen from the braking bit flag
 			
-		#Apply drafting speed boost if necessary (120% at the moment).
-		if drafting_speed_boost:
-			if fish_king.speed_level < 1.2:
-				fish_king.speed_level += delta / seconds_for_zero_to_max # Code stolen from accel bit flag.
+
 				
 		# Set the speed based on the fish_king.speed_level.  If you want to control the ACCELERATING acceleration curve, do it here:
 		speed = fish_king.speed_level * max_speed
