@@ -7,10 +7,11 @@ func _ready():
 
 func _on_body_enter(body):
 	if body.is_in_group("players"): #Using groups so this code only operates on players
-		body.is_drafting = true
+		if body.name != get_parent().name:		#Code to check if the player isn't slipstreaming themself
+			body.is_drafting = true
+
+
 	
 func _on_body_exit(body):
 	if body.is_in_group("players"): #Using groups so this code only operates on players
-		body.is_drafting = false
-		body.swim_state.drafting_speed_boost = false
-		body.reset_drafting_timer() #Draft timer resets if you exit the draft box
+		body.is_drafting = false #Doesn't need to check if the player is exiting their own box because vehicle will never exit its DraftBox

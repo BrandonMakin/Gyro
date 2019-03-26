@@ -6,9 +6,7 @@ var current_state = null
 var swim_state #Here so Collectible.gd has a guaranteed reference to swim_state to appropriately modify max_speed as necessary
 var player_id : String
 var coins_collected : int = 0
-var is_drafting : bool = false
-export(int) var drafting_timer_max = 100
-var drafting_timer : int = drafting_timer_max
+var is_drafting : bool
 
 #variables that all states MIGHT need...
 export(float) var speed_level = 0 # represents some the current speed at value from 0 to 1, before interpolation. 0 means not moving and 1 means moving at max speed,
@@ -24,6 +22,7 @@ func _ready():
 	current_state = get_node("States/" + state_name)
 	Global.connect("player_rotated", self, "_on_rotate")
 	Global.connect("player_button_pressed", self, "_on_button")
+	is_drafting = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -44,6 +43,3 @@ func _on_button(id, angle, tilt):
 #Called when state needs to be changed
 func change_state(state_name):
 	current_state = get_node("States/" + state_name)
-	
-func reset_drafting_timer():
-	drafting_timer = drafting_timer_max
