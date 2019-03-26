@@ -45,6 +45,7 @@ func _input(event):
 	
 	# rotate
 	if event is InputEventMouseMotion:
-        rotation.x += event.relative.x * .001
-        rotation.y += event.relative.y * .001
+		rotation += event.relative * .001
+		rotation.x = min(max(rotation.x, -1), 1)
+		rotation.y = min(max(rotation.y, -1.2), 0.8)
 	emit_signal("player_rotated", id, rotation.x, rotation.y)
