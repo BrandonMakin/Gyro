@@ -57,19 +57,19 @@ func _process(delta):
 			"1": # On player connect
 				players.append(packet)
 				print("Global - players: " + str(players))
-				emit_signal("_on_connect", packet)
+				emit_signal("player_connected", packet)
 			"2": # On player disconnect
 				players.remove(players.find(packet))
 				printerr(players)
-				emit_signal("_on_disconnect", packet)
+				emit_signal("player_disconnected", packet)
 			"3": # On player phone button press
 				var data = JSON.parse(packet).result #data contains i (id), n (name), and s (state)
-				emit_signal("_on_button", data.i, data.n, data.s)
+				emit_signal("player_button_pressed", data.i, data.n, data.s)
 			"4": # On player phone rotation
 				var data = JSON.parse(packet).result #data contains id, a (angle), and t (tilt)
 				var angle = clean_angle_data(data.a)
 				var tilt = clean_tilt_data(data.t)
-				emit_signal("_on_rotate", data.id, angle, tilt)
+				emit_signal("player_rotated", data.id, angle, tilt)
 			_:
 				print("Unknown message with code ' " + code + " ': " + packet)
 	
