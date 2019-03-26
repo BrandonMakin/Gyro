@@ -5,8 +5,8 @@ and exists for the entirety of the game.
 
 extends HTTPRequest
 
-var static_url = "website"
-var is_remote = true
+#var static_url = "website"
+#var is_remote = false
 var players = []
 var port = 8001
 var udp = PacketPeerUDP.new()
@@ -14,25 +14,21 @@ var server_pid
 var qr
 var DEADZONE_RADIUS = 0.05
 
+signal player_connected(player_id)
+signal player_disconnected(player_id)
+signal player_rotated(player_id, phone_angle, phone_tilt)
+signal player_button_pressed(player_id, button_name, button_state)
+
 func _ready():
+	OS.center_window()
 	print("LOOK HERE")
 #	server_pid = OS.execute('../node_server/icon.png', [], true);
 #	server_pid = OS.execute('node', [], false);
 	
 	
-	match OS.get_name():
-		"Windows":
-			server_pid = OS.execute('../node_server/index-win.exe', PoolStringArray(), false);
-		"OSX":
-			#server_pid = OS.execute('../node_server/index-macos', PoolStringArray(), false);
-			# type: node index.js
-			pass
-		"X11":
-			server_pid = OS.execute('../node_server/index-linux', PoolStringArray(), false);
-		_:
-			print("Operating system not supported by the node server")
-	
-	#request("http://localhost:8000/qr")
+#	yield(start_local_server())
+	start_local_server()
+	request("http://localhost:8000/qr")
 	start();
 
 func _notification(what):
@@ -47,32 +43,58 @@ func _process(delta):
 		packet = packet.right(1)
 		match code:
 			"9":
-				#print("pong")
+				print("pong")
 				request("http://localhost:8000/pong")
 			"8":
 				qr = packet
 #				print(packet)
 				print(qr)
 #			"0":
-#				get_tree().call_group("messengers", "_on_message", packet)
+#				get_tree().call_group("observers", "_on_message", packet)
 			"1": # On player connect
-				players.append(packet)
-				print("Global - players: " + str(players))
-				get_tree().call_group("messengers", "_on_connect", packet)
+				add_player(packet)  # packet contains the player id
 			"2": # On player disconnect
 				players.remove(players.find(packet))
 				printerr(players)
-				get_tree().call_group("messengers", "_on_disconnect", packet)
+				emit_signal("player_disconnected", packet)
 			"3": # On player phone button press
 				var data = JSON.parse(packet).result #data contains i (id), n (name), and s (state)
-				get_tree().call_group("messengers", "_on_button", data.i, data.n, data.s)
+				
+				# @TODO Remove the following check because it's probably slow.  Replace it with a different solution of resetting the server when the game starts.
+				if not players.has(data.i):  # if this player isn't in the "players" dictionary, add them.
+					add_player(data.i)
+				
+				emit_signal("player_button_pressed", data.i, data.n, data.s)
 			"4": # On player phone rotation
 				var data = JSON.parse(packet).result #data contains id, a (angle), and t (tilt)
+				
+				# @TODO Remove the following check because it's probably slow.
+				if not players.has(data.id):  # if this player isn't in the "players" dictionary, add them.
+					add_player(data.id)
+				
 				var angle = clean_angle_data(data.a)
 				var tilt = clean_tilt_data(data.t)
-				get_tree().call_group("messengers", "_on_rotate", data.id, angle, tilt)
+				emit_signal("player_rotated", data.id, angle, tilt)
 			_:
-				print("Unknown message: " + packet)
+				print("Unknown message with code ' " + code + " ': " + packet)
+
+func add_player(id):
+	players.append(id)
+	print("Global - players: " + str(players))
+	emit_signal("player_connected", id)
+
+func start_local_server():
+	match OS.get_name():
+		"Windows":
+			server_pid = OS.execute('../node_server/index-win.exe', PoolStringArray(), false);
+		"OSX":
+			#server_pid = OS.execute('../node_server/index-macos', PoolStringArray(), false);
+			# type: node index.js
+			pass
+		"X11":
+			server_pid = OS.execute('../node_server/index-linux', PoolStringArray(), false);
+		_:
+			print("Operating system not supported by the node server")
 
 func start():
 	var err = udp.listen(port)

@@ -5,7 +5,10 @@ var cursor = preload("res://menus/Cursor.tscn")
 export(PackedScene) var level_1
 
 func _ready():
-	add_to_group("messengers")
+	Global.connect("player_connected", self, "_on_connect")
+	Global.connect("player_disconnected", self, "_on_disconnect")
+	Global.connect("player_rotated", self, "_on_rotate")
+	Global.connect("player_button_pressed", self, "_on_button")
 
 func _on_connect(id):
 	players[id] = cursor.instance()
