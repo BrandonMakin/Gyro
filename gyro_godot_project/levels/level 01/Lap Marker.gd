@@ -6,8 +6,8 @@ var vehicle_laps_completed = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for vehicle in $"../vehicles".get_children():
-		vehicle_laps_completed[vehicle] = 0
-		vehicle_progress_in_lap[vehicle] = 1
+		vehicle_laps_completed[vehicle] = 1
+		vehicle_progress_in_lap[vehicle] = 00
 
 func _on_Lap_Tracker_00_body_entered(body):
 	if body.is_in_group("vehicles"):
