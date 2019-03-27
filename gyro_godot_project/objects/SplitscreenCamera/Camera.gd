@@ -12,7 +12,7 @@ var max_speed_FOV : int = 70
 
 
 func _ready():
-	world = $"../../../../Level/Level 1"
+	world = get_node("../../../../..")
 	#Camera target is dependent on camera ID
 	target_vehicle = world.get_node("vehicles/vehicle%s" % id)
 	set_target(world.get_node("vehicles/vehicle%s/CamTarget" % id))

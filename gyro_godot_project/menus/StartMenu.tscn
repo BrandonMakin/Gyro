@@ -3,7 +3,7 @@
 [ext_resource path="res://menus/Start Button.gd" type="Script" id=1]
 [ext_resource path="res://menus/wright menu.jpeg" type="Texture" id=2]
 [ext_resource path="res://menus/MenuObserver.gd" type="Script" id=3]
-[ext_resource path="res://levels/level 01/Splitscreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/level 01/Level01.tscn" type="PackedScene" id=4]
 
 [node name="StartMenu" type="Control"]
 anchor_right = 1.0
