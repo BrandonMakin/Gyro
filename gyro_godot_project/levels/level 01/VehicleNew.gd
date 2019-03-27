@@ -88,11 +88,12 @@ func _state_physics_process(delta):
 	#Handle fish_king.rotation around x and z axes (these are directly based on how you hold the phone)
 
 	fish_king.rotation.x = lerp(fish_king.rotation.x, desired_rotation.x, delta*15)
-	fish_king.rotation.z = lerp(fish_king.rotation.z, desired_rotation.z, delta*15)
+	#-desired_rotation.z here because the Fish model is backwards
+	$"../../Fish".rotation.z = lerp($"../../Fish".rotation.z, -desired_rotation.z, delta*15)
 	
 	#handle fish_king.rotation around the y axis (this is the complex one) 
 	if drifting_direction_y != 0 && fish_king.speed_level > min_drifting_speed_level:
-		fish_king.rotation.y += .01 * drifting_direction_y
+		fish_king.rotation.y += .015 * drifting_direction_y
 	fish_king.rotation.y -= steering_wheel_angle * delta / (2 * PI * sharpest_steering_radius)
 	fish_king.move_and_slide(-fish_king.transform.basis.z * speed)
 
