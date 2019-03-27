@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://levels/demo level/Messenger.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/level 01/Vehicle.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=5]
 [ext_resource path="res://objects/SplitscreenCamera/SplitscreenCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://levels/level 01/StoplightAnimationPlayer.gd" type="Script" id=7]
+[ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=8]
+[ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=9]
+[ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=10]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -104,6 +107,35 @@ tracks/4/keys = {
 "args": [  ],
 "method": "let_the_fish_swim"
 } ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "FinishedSign"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("race_finished_p2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 0, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("race_finished_p1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 3.99649 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Level 1" type="Spatial"]
@@ -275,7 +307,6 @@ material/0 = null
 shape = SubResource( 6 )
 
 [node name="Lap Marker" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -34.2251, -115.849 )
 script = ExtResource( 5 )
 
@@ -305,15 +336,12 @@ visible = false
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
 shape = SubResource( 7 )
 
-[node name="Control" type="Control" parent="."]
-margin_left = 45.0
-margin_top = 161.0
-margin_right = 562.0
-margin_bottom = 443.0
-
 [node name="SplitscreenCamera" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
 
-[node name="Stoplight" type="Control" parent="."]
+[node name="GUI" type="Node" parent="."]
+
+[node name="Stoplight" type="Control" parent="GUI"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -323,26 +351,61 @@ margin_top = -90.0
 margin_right = 46.0
 margin_bottom = 90.0
 
-[node name="Light0" type="ColorRect" parent="Stoplight"]
+[node name="Light0" type="ColorRect" parent="GUI/Stoplight"]
 anchor_right = 1.0
 margin_bottom = 60.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="Light1" type="ColorRect" parent="Stoplight"]
+[node name="Light1" type="ColorRect" parent="GUI/Stoplight"]
 anchor_right = 1.0
 margin_top = 60.0
 margin_bottom = 120.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="Light2" type="ColorRect" parent="Stoplight"]
+[node name="Light2" type="ColorRect" parent="GUI/Stoplight"]
 anchor_right = 1.0
 margin_top = 120.0
 margin_bottom = 180.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="StoplightAnimationPlayer" type="AnimationPlayer" parent="Stoplight"]
+[node name="StoplightAnimationPlayer" type="AnimationPlayer" parent="GUI/Stoplight"]
 anims/Stoplight = SubResource( 8 )
 script = ExtResource( 7 )
+
+[node name="LapMessages" type="Node" parent="GUI"]
+
+[node name="lap3p1" type="Sprite" parent="GUI/LapMessages"]
+position = Vector2( 226.908, 168.716 )
+texture = ExtResource( 8 )
+
+[node name="lap3p2" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 226.908, 168.716 )
+texture = ExtResource( 8 )
+
+[node name="lap2p2" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 747.001, 168.809 )
+texture = ExtResource( 9 )
+
+[node name="lap2p1" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 226.529, 171.253 )
+texture = ExtResource( 9 )
+
+[node name="race_finished_p1" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 225.803, 170.789 )
+texture = ExtResource( 10 )
+
+[node name="race_finished_p2" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 743.018, 169.974 )
+texture = ExtResource( 10 )
+
+[node name="RaceFinishedSignAnimationPlayer" type="AnimationPlayer" parent="GUI/LapMessages"]
+autoplay = "FinishedSign"
+anims/FinishedSign = SubResource( 9 )
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]
