@@ -32,31 +32,27 @@ func lap_completed(body):
 	var laps = vehicle_laps_completed[body]
 	if body.get_name() == "vehicle1":
 		if laps == 2:
-			$"../GUI/LapMessages/GUI/Lap2p1".visible = true
+			$"../GUI/LapMessages/lap2p1".visible = true
 			yield(get_tree().create_timer(.5), "timeout") # wait for 0.5s
-			$"../GUI/LapMessages/GUI/Lap2p1".visible = false
+			$"../GUI/LapMessages/lap2p1".visible = false
 		elif laps == 3:
-			$"../GUI/LapMessages/GUI/Lap3p1".visible = true
+			$"../GUI/LapMessages/lap3p1".visible = true
 			yield(get_tree().create_timer(.5), "timeout") # wait for 0.5s
-			$"../GUI/LapMessages/GUI/Lap3p1".visible = false
+			$"../GUI/LapMessages/lap3p1".visible = false
 		elif laps == 4:
 			$"../GUI/LapMessages/race_finished_p1".visible = true
-			yield(get_tree().create_timer(4), "timeout") # wait for 0.5s
-			$"../GUI/LapMessages/race_finished_p1".visible = false
-			
+		
 	elif body.get_name() == "vehicle2":
 		if laps == 2:
-			$"../GUI/LapMessages/GUI/Lap2p2".visible = true
+			$"../GUI/LapMessages/lap2p2".visible = true
 			yield(get_tree().create_timer(.5), "timeout") # wait for 0.5s
-			$"../GUI/LapMessages/GUI/Lap2p2".visible = false
+			$"../GUI/LapMessages/lap2p2".visible = false
 		elif laps == 3:
-			$"../GUI/LapMessages/GUI/Lap3p2".visible = true
+			$"../GUI/LapMessages/lap3p2".visible = true
 			yield(get_tree().create_timer(.5), "timeout") # wait for 0.5s
-			$"../GUI/LapMessages/GUI/Lap3p2".visible = false
+			$"../GUI/LapMessages/lap3p2".visible = false
 		elif laps == 4:
 			$"../GUI/LapMessages/race_finished_p1".visible = true
-			yield(get_tree().create_timer(4), "timeout") # wait for 0.5s
-			$"../GUI/LapMessages/race_finished_p1".visible = false
-		
+	
 	else:
 		printerr("Lap Marker.gd: Unkown vehicle with name: " + body.get_name())

@@ -22,18 +22,21 @@ albedo_color = Color( 0.823529, 0, 1, 1 )
 [sub_resource type="Environment" id=4]
 background_mode = 1
 background_color = Color( 0.0271442, 0.0344762, 0.214844, 1 )
-ambient_light_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+ambient_light_color = Color( 0.0509804, 0, 0.305882, 1 )
+ambient_light_sky_contribution = 0.0
 fog_enabled = true
 fog_color = Color( 0, 0.259766, 0.519531, 1 )
-fog_depth_begin = 100.0
-fog_depth_curve = 4.0
+fog_depth_begin = 300.0
+fog_depth_end = 500.0
+auto_exposure_enabled = true
 ssao_enabled = true
 dof_blur_far_enabled = true
 dof_blur_far_distance = 140.0
-dof_blur_far_transition = 100.0
+dof_blur_far_transition = 120.0
+dof_blur_far_quality = 2
 dof_blur_near_amount = 0.18
-adjustment_enabled = true
-adjustment_brightness = 0.7
+glow_enabled = true
+glow_intensity = 0.77
 adjustment_contrast = 1.1
 
 [sub_resource type="SphereMesh" id=5]
@@ -182,15 +185,16 @@ transform = Transform( -6.55671e-007, 0, 15, 0, 15, 0, -15, 0, -6.55671e-007, -2
 transform = Transform( 2.22542, -0.000121685, -0.476063, 0.00369353, 0.0584058, -0.00275942, 0.751805, 7.32585e-005, 1.40921, 18.511, 0.156798, -1.17619 )
 
 [node name="Lights" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
 transform = Transform( 0.990376, -0.0198939, 0.136966, -0.135592, 0.0589949, 0.989007, -0.0277555, -0.99806, 0.0557296, -7.31915, 173.5, -499.19 )
 light_indirect_energy = 3.6
 
 [node name="OmniLight" type="OmniLight" parent="Lights"]
-transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 25.2534, 11.9066, -41.316 )
-omni_range = 153.575
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 6.37769, -32.2711, -160.67 )
+light_color = Color( 1, 0.752941, 0, 1 )
+omni_range = 48.0
+omni_attenuation = 0.297302
 
 [node name="OmniLight2" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 25.2534, 29.2086, -252.021 )
@@ -375,6 +379,7 @@ script = ExtResource( 7 )
 [node name="LapMessages" type="Node" parent="GUI"]
 
 [node name="lap3p1" type="Sprite" parent="GUI/LapMessages"]
+visible = false
 position = Vector2( 226.908, 168.716 )
 texture = ExtResource( 8 )
 
