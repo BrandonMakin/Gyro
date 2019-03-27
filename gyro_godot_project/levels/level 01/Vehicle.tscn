@@ -21,12 +21,11 @@ script = ExtResource( 2 )
 
 [node name="Staggered" type="Node" parent="States"]
 
-[node name="Fish" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
-transform = Transform( 0.5, 0, 0, 0, -0.5, 4.37114e-008, 0, -4.37114e-008, -0.5, 0, 0, 0 )
+[node name="CamTarget" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 1.98952e-013, 0, -1.98952e-013, 1, 0, 3, 13 )
 
-[node name="CamTarget" type="Spatial" parent="Fish"]
-transform = Transform( 2, 0, 0, 0, -2, -1.74846e-007, 0, 1.74846e-007, -2, 0, -6, -26 )
+[node name="Fish" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, -0.5, 4.37114e-008, 0, -4.37114e-008, -0.5, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.128997, 0 )

@@ -18,7 +18,7 @@ func _ready():
 	world = $"../../../../Level/Level 1"
 	#Camera target is dependent on camera ID
 	target_vehicle = world.get_node("vehicles/vehicle%s" % id)
-	set_target(world.get_node("vehicles/vehicle%s/Fish/CamTarget" % id))
+	set_target(world.get_node("vehicles/vehicle%s/CamTarget" % id))
 	cam_offset = get_node(target).transform.origin
 	#Sets initial camera position
 	global_transform.origin = get_node(target).get_parent().global_transform.origin + cam_offset
