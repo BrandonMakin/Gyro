@@ -6,7 +6,6 @@
 [node name="Splitscreen" type="Node"]
 
 [node name="Level" type="Viewport" parent="."]
-editor/display_folded = true
 
 [node name="Level 1" parent="Level" instance=ExtResource( 1 )]
 
