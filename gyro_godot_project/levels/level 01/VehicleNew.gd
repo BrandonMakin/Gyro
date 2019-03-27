@@ -112,6 +112,6 @@ func start_drifting():
 #Called when a player ceases drifting, and returns their model to normal
 func stop_drifting():
 	if (is_side_drifting):
-		$"../../Fish".rotation = Vector3(-PI, 0, 0)
+		$"../../Fish".rotation = Vector3(-PI, 0, $"../../Fish".rotation.z)
 		drifting_direction_y = 0
 		is_side_drifting = false
