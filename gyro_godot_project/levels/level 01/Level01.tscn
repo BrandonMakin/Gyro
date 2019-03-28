@@ -377,6 +377,7 @@ anims/Stoplight = SubResource( 8 )
 script = ExtResource( 7 )
 
 [node name="LapMessages" type="Node" parent="GUI"]
+editor/display_folded = true
 
 [node name="lap3p1" type="Sprite" parent="GUI/LapMessages"]
 visible = false
@@ -411,6 +412,43 @@ texture = ExtResource( 10 )
 [node name="RaceFinishedSignAnimationPlayer" type="AnimationPlayer" parent="GUI/LapMessages"]
 autoplay = "FinishedSign"
 anims/FinishedSign = SubResource( 9 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="GUI"]
+transform = Transform( 4.69314, -10.3847, -3.87479, -4.57578, 1.46144, -6.52137, 4.58658, 12.084, -2.54121, -22.8748, 7.30623, -360.523 )
+use_collision = true
+
+[node name="CSGCylinder" type="CSGCylinder" parent="GUI/CSGCombiner"]
+radius = 3.41508
+height = 8.0
+sides = 16
+
+[node name="InsideCylinder" type="CSGCylinder" parent="GUI/CSGCombiner"]
+operation = 2
+radius = 2.70059
+height = 7.8
+
+[node name="CSGBox" type="CSGBox" parent="GUI/CSGCombiner"]
+transform = Transform( 1.52568, 0.432935, 1.21856, -0.561567, 1.91943, 0.0211613, -1.16489, -0.358293, 1.58577, -1.76313, -3.83906, 0.496856 )
+operation = 2
+
+[node name="CSGBox3" type="CSGBox" parent="GUI/CSGCombiner"]
+transform = Transform( 0.887513, 0.921533, 0.00396648, -0.0032523, 0.0211344, -0.499878, -0.460737, 1.77454, 0.021754, -1.89679, 2.18985, 4.61664 )
+width = 5.0
+height = 5.0
+depth = 5.0
+
+[node name="CSGBox2" type="CSGBox" parent="GUI/CSGCombiner"]
+transform = Transform( 1.89505, -2.16724, 5.64803, 0.00901759, 1.86128, -0.334695, -1.17059, -0.481687, 8.12288, 0.295904, 1.7792, 5.14452 )
+operation = 2
+height = 1.0
+depth = 1.0
+
+[node name="CSGBox4" type="CSGBox" parent="GUI/CSGCombiner"]
+transform = Transform( 1.89505, -2.16724, 5.64803, 0.00901759, 1.86128, -0.334695, -1.17059, -0.481689, 8.12288, -0.564091, 3.26148, 7.37474 )
+operation = 2
+width = 1.0
+height = 1.0
+depth = 0.5
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]

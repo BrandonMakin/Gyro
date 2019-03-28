@@ -26,7 +26,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://scripts/Startup Keyboard.gd"
+Global="*res://scripts/Startup.gd"
 
 [input]
 
