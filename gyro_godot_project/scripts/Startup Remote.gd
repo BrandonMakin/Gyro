@@ -10,18 +10,12 @@ var server_port = 8000
 #var static_url_and_port = "http://ec2-54-193-74-3.us-west-1.compute.amazonaws.com:8000"
 #var static_url_and_port = "http://localhost:8000"
 #var is_remote = true
-var players = []
 #var port = 8001
 #var udp = PacketPeerUDP.new()
 var tcp = StreamPeerTCP.new()
 #var server_pid
 var qr
 var DEADZONE_RADIUS = 0.05
-
-signal player_connected(player_id)
-signal player_disconnected(player_id)
-signal player_rotated(player_id, phone_angle, phone_tilt)
-signal player_button_pressed(player_id, button_name, button_state)
 
 func _ready():
 	
@@ -53,23 +47,23 @@ func _process(delta):
 ##				print(packet)
 #				print(qr)
 #			"0":
-#				emit_signal("_on_message", packet)
+#				Global.emit_signal("_on_message", packet)
 			"1": # On player connect
-				players.append(packet)
-				print("Global - players: " + str(players))
-				emit_signal("player_connected", packet)
+				Global.players.append(packet)
+				print("Global - Global.players: " + str(Global.players))
+				Global.emit_signal("player_connected", packet)
 			"2": # On player disconnect
-				players.remove(players.find(packet))
-				printerr(players)
-				emit_signal("player_disconnected", packet)
+				Global.players.remove(Global.players.find(packet))
+				printerr(Global.players)
+				Global.emit_signal("player_disconnected", packet)
 			"3": # On player phone button press
 				var data = JSON.parse(packet).result #data contains i (id), n (name), and s (state)
-				emit_signal("player_button_pressed", data.i, data.n, data.s)
+				Global.emit_signal("player_button_pressed", data.i, data.n, data.s)
 			"4": # On player phone rotation
 				var data = JSON.parse(packet).result #data contains id, a (angle), and t (tilt)
 				var angle = clean_angle_data(data.a)
 				var tilt = clean_tilt_data(data.t)
-				emit_signal("player_rotated", data.id, angle, tilt)
+				Global.emit_signal("player_rotated", data.id, angle, tilt)
 			_:
 				print("Unknown message with code ' " + code + " ': " + packet)
 	

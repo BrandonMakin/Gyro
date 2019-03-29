@@ -7,20 +7,20 @@ extends HTTPRequest
 
 #var static_url = "website"
 #var is_remote = false
-var players = []
+#var players = []
 var port = 8001
 var udp = PacketPeerUDP.new()
 var server_pid
 var qr
 var DEADZONE_RADIUS = 0.05
 
-signal player_connected(player_id)
-signal player_disconnected(player_id)
-signal player_rotated(player_id, phone_angle, phone_tilt)
-signal player_button_pressed(player_id, button_name, button_state)
+#signal player_connected(player_id)
+#signal player_disconnected(player_id)
+#signal player_rotated(player_id, phone_angle, phone_tilt)
+#signal player_button_pressed(player_id, button_name, button_state)
 
 func _ready():
-	OS.center_window()
+#	OS.center_window()
 	print("LOOK HERE")
 #	server_pid = OS.execute('../node_server/icon.png', [], true);
 #	server_pid = OS.execute('node', [], false);
@@ -54,34 +54,34 @@ func _process(delta):
 			"1": # On player connect
 				add_player(packet)  # packet contains the player id
 			"2": # On player disconnect
-				players.remove(players.find(packet))
-				printerr(players)
-				emit_signal("player_disconnected", packet)
+				Global.players.remove(Global.players.find(packet))
+				printerr(Global.players)
+				Global.emit_signal("player_disconnected", packet)
 			"3": # On player phone button press
 				var data = JSON.parse(packet).result #data contains i (id), n (name), and s (state)
 				
 				# @TODO Remove the following check because it's probably slow.  Replace it with a different solution of resetting the server when the game starts.
-				if not players.has(data.i):  # if this player isn't in the "players" dictionary, add them.
+				if not Global.players.has(data.i):  # if this player isn't in the "players" dictionary, add them.
 					add_player(data.i)
 				
-				emit_signal("player_button_pressed", data.i, data.n, data.s)
+				Global.emit_signal("player_button_pressed", data.i, data.n, data.s)
 			"4": # On player phone rotation
 				var data = JSON.parse(packet).result #data contains id, a (angle), and t (tilt)
 				
 				# @TODO Remove the following check because it's probably slow.
-				if not players.has(data.id):  # if this player isn't in the "players" dictionary, add them.
+				if not Global.players.has(data.id):  # if this player isn't in the "players" dictionary, add them.
 					add_player(data.id)
 				
 				var angle = clean_angle_data(data.a)
 				var tilt = clean_tilt_data(data.t)
-				emit_signal("player_rotated", data.id, angle, tilt)
+				Global.emit_signal("player_rotated", data.id, angle, tilt)
 			_:
 				print("Unknown message with code ' " + code + " ': " + packet)
 
 func add_player(id):
-	players.append(id)
-	print("Global - players: " + str(players))
-	emit_signal("player_connected", id)
+	Global.players.append(id)
+	print("Global - players: " + str(Global.players))
+	Global.emit_signal("player_connected", id)
 
 func start_local_server():
 	match OS.get_name():
