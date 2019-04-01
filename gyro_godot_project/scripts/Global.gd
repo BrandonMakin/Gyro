@@ -11,6 +11,3 @@ signal player_disconnected(player_id)
 signal player_rotated(player_id, phone_angle, phone_tilt)
 #warning-ignore:unused_signal
 signal player_button_pressed(player_id, button_name, button_state)
-
-func _ready():
-	OS.center_window()
