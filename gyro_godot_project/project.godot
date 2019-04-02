@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "VehicleState",
 "language": "GDScript",
-"path": "res://levels/level 01/VehicleState.gd"
+"path": "res://objects/Vehicle/VehicleState.gd"
 } ]
 _global_script_class_icons={
 "VehicleState": ""

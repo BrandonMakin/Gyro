@@ -1,6 +1,6 @@
 extends Node
 
-var Vehicles = preload("res://levels/level 01/Vehicle.tscn")
+var Vehicles = preload("res://objects/Vehicle/Vehicle.tscn")
 onready var vehicle_parent = $"../vehicles"
 var vehicles_available = []  # array of boolean values. true means available.
 onready var max_players_allowed = vehicles_available.size()
