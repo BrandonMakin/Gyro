@@ -26,8 +26,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://scripts/Global.gd"
-ControlKeyboard="*res://scripts/Control With Keyboard.gd"
+Global="*res://scripts/controls/Global.gd"
+ControlKeyboard="*res://scripts/controls/Control With Keyboard.gd"
 
 [editor_plugins]
 
