@@ -1,9 +1,9 @@
 tool
 extends OptionButton
 
-var ControlKeyboard = "res://scripts/Control With Keyboard.gd"
-var ControlLocal = "res://scripts/Control With Local Server.gd"
-var ControlRemote = "res://scripts/Control With Remote Server.gd"
+var ControlKeyboard = "res://scripts/controls/Control With Keyboard.gd"
+var ControlLocal = "res://scripts/controls/Control With Local Server.gd"
+var ControlRemote = "res://scripts/controls/Control With Remote Server.gd"
 
 func _enter_tree():
 #warning-ignore:return_value_discarded

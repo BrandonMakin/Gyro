@@ -105,7 +105,7 @@ function on_button_accel_release()
 function handleMotionEvent(e)
 {
 
-  // print(e.absolute)
+  print(e.absolute)
   var newData = {
     x: e.beta,
     y: e.gamma,
