@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://levels/level 01/FishRentalService.gd" type="Script" id=1]
 [ext_resource path="res://objects/Vehicle/Vehicle.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=8]
 [ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=9]
 [ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=10]
+[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=11]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -127,6 +128,8 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0 )
 }
 
+[sub_resource type="SphereShape" id=10]
+
 [node name="Level 1" type="Spatial"]
 
 [node name="FishRentalService" type="Node" parent="."]
@@ -142,7 +145,6 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="vehicles" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="vehicle1" parent="vehicles" groups=[
 "vehicles",
@@ -166,6 +168,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -35.8057, -111.134 )
 material/0 = SubResource( 3 )
 
 [node name="Ship" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 transform = Transform( -6.55671e-007, 0, 15, 0, 15, 0, -15, 0, -6.55671e-007, -24.7094, -47.4327, -280.337 )
 
 [node name="Path Front" parent="Ship" index="3"]
@@ -198,6 +201,7 @@ omni_range = 200.301
 editor/display_folded = true
 
 [node name="Collectible1" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -35.4915, -129.869 )
 contacts_reported = 1
 contact_monitor = true
@@ -468,6 +472,24 @@ path_rotation = 2
 path_local = false
 path_continuous_u = true
 path_joined = true
+
+[node name="Boost Rings" type="Node" parent="."]
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 0, -25.2047, -155.199 )
+sides = 12
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
+transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
+operation = 2
+sides = 12
+
+[node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
+shape = SubResource( 10 )
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]
