@@ -46,9 +46,10 @@ func _on_button(id, name, state): #3 possible names for a button: accel, shoot, 
 			current_movement_input |= MovementInputFlags.BRAKING #Add braking flag when player isn't accelerating (For the vehicle to slow down)
 			current_movement_input &= ~ MovementInputFlags.ACCELERATING #Remove accelerating flag when player isn't pressing accelerate
 	
-	#SHOCK button (But actually reset right now and probably going to become shoot)
+	#SHOCK button (But actually shoot)
 	if name == "shock" and state == "on":
-		get_tree().reload_current_scene()
+		shoot()
+		#get_tree().reload_current_scene()
 	
 	#SHOOT button (But actually drifting right now and probably going to become drifting)
 	if name == "shoot":
@@ -115,3 +116,19 @@ func stop_drifting():
 		$"../../Fish".rotation = Vector3(-PI, 0, $"../../Fish".rotation.z)
 		drifting_direction_y = 0
 		is_side_drifting = false
+		
+#Called when a player is shooting another player.  One raycast per call
+func shoot():
+	var line_of_sight = $"../../ShootingLine"
+	var player_hit = line_of_sight.check_collision()
+	if player_hit:
+		print(player_hit.name + " HIT! by " + fish_king.name)
+		if player_hit.coins_collected > 0:
+			player_hit.coins_collected -= 1
+			print(player_hit.name + " lost a collectible from getting shot!")
+			player_hit.swim_state.max_speed -= 5 #subtract 5 from their max speed per coin lost
+		else:
+			print(player_hit.name + " didn't lose a collectible because they had 0")
+	else:
+		print(fish_king.name + " shot missed")
+	
