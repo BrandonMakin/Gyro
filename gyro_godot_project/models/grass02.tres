@@ -1,0 +1,13 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 23
+load_path = "res://.import/grass02.png.006.png-e2a493427daec1ec45508e275983faf5.s3tc.stex"
+
+[resource]
+resource_name = "Material.011"
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 2
+albedo_texture = SubResource( 1 )
+
