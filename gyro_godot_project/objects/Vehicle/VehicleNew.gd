@@ -28,7 +28,7 @@ var current_movement_input = MovementInputFlags.BRAKING
 
 #Called when phone is rotated from VehicleStateMachine
 func _on_rotate(id, angle, tilt):
-	desired_rotation = Vector3((-tilt), angle * -2, angle * -2)
+	desired_rotation = Vector3((-tilt), angle * 2, angle * 2)
 	steering_wheel_angle = angle # max(min(angle*1.7, .5), -.5) # ranges from -.5 to .5
 
 #Called when button is pressed from VehicleStateMachine
