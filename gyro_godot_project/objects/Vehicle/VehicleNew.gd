@@ -120,7 +120,7 @@ func stop_drifting():
 #Called when a player is shooting another player.  One raycast per call
 func shoot():
 	var shot = preload("res://art/models/projectile_standin.tscn").instance()
-	var offset = -fish_king.transform.basis.z * 10
+	var offset = -fish_king.transform.basis.z * 3
 	print("FISH_KING: %s" % fish_king.global_transform.origin)
 	shot.global_transform.origin = fish_king.global_transform.origin + offset
 	shot.direction = -fish_king.transform.basis.z
