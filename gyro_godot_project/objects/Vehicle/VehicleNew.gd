@@ -119,21 +119,27 @@ func stop_drifting():
 		
 #Called when a player is shooting another player.  One raycast per call
 func shoot():
-	var line_of_sight = $"../../ShootingLine"
-	var player_hit = line_of_sight.check_collision()
-	if player_hit:
-		print(player_hit.name + " HIT! by " + fish_king.name)
-		if player_hit.coins_collected > 0:
-			player_hit.coins_collected -= 1
-			print(player_hit.name + " lost a collectible from getting shot!")
-			player_hit.swim_state.max_speed -= 5 #subtract 5 from their max speed per coin lost
-		else:
-			print(player_hit.name + " didn't lose a collectible because they had 0")
-		print(player_hit.name + " Staggered!")
-		if player_hit.state_name == "Staggered":
-			player_hit.current_state.timer = 50 #Resets the timer to 50 if they're already staggered instead of pushing another stagger onto their state stack
-		else:
-			player_hit.push_state("Staggered") #Pushes Staggered to their state stack if they are hit and aren't already staggered
-	else:
-		print(fish_king.name + " shot missed")
+	var shot = preload("res://art/models/projectile_standin.tscn").instance()
+	var offset = -fish_king.transform.basis.z * 10
+	print("FISH_KING: %s" % fish_king.global_transform.origin)
+	shot.global_transform.origin = fish_king.global_transform.origin + offset
+	shot.direction = -fish_king.transform.basis.z
+	get_parent().add_child(shot)
+#	var line_of_sight = $"../../ShootingLine"
+#	var player_hit = line_of_sight.check_collision()
+#	if player_hit:
+#		print(player_hit.name + " HIT! by " + fish_king.name)
+#		if player_hit.coins_collected > 0:
+#			player_hit.coins_collected -= 1
+#			print(player_hit.name + " lost a collectible from getting shot!")
+#			player_hit.swim_state.max_speed -= 5 #subtract 5 from their max speed per coin lost
+#		else:
+#			print(player_hit.name + " didn't lose a collectible because they had 0")
+#		print(player_hit.name + " Staggered!")
+#		if player_hit.state_name == "Staggered":
+#			player_hit.current_state.timer = 50 #Resets the timer to 50 if they're already staggered instead of pushing another stagger onto their state stack
+#		else:
+#			player_hit.push_state("Staggered") #Pushes Staggered to their state stack if they are hit and aren't already staggered
+#	else:
+#		print(fish_king.name + " shot missed")
 	

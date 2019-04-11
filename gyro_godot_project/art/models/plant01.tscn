@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://models/plant01.tres" type="Material" id=1]
+[ext_resource path="res://art/models/plant01.tres" type="Material" id=1]
+
 
 [sub_resource type="SpatialMaterial" id=28]
 resource_name = "Material.015"

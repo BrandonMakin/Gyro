@@ -1,8 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://models/wood.tres" type="Material" id=1]
-[ext_resource path="res://models/gold.tres" type="Material" id=2]
-[ext_resource path="res://models/metal.tres" type="Material" id=3]
+[ext_resource path="res://art/models/wood.tres" type="Material" id=1]
+[ext_resource path="res://art/models/gold.tres" type="Material" id=2]
+[ext_resource path="res://art/models/metal.tres" type="Material" id=3]
+
 
 [sub_resource type="SpatialMaterial" id=4]
 resource_name = "Material.001"

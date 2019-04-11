@@ -1,13 +1,14 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://models/grass02.tres" type="Material" id=1]
-[ext_resource path="res://models/blue01.tres" type="Material" id=2]
-[ext_resource path="res://models/blue02.tres" type="Material" id=3]
-[ext_resource path="res://models/blue03.tres" type="Material" id=4]
-[ext_resource path="res://models/blue04.tres" type="Material" id=5]
-[ext_resource path="res://models/grass05.tres" type="Material" id=6]
-[ext_resource path="res://models/grass04.tres" type="Material" id=7]
-[ext_resource path="res://models/grass03.tres" type="Material" id=8]
+[ext_resource path="res://art/models/grass02.tres" type="Material" id=1]
+[ext_resource path="res://art/models/blue01.tres" type="Material" id=2]
+[ext_resource path="res://art/models/blue02.tres" type="Material" id=3]
+[ext_resource path="res://art/models/blue03.tres" type="Material" id=4]
+[ext_resource path="res://art/models/blue04.tres" type="Material" id=5]
+[ext_resource path="res://art/models/grass05.tres" type="Material" id=6]
+[ext_resource path="res://art/models/grass04.tres" type="Material" id=7]
+[ext_resource path="res://art/models/grass03.tres" type="Material" id=8]
+
 
 [sub_resource type="SpatialMaterial" id=14]
 resource_name = "Material.009"
