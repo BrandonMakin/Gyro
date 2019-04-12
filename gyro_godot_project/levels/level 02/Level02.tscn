@@ -18,6 +18,7 @@ _data = {
 }
 
 [sub_resource type="PlaneMesh" id=3]
+size = Vector2( 100, 100 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -68,13 +69,13 @@ script = ExtResource( 3 )
 START_STATE = "BeforeRace"
 
 [node name="plant05" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 2.07033, 0, 0, 0, 1, 0, 14.7787, 87.3607 )
+transform = Transform( 1, 0, 0, 0, 2.07033, 0, 0, 0, 1, 0, 14.7787, 197.923 )
 
 [node name="Racetrack" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 234.476 )
 
 [node name="plant04" parent="Racetrack" instance=ExtResource( 4 )]
-transform = Transform( 0.13296, 0, 0.0279892, 0, 0.405174, 0, -0.0279892, 0, 0.13296, -0.0352425, -0.349729, 4.68445 )
+transform = Transform( 0.13296, 0, 0.0279892, 0, 0.405174, 0, -0.0279892, 0, 0.13296, -0.0352425, 25.6073, 4.68445 )
 
 [node name="Right" type="CSGPolygon" parent="Racetrack"]
 invert_faces = true
@@ -102,9 +103,10 @@ path_joined = false
 curve = SubResource( 2 )
 
 [node name="MultiMeshInstance" type="MultiMeshInstance" parent="Racetrack"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46.2949, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Racetrack"]
-transform = Transform( 46.7701, 0, 0, 0, 1, 0, 0, 0, 58.2103, 119.467, 7.73523, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.9598, 0 )
 mesh = SubResource( 3 )
 material/0 = null
 
