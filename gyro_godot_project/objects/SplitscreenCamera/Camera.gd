@@ -20,7 +20,6 @@ func _ready():
 	cam_offset = get_node(target).transform.origin
 	#Sets initial camera position
 
-
 func _process(delta): 
 	global_transform.origin = get_node(target).get_parent().global_transform.origin + cam_offset
 	cam_offset = cam_offset.linear_interpolate(get_node(target).global_transform.origin - get_node(target).get_parent().global_transform.origin, lerp_amount * delta)
@@ -29,3 +28,8 @@ func _process(delta):
 	# For fov to be exactly proportional to the actual speed, lerp by something like target_vehicle.speed_level / target_vehicle.max_speed, probably.
 	desired_fov = lerp(min_speed_fov, max_speed_fov, target_vehicle.speed_level * target_vehicle.speed_level) 
 	fov = lerp(fov, desired_fov, .1)
+	
+	if target_vehicle.speed_level > 1.2:
+		$"../AnimatedSpeedlines".visible = true
+	else:
+		$"../AnimatedSpeedlines".visible = false
