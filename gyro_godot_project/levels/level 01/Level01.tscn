@@ -1,24 +1,18 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://levels/level 01/FishRentalService.gd" type="Script" id=1]
 [ext_resource path="res://objects/Vehicle/Vehicle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/level 01/terrain/ship.tscn" type="PackedScene" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
-[ext_resource path="res://levels/level 01/Collectible.gd" type="Script" id=5]
-[ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=6]
-[ext_resource path="res://objects/SplitscreenCamera/SplitscreenCamera.tscn" type="PackedScene" id=7]
-[ext_resource path="res://levels/level 01/StoplightAnimationPlayer.gd" type="Script" id=8]
-[ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=9]
-[ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=10]
-[ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=11]
-[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=12]
+[ext_resource path="res://levels/level 01/Collectible.gd" type="Script" id=4]
+[ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=5]
+[ext_resource path="res://objects/SplitscreenCamera/SplitscreenCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/level 01/StoplightAnimationPlayer.gd" type="Script" id=7]
+[ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=8]
+[ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=9]
+[ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=10]
+[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=11]
 
 [sub_resource type="PlaneMesh" id=1]
-
-[sub_resource type="SpatialMaterial" id=9]
-albedo_texture = ExtResource( 4 )
-uv1_triplanar = true
-uv1_triplanar_sharpness = 55.7154
 
 [sub_resource type="SphereMesh" id=2]
 
@@ -124,8 +118,8 @@ tracks/1/keys = {
 
 [sub_resource type="Curve3D" id=7]
 _data = {
-"points": PoolVector3Array( -0.945583, -2.38419e-006, -1.27544, 0.945583, 2.38419e-006, 1.27544, 3.71637, -0.78515, -2.79277, 0.338323, 1.90735e-006, -1.12775, -0.338323, -1.90735e-006, 1.12775, 4.03734, -0.968196, 2.07506, 0.924754, -4.76837e-007, 1.39841, -0.924754, 4.76837e-007, -1.39841, -3.68797, -0.999789, 2.8449, -1.8044, -2.86102e-006, 1.26308, 1.8044, 2.86102e-006, -1.26308, -2.59382, -0.968196, -3.29303, 0, 0, 0, 0, 0, 0, 2.30061, -0.968196, -3.83435 ),
-"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -3.04722, -1.42683, -4.03665, 0, 0, 0, 0, 0, 0, -10.6231, -2.73097, -4.63915, 0, 0, 0, 0, 0, 0, -14.7044, -5.76831, -4.40977, 0, 0, 0, 0, 0, 0, -14.8193, -6.22265, -2.85212, 0, 0, 0, 0, 0, 0, -9.7729, -5.10369, -2.97215, 0, 0, 0, 0, 0, 0, -10.005, -5.64712, -0.175481, 0, 0, 0, 0, 0, 0, -0.228702, -3.42264, -0.6393, 0, 0, 0, 0, 0, 0, 2.96656, -1.63195, -3.62439, 0, 0, 0, 0, 0, 0, 14.7466, -4.45579, -3.42314, 0, 0, 0, 0, 0, 0, 15.8557, -5.06044, -7.88775, 0, 0, 0, 0, 0, 0, 17.5869, -7.8238, -14.6881, 0, 0, 0, 0, 0, 0, 17.1756, -7.63649, -18.4093, 0, 0, 0, 0, 0, 0, 13.1131, -7.67333, -20.9428, 0, 0, 0, 0, 0, 0, 9.25482, -7.62733, -19.1128, 0, 0, 0, 0, 0, 0, 10.0034, -7.78334, -11.4347, 0, 0, 0, 0, 0, 0, 23.8566, -7.7127, -2.56036, 0, 0, 0, 0, 0, 0, 21.4606, -7.95039, 1.82249, 0, 0, 0, 0, 0, 0, 23.3731, -7.84697, 4.29971, 0, 0, 0, 0, 0, 0, 25.2183, -7.91645, 3.6099, 0, 0, 0, 0, 0, 0, 26.8774, -8.09872, 1.19199, 0, 0, 0, 0, 0, 0, 27.7404, -7.95243, -1.8782, 0, 0, 0, 0, 0, 0, 30.2013, -8.20205, -4.4985, 0, 0, 0, 0, 0, 0, 35.8754, -7.93842, -2.44418, 0, 0, 0, 0, 0, 0, 37.6113, -7.89641, 2.71162, 0, 0, 0, 0, 0, 0, 25.314, -7.5892, 14.7247, 0, 0, 0, 0, 0, 0, 17.1561, -7.5664, 14.3347, 0, 0, 0, 0, 0, 0, 10.6758, -7.93693, 10.5227, 0, 0, 0, 0, 0, 0, 8.68289, -5.45243, -3.28477, 0, 0, 0, 0, 0, 0, 2.97372, -3.89294, -3.03791, 0, 0, 0, 0, 0, 0, 1.30733, -4.56516, -7.6538, 0, 0, 0, 0, 0, 0, -2.40376, -4.65682, -11.3534, 0, 0, 0, 0, 0, 0, -6.38135, -3.10864, -9.66087, 0, 0, 0, 0, 0, 0, -13.3736, -7.32966, -10.5662, 0, 0, 0, 0, 0, 0, -22.8107, -4.1645, -17.8409, 0, 0, 0, 0, 0, 0, -31.6948, -2.30758, -14.555, 0, 0, 0, 0, 0, 0, -36.3308, -1.68238, -8.20914, 3.79899, 0.471666, 0.0711899, -3.79899, -0.471666, -0.0711899, -41.1993, -1.19018, 2.05539, -3.0674, -0.0319042, 2.41643, 3.0674, 0.0319042, -2.41643, -43.8016, -1.82944, -5.50942, 0.567753, 0.430717, -2.39035, -0.567753, -0.430717, 2.39035, -37.6434, -3.33996, -0.510619, 2.72862, 0.0819082, 1.32668, -2.72862, -0.0819082, -1.32668, -42.0951, -3.42137, 2.57158, -4.39518, 0.873993, 2.44865, 4.39518, -0.873993, -2.44865, -41.2175, -6.24924, -7.20227, 0, 0, 0, 0, 0, 0, -28.6927, -7.44717, -1.92748, 0, 0, 0, 0, 0, 0, -15.7214, -6.17501, -0.467562, 0, 0, 0, 0, 0, 0, -12.2581, -3.02231, -0.574735, 0, 0, 0, 0, 0, 0, -3.09639, -1.3301, 0.144118, 0, 0, 0, 0, 0, 0, -3.04722, -1.42683, -4.03665 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
 [sub_resource type="SphereShape" id=8]
@@ -162,16 +156,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -35.8057, -111.134 )
 [node name="Ship" parent="." instance=ExtResource( 3 )]
 transform = Transform( -6.55671e-007, 0, 15, 0, 15, 0, -15, 0, -6.55671e-007, -24.7094, -47.4327, -280.337 )
 
-[node name="Path Back" parent="Ship" index="2"]
-transform = Transform( 0.676975, 0, -1.40082, 0, 0.112914, 0, 0.736006, 0, 1.28847, 4.61987, -0.100404, -3.37641 )
-
-[node name="StaticBody" parent="Ship/Path Back" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, -2.98023e-008, 0, 1, 0, 0, 0 )
-
-[node name="Path Front" parent="Ship" index="3"]
-transform = Transform( 2.22542, -0.000121685, -0.476063, 0.00369353, 0.0584058, -0.00275942, 0.751805, 7.32585e-005, 1.40921, 18.511, 0.156798, -1.17619 )
-material_override = SubResource( 9 )
-
 [node name="Lights" type="Node" parent="."]
 editor/display_folded = true
 
@@ -206,7 +190,7 @@ contact_monitor = true
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible1"]
 mesh = SubResource( 2 )
@@ -223,7 +207,7 @@ contact_monitor = true
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible2"]
 mesh = SubResource( 2 )
@@ -240,7 +224,7 @@ contact_monitor = true
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible3"]
 mesh = SubResource( 2 )
@@ -257,7 +241,7 @@ contact_monitor = true
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible4"]
 mesh = SubResource( 2 )
@@ -274,7 +258,7 @@ contact_monitor = true
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible5"]
 mesh = SubResource( 2 )
@@ -290,7 +274,7 @@ contact_monitor = true
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible6"]
 mesh = SubResource( 2 )
@@ -302,7 +286,7 @@ shape = SubResource( 3 )
 [node name="Lap Marker" type="Spatial" parent="."]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -34.2251, -115.849 )
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 
 [node name="Lap Tracker 00" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -330,7 +314,7 @@ visible = false
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
 shape = SubResource( 4 )
 
-[node name="SplitscreenCamera" parent="." instance=ExtResource( 7 )]
+[node name="SplitscreenCamera" parent="." instance=ExtResource( 6 )]
 
 [node name="GUI" type="Node" parent="."]
 
@@ -363,7 +347,7 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="StoplightAnimationPlayer" type="AnimationPlayer" parent="GUI/Stoplight"]
 anims/Stoplight = SubResource( 5 )
-script = ExtResource( 8 )
+script = ExtResource( 7 )
 
 [node name="LapMessages" type="Node" parent="GUI"]
 editor/display_folded = true
@@ -371,32 +355,32 @@ editor/display_folded = true
 [node name="lap3p1" type="Sprite" parent="GUI/LapMessages"]
 visible = false
 position = Vector2( 226.908, 168.716 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="lap3p2" type="Sprite" parent="GUI/LapMessages"]
 visible = false
 position = Vector2( 226.908, 168.716 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="lap2p2" type="Sprite" parent="GUI/LapMessages"]
 visible = false
 position = Vector2( 747.001, 168.809 )
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 
 [node name="lap2p1" type="Sprite" parent="GUI/LapMessages"]
 visible = false
 position = Vector2( 226.529, 171.253 )
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 
 [node name="race_finished_p1" type="Sprite" parent="GUI/LapMessages"]
 visible = false
 position = Vector2( 225.803, 170.789 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
 [node name="race_finished_p2" type="Sprite" parent="GUI/LapMessages"]
 visible = false
 position = Vector2( 743.018, 169.974 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
 [node name="RaceFinishedSignAnimationPlayer" type="AnimationPlayer" parent="GUI/LapMessages"]
 autoplay = "FinishedSign"
@@ -421,17 +405,6 @@ path_local = false
 path_continuous_u = true
 path_joined = true
 
-[node name="Track2" type="CSGPolygon" parent="Racetrack"]
-use_collision = true
-polygon = PoolVector2Array( 0.677853, -0.246742, -0.276672, -0.211423, -0.232018, 1.11084, 1.26076, 1.14437, 1.2643, -0.228819 )
-mode = 2
-path_node = NodePath("../Path")
-path_interval = 1.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_joined = true
-
 [node name="Boost Rings" type="Node" parent="."]
 editor/display_folded = true
 
@@ -446,7 +419,7 @@ sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
 transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
 shape = SubResource( 8 )
