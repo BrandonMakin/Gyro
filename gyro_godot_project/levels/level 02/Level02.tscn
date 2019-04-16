@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Vehicle/Vehicle.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/Vehicle/VehicleStateMachine.gd" type="Script" id=3]
-[ext_resource path="res://art/models/plant04.tscn" type="PackedScene" id=4]
+[ext_resource path="res://art/models/plant04.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -52,29 +51,25 @@ curve = SubResource( 1 )
 
 [node name="vehicles" type="Node" parent="."]
 
-[node name="vehicle1" type="KinematicBody" parent="vehicles" groups=[
+[node name="vehicle1" parent="vehicles" groups=[
 "vehicles",
 ] instance=ExtResource( 2 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128602, 13.4672, 101.015 )
-script = ExtResource( 3 )
-START_STATE = "BeforeRace"
 
-[node name="vehicle2" type="KinematicBody" parent="vehicles" groups=[
+[node name="vehicle2" parent="vehicles" groups=[
 "vehicles",
 ] instance=ExtResource( 2 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8714, 13.4672, 101.015 )
-script = ExtResource( 3 )
-START_STATE = "BeforeRace"
 
-[node name="plant05" parent="." instance=ExtResource( 4 )]
+[node name="plant05" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 2.07033, 0, 0, 0, 1, 0, 14.7787, 197.923 )
 
 [node name="Racetrack" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 234.476 )
 
-[node name="plant04" parent="Racetrack" instance=ExtResource( 4 )]
+[node name="plant04" parent="Racetrack" instance=ExtResource( 3 )]
 transform = Transform( 0.13296, 0, 0.0279892, 0, 0.405174, 0, -0.0279892, 0, 0.13296, -0.0352425, 25.6073, 4.68445 )
 
 [node name="Right" type="CSGPolygon" parent="Racetrack"]
