@@ -1,6 +1,5 @@
 extends Node
 
-var player_id : String = ""
 var max_speed : int = 50  # [meters per second] 
 const acceleration_strength : int = 7
 export var sharpest_steering_radius : float = .1
@@ -27,12 +26,12 @@ enum MovementInputFlags {
 var current_movement_input = MovementInputFlags.BRAKING
 
 #Called when phone is rotated from VehicleStateMachine
-func _on_rotate(id, angle, tilt):
+func _on_rotate(angle, tilt):
 	desired_rotation = Vector3((-tilt), angle * 2, angle * 2)
 	steering_wheel_angle = angle # max(min(angle*1.7, .5), -.5) # ranges from -.5 to .5
 
 #Called when button is pressed from VehicleStateMachine
-func _on_button(id, name, state): #3 possible names for a button: accel, shoot, shock
+func _on_button(name, state): #3 possible names for a button: accel, shoot, shock
 	#2 states for a button: "on", "off"
 	
 #	print("button: " + name + "! (" + state + ")")

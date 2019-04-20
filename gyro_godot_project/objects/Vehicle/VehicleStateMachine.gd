@@ -9,6 +9,7 @@ var coins_collected : int = 0
 var is_drafting : bool
 
 #variables that all states MIGHT need...
+#warning-ignore:unused_class_variable
 export(float) var speed_level = 0 # represents some the current speed at value from 0 to 1, before interpolation. 0 means not moving and 1 means moving at max speed,
 								# ...but depending on your interpolation, the values in between may not correlate linearly to the speeds they represent. [no units, range: 0-1]
 var state_stack : Array =  []
@@ -20,7 +21,9 @@ func _ready():
 	state_stack.push_front(START_STATE)
 	state_name = state_stack[0]
 	current_state = get_node("States/" + state_name)
+	#warning-ignore:return_value_discarded
 	Global.connect("player_rotated", self, "_on_rotate")
+	#warning-ignore:return_value_discarded
 	Global.connect("player_button_pressed", self, "_on_button")
 	is_drafting = false
 	
@@ -32,13 +35,13 @@ func _process(delta):
 func _on_rotate(id, angle, tilt):
 	if id != player_id:
 		return
-	current_state._on_rotate(id, angle, tilt)
+	current_state._on_rotate(angle, tilt)
 
 #Called on phone button press via player_button_pressed signal
 func _on_button(id, angle, tilt):
 	if id != player_id:
 		return
-	current_state._on_button(id, angle, tilt)
+	current_state._on_button(angle, tilt)
 
 #Called when state needs to be changed
 func change_state(new_state_name):

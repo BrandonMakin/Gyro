@@ -2,7 +2,9 @@ extends Area
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#warning-ignore:return_value_discarded
 	connect("body_entered",self,"_on_body_enter")
+	#warning-ignore:return_value_discarded
 	connect("body_exited",self,"_on_body_exit")
 
 func _on_body_enter(body):

@@ -5,17 +5,15 @@ and exists for the entirety of the game.
 
 extends HTTPRequest
 
+#var static_server_url = "localhost"
 var static_server_url = "ec2-54-193-74-3.us-west-1.compute.amazonaws.com"
 var server_port = 8000
-#var static_url_and_port = "http://ec2-54-193-74-3.us-west-1.compute.amazonaws.com:8000"
-#var static_url_and_port = "http://localhost:8000"
-#var is_remote = true
-#var port = 8001
-#var udp = PacketPeerUDP.new()
 var tcp = StreamPeerTCP.new()
 #var server_pid
-var qr
+#warning-ignore:unused_class_variable
 var DEADZONE_RADIUS = 0.05
+
+#enum Code{CONNECT = 1, DISCONNECT = 2, BUTTON = 3, ROTATE = 4, SEND_GAME_ID = 7, QR = 8, PING = 9}
 
 func _ready():
 	
@@ -32,6 +30,7 @@ func _ready():
 #	if tcp.get_available_bytes() > 0:
 #		print(tcp.get_string(tcp.get_available_bytes()))
 
+#warning-ignore:unused_argument
 func _process(delta):
 	
 	while(tcp.get_available_bytes()) > 0:
@@ -64,9 +63,13 @@ func _process(delta):
 				var angle = clean_angle_data(data.a)
 				var tilt = clean_tilt_data(data.t)
 				Global.emit_signal("player_rotated", data.id, angle, tilt)
+			"7": # On obtaining this game's id
+				Global.game_id = packet
+				print("Game ID: " + packet)
 			_:
 				print("Unknown message with code ' " + code + " ': " + packet)
 	
+#warning-ignore:unused_argument
 func clean_angle_data(angle):
 	# PRECONDITION: angle ranges from -90 to 90
 	angle /= 90

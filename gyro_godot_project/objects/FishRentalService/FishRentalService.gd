@@ -1,15 +1,17 @@
 extends Node
 
-var Vehicles = preload("res://objects/Vehicle/Vehicle.tscn")
 onready var vehicle_parent = $"../vehicles"
 var vehicles_available = []  # array of boolean values. true means available.
-onready var max_players_allowed = vehicles_available.size()
+#onready var max_players_allowed = vehicles_available.size()
 var players_in_level = {}
 
 func _ready():
+	#warning-ignore:return_value_discarded
 	Global.connect("player_connected", self, "_on_connect")
+	#warning-ignore:return_value_discarded
 	Global.connect("player_disconnected", self, "_on_disconnect")
 	
+	#warning-ignore:unused_variable
 	for i in range(vehicle_parent.get_child_count()):
 		vehicles_available.append(true)
 	printerr("_ready: Global.players: " + str(Global.players))
