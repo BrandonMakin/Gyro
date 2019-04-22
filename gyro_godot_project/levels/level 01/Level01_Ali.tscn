@@ -1,0 +1,859 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/Vehicle/Vehicle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level 01/terrain/ship.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/level 01/Collectible.gd" type="Script" id=4]
+[ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=5]
+[ext_resource path="res://objects/SplitscreenCamera/SplitscreenCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/level 01/StoplightAnimationPlayer.gd" type="Script" id=7]
+[ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=8]
+[ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=9]
+[ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=10]
+[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=11]
+[ext_resource path="res://levels/level 01/track.tscn" type="PackedScene" id=12]
+[ext_resource path="res://floor5.tscn" type="PackedScene" id=13]
+[ext_resource path="res://art/models/rock01.tscn" type="PackedScene" id=14]
+[ext_resource path="res://art/models/rock02.tscn" type="PackedScene" id=15]
+[ext_resource path="res://art/models/rock04.tscn" type="PackedScene" id=16]
+[ext_resource path="res://art/models/rock03.tscn" type="PackedScene" id=17]
+[ext_resource path="res://art/models/plant01.tscn" type="PackedScene" id=18]
+[ext_resource path="res://art/models/plant02.tscn" type="PackedScene" id=19]
+[ext_resource path="res://art/models/plant03.tscn" type="PackedScene" id=20]
+[ext_resource path="res://art/models/plant04.tscn" type="PackedScene" id=21]
+[ext_resource path="res://art/models/grass03.tscn" type="PackedScene" id=22]
+[ext_resource path="res://art/models/grass05.tscn" type="PackedScene" id=23]
+[ext_resource path="res://ship.tscn" type="PackedScene" id=24]
+[ext_resource path="res://floor4.tscn" type="PackedScene" id=25]
+[ext_resource path="res://floor3.tscn" type="PackedScene" id=26]
+[ext_resource path="res://art/models/grass.material" type="Material" id=27]
+[ext_resource path="res://floor.tscn" type="PackedScene" id=28]
+[ext_resource path="res://art/models/grass01.tscn" type="PackedScene" id=29]
+[ext_resource path="res://art/models/grass001.tscn" type="PackedScene" id=30]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="SphereShape" id=3]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 31.6908, 21.478, 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Stoplight"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light0:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.694118, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light1:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.956863, 0.85098, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Light2:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0.45098, 0.254902, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("StoplightAnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "let_the_fish_swim"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "FinishedSign"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("race_finished_p2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 0, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("race_finished_p1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 3.99649 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Curve3D" id=7]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -3.04722, -1.42683, -4.03665, 0, 0, 0, 0, 0, 0, -10.6231, -2.73097, -4.63915, 0, 0, 0, 0, 0, 0, -14.7044, -5.76831, -4.40977, 0, 0, 0, 0, 0, 0, -14.8193, -6.22265, -2.85212, 0, 0, 0, 0, 0, 0, -9.7729, -5.10369, -2.97215, 0, 0, 0, 0, 0, 0, -10.005, -5.64712, -0.175481, 0, 0, 0, 0, 0, 0, -0.228702, -3.42264, -0.6393, 0, 0, 0, 0, 0, 0, 2.96656, -1.63195, -3.62439, 0, 0, 0, 0, 0, 0, 14.7466, -4.45579, -3.42314, 0, 0, 0, 0, 0, 0, 15.8557, -5.06044, -7.88775, 0, 0, 0, 0, 0, 0, 17.5869, -7.8238, -14.6881, 0, 0, 0, 0, 0, 0, 17.1756, -7.63649, -18.4093, 0, 0, 0, 0, 0, 0, 13.1131, -7.67333, -20.9428, 0, 0, 0, 0, 0, 0, 9.25482, -7.62733, -19.1128, 0, 0, 0, 0, 0, 0, 10.0034, -7.78334, -11.4347, 0, 0, 0, 0, 0, 0, 23.8566, -7.7127, -2.56036, 0, 0, 0, 0, 0, 0, 21.4606, -7.95039, 1.82249, 0, 0, 0, 0, 0, 0, 23.3731, -7.84697, 4.29971, 0, 0, 0, 0, 0, 0, 25.2183, -7.91645, 3.6099, 0, 0, 0, 0, 0, 0, 26.8774, -8.09872, 1.19199, 0, 0, 0, 0, 0, 0, 27.7404, -7.95243, -1.8782, 0, 0, 0, 0, 0, 0, 30.2013, -8.20205, -4.4985, 0, 0, 0, 0, 0, 0, 35.8754, -7.93842, -2.44418, 0, 0, 0, 0, 0, 0, 37.6113, -7.89641, 2.71162, 0, 0, 0, 0, 0, 0, 25.314, -7.5892, 14.7247, 0, 0, 0, 0, 0, 0, 17.1561, -7.5664, 14.3347, 0, 0, 0, 0, 0, 0, 10.6758, -7.93693, 10.5227, 0, 0, 0, 0, 0, 0, 8.68289, -5.45243, -3.28477, 0, 0, 0, 0, 0, 0, 2.97372, -3.89294, -3.03791, 0, 0, 0, 0, 0, 0, 1.30733, -4.56516, -7.6538, 0, 0, 0, 0, 0, 0, -2.40376, -4.65682, -11.3534, 0, 0, 0, 0, 0, 0, -6.38135, -3.10864, -9.66087, 0, 0, 0, 0, 0, 0, -13.3736, -7.32966, -10.5662, 0, 0, 0, 0, 0, 0, -22.8107, -4.1645, -17.8409, 0, 0, 0, 0, 0, 0, -31.6948, -2.30758, -14.555, 0, 0, 0, 0, 0, 0, -36.3308, -1.68238, -8.20914, 3.79899, 0.471666, 0.0711899, -3.79899, -0.471666, -0.0711899, -41.1993, -1.19018, 2.05539, -3.0674, -0.0319042, 2.41643, 3.0674, 0.0319042, -2.41643, -43.8016, -1.82944, -5.50942, 0.567753, 0.430717, -2.39035, -0.567753, -0.430717, 2.39035, -37.6434, -3.33996, -0.510619, 2.72862, 0.0819082, 1.32668, -2.72862, -0.0819082, -1.32668, -42.0951, -3.42137, 2.57158, -4.39518, 0.873993, 2.44865, 4.39518, -0.873993, -2.44865, -41.2175, -6.24924, -7.20227, 0, 0, 0, 0, 0, 0, -28.6927, -7.44717, -1.92748, 0, 0, 0, 0, 0, 0, -15.7214, -6.17501, -0.467562, 0, 0, 0, 0, 0, 0, -12.2581, -3.02231, -0.574735, 0, 0, 0, 0, 0, 0, -3.09639, -1.3301, 0.144118, 0, 0, 0, 0, 0, 0, -3.04722, -1.42683, -4.03665 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="SphereShape" id=8]
+
+[sub_resource type="ArrayMesh" id=9]
+resource_name = "Plane.002"
+surfaces/0 = {
+"aabb": AABB( -1, -1.22973, -1, 2.00001, 1.99448, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 127, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 211, 166, 205, 190, 231, 194, 60, 63, 254, 255, 127, 63, 146, 193, 0, 0, 193, 110, 0, 127, 0, 60, 0, 60, 171, 188, 23, 63, 102, 120, 127, 191, 0, 0, 128, 191, 146, 193, 0, 0, 193, 110, 0, 127, 0, 0, 0, 0, 173, 188, 23, 63, 101, 120, 127, 191, 0, 0, 128, 63, 146, 193, 0, 0, 193, 110, 0, 127, 0, 0, 0, 60, 251, 87, 127, 63, 47, 104, 202, 61, 0, 0, 128, 63, 194, 110, 0, 0, 110, 62, 0, 127, 0, 60, 0, 60, 139, 224, 61, 191, 40, 135, 99, 191, 0, 0, 128, 191, 194, 110, 0, 0, 110, 62, 0, 127, 0, 0, 0, 0, 139, 224, 61, 191, 40, 135, 99, 191, 0, 0, 128, 63, 194, 110, 0, 0, 110, 62, 0, 127, 0, 0, 0, 60, 207, 109, 21, 190, 236, 103, 157, 191, 0, 0, 128, 63, 130, 247, 0, 0, 247, 126, 0, 127, 0, 0, 0, 60, 159, 191, 150, 190, 84, 198, 67, 63, 0, 0, 128, 191, 130, 247, 0, 0, 247, 126, 0, 127, 0, 60, 0, 0, 214, 109, 21, 190, 236, 103, 157, 191, 0, 0, 128, 191, 130, 247, 0, 0, 247, 126, 0, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 127, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 215, 166, 205, 190, 230, 194, 60, 63, 0, 0, 128, 191, 146, 193, 0, 0, 193, 110, 0, 127, 0, 60, 0, 0, 251, 87, 127, 63, 47, 104, 202, 61, 0, 0, 128, 191, 194, 110, 0, 0, 110, 62, 0, 127, 0, 60, 0, 0, 207, 109, 21, 190, 236, 103, 157, 191, 0, 0, 128, 63, 130, 247, 0, 0, 247, 126, 0, 127, 0, 0, 0, 60, 159, 191, 150, 190, 86, 198, 67, 63, 254, 255, 127, 63, 130, 247, 0, 0, 247, 126, 0, 127, 0, 60, 0, 60, 159, 191, 150, 190, 84, 198, 67, 63, 0, 0, 128, 191, 130, 247, 0, 0, 247, 126, 0, 127, 0, 60, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 0, 0, 1, 0, 12, 0, 3, 0, 4, 0, 13, 0, 6, 0, 7, 0, 14, 0, 15, 0, 17, 0, 16, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 24,
+"material": ExtResource( 27 ),
+"name": "grass",
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 18
+}
+
+[sub_resource type="MultiMesh" id=10]
+transform_format = 1
+instance_count = 128
+mesh = SubResource( 9 )
+transform_array = PoolVector3Array( -0.00516637, 0.090732, 0.995862, -0.0644906, 0.993772, -0.0908761, -0.997905, -0.0646932, 0.000717163, -4.43063, -7.56303, 32.0529, -0.000293511, 0.10027, 0.99496, -0.0108255, 0.994902, -0.100267, -0.999941, -0.0108003, 0.000793457, -53.1659, -8.40223, -44.3728, 0.865733, 0.005416, 0.500477, 0.0175015, 0.999002, -0.0410852, -0.5002, 0.0443279, 0.864775, -57.5904, -7.85718, -26.5636, -0.886782, -0.00525399, 0.462159, -0.0847806, 0.984818, -0.15148, -0.454347, -0.173512, -0.873764, 14.7363, -8.71754, 15.6329, -0.993677, -0.112278, 5.43593e-05, -0.112268, 0.993596, 0.012794, -0.00149049, 0.012707, -0.999918, -14.6188, -7.16973, 34.3322, -0.999079, 0.0429058, 6.15119e-05, 0.0429022, 0.998974, 0.0144801, 0.000559831, 0.0144694, -0.999895, -6.35973, -7.18607, 44.8617, -0.999991, 0.00423867, -3.43323e-05, 0.00423881, 0.999957, -0.00827551, -7.46357e-07, -0.00827558, -0.999966, 53.4766, -7.76497, 11.9034, -0.861952, 0.0137772, 0.506802, 0.00899404, 0.999889, -0.0118847, -0.506909, -0.00568584, -0.861981, -45.112, -7.47004, -1.60957, -0.997341, -0.0728787, -0.000240326, -0.0727476, 0.995735, -0.0567465, 0.00437491, -0.0565781, -0.998389, -46.1515, -7.63829, -3.40246, -0.999991, 0.00423867, -3.43323e-05, 0.00423881, 0.999957, -0.00827551, -7.4635e-07, -0.00827558, -0.999966, -60.4666, -6.40409, 33.6719, -0.999991, 0.00423867, -3.43323e-05, 0.00423881, 0.999957, -0.00827551, -7.46357e-07, -0.00827558, -0.999966, -53.9526, -6.94415, 18.8909, -0.999559, 0.0296996, 0.000359058, 0.0296232, 0.995962, 0.0847445, 0.00215927, 0.0847177, -0.996403, 6.65177, -8.31362, -23.6905, -0.997335, -0.0729623, -3.8147e-05, -0.0729594, 0.997301, -0.00827551, 0.000641844, -0.00825067, -0.999966, -66.694, -7.24735, 4.64621, -0.043795, 0.165639, 0.985214, -0.259631, 0.950389, -0.171326, -0.964714, -0.263295, 0.00138283, 23.6023, -8.9154, 17.7422, 0.642592, -0.0819807, 0.76181, 0.124065, 0.992272, 0.00213194, -0.756098, 0.0931439, 0.647797, -49.4335, -7.24737, 31.6211, -0.999991, 0.00423867, -3.43323e-05, 0.00423881, 0.999957, -0.00827551, -7.46353e-07, -0.00827558, -0.999966, 51.922, -6.89535, 31.877, -0.924319, -0.381618, -0.00111008, -0.36804, 0.892193, -0.261797, 0.100897, -0.241575, -0.965122, 27.8737, -9.52093, 15.5482, 0.644378, -0.0824074, 0.760254, 0.0426787, 0.996503, 0.0718417, -0.763515, -0.0138466, 0.645641, -45.934, -6.98232, 42.1621, -0.0130055, -0.257887, 0.966088, 0.0402618, 0.965251, 0.258205, -0.999105, 0.0422545, -0.00217056, 31.0521, -9.55116, 5.60583, 0.646311, -0.0438992, 0.76181, 0.0652642, 0.997866, 0.00213242, -0.760278, 0.0483408, 0.647797, 51.6384, -8.61202, -52.4988, 0.00151735, -0.172117, 0.985075, -0.0171715, 0.984927, 0.172117, -0.999851, -0.0171764, -0.00146103, -39.8673, -7.49718, -36.0267, 0.855215, -0.0818285, 0.511773, 0.00164843, 0.987882, 0.1552, -0.518271, -0.131886, 0.844986, -2.57627, -7.97605, 14.454, -0.834571, -0.222851, 0.503815, -0.195049, 0.974819, 0.10809, -0.515216, -0.00805958, -0.857022, 45.6895, -8.28286, 0.315173, -0.999578, -0.0290611, 0.000160694, -0.0290341, 0.998859, 0.0379276, -0.00126273, 0.0379069, -0.99928, 5.88676, -7.0883, -1.85078, -0.644272, -0.072934, 0.761311, -0.075046, 0.996667, 0.0319724, -0.761106, -0.0365345, -0.647598, 6.62449, -7.18887, 35.5045, 0.854659, -0.0942691, 0.510559, 0.154954, 0.984874, -0.0775423, -0.495527, 0.145386, 0.856339, 23.8207, -8.12674, -21.9975, -0.862052, 0.00423829, 0.506802, 0.0109919, 0.999886, 0.010335, -0.506701, 0.01448, -0.862, 30.7815, -7.31969, 47.5429, -0.00125666, -0.0537203, 0.998555, 0.0144092, 0.998451, 0.0537328, -0.999895, 0.0144559, -0.000480651, 23.1533, -7.22152, 40.3755, -0.850932, 0.119959, 0.511394, 0.185381, 0.97951, 0.078699, -0.491475, 0.161771, -0.855735, 14.8025, -8.54642, -26.7525, -0.842797, -0.0614624, 0.534711, -0.0907621, 0.995461, -0.0286336, -0.530524, -0.0726638, -0.84455, -14.5655, -7.07352, -12.4227, 0.862009, 0.00423873, 0.506875, -0.00784851, 0.999957, 0.00498534, -0.506832, -0.00827563, 0.862005, 39.7879, -7.49028, -46.224, -0.855615, -0.106813, 0.506472, -0.102297, 0.994072, 0.0368309, -0.507403, -0.0202972, -0.86147, -20.6162, -8.20205, -12.5047, -0.98435, 0.176226, 0.000400543, 0.175475, 0.979941, 0.094468, 0.0162552, 0.0930598, -0.995528, 45.7293, -7.33756, 45.2754, -0.999991, 0.00408509, -0.00113058, 0.00423866, 0.963754, -0.266759, -1.35624e-07, -0.266762, -0.963763, -6.37504, -8.19474, -22.2618, -0.996687, 0.0813321, 0.000156403, 0.0812816, 0.995997, 0.0372048, 0.00287017, 0.0370943, -0.999308, -35.7599, -6.63432, 38.1046, -0.647839, 0.00423832, 0.761766, -0.00355836, 0.999957, -0.00858976, -0.761769, -0.00827542, -0.647796, 56.8312, -8.1436, -32.1289, -0.00272846, -0.0475168, 0.998867, 0.0482574, 0.9977, 0.0475931, -0.998831, 0.0483325, -0.000429153, 26.8643, -8.85492, -8.95325, -0.00141221, -0.0590136, 0.998256, 0.0150139, 0.998143, 0.0590281, -0.999886, 0.0150711, -0.000523567, -1.00808, -6.48896, -9.5514, 0.000372188, -0.0148501, 0.99989, -0.0357047, 0.999252, 0.014854, -0.999362, -0.0357063, -0.00015831, 15.2977, -6.76262, 26.763, -0.857088, 0.139879, 0.495817, 0.189527, 0.980551, 0.0509915, -0.479041, 0.137675, -0.866929, 1.00737, -6.57853, -4.57455, -0.00922322, 0.0925424, 0.995666, -0.106608, 0.989942, -0.092998, -0.994258, -0.107004, 0.000735283, -10.2643, -6.71548, -8.83528, 0.825879, 0.00418595, 0.563831, -0.0922421, 0.987504, 0.127781, -0.556251, -0.157541, 0.815945, 20.0775, -7.7089, 21.635, -0.982502, -0.186253, -0.000457763, -0.185118, 0.976779, -0.10786, 0.0205363, -0.105887, -0.994166, 33.0938, -9.01603, 11.78, -0.85071, 0.139388, 0.506817, 0.156298, 0.987666, -0.00928212, -0.50186, 0.0713182, -0.862004, 21.6297, -7.69806, 29.5536, -0.985223, 0.171275, 7.6294e-05, 0.171249, 0.985067, 0.0178223, 0.00297735, 0.017572, -0.999841, -35.3925, -8.80354, 14.6674, -0.00486306, -0.10671, 0.994278, 0.0366656, 0.993602, 0.106817, -0.999316, 0.0369752, -0.000919342, -21.2292, -8.2555, -10.3354, -0.862043, 0.0042386, 0.506817, -0.000540487, 0.999957, -0.00928212, -0.506835, -0.00827551, -0.862004, 47.3402, -7.46306, 45.2399, -0.860459, 0.0524061, 0.506817, 0.0553416, 0.998424, -0.00928212, -0.506505, 0.0200612, -0.862004, 20.744, -8.18812, -51.7548, -0.862059, 0.0042384, 0.50679, -0.00338292, 0.999895, -0.0141168, -0.506796, -0.0138839, -0.861954, -8.87001, -7.90662, -34.7296, -0.999991, 0.00423868, -3.8147e-05, 0.00423885, 0.999957, -0.00827551, 3.06812e-06, -0.0082756, -0.999966, -66.6503, -7.81639, -55.8368, 0.86105, -0.0439113, 0.506622, 0.0623398, 0.997865, -0.0194626, -0.504686, 0.0483409, 0.861949, 28.0404, -8.46465, -53.2363, -0.00286915, 0.100254, 0.994958, -0.03637, 0.994293, -0.100292, -0.999334, -0.0364744, 0.000793458, -23.9248, -6.83544, 38.5611, 0.861567, 0.0290896, 0.506809, -0.0522873, 0.998132, 0.0315971, -0.504943, -0.0537228, 0.861479, -25.3751, -9.62975, 22.4687, 0.844229, -0.135266, 0.518633, 0.135151, 0.990087, 0.0382285, -0.518663, 0.0378204, 0.854142, 12.2321, -6.97988, 24.8523, 0.000466813, 0.0206403, 0.999787, 0.0160247, 0.999658, -0.0206452, -0.999871, 0.0160309, 0.000135899, 28.816, -9.09425, -2.43086, -0.000164136, 0.0233369, 0.999728, -0.0138962, 0.999631, -0.0233369, -0.999904, -0.0138962, 0.000160217, -18.0183, -7.942, -42.9413, -0.860932, -0.0439673, 0.506817, -0.05645, 0.998362, -0.00928212, -0.505579, -0.0366011, -0.862004, -26.7924, -8.18967, -38.4667, -0.645958, 0.0621982, 0.760834, 0.0339438, 0.99803, -0.0527701, -0.762618, -0.00826169, -0.646797, -4.15836, -7.30083, 37.3933, -0.995205, -0.0978106, -4.57763e-05, -0.0978044, 0.995147, -0.0108499, 0.00110679, -0.0107934, -0.999941, 30.0334, -8.65696, -43.5601, -0.845541, -0.167919, 0.506817, -0.20013, 0.979725, -0.00928212, -0.494983, -0.109278, -0.862004, -60.6871, -6.88521, 27.2911, -0.856884, 0.00420189, 0.515492, 0.0713914, 0.991299, 0.110591, -0.510542, 0.131565, -0.849728, 14.6976, -9.36376, 6.07655, -3.50771e-05, 0.00423846, 0.999991, -0.00827556, 0.999957, -0.0042386, -0.999966, -0.00827564, 0, 40.6227, -7.47116, -43.4871, -0.0171101, -0.167912, 0.985654, 0.0914844, 0.9814, 0.168775, -0.99566, 0.0930597, -0.00143051, 42.6251, -7.34657, 47.3756, -0.862043, 0.00423857, 0.506817, -0.000540518, 0.999957, -0.00928212, -0.506834, -0.00827553, -0.862004, -7.67767, -7.19488, 49.4657, 0.863901, 0.0164708, 0.503393, -0.0948943, 0.986888, 0.130563, -0.494642, -0.160562, 0.854136, -25.6439, -9.96179, 15.986, -0.00272799, -0.0475168, 0.998867, 0.0482574, 0.9977, 0.0475931, -0.998831, 0.0483325, -0.000428676, 27.7423, -8.88249, -7.52091, 0.646311, -0.0438992, 0.76181, 0.0652642, 0.997866, 0.00213242, -0.760278, 0.0483408, 0.647797, 52.2612, -8.46238, -55.0222, -0.860089, -0.090771, 0.502004, -0.122441, 0.99201, -0.030406, -0.495233, -0.0876175, -0.864331, -12.9484, -7.75449, -21.7924, 0.854659, -0.0942691, 0.510559, 0.154954, 0.984874, -0.0775423, -0.495527, 0.145386, 0.856339, 26.4, -8.4278, -18.2855, 0.646533, 0.0825275, 0.758409, -0.0251797, 0.995898, -0.0869049, -0.76247, 0.0370904, 0.645959, -27.7977, -6.2769, 29.7821, -0.858967, -0.0728888, 0.506817, -0.0899852, 0.9959, -0.00928211, -0.504062, -0.053579, -0.862004, -44.8748, -7.68589, -5.98295, -0.999991, 0.00423868, -3.8147e-05, 0.00423885, 0.999957, -0.00827551, 3.06811e-06, -0.0082756, -0.999966, -66.0578, -7.15808, 24.0109, 0.861999, 0.00423838, 0.506891, -0.010691, 0.999895, 0.00981999, -0.506796, -0.013884, 0.861954, -15.6467, -7.85504, -33.0836, -0.816537, -0.276477, 0.506782, -0.313171, 0.949601, 0.0134716, -0.484966, -0.147709, -0.861969, -34.3595, -9.1713, -12.0791, 0.69932, -0.508983, 0.501884, 0.507134, 0.848096, 0.153458, -0.503753, 0.147207, 0.851213, 44.5312, -8.89127, -9.03043, -0.00151832, 0.0524045, 0.998625, -0.0365571, 0.997956, -0.0524249, -0.99933, -0.0365864, 0.000400543, -24.6039, -7.17123, 47.5407, -0.0111316, -0.150017, 0.988621, 0.0646695, 0.986504, 0.150424, -0.997845, 0.0656081, -0.00127983, 7.25987, -7.17682, 26.1642, -0.999991, 0.00423867, -3.43323e-05, 0.00423881, 0.999957, -0.00827551, -7.46353e-07, -0.00827558, -0.999966, 44.4163, -6.78101, 41.8484, 0.748064, 0.436388, 0.499966, -0.42052, 0.894531, -0.151583, -0.513384, -0.0968522, 0.852676, -53.6534, -6.47441, 1.88218, -0.860089, -0.090771, 0.502004, -0.122441, 0.99201, -0.030406, -0.495233, -0.0876175, -0.864331, -12.3689, -7.8361, -23.3168, 0.739766, 0.444617, 0.505037, -0.477123, 0.875866, -0.0722046, -0.474448, -0.18755, 0.860072, -29.0508, -9.56305, 14.883, 0.643156, -0.0915741, 0.76024, 0.206165, 0.976871, -0.056745, -0.73746, 0.19323, 0.647159, -30.0112, -6.72197, 36.3945, -0.00567979, -0.125022, 0.992138, 0.0364688, 0.991468, 0.125146, -0.999319, 0.0368929, -0.00107193, -14.8024, -7.16664, 40.0884, 0.854659, -0.0942691, 0.510559, 0.154954, 0.984874, -0.0775423, -0.495527, 0.145386, 0.856339, 25.124, -8.48531, -18.7233, -0.858967, -0.0728888, 0.506817, -0.0899852, 0.9959, -0.00928211, -0.504062, -0.053579, -0.862004, -46.2867, -7.71689, -4.63843, 0.843814, 0.176218, 0.506878, -0.207292, 0.978267, 0.00498581, -0.494983, -0.109279, 0.862003, 42.0883, -8.14549, -53.0705, -0.861952, 0.0137772, 0.506802, 0.00899404, 0.999889, -0.0118847, -0.506909, -0.00568584, -0.861981, -44.1995, -7.48055, -1.24845, 0.857143, -0.091819, 0.506828, 0.0892459, 0.995575, 0.0294304, -0.507287, 0.0200063, 0.861545, 10.2794, -8.1628, -46.7755, -0.867123, 0.00413991, 0.498078, 0.110453, 0.976668, 0.184175, -0.485694, 0.214716, -0.847348, -53.059, -6.28709, 13.0228, 0.855215, -0.0818285, 0.511773, 0.00164843, 0.987882, 0.1552, -0.518271, -0.131886, 0.844986, -1.97687, -7.90336, 14.6266, -0.862501, 0.00422932, 0.506038, 0.0372424, 0.997784, 0.0551376, -0.504683, 0.0664023, -0.860747, 45.3772, -8.08465, -31.2012, -0.999991, 0.00423867, -3.43323e-05, 0.00423881, 0.999957, -0.00827551, -7.46357e-07, -0.00827558, -0.999966, 53.5474, -7.75372, 13.2986, 0.848444, 0.152343, 0.506887, -0.181386, 0.983379, 0.00805949, -0.497234, -0.0987804, 0.861975, -11.0545, -7.67064, -45.8945, -0.648082, 0.00423601, 0.761559, 0.0310775, 0.999299, 0.0208883, -0.760936, 0.0372047, -0.647759, -37.4529, -6.76906, 41.9749, -0.862043, 0.00423857, 0.506817, -0.000540518, 0.999957, -0.00928212, -0.506834, -0.00827553, -0.862004, -4.07527, -7.9128, -35.4365, -0.85623, 0.100167, 0.50679, 0.107935, 0.994058, -0.0141168, -0.505192, 0.0426133, -0.861954, 6.16333, -7.37092, 47.7429, 0.861993, -0.0053003, 0.506893, -0.00247669, 0.999889, 0.014667, -0.506914, -0.0138983, 0.861884, -37.4979, -7.50898, -38.5436, -0.862052, -0.0290109, 0.505989, -0.0679229, 0.995967, -0.0586161, -0.502248, -0.0848984, -0.860546, 6.95688, -7.39323, -9.10495, -1.13066e-05, 0.00423907, 0.999991, -0.00266719, 0.999988, -0.00423908, -0.999996, -0.00266722, 0, -17.2061, -8.04345, -57.4323, 0.844017, 0.176843, 0.506322, -0.185242, 0.982097, -0.0342269, -0.50331, -0.0649039, 0.861665, -35.1701, -7.38035, -34.5514, -0.0445002, -0.184456, 0.981833, 0.222036, 0.956399, 0.189741, -0.974023, 0.226445, -0.00160408, 17.4843, -8.96041, -23.6443, 0.857129, -0.091684, 0.506877, 0.103443, 0.994623, 0.00498581, -0.504608, 0.0481592, 0.862004, -26.5376, -8.50513, -45.2772, -0.993104, 0.117235, 0.00111485, 0.113398, 0.958099, 0.263033, 0.0297686, 0.261345, -0.964786, 12.5544, -8.94127, -23.3274, -0.391319, 0.00423845, 0.920245, -0.00595705, 0.999957, -0.00713872, -0.920236, -0.00827547, -0.391277, 55.9258, -7.54796, 39.3785, -0.866507, 0.0523477, 0.496412, 0.0694319, 0.997458, 0.0160122, -0.494312, 0.0483415, -0.867939, 3.08758, -8.31377, -53.5865, 0.845645, 0.167895, 0.506651, -0.184538, 0.982667, -0.0176277, -0.500829, -0.0785897, 0.861971, 24.901, -8.7969, -7.15179, 0.830634, 0.23639, 0.50415, -0.221318, 0.97098, -0.09064, -0.510946, -0.0362886, 0.858846, -38.231, -7.78112, 0.0585676, 0.854659, -0.0942691, 0.510559, 0.154954, 0.984874, -0.0775423, -0.495527, 0.145386, 0.856339, 24.3437, -8.5131, -19.0411, -0.999991, 0.00408509, -0.00113058, 0.00423866, 0.963754, -0.26676, -1.37603e-07, -0.266762, -0.963762, -7.25696, -8.38749, -22.9717, -1.13062e-05, 0.00423906, 0.999991, -0.00266712, 0.999988, -0.00423908, -0.999996, -0.00266715, 0, -32.7581, -7.9709, -54.9502, -0.6466, 0.0429059, 0.761621, 0.0388061, 0.998974, -0.0233316, -0.761841, 0.0144693, -0.647602, 30.9843, -7.21302, 42.1733, 0.861924, 0.0137771, 0.50685, -0.0160706, 0.999871, 0.000150681, -0.506782, -0.00827528, 0.862034, 20.9193, -8.0735, -40.7973, -0.861004, -0.0439148, 0.506698, -0.0650432, 0.997592, -0.0240645, -0.504422, -0.053677, -0.861787, -36.2875, -7.1925, 25.2154, -0.0171101, -0.167912, 0.985654, 0.0914844, 0.9814, 0.168775, -0.99566, 0.0930597, -0.00143051, 43.5561, -7.39516, 49.5679, 0.858784, -0.125549, 0.496717, 0.204743, 0.972829, -0.108095, -0.46965, 0.19453, 0.861155, 16.7829, -9.91704, -19.6732, 0.8668, -0.0796141, 0.49226, 0.188138, 0.966429, -0.174982, -0.461804, 0.244287, 0.852679, 40.7589, -9.29039, -27.4761, -0.0392186, 0.436388, 0.898904, -0.088629, 0.894531, -0.438132, -0.995292, -0.0968519, 0.0035944, -54.1603, -6.60554, -1.61284, -0.999905, 0.0137769, -3.5286e-05, 0.0137768, 0.999871, -0.00827551, -7.87298e-05, -0.00827521, -0.999966, 5.01419, -7.27599, 47.4024, -0.658166, 0.00423863, 0.752861, -0.00344091, 0.999957, -0.00863791, -0.752865, -0.00827571, -0.658123, 3.75557, -7.35833, 35.5709, -0.0049335, -0.044438, 0.999, 0.101239, 0.993857, 0.0447092, -0.99485, 0.101358, -0.000404358, -28.617, -8.53851, -21.83, -0.391319, 0.00423884, 0.920245, -0.00595719, 0.999957, -0.0071392, -0.920236, -0.00827578, -0.391277, 57.7119, -7.52851, 42.6446, -0.0188554, -0.0915739, 0.99562, 0.19231, 0.976871, 0.0934915, -0.981153, 0.193231, -0.000808715, -30.0235, -6.74367, 36.4984, 0.86553, -0.087436, 0.493166, 0.220335, 0.95072, -0.21814, -0.449789, 0.297468, 0.842142, -11.632, -8.32464, 5.72064, -0.999524, 0.030833, 0.000639915, 0.030576, 0.988061, 0.150999, 0.00402347, 0.150947, -0.988534, 12.4545, -8.5257, 0.09948, -0.998633, 0.0522639, 0.000278175, 0.0521695, 0.99648, 0.0656233, 0.00315253, 0.0655481, -0.997844, 0.944902, -7.5952, -36.4179, 0.647785, 0.00423868, 0.761811, -0.00905027, 0.999957, 0.00213194, -0.761769, -0.00827564, 0.647796, 56.0623, -6.94042, 28.551, -3.6792e-05, -0.0439586, 0.999033, -0.0082757, 0.998999, 0.0439568, -0.999966, -0.00826609, -0.000400543, 11.7017, -8.09222, -47.9736, -0.9958, 0.0915515, 6.29425e-05, 0.0915423, 0.99569, 0.0149088, 0.00130225, 0.0148519, -0.999889, 20.5928, -9.80792, 3.43351 )
+
+[node name="Level 1" type="Spatial"]
+
+[node name="FishRentalService" parent="." instance=ExtResource( 1 )]
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.4188 )
+
+[node name="floor" type="MeshInstance" parent="."]
+transform = Transform( 6.12061, 0, 0, 0, 1, 0, 0, 0, 6.12061, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="vehicles" type="Node" parent="."]
+
+[node name="vehicle1" parent="vehicles" groups=[
+"vehicles",
+] instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 0.21691, 0, 0, 0, 0.21691, 0, 0, 0, 0.21691, -3.29592, 47.6375, -17.0227 )
+
+[node name="Fish" parent="vehicles/vehicle1" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+
+[node name="CollisionShape" parent="vehicles/vehicle1" index="3"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -3.01872, 0 )
+
+[node name="DraftBox" parent="vehicles/vehicle1" index="4"]
+editor/display_folded = true
+
+[node name="CollisionShape" parent="vehicles/vehicle1/DraftBox" index="0"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 20, 0, -3.14772, 17 )
+
+[node name="vehicle2" parent="vehicles" groups=[
+"vehicles",
+] instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 0.21691, 0, 0, 0, 0.21691, 0, 0, 0, 0.21691, 4.29592, 47.6375, -17.0227 )
+
+[node name="Fish" parent="vehicles/vehicle2" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+
+[node name="CollisionShape" parent="vehicles/vehicle2" index="3"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -3.01872, 0 )
+
+[node name="CollisionShape" parent="vehicles/vehicle2/DraftBox" index="0"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 20, 0, -3.14772, 17 )
+
+[node name="ShootingLine" parent="vehicles/vehicle2" index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+
+[node name="Ship" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+transform = Transform( -6.55671e-07, 0, 15, 0, 15, 0, -15, 0, -6.55671e-07, -24.7094, -47.4327, -280.337 )
+visible = false
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
+transform = Transform( 0.990376, -0.0198939, 0.136966, -0.135592, 0.0589949, 0.989007, -0.0277555, -0.99806, 0.0557297, -7.31915, 80.7429, -4.12468 )
+light_color = Color( 0.278431, 0.478431, 0.886275, 1 )
+light_indirect_energy = 3.6
+
+[node name="OmniLight2" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 24.0351, 27.1276, -44.5955 )
+omni_range = 4096.0
+
+[node name="OmniLight3" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, -21.4957, 27.1276, -44.5955 )
+omni_range = 4096.0
+
+[node name="OmniLight4" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, -31.9415, 27.1276, 10.5153 )
+omni_range = 4096.0
+
+[node name="OmniLight5" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 11.7809, 27.1276, 30.4754 )
+omni_range = 4096.0
+
+[node name="OmniLight6" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 76.8202, 27.1276, 30.4754 )
+omni_range = 4096.0
+
+[node name="Collectibles" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Collectible1" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -35.4915, -129.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+shape = SubResource( 3 )
+
+[node name="Collectible2" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -34.4915, -135.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+shape = SubResource( 3 )
+
+[node name="Collectible3" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -33.4915, -141.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+shape = SubResource( 3 )
+
+[node name="Collectible4" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -32.4915, -146.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+shape = SubResource( 3 )
+
+[node name="Collectible5" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -31.4915, -151.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+shape = SubResource( 3 )
+
+[node name="Collectible6" type="RigidBody" parent="Collectibles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -30.4915, -156.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+shape = SubResource( 3 )
+
+[node name="Lap Marker" type="Spatial" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -34.2251, -115.849 )
+script = ExtResource( 5 )
+
+[node name="Lap Tracker 00" type="Area" parent="Lap Marker"]
+editor/display_folded = true
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Lap Marker/Lap Tracker 00"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
+shape = SubResource( 4 )
+
+[node name="Lap Tracker 01" type="Area" parent="Lap Marker"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42747, -8.35034 )
+visible = false
+
+[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 01"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
+shape = SubResource( 4 )
+
+[node name="Lap Tracker 02" type="Area" parent="Lap Marker"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36666, 12.1235 )
+visible = false
+
+[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 02"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
+shape = SubResource( 4 )
+
+[node name="SplitscreenCamera" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
+
+[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer1/Viewport1" index="1"]
+frame = 0
+
+[node name="ViewportContainer2" parent="SplitscreenCamera/Viewports" index="1"]
+editor/display_folded = true
+
+[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer2/Viewport2" index="1"]
+frame = 0
+
+[node name="GUI" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Stoplight" type="Control" parent="GUI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -90.0
+margin_right = 46.0
+margin_bottom = 90.0
+
+[node name="Light0" type="ColorRect" parent="GUI/Stoplight"]
+anchor_right = 1.0
+margin_bottom = 60.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Light1" type="ColorRect" parent="GUI/Stoplight"]
+anchor_right = 1.0
+margin_top = 60.0
+margin_bottom = 120.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Light2" type="ColorRect" parent="GUI/Stoplight"]
+anchor_right = 1.0
+margin_top = 120.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="StoplightAnimationPlayer" type="AnimationPlayer" parent="GUI/Stoplight"]
+anims/Stoplight = SubResource( 5 )
+script = ExtResource( 7 )
+
+[node name="LapMessages" type="Node" parent="GUI"]
+editor/display_folded = true
+
+[node name="lap3p1" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 226.908, 168.716 )
+texture = ExtResource( 8 )
+
+[node name="lap3p2" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 226.908, 168.716 )
+texture = ExtResource( 8 )
+
+[node name="lap2p2" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 747.001, 168.809 )
+texture = ExtResource( 9 )
+
+[node name="lap2p1" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 226.529, 171.253 )
+texture = ExtResource( 9 )
+
+[node name="race_finished_p1" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 225.803, 170.789 )
+texture = ExtResource( 10 )
+
+[node name="race_finished_p2" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 743.018, 169.974 )
+texture = ExtResource( 10 )
+
+[node name="RaceFinishedSignAnimationPlayer" type="AnimationPlayer" parent="GUI/LapMessages"]
+autoplay = "FinishedSign"
+anims/FinishedSign = SubResource( 6 )
+
+[node name="Racetrack" type="Spatial" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 56.7785, -31.6155, -65.3272 )
+visible = false
+
+[node name="Path" type="Path" parent="Racetrack"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00136566, 0.330706, 0.00197697 )
+curve = SubResource( 7 )
+
+[node name="Track" type="CSGPolygon" parent="Racetrack"]
+use_collision = true
+invert_faces = true
+polygon = PoolVector2Array( 0.677853, -0.246742, -0.276672, -0.211423, -0.232018, 1.11084, 1.26076, 1.14437, 1.2643, -0.228819 )
+mode = 2
+path_node = NodePath("../Path")
+path_interval = 1.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_joined = true
+
+[node name="Boost Rings" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 0, -28.3524, -155.199 )
+sides = 12
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
+transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
+operation = 2
+sides = 12
+
+[node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
+shape = SubResource( 8 )
+
+[node name="Racetrack2" parent="." instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 17.5602, 30.9387, -299.157 )
+visible = false
+
+[node name="Scene Root3" parent="." instance=ExtResource( 13 )]
+transform = Transform( 3.50353e-05, 0.00423868, -0.999991, 0.00827559, 0.999957, 0.00423882, 0.999966, -0.00827566, -4.37099e-08, 8.75083, 3.64627, -7.41002 )
+
+[node name="Plane" parent="Scene Root3" index="0"]
+transform = Transform( 54.059, 0, 4.79758e-11, 0, 1, -6.80717e-09, 1.69393e-10, 3.62334e-10, 63.5702, 5.45982, 0, 0 )
+
+[node name="rock01" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 13.7614, -0.0331857, -0.000127939, -0.0331852, 9.75177, -0.0154569, -0.000127935, -0.0154569, 13.398, 55.9343, 6.62145, 51.7066 )
+
+[node name="rock02" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 28.5999, -0.155989, -0.000128592, -0.155988, 9.75278, -0.015457, -0.000128584, -0.0154569, 13.3981, -5.26566, 7.34564, -74.7467 )
+
+[node name="rock04" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 13.1257, -1.21413, 3.70024, 1.57352, 9.67595, 0.403223, -3.82308, 0.018119, 12.8707, 63.0215, 5.87718, 28.2961 )
+
+[node name="rock08" parent="Scene Root3" instance=ExtResource( 16 )]
+transform = Transform( 3.44082, 0.142429, -12.9713, 1.58138, 9.67012, 0.58175, 13.2301, -1.25188, 3.30374, 72.6569, 7.93208, -56.7594 )
+
+[node name="rock09" parent="Scene Root3" instance=ExtResource( 16 )]
+transform = Transform( -11.2768, -5.1379, -2.84958, -7.1228, 8.28806, -1.66401, 3.38763, 0.0929723, -12.9854, 46.9494, 8.22242, -75.0607 )
+
+[node name="rock10" parent="Scene Root3" instance=ExtResource( 16 )]
+transform = Transform( -9.20613, 4.96093, 14.0989, -4.94436, 14.3819, -6.82333, -13.8393, 0.216842, -6.75471, -51.5675, 7.75673, -39.0647 )
+
+[node name="Icosphere4" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( 10.4411, 0.31947, -39.437, 2.55981, 15.6817, 1.10461, 13.2345, -1.22639, 3.30504, 8.7963, 7.76177, 69.8522 )
+
+[node name="rock07" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 13.1257, -1.21413, 3.70024, 1.57352, 9.67596, 0.403223, -3.82308, 0.018119, 12.8707, -54.9009, 6.68389, 68.2146 )
+
+[node name="Icosphere" parent="Scene Root3/rock07" instance=ExtResource( 17 )]
+transform = Transform( 1, 5.21541e-08, 2.08616e-07, -2.98023e-08, 1, 0, 0, 5.58794e-09, 1, 9.8682, -1.76076, -4.00957 )
+
+[node name="Icosphere2" parent="Scene Root3/rock07" instance=ExtResource( 17 )]
+transform = Transform( -0.0149399, 0.119541, -0.960014, 0.12322, 0.982587, 0.217442, 1.02332, -0.0631412, -0.028779, 10.1708, -2.1491, -5.21871 )
+
+[node name="Icosphere3" parent="Scene Root3/rock07" instance=ExtResource( 17 )]
+transform = Transform( -0.0149398, 0.119541, -0.960014, 0.12322, 0.982587, 0.217442, 1.02332, -0.0631412, -0.028779, 3.36237, -0.786127, -8.97 )
+
+[node name="rock05" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 3.62004, 0.124869, -12.9253, 1.5801, 9.67026, 0.580623, 13.1823, -1.25261, 3.47964, 63.0392, 8.02211, 3.47151 )
+
+[node name="rock06" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 3.62005, 0.124869, -12.9253, 1.5801, 9.67026, 0.580623, 13.1823, -1.25261, 3.47964, -60.1561, 5.3334, 3.4558 )
+
+[node name="rock03" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 13.7613, -0.0331857, -0.00012794, -0.0331851, 9.75177, -0.015457, -0.000127935, -0.0154569, 13.3981, -63.3874, 7.76226, 37.6114 )
+
+[node name="rock11" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 5.80634, -0.0138728, -3.56887, -0.0444695, 2.30239, 0.0152231, 3.64909, -0.0445124, 5.67849, -30.8077, 2.19682, 63.9745 )
+
+[node name="rock12" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 1.48484, 0.0107122, -2.01366, -0.00859715, 1.74779, 0.0190867, 2.54149, -0.0186115, 1.1765, -22.7876, 0.984262, 14.3935 )
+
+[node name="rock13" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859716, 1.74779, 0.0190867, 2.54149, -0.0186115, 1.1765, -34.5937, 1.23499, -21.7041 )
+
+[node name="rock14" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859717, 1.74779, 0.0190867, 2.5415, -0.0186115, 1.1765, 39.9202, 1.63985, -36.8502 )
+
+[node name="rock16" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859718, 1.74779, 0.0190867, 2.5415, -0.0186115, 1.1765, 2.91248, 2.01391, -52.8412 )
+
+[node name="rock17" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859719, 1.74779, 0.0190867, 2.5415, -0.0186115, 1.1765, 38.5644, 1.09472, -0.807079 )
+
+[node name="plant01" parent="Scene Root3/rock17" instance=ExtResource( 18 )]
+transform = Transform( 0.0715129, -0.00594758, 0.000750329, 0.0126614, 0.0974249, -0.0167797, 0.00162205, 0.0134075, 0.0701417, -1.38104, -0.784851, 0.671624 )
+
+[node name="plant02" parent="Scene Root3/rock17/plant01" instance=ExtResource( 19 )]
+transform = Transform( 1.45718, -0.136885, -0.0483718, 0.0753019, 0.781757, -0.112038, -0.0720142, 0.28152, 1.52509, 9.72525, -0.562908, 10.3924 )
+
+[node name="plant03" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 20 )]
+transform = Transform( 0.549203, 0.127913, 0.281494, -0.603102, 0.978905, 0.579047, -0.151908, -0.251574, 0.496949, -13.0503, 0.795897, -13.8514 )
+
+[node name="plant04" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 20 )]
+transform = Transform( 0.191691, 0.141409, 0.547879, -0.683827, 0.975124, 0.339414, -0.576684, -0.248512, 0.243759, -33.4462, -22.474, -78.6456 )
+
+[node name="plant05" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 20 )]
+transform = Transform( -0.801663, 0.274748, 0.841814, -0.756845, 1.7336, 0.198116, -1.00901, -0.467579, -0.45331, -95.8657, 0.739775, -79.4587 )
+
+[node name="plant02" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 19 )]
+transform = Transform( 0.810987, 0.134812, 0.388568, -0.226071, 0.977505, -0.193533, -0.573086, 0.059582, 0.927157, -20.5978, -23.4256, -74.8431 )
+
+[node name="plant06" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 19 )]
+transform = Transform( -0.00127435, 0.338956, 0.71417, -0.218261, 0.844299, -0.666871, -1.17479, -0.0386009, 0.274786, -86.867, -0.481461, -80.477 )
+
+[node name="plant02" parent="Scene Root3/rock17" instance=ExtResource( 18 )]
+transform = Transform( 0.0658477, -0.00117708, 0.0232964, 0.0128642, 0.0973753, -0.0169387, -0.0351624, 0.0157508, 0.0636173, -5.14745, -0.478728, -8.41159 )
+
+[node name="plant03" parent="Scene Root3/rock17" instance=ExtResource( 18 )]
+transform = Transform( 0.0131402, 0.000368956, 0.0556775, 0.006094, 0.099462, -0.000585428, -0.0890308, 0.00422012, 0.0120403, -11.1372, -0.873927, -5.33606 )
+
+[node name="rock18" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.0085972, 1.74779, 0.0190868, 2.5415, -0.0186115, 1.1765, 38.5635, 0.985533, 32.4496 )
+
+[node name="rock19" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859721, 1.74779, 0.0190868, 2.5415, -0.0186115, 1.1765, 20.2318, 1.05874, 50.9696 )
+
+[node name="rock15" parent="Scene Root3" instance=ExtResource( 14 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859717, 1.74779, 0.0190867, 2.5415, -0.0186115, 1.1765, -3.47641, 74.9574, -36.541 )
+
+[node name="rock20" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 0.904712, 0.00498015, -1.22694, -0.00559034, 0.878028, 0.0113904, 1.26669, -0.00924667, 0.586369, 37.4351, 0.609989, -6.13188 )
+
+[node name="rock21" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 0.904712, 0.00498015, -1.22694, -0.00559034, 0.878028, 0.0113904, 1.26669, -0.00924667, 0.586369, 37.4347, 0.563507, 4.83405 )
+
+[node name="rock27" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.19141, 0.0200136, -0.681087, 0.0128803, 0.877862, 0.0143477, 1.00171, 0.000421033, -1.17696, 33.0816, 0.481431, 32.6947 )
+
+[node name="rock32" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.31405, 0.0142543, 0.91702, 0.0216776, 0.877849, 0.000389496, -0.834168, 0.0148823, -1.00419, -16.1777, 2.16872, 48.1929 )
+
+[node name="rock34" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.55065, 0.0186117, 0.350995, 0.02067, 0.877832, 0.00638635, -0.134569, 0.0104049, -1.31381, -16.5272, 2.3156, 14.2254 )
+
+[node name="rock37" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.51464, 0.0201353, -0.0787261, 0.0182817, 0.877836, 0.0101283, 0.358553, 0.00650939, -1.35758, -6.00074, 2.42662, -32.5143 )
+
+[node name="rock25" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 0.904711, 0.00498015, -1.22694, -0.00559034, 0.878027, 0.0113904, 1.26669, -0.00924667, 0.586369, 45.4796, 0.916132, 19.5638 )
+
+[node name="rock28" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.19141, 0.0200136, -0.681087, 0.0128803, 0.877862, 0.0143477, 1.00171, 0.000421034, -1.17696, 19.0371, 1.0404, 41.8734 )
+
+[node name="rock30" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.31405, 0.0142543, 0.91702, 0.0216776, 0.877848, 0.000389489, -0.834168, 0.0148823, -1.00419, -14.9031, -0.095335, 37.5533 )
+
+[node name="rock35" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.55065, 0.0186117, 0.350995, 0.02067, 0.877831, 0.00638634, -0.13457, 0.0104049, -1.31381, -20.2974, 0.0907502, 4.18608 )
+
+[node name="rock36" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.51464, 0.0201353, -0.0787261, 0.0182817, 0.877836, 0.0101283, 0.358553, 0.00650939, -1.35758, -12.727, 0.219096, -40.8712 )
+
+[node name="rock39" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.51464, 0.0201353, -0.0787261, 0.0182817, 0.877836, 0.0101283, 0.358553, 0.00650939, -1.35758, -24.5487, 0.316932, -40.8712 )
+
+[node name="rock26" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.11693, 0.0197458, -0.763299, 0.0119145, 0.877868, 0.0148094, 1.08414, -0.000479799, -1.12538, 47.7792, 0.808276, 7.36398 )
+
+[node name="rock29" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -1.16859, 0.0124367, 1.06181, 0.0212958, 0.87786, -0.00146387, -1.02809, 0.015832, -0.849646, 31.378, 0.792081, 43.2052 )
+
+[node name="rock31" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 0.628207, -0.00272301, 1.13012, 0.00810469, 0.878001, -0.0088371, -1.4242, 0.0123023, 0.756367, -26.7245, 0.752903, 49.7269 )
+
+[node name="rock33" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -0.0988973, 0.00235584, 1.35154, 0.0146699, 0.877944, -0.00810069, -1.5534, 0.0159405, 0.150352, -46.013, 1.02992, 22.0354 )
+
+[node name="rock38" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( -0.581067, 0.00643535, 1.33052, 0.0181964, 0.877907, -0.00609783, -1.44398, 0.0168638, -0.281093, -31.5487, 1.07083, -15.8554 )
+
+[node name="rock22" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 0.904712, 0.00498015, -1.22694, -0.00559034, 0.878027, 0.0113904, 1.26669, -0.00924667, 0.586369, 18.0115, -1.17344, 4.82601 )
+
+[node name="rock23" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 0.904711, 0.00498015, -1.22694, -0.00559034, 0.878027, 0.0113904, 1.26669, -0.00924668, 0.586369, 27.4162, 0.854378, -9.34198 )
+
+[node name="rock24" parent="Scene Root3" instance=ExtResource( 15 )]
+transform = Transform( 0.904711, 0.00498015, -1.22694, -0.00559034, 0.878026, 0.0113903, 1.26669, -0.00924668, 0.586369, 27.4085, -0.074393, -40.3838 )
+
+[node name="Icosphere" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( 1.0001, 0.0120609, 2.54006e-05, 0.0120609, 2.45735, 0.0030653, 2.54007e-05, 0.00306536, 1.73429, 35.0697, -0.116359, 1.11252 )
+
+[node name="Icosphere11" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -0.721666, 0.0313968, -1.19993, 0.0233765, 2.45716, 0.0256546, 0.692097, 0.00999629, -1.25191, -19.985, 1.00064, 18.627 )
+
+[node name="Icosphere15" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -0.721667, 0.0313968, -1.19993, 0.0233766, 2.45716, 0.0256546, 0.692097, 0.00999631, -1.25191, -9.35802, -1.32021, -38.8106 )
+
+[node name="rock02" parent="Scene Root3/Icosphere15" instance=ExtResource( 16 )]
+transform = Transform( 1, -1.11759e-08, 5.96046e-08, 9.31323e-10, 1, 0, 5.96046e-08, 9.31323e-10, 1, -25.9054, 1.65678, -37.4355 )
+
+[node name="rock03" parent="Scene Root3/Icosphere15" instance=ExtResource( 16 )]
+transform = Transform( 1, -2.32831e-08, 5.96046e-08, 9.31323e-10, 1, 0, 5.96046e-08, 1.39698e-09, 1, -34.6786, 1.73806, -24.6421 )
+
+[node name="rock04" parent="Scene Root3/Icosphere15" instance=ExtResource( 16 )]
+transform = Transform( 0.822139, -0.00271298, 0.98724, 0.00286333, 1.00001, -0.00741647, -0.328227, 0.00347031, 0.822151, -38.3108, 1.71012, -10.9581 )
+
+[node name="rock05" parent="Scene Root3/Icosphere15" instance=ExtResource( 16 )]
+transform = Transform( -0.184528, 0.00257793, 1.70445, 0.0122051, 0.999938, -0.00908467, -0.566637, 0.00971082, -0.18455, 2.19733, 1.26668, 14.5644 )
+
+[node name="rock06" parent="Scene Root3/Icosphere15" instance=ExtResource( 16 )]
+transform = Transform( -0.734785, 0.00473188, 4.19859, 0.0286392, 1.9874, -0.0255203, -1.44125, 0.0211549, -0.189191, -6.91413, 1.37504, 6.79109 )
+
+[node name="rock07" parent="Scene Root3/Icosphere15" instance=ExtResource( 16 )]
+transform = Transform( -2.60211, 0.0334436, 1.07104, 0.0382962, 1.98717, 0.00951651, -0.0737154, 0.0189906, -2.34849, 31.6561, 0.925912, -7.84865 )
+
+[node name="rock08" parent="Scene Root3/Icosphere15" instance=ExtResource( 16 )]
+transform = Transform( -2.33576, 0.040211, -1.0454, 0.0329583, 1.98714, 0.0270482, 0.665509, 0.0128888, -2.35228, 69.7022, 0.65988, -19.3695 )
+
+[node name="rock09" parent="Scene Root3/Icosphere15" instance=ExtResource( 16 )]
+transform = Transform( 0.196131, 0.518662, -4.14939, -0.100917, 1.96321, 0.234201, 1.49202, 0.266113, -0.296723, 16.5966, -0.120117, -39.5214 )
+
+[node name="Icosphere6" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( 0.369458, -0.00791933, 1.61153, -0.922909, 0.242926, 0.6387, -0.109934, -2.44533, 0.0529768, 22.4337, -2.80587, 17.2664 )
+
+[node name="Icosphere8" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -0.206462, 1.70183, -1.18885, -0.920023, 0.21095, 0.657531, 0.333582, 1.76011, 1.07798, -41.1808, 0.910538, -1.77262 )
+
+[node name="Icosphere14" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -0.206462, 1.70183, -1.18885, -0.920023, 0.21095, 0.657531, 0.333582, 1.76011, 1.07798, -19.2841, 0.927272, -48.4698 )
+
+[node name="Icosphere2" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( 0.43317, 0.00851154, -0.901272, 0.000870389, 0.999951, 0.00986178, 0.901312, -0.00505628, 0.433142, 35.715, -0.0974386, -4.61085 )
+
+[node name="Icosphere7" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -0.936263, 0.0145365, 0.350998, 0.0175117, 0.999833, 0.0053034, -0.350863, 0.011112, -0.936362, -16.4897, 1.04609, 40.1856 )
+
+[node name="Icosphere5" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( 0.998125, -0.000243917, 0.0612037, 0.000274946, 1, -0.000498588, -0.0612034, 0.000514479, 0.998124, 19.7199, -1.8077, 9.01549 )
+
+[node name="Icosphere9" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -0.678078, 0.0170025, -0.734793, 0.0107724, 0.999855, 0.0131948, 0.734912, 0.00103166, -0.678162, -14.3967, 0.00856328, -8.26369 )
+
+[node name="Icosphere13" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -0.678078, 0.0170025, -0.734794, 0.0107724, 0.999855, 0.0131948, 0.734912, 0.00103167, -0.678162, 7.50512, 0.638315, -54.9583 )
+
+[node name="Icosphere16" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -1.92151, 0.0611666, -2.08229, 0.0432997, 4.40227, 0.0442381, 2.1326, 0.0093561, -1.96784, 23.6197, 2.85864, -54.9483 )
+
+[node name="Icosphere3" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( 1.47485, 0.0558717, -3.06797, 0.0337223, 6.65404, 0.0492042, 2.15721, 0.00596112, 1.03669, 48.2503, 3.7387, 11.506 )
+
+[node name="Icosphere10" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -2.55653, 0.0698803, 1.49796, 0.0785046, 6.65376, 0.0279833, -0.536541, 0.0448208, -2.8714, -41.0894, 4.01252, 53.3847 )
+
+[node name="Icosphere12" parent="Scene Root3" instance=ExtResource( 17 )]
+transform = Transform( -2.56088, 0.0374324, 1.47603, -0.446283, 2.73303, -2.62184, -0.269527, -6.067, -1.1987, -25.5014, 2.07206, -35.9232 )
+
+[node name="plant04" parent="Scene Root3" instance=ExtResource( 21 )]
+transform = Transform( -0.00133407, 0.00377442, -0.254788, 0.00175364, 0.324203, 0.00357822, 0.221923, -0.000367007, -0.0224543, 34.9471, 0.0360324, 3.548 )
+
+[node name="l_grass01" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.393507, 0.0462719, -0.0278491, 0.0461595, 5.96992, 0.0250466, -0.00127141, 0.0248264, 0.116174, -6.78225, 4.22926, -3.7207 )
+
+[node name="l_grass04" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.393507, 0.046272, -0.0278492, 0.0461595, 5.96992, 0.0250466, -0.00127141, 0.0248264, 0.116175, -56.503, 4.66922, -10.4368 )
+
+[node name="l_grass02" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.393507, 0.046272, -0.0278492, 0.0461595, 5.96992, 0.0250466, -0.00127141, 0.0248264, 0.116175, -2.72892, 4.20321, -5.48891 )
+
+[node name="l_grass03" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.393507, 0.046272, -0.0278492, 0.0461596, 5.96993, 0.0250467, -0.00127141, 0.0248265, 0.116175, -52.4496, 4.64317, -12.205 )
+
+[node name="l_grass05" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.345736, 0.0464217, 0.0300975, 0.0471444, 5.96991, 0.0245511, -0.140353, 0.0259615, 0.119945, -153.896, 6.35612, -38.6173 )
+
+[node name="l_grass11" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.0373689, 0.0485524, 0.129513, 0.0505295, 5.9699, 0.0240068, -0.336847, 0.0278661, 0.054266, -185.163, 1.56088, 26.2691 )
+
+[node name="l_grass06" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.345736, 0.0464217, 0.0300975, 0.0471444, 5.96991, 0.0245511, -0.140353, 0.0259615, 0.119945, -77.1756, 7.09769, -65.4323 )
+
+[node name="l_grass12" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.037369, 0.0485523, 0.129513, 0.0505295, 5.9699, 0.0240068, -0.336847, 0.0278661, 0.054266, -162.941, 7.64676, -27.5168 )
+
+[node name="l_grass07" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.345736, 0.0464217, 0.0300976, 0.0471445, 5.96992, 0.0245511, -0.140353, 0.0259616, 0.119945, -138.206, 6.07979, -43.7448 )
+
+[node name="l_grass10" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.0373689, 0.0485524, 0.129513, 0.0505296, 5.96991, 0.0240068, -0.336848, 0.0278661, 0.0542661, -186.941, 6.88872, -0.175552 )
+
+[node name="l_grass08" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.345736, 0.0464217, 0.0300975, 0.0471444, 5.96991, 0.024551, -0.140353, 0.0259615, 0.119945, -94.974, 8.18942, -48.7367 )
+
+[node name="l_grass09" parent="Scene Root3/plant04" instance=ExtResource( 22 )]
+transform = Transform( 0.239796, 0.0470772, 0.0823343, 0.0485032, 5.96992, 0.0241894, -0.254033, 0.0269729, 0.103308, -163.22, 5.58835, -15.0603 )
+
+[node name="plant05" parent="Scene Root3" instance=ExtResource( 21 )]
+transform = Transform( 0.107993, 0.00416388, -0.293435, 0.00163281, 0.460795, 0.00385566, 0.303658, -0.00108582, 0.124139, 47.7584, 0.74836, -20.8466 )
+
+[node name="plant06" parent="Scene Root3" instance=ExtResource( 21 )]
+transform = Transform( 0.199929, 0.00316767, -0.237911, 0.00108759, 0.460803, 0.00302396, 0.252785, -0.00103699, 0.21194, 32.7313, -0.192335, -33.6395 )
+
+[node name="l_grass02" parent="Scene Root3" instance=ExtResource( 23 )]
+transform = Transform( -0.00695907, 0.0347917, -0.161477, 0.0329905, 4.11394, 0.0187954, 0.263443, 0.0152788, -0.0043688, 39.8767, 2.29612, -5.57604 )
+
+[node name="l_grass05" parent="Scene Root3" instance=ExtResource( 23 )]
+transform = Transform( 0.100739, 0.0338489, -0.149318, 0.0321832, 4.11394, 0.0184145, 0.243629, 0.0151626, 0.0617432, 48.5278, 4.15328, -30.7615 )
+
+[node name="l_grass07" parent="Scene Root3" instance=ExtResource( 23 )]
+transform = Transform( 0.258029, 0.0320548, -0.0331526, 0.0316838, 4.11395, 0.0170438, 0.0543741, 0.0163195, 0.158296, 24.9806, 3.90958, -48.244 )
+
+[node name="l_grass03" parent="Scene Root3" instance=ExtResource( 23 )]
+transform = Transform( -0.00695907, 0.0347917, -0.161477, 0.0329905, 4.11394, 0.0187954, 0.263443, 0.0152788, -0.0043688, 39.8745, 2.0304, 6.70482 )
+
+[node name="l_grass04" parent="Scene Root3" instance=ExtResource( 23 )]
+transform = Transform( 0.100739, 0.0338489, -0.149318, 0.0321832, 4.11394, 0.0184145, 0.243628, 0.0151626, 0.0617432, 52.0528, 3.82329, -10.206 )
+
+[node name="l_grass06" parent="Scene Root3" instance=ExtResource( 23 )]
+transform = Transform( 0.258028, 0.0320548, -0.0331526, 0.0316837, 4.11395, 0.0170438, 0.054374, 0.0163195, 0.158296, 43.9509, 3.97916, -31.1584 )
+
+[node name="MultiMeshInstance" type="MultiMeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5484, 3.88012, 15.4389 )
+
+[node name="ship" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85825, 3.88012, 0.179522 )
+
+[node name="Scene Root2" parent="." instance=ExtResource( 25 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.3302, 3.93903, -8.35156 )
+visible = false
+
+[node name="Racetrack3" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.758, 11.3455, 2.18587 )
+
+[node name="Scene Root" parent="Racetrack3" instance=ExtResource( 26 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.2338, -9.09136, -1.61329 )
+visible = false
+
+[node name="MultiMeshInstance" type="MultiMeshInstance" parent="Racetrack3"]
+multimesh = SubResource( 10 )
+
+[node name="Scene Root" parent="." instance=ExtResource( 28 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.9843, -4.05112, -5.7506 )
+visible = false
+
+[node name="Scene Root4" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3532, 3.16707, 15.8786 )
+
+[node name="grass" parent="." instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93341, 82.0968, -67.6612 )
+
+[connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
+[connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]
+[connection signal="body_entered" from="Lap Marker/Lap Tracker 02" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
+
+[editable path="vehicles/vehicle1"]
+
+[editable path="vehicles/vehicle2"]
+
+[editable path="Ship"]
+
+[editable path="SplitscreenCamera"]
+
+[editable path="Scene Root3"]

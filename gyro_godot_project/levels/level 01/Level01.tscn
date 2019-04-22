@@ -154,7 +154,7 @@ editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -35.8057, -111.134 )
 
 [node name="Ship" parent="." instance=ExtResource( 3 )]
-transform = Transform( -6.55671e-007, 0, 15, 0, 15, 0, -15, 0, -6.55671e-007, -24.7094, -47.4327, -280.337 )
+transform = Transform( -6.55671e-07, 0, 15, 0, 15, 0, -15, 0, -6.55671e-07, -24.7094, -47.4327, -280.337 )
 
 [node name="Lights" type="Node" parent="."]
 editor/display_folded = true
@@ -316,6 +316,12 @@ shape = SubResource( 4 )
 
 [node name="SplitscreenCamera" parent="." instance=ExtResource( 6 )]
 
+[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer1/Viewport1" index="1"]
+frame = 0
+
+[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer2/Viewport2" index="1"]
+frame = 0
+
 [node name="GUI" type="Node" parent="."]
 
 [node name="Stoplight" type="Control" parent="GUI"]
@@ -410,7 +416,7 @@ path_joined = true
 editor/display_folded = true
 
 [node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 0, -25.2047, -155.199 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 0, -25.2047, -155.199 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
@@ -419,14 +425,14 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
 shape = SubResource( 8 )
 
 [node name="Racetrack2" parent="." instance=ExtResource( 12 )]
-transform = Transform( -4.37114e-007, 0, 10, 0, 10, 0, -10, 0, -4.37114e-007, 17.5602, 30.9387, -299.157 )
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 17.5602, 30.9387, -299.157 )
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]
