@@ -1,11 +1,16 @@
 extends Node
 class_name VehicleState
 
+#warning-ignore:unused_argument
 func _state_physics_process(delta):
 	pass
 
-func _on_rotate(id, angle, tilt):
+#warning-ignore:unused_argument
+#warning-ignore:unused_argument
+func _on_rotate(angle, tilt):
 	pass
 
-func _on_button(id, angle, tilt):
+#warning-ignore:unused_argument
+#warning-ignore:unused_argument
+func _on_button(angle, tilt):
 	pass

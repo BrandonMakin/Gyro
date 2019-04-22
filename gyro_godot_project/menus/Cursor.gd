@@ -2,7 +2,7 @@ tool
 extends Node2D
 
 var color
-onready var target_position = position
+#onready var target_position = position
 var speed = 1000
 var velocity = Vector2()
 var radius = 20

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/skybox_merged.png-dca95df1353b0a974eacaa0a87dff9db.stex"
+path="res://.import/sky-pano-2.png-522ec74b9528fc4f629c173e2dcd984a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/img/skybox_merged.png"
-dest_files=[ "res://.import/skybox_merged.png-dca95df1353b0a974eacaa0a87dff9db.stex" ]
+source_file="res://art/img/skies/sky-pano-2.png"
+dest_files=[ "res://.import/sky-pano-2.png-522ec74b9528fc4f629c173e2dcd984a.stex" ]
 
 [params]
 

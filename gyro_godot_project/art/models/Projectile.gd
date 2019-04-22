@@ -3,6 +3,7 @@ extends KinematicBody
 var direction : Vector3
 var speed : float = 10
 
+#warning-ignore:unused_argument
 func _process(delta):
 	var collision = move_and_collide(direction * speed)
 	if(collision):

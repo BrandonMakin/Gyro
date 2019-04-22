@@ -2,6 +2,8 @@ extends Node
 
 #warning-ignore:unused_class_variable
 var players = []
+#warning-ignore:unused_class_variable
+var game_id = ""
 
 #warning-ignore:unused_signal
 signal player_connected(player_id)

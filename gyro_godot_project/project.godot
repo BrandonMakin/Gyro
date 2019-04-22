@@ -39,7 +39,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://scripts/controls/Global.gd"
-ControlKeyboard="*res://scripts/controls/Control With Keyboard.gd"
+ControlRemote="*res://scripts/controls/Control With Remote Server.gd"
 
 [editor_plugins]
 
