@@ -6,7 +6,8 @@ and exists for the entirety of the game.
 extends HTTPRequest
 
 #var static_server_url = "localhost"
-var static_server_url = "ec2-54-193-74-3.us-west-1.compute.amazonaws.com"
+#var static_server_url = "ec2-54-193-74-3.us-west-1.compute.amazonaws.com"
+var static_server_url = "54.153.85.223"
 var server_port = 8000
 var tcp = StreamPeerTCP.new()
 #var server_pid
@@ -23,7 +24,8 @@ func _ready():
 	var err = tcp.connect_to_host(static_server_url, server_port)
 	if err != OK:
 		print("Can't connect to the remote server via TCP")
-#
+
+	print("Big-endian ==" + str(tcp.big_endian))
 #	request(static_url_and_port + "/start")
 	
 #func _process(delta):
@@ -34,7 +36,11 @@ func _ready():
 func _process(delta):
 	
 	while(tcp.get_available_bytes()) > 0:
-		var packet = tcp.get_utf8_string(tcp.get_available_bytes())
+		var packet_size = tcp.get_32()
+#		print("packet_size: " + str(packet_size))
+#		print("available packets: " + str(tcp.get_available_bytes()))
+		var packet = tcp.get_utf8_string(packet_size)
+#		var packet = tcp.get_utf8_string(tcp.get_available_bytes())
 		var code = packet.left(1)
 		packet = packet.right(1)
 		match code:
