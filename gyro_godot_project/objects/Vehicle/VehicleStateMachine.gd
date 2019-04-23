@@ -38,10 +38,11 @@ func _on_rotate(id, angle, tilt):
 	current_state._on_rotate(angle, tilt)
 
 #Called on phone button press via player_button_pressed signal
-func _on_button(id, angle, tilt):
+func _on_button(id, bname, state):
 	if id != player_id:
 		return
-	current_state._on_button(angle, tilt)
+#	print("BUTTON! " + bname + ", " + state)	
+	current_state._on_button(bname, state)
 
 #Called when state needs to be changed
 func change_state(new_state_name):

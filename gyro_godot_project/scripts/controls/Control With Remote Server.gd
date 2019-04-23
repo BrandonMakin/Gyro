@@ -64,6 +64,7 @@ func _process(delta):
 			"3": # On player phone button press
 				var data = JSON.parse(packet).result #data contains i (id), n (name), and s (state)
 				Global.emit_signal("player_button_pressed", data.i, data.n, data.s)
+#				print(data)
 			"4": # On player phone rotation
 				var data = JSON.parse(packet).result #data contains id, a (angle), and t (tilt)
 				var angle = clean_angle_data(data.a)
