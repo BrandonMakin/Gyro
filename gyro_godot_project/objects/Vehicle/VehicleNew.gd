@@ -6,8 +6,7 @@ export var sharpest_steering_radius : float = .1
 export var speed : float = 0
 var desired_rotation : Vector3 = Vector3(0,0,0)
 var steering_wheel_angle : float = 0
-var drifting_direction_x : float = 0
-var drifting_direction_y : float = 0
+var drifting_direction : float = 0
 var min_drifting_speed_level : float = .2 # minimum fish_king.speed_level wherein drifting is still possible [no units, range: 0-1]
 var min_drafting_speed_level : float = .5 # minimum fish_king.speed_level wherein drafting is allowed [no units, range: 0-1]
 var is_side_drifting : bool = false
@@ -92,8 +91,8 @@ func _state_physics_process(delta):
 	$"../../Fish".rotation.z = lerp($"../../Fish".rotation.z, -desired_rotation.z, delta*15)
 	
 	#handle fish_king.rotation around the y axis (this is the complex one) 
-	if drifting_direction_y != 0 && fish_king.speed_level > min_drifting_speed_level:
-		fish_king.rotation.y += .015 * drifting_direction_y
+	if drifting_direction != 0 && fish_king.speed_level > min_drifting_speed_level:
+		fish_king.rotation.y += .015 * drifting_direction
 	fish_king.rotation.y -= steering_wheel_angle * delta / (2 * PI * sharpest_steering_radius)
 	fish_king.move_and_slide(-fish_king.transform.basis.z * speed)
 
@@ -106,14 +105,14 @@ func reset():
 func start_drifting():
 	if sign(desired_rotation.y) != 0:
 		is_side_drifting = true
-		drifting_direction_y = sign(-1 * desired_rotation.y)
-		$"../../Fish".rotation = Vector3(0, PI/5 * drifting_direction_y, $"../../Fish".rotation.z)
+		drifting_direction = sign(-1 * desired_rotation.y)
+		$"../../Fish".rotation = Vector3(0, PI/5 * drifting_direction, $"../../Fish".rotation.z)
 
 #Called when a player ceases drifting, and returns their model to normal
 func stop_drifting():
 	if (is_side_drifting):
 		$"../../Fish".rotation = Vector3(0, 0, $"../../Fish".rotation.z)
-		drifting_direction_y = 0
+		drifting_direction = 0
 		is_side_drifting = false
 		
 #Called when a player is shooting another player.  One raycast per call
