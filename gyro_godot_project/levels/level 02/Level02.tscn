@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Vehicle/Vehicle.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=9]
 [ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=10]
 [ext_resource path="res://levels/level 02/terrain/level_03.dae" type="PackedScene" id=11]
-
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -117,16 +116,7 @@ tracks/1/keys = {
 
 [sub_resource type="SphereShape" id=6]
 
-[sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 1, 0.0627451, 0.0627451, 0.235294 )
-refraction_enabled = true
-refraction_scale = 0.05
-refraction_texture_channel = 0
-distance_fade_mode = 2
-distance_fade_min_distance = 1.0
-distance_fade_max_distance = 10.0
-
-[node name="Level 1" type="Spatial"]
+[node name="Level 2" type="Spatial"]
 
 [node name="FishRentalService" parent="." instance=ExtResource( 1 )]
 
@@ -273,7 +263,6 @@ material/0 = null
 shape = SubResource( 2 )
 
 [node name="Lap Marker" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -34.2251, -115.849 )
 script = ExtResource( 4 )
 
@@ -304,16 +293,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
 shape = SubResource( 3 )
 
 [node name="SplitscreenCamera" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
-
-[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer1/Viewport1" index="1"]
-frame = 0
-
-[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer2/Viewport2" index="1"]
-frame = 0
 
 [node name="GUI" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Stoplight" type="Control" parent="GUI"]
 anchor_left = 0.5
@@ -347,7 +328,6 @@ anims/Stoplight = SubResource( 4 )
 script = ExtResource( 6 )
 
 [node name="LapMessages" type="Node" parent="GUI"]
-editor/display_folded = true
 
 [node name="lap3p1" type="Sprite" parent="GUI/LapMessages"]
 visible = false
@@ -402,12 +382,9 @@ script = ExtResource( 10 )
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
 shape = SubResource( 6 )
 
-[node name="Level 03" parent="." instance=ExtResource( 11 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
-
-[node name="Path " parent="Level 03" index="0"]
-transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0.469141, 0.195507, 0 )
-material/0 = SubResource( 7 )
+[node name="Terrain" parent="." instance=ExtResource( 11 )]
+editor/display_folded = true
+transform = Transform( 5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0 )
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]
@@ -418,5 +395,3 @@ material/0 = SubResource( 7 )
 [editable path="vehicles/vehicle2"]
 
 [editable path="SplitscreenCamera"]
-
-[editable path="Level 03"]
