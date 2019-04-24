@@ -1,6 +1,7 @@
 extends Spatial
 
 export(String) var START_STATE
+export(int) var vehicle_number
 var state_name : String
 var current_state = null
 var swim_state #Here so Collectible.gd has a guaranteed reference to swim_state to appropriately modify max_speed as necessary
