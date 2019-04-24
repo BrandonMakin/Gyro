@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Vehicle/Vehicle.tscn" type="PackedScene" id=2]
@@ -6,11 +6,8 @@
 [ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=4]
 [ext_resource path="res://objects/SplitscreenCamera/SplitscreenCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/level 01/StoplightAnimationPlayer.gd" type="Script" id=6]
-[ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=7]
-[ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=8]
-[ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=9]
-[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=10]
-[ext_resource path="res://levels/level 02/terrain/level_03.dae" type="PackedScene" id=11]
+[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=7]
+[ext_resource path="res://levels/level 02/terrain/level_03.dae" type="PackedScene" id=8]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -83,35 +80,6 @@ tracks/4/keys = {
 "args": [  ],
 "method": "let_the_fish_swim"
 } ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "FinishedSign"
-length = 4.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("race_finished_p2:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 0, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("race_finished_p1:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 3.99649 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="SphereShape" id=6]
@@ -263,6 +231,7 @@ material/0 = null
 shape = SubResource( 2 )
 
 [node name="Lap Marker" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -34.2251, -115.849 )
 script = ExtResource( 4 )
 
@@ -327,42 +296,6 @@ color = Color( 0, 0, 0, 1 )
 anims/Stoplight = SubResource( 4 )
 script = ExtResource( 6 )
 
-[node name="LapMessages" type="Node" parent="GUI"]
-
-[node name="lap3p1" type="Sprite" parent="GUI/LapMessages"]
-visible = false
-position = Vector2( 226.908, 168.716 )
-texture = ExtResource( 7 )
-
-[node name="lap3p2" type="Sprite" parent="GUI/LapMessages"]
-visible = false
-position = Vector2( 226.908, 168.716 )
-texture = ExtResource( 7 )
-
-[node name="lap2p2" type="Sprite" parent="GUI/LapMessages"]
-visible = false
-position = Vector2( 747.001, 168.809 )
-texture = ExtResource( 8 )
-
-[node name="lap2p1" type="Sprite" parent="GUI/LapMessages"]
-visible = false
-position = Vector2( 226.529, 171.253 )
-texture = ExtResource( 8 )
-
-[node name="race_finished_p1" type="Sprite" parent="GUI/LapMessages"]
-visible = false
-position = Vector2( 225.803, 170.789 )
-texture = ExtResource( 9 )
-
-[node name="race_finished_p2" type="Sprite" parent="GUI/LapMessages"]
-visible = false
-position = Vector2( 743.018, 169.974 )
-texture = ExtResource( 9 )
-
-[node name="RaceFinishedSignAnimationPlayer" type="AnimationPlayer" parent="GUI/LapMessages"]
-autoplay = "FinishedSign"
-anims/FinishedSign = SubResource( 5 )
-
 [node name="Boost Rings" type="Node" parent="."]
 editor/display_folded = true
 
@@ -377,12 +310,12 @@ sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
 transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 10 )
+script = ExtResource( 7 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
 shape = SubResource( 6 )
 
-[node name="Terrain" parent="." instance=ExtResource( 11 )]
+[node name="Terrain" parent="." instance=ExtResource( 8 )]
 editor/display_folded = true
 transform = Transform( 5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0 )
 

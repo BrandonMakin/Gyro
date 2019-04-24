@@ -1,6 +1,6 @@
 extends InterpolatedCamera
 
-export var id : int = 0
+onready var id : int = $"../..".id
 
 var world = null
 var cam_offset : Vector3

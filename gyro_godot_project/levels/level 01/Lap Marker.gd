@@ -3,6 +3,7 @@ extends Spatial
 var vehicles = {}
 var players_finished = 0
 onready var vehicle_count = $"../vehicles".get_child_count()
+onready var splitscreen = $"../SplitscreenCamera"
 
 var vehicle_progress_in_lap = {}
 var vehicle_laps_completed = {}
@@ -24,11 +25,21 @@ func race_start():
 	for i in range(vehicle_count):
 		vehicles[i].start_time = OS.get_ticks_msec()
 
-func race_end(i): # i == VehicleNumber
-	vehicles[i].finished = true
-	vehicles[i].time_taken = OS.get_ticks_msec() - vehicles[i].start_time
+func race_finish(id): # id == VehicleNumber
+	vehicles[id].finished = true
+	vehicles[id].time_taken = OS.get_ticks_msec() - vehicles[id].start_time
 	players_finished += 1
-	vehicles[i].rank = players_finished
+	vehicles[id].rank = players_finished
+	
+	splitscreen.get_cam_gui(id).get_node("LapAlerts/RaceFinished").visible = true
+	var ordinal = "th"
+	match players_finished:
+		1: ordinal = "st"
+		2: ordinal = "nd"
+		3: ordinal = "rd"
+	splitscreen.get_cam_gui(id).get_node("Lap/Inside/Label").text = str(players_finished) + ordinal + " Place"
+	splitscreen.get_cam_gui(id).get_node("Lap/Inside/Animation").play("Finished")
+	
 
 func _on_Lap_Tracker_00_body_entered(body):
 	if body.is_in_group("vehicles"):
@@ -53,12 +64,14 @@ func lap_completed(body):
 	vehicle_laps_completed[body] += 1
 	var laps = vehicle_laps_completed[body]
 	if laps == 2:
-		get_node("../GUI/LapMessages/lap2p%s" % id).visible = true
+		splitscreen.get_cam_gui(id).get_node("Lap/Inside/Label").text = "Lap 2/3"
+		splitscreen.get_cam_gui(id).get_node("LapAlerts/Lap2").visible = true
 		yield(get_tree().create_timer(.5), "timeout") # wait for 0.5s
-		get_node("../GUI/LapMessages/lap2p%s" % id).visible = false
+		splitscreen.get_cam_gui(id).get_node("LapAlerts/Lap2").visible = false
 	elif laps == 3:
-		get_node("../GUI/LapMessages/lap3p%s" % id).visible = true
+		splitscreen.get_cam_gui(id).get_node("Lap/Inside/Label").text = "Lap 3/3"
+		splitscreen.get_cam_gui(id).get_node("LapAlerts/Lap3").visible = true
 		yield(get_tree().create_timer(.5), "timeout") # wait for 0.5s
-		get_node("../GUI/LapMessages/lap3p%s" % id).visible = false
+		splitscreen.get_cam_gui(id).get_node("LapAlerts/Lap3").visible = false
 	elif laps == 4:
-		get_node("../GUI/LapMessages/race_finished_p%s" % id).visible = true
+		race_finish(id)

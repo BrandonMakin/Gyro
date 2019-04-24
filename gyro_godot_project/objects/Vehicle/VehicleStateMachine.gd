@@ -1,6 +1,7 @@
 extends Spatial
 
 export(String) var START_STATE
+#warning-ignore:unused_class_variable
 export(int) var vehicle_number
 var state_name : String
 var current_state = null

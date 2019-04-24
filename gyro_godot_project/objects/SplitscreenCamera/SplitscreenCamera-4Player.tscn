@@ -11,6 +11,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 1024, 600 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 1024, 200 )
@@ -33,7 +34,6 @@ far = 900.0
 speed = 5.0
 enabled = true
 script = ExtResource( 1 )
-id = 1
 
 [node name="AnimatedSpeedlines" parent="VBoxContainer/HBoxContainer/ViewportContainer1/Viewport1" instance=ExtResource( 2 )]
 visible = false
@@ -59,7 +59,6 @@ far = 900.0
 speed = 5.0
 enabled = true
 script = ExtResource( 1 )
-id = 2
 
 [node name="AnimatedSpeedlines" parent="VBoxContainer/HBoxContainer/ViewportContainer2/Viewport2" instance=ExtResource( 2 )]
 visible = false
@@ -84,13 +83,13 @@ far = 900.0
 speed = 5.0
 enabled = true
 script = ExtResource( 1 )
-id = 3
 
 [node name="AnimatedSpeedlines" parent="VBoxContainer/HBoxContainer/ViewportContainer3/Viewport3" instance=ExtResource( 2 )]
 visible = false
 scale = Vector2( 0.301, 0.305 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
 margin_top = 204.0
 margin_right = 1024.0
 margin_bottom = 408.0
@@ -114,7 +113,6 @@ far = 900.0
 speed = 5.0
 enabled = true
 script = ExtResource( 1 )
-id = 4
 
 [node name="AnimatedSpeedlines" parent="VBoxContainer/HBoxContainer2/ViewportContainer4/Viewport4" instance=ExtResource( 2 )]
 visible = false
@@ -147,13 +145,13 @@ far = 900.0
 speed = 5.0
 enabled = true
 script = ExtResource( 1 )
-id = 5
 
 [node name="AnimatedSpeedlines" parent="VBoxContainer/HBoxContainer2/ViewportContainer5/Viewport5" instance=ExtResource( 2 )]
 visible = false
 scale = Vector2( 0.301, 0.305 )
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
 margin_top = 412.0
 margin_right = 1024.0
 margin_bottom = 616.0
@@ -177,7 +175,6 @@ far = 900.0
 speed = 5.0
 enabled = true
 script = ExtResource( 1 )
-id = 6
 
 [node name="AnimatedSpeedlines" parent="VBoxContainer/HBoxContainer3/ViewportContainer6/Viewport6" instance=ExtResource( 2 )]
 visible = false
@@ -203,7 +200,6 @@ far = 900.0
 speed = 5.0
 enabled = true
 script = ExtResource( 1 )
-id = 7
 
 [node name="AnimatedSpeedlines" parent="VBoxContainer/HBoxContainer3/ViewportContainer7/Viewport7" instance=ExtResource( 2 )]
 visible = false
@@ -229,7 +225,6 @@ far = 900.0
 speed = 5.0
 enabled = true
 script = ExtResource( 1 )
-id = 8
 
 [node name="AnimatedSpeedlines" parent="VBoxContainer/HBoxContainer3/ViewportContainer8/Viewport8" instance=ExtResource( 2 )]
 visible = false
