@@ -2,15 +2,14 @@
 
 [ext_resource path="res://art/models/rock01.tres" type="Material" id=1]
 
-
-[sub_resource type="SpatialMaterial" id=40]
+[sub_resource type="SpatialMaterial" id=1]
 resource_name = "rock1"
 params_cull_mode = 2
 albedo_color = Color( 0.17389, 0.17389, 0.17389, 1 )
 metallic = 1.0
 roughness = 0.48
 
-[sub_resource type="ArrayMesh" id=41]
+[sub_resource type="ArrayMesh" id=2]
 resource_name = "Cube"
 surfaces/0 = {
 "aabb": AABB( -1.59656, -1.07486, -1.64093, 3.33759, 3.8415, 3.04702 ),
@@ -19,7 +18,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 576,
-"material": SubResource( 40 ),
+"material": SubResource( 1 ),
 "name": "rock1",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -28,6 +27,6 @@ surfaces/0 = {
 
 [node name="rock01" type="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.933955 )
-mesh = SubResource( 41 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 1 )
 

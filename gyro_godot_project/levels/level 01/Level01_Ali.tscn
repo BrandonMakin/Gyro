@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Vehicle/Vehicle.tscn" type="PackedScene" id=2]
@@ -30,6 +30,8 @@
 [ext_resource path="res://floor.tscn" type="PackedScene" id=28]
 [ext_resource path="res://art/models/grass01.tscn" type="PackedScene" id=29]
 [ext_resource path="res://art/models/grass001.tscn" type="PackedScene" id=30]
+[ext_resource path="res://track02.tscn" type="PackedScene" id=31]
+[ext_resource path="res://track_thick.tscn" type="PackedScene" id=32]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -183,37 +185,40 @@ material/0 = null
 "vehicles",
 ] instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( 0.21691, 0, 0, 0, 0.21691, 0, 0, 0, 0.21691, -3.29592, 47.6375, -17.0227 )
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -16.7396, 4.76682, 1.16252 )
 
 [node name="Fish" parent="vehicles/vehicle1" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="CollisionShape" parent="vehicles/vehicle1" index="3"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -3.01872, 0 )
+transform = Transform( -2.18557e-08, -0.5, 2.18557e-08, 0, -2.18557e-08, -0.5, 0.5, -2.18557e-08, 9.55343e-16, -43.8711, -195.796, 78.839 )
 
 [node name="DraftBox" parent="vehicles/vehicle1" index="4"]
 editor/display_folded = true
 
 [node name="CollisionShape" parent="vehicles/vehicle1/DraftBox" index="0"]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 20, 0, -3.14772, 17 )
+transform = Transform( -2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -43.8711, -195.925, 95.839 )
+
+[node name="ShootingLine" parent="vehicles/vehicle1" index="5"]
+transform = Transform( -2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -43.8711, -192.777, 78.839 )
 
 [node name="vehicle2" parent="vehicles" groups=[
 "vehicles",
 ] instance=ExtResource( 2 )]
 editor/display_folded = true
-transform = Transform( 0.21691, 0, 0, 0, 0.21691, 0, 0, 0, 0.21691, 4.29592, 47.6375, -17.0227 )
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -9.14771, 4.76682, 1.16252 )
 
 [node name="Fish" parent="vehicles/vehicle2" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="CollisionShape" parent="vehicles/vehicle2" index="3"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -3.01872, 0 )
+transform = Transform( -2.18557e-08, -0.5, 2.18557e-08, 0, -2.18557e-08, -0.5, 0.5, -2.18557e-08, 9.55343e-16, -43.8711, -195.796, 78.839 )
 
 [node name="CollisionShape" parent="vehicles/vehicle2/DraftBox" index="0"]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 20, 0, -3.14772, 17 )
+transform = Transform( -2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -43.8711, -195.925, 95.839 )
 
 [node name="ShootingLine" parent="vehicles/vehicle2" index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.14772, 0 )
+transform = Transform( -2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -43.8711, -195.925, 78.839 )
 
 [node name="Ship" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -221,6 +226,7 @@ transform = Transform( -6.55671e-07, 0, 15, 0, 15, 0, -15, 0, -6.55671e-07, -24.
 visible = false
 
 [node name="Lights" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
 transform = Transform( 0.990376, -0.0198939, 0.136966, -0.135592, 0.0589949, 0.989007, -0.0277555, -0.99806, 0.0557297, -7.31915, 80.7429, -4.12468 )
@@ -397,14 +403,8 @@ shape = SubResource( 4 )
 [node name="SplitscreenCamera" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
 
-[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer1/Viewport1" index="1"]
-frame = 0
-
 [node name="ViewportContainer2" parent="SplitscreenCamera/Viewports" index="1"]
 editor/display_folded = true
-
-[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer2/Viewport2" index="1"]
-frame = 0
 
 [node name="GUI" type="Node" parent="."]
 editor/display_folded = true
@@ -478,6 +478,7 @@ autoplay = "FinishedSign"
 anims/FinishedSign = SubResource( 6 )
 
 [node name="Racetrack" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 56.7785, -31.6155, -65.3272 )
 visible = false
 
@@ -524,7 +525,7 @@ visible = false
 transform = Transform( 3.50353e-05, 0.00423868, -0.999991, 0.00827559, 0.999957, 0.00423882, 0.999966, -0.00827566, -4.37099e-08, 8.75083, 3.64627, -7.41002 )
 
 [node name="Plane" parent="Scene Root3" index="0"]
-transform = Transform( 54.059, 0, 4.79758e-11, 0, 1, -6.80717e-09, 1.69393e-10, 3.62334e-10, 63.5702, 5.45982, 0, 0 )
+transform = Transform( 54.059, 0, 2.73985e-10, 0, 1, -6.64156e-08, 4.01315e-10, 1.29366e-09, 63.5702, 5.45982, 0, 0 )
 
 [node name="rock01" parent="Scene Root3" instance=ExtResource( 14 )]
 transform = Transform( 13.7614, -0.0331857, -0.000127939, -0.0331852, 9.75177, -0.0154569, -0.000127935, -0.0154569, 13.398, 55.9343, 6.62145, 51.7066 )
@@ -618,9 +619,6 @@ transform = Transform( 1.48484, 0.0107122, -2.01367, -0.0085972, 1.74779, 0.0190
 
 [node name="rock19" parent="Scene Root3" instance=ExtResource( 14 )]
 transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859721, 1.74779, 0.0190868, 2.5415, -0.0186115, 1.1765, 20.2318, 1.05874, 50.9696 )
-
-[node name="rock15" parent="Scene Root3" instance=ExtResource( 14 )]
-transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859717, 1.74779, 0.0190867, 2.5415, -0.0186115, 1.1765, -3.47641, 74.9574, -36.541 )
 
 [node name="rock20" parent="Scene Root3" instance=ExtResource( 15 )]
 transform = Transform( 0.904712, 0.00498015, -1.22694, -0.00559034, 0.878028, 0.0113904, 1.26669, -0.00924667, 0.586369, 37.4351, 0.609989, -6.13188 )
@@ -825,7 +823,9 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.3302
 visible = false
 
 [node name="Racetrack3" parent="." instance=ExtResource( 12 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.758, 11.3455, 2.18587 )
+visible = false
 
 [node name="Scene Root" parent="Racetrack3" instance=ExtResource( 26 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.2338, -9.09136, -1.61329 )
@@ -843,6 +843,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3532, 3.16707, 15.8786 )
 
 [node name="grass" parent="." instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93341, 82.0968, -67.6612 )
+
+[node name="Scene Root5" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.70892, 3.79968, -0.0865326 )
+visible = false
+
+[node name="Scene Root6" parent="." instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.709, 3.8, -0.087 )
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]

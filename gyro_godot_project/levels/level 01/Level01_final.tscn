@@ -1,0 +1,578 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/Vehicle/Vehicle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level 01/Collectible.gd" type="Script" id=3]
+[ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=4]
+[ext_resource path="res://objects/SplitscreenCamera/SplitscreenCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/level 01/StoplightAnimationPlayer.gd" type="Script" id=6]
+[ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=7]
+[ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=8]
+[ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=9]
+[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=10]
+[ext_resource path="res://road2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/level 01/Level01_Ali2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/level 01/map.tscn" type="PackedScene" id=13]
+[ext_resource path="res://track_thick.tscn" type="PackedScene" id=14]
+[ext_resource path="res://boarder.tscn" type="PackedScene" id=15]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="SphereShape" id=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 31.6908, 21.478, 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Stoplight"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light0:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.694118, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light1:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.956863, 0.85098, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Light2:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0.45098, 0.254902, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("StoplightAnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "let_the_fish_swim"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "FinishedSign"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("race_finished_p2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 0, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("race_finished_p1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 3.99649 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SphereShape" id=6]
+
+[node name="Level 1" type="Spatial"]
+
+[node name="FishRentalService" parent="." instance=ExtResource( 1 )]
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.4188 )
+
+[node name="vehicles" type="Spatial" parent="."]
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="vehicle1" parent="vehicles" groups=[
+"vehicles",
+] instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -35.8057, -111.134 )
+
+[node name="vehicle2" parent="vehicles" groups=[
+"vehicles",
+] instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -35.8057, -111.134 )
+
+[node name="Lights" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
+transform = Transform( 0.990376, -0.0198939, 0.136966, -0.135592, 0.0589949, 0.989007, -0.0277555, -0.99806, 0.0557296, -7.31915, 173.5, -499.19 )
+light_indirect_energy = 3.6
+
+[node name="OmniLight" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 6.37769, -32.2711, -160.67 )
+light_color = Color( 1, 0.752941, 0, 1 )
+omni_range = 48.0
+omni_attenuation = 0.297302
+
+[node name="OmniLight2" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 25.2534, 29.2086, -252.021 )
+omni_range = 200.301
+
+[node name="OmniLight4" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, -57.6927, -7.32077, -630.361 )
+omni_range = 200.301
+
+[node name="Collectibles" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Collectible1" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -35.4915, -129.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible1"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible1"]
+shape = SubResource( 2 )
+
+[node name="Collectible2" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -34.4915, -135.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible2"]
+shape = SubResource( 2 )
+
+[node name="Collectible3" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -33.4915, -141.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible3"]
+shape = SubResource( 2 )
+
+[node name="Collectible4" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -32.4915, -146.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible4"]
+shape = SubResource( 2 )
+
+[node name="Collectible5" type="RigidBody" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -31.4915, -151.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible5"]
+shape = SubResource( 2 )
+
+[node name="Collectible6" type="RigidBody" parent="Collectibles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -30.4915, -156.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible6"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible6"]
+shape = SubResource( 2 )
+
+[node name="Lap Marker" type="Spatial" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -34.2251, -115.849 )
+script = ExtResource( 4 )
+
+[node name="Lap Tracker 00" type="Area" parent="Lap Marker"]
+editor/display_folded = true
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Lap Marker/Lap Tracker 00"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
+shape = SubResource( 3 )
+
+[node name="Lap Tracker 01" type="Area" parent="Lap Marker"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42747, -8.35034 )
+visible = false
+
+[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 01"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
+shape = SubResource( 3 )
+
+[node name="Lap Tracker 02" type="Area" parent="Lap Marker"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36666, 12.1235 )
+visible = false
+
+[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 02"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
+shape = SubResource( 3 )
+
+[node name="SplitscreenCamera" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+
+[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer1/Viewport1" index="1"]
+frame = 0
+
+[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer2/Viewport2" index="1"]
+frame = 0
+
+[node name="GUI" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Stoplight" type="Control" parent="GUI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -90.0
+margin_right = 46.0
+margin_bottom = 90.0
+
+[node name="Light0" type="ColorRect" parent="GUI/Stoplight"]
+anchor_right = 1.0
+margin_bottom = 60.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Light1" type="ColorRect" parent="GUI/Stoplight"]
+anchor_right = 1.0
+margin_top = 60.0
+margin_bottom = 120.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Light2" type="ColorRect" parent="GUI/Stoplight"]
+anchor_right = 1.0
+margin_top = 120.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="StoplightAnimationPlayer" type="AnimationPlayer" parent="GUI/Stoplight"]
+anims/Stoplight = SubResource( 4 )
+script = ExtResource( 6 )
+
+[node name="LapMessages" type="Node" parent="GUI"]
+editor/display_folded = true
+
+[node name="lap3p1" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 226.908, 168.716 )
+texture = ExtResource( 7 )
+
+[node name="lap3p2" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 226.908, 168.716 )
+texture = ExtResource( 7 )
+
+[node name="lap2p2" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 747.001, 168.809 )
+texture = ExtResource( 8 )
+
+[node name="lap2p1" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 226.529, 171.253 )
+texture = ExtResource( 8 )
+
+[node name="race_finished_p1" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 225.803, 170.789 )
+texture = ExtResource( 9 )
+
+[node name="race_finished_p2" type="Sprite" parent="GUI/LapMessages"]
+visible = false
+position = Vector2( 743.018, 169.974 )
+texture = ExtResource( 9 )
+
+[node name="RaceFinishedSignAnimationPlayer" type="AnimationPlayer" parent="GUI/LapMessages"]
+autoplay = "FinishedSign"
+anims/FinishedSign = SubResource( 5 )
+
+[node name="Boost Rings" type="Node" parent="."]
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
+editor/display_folded = true
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 0, -25.2047, -155.199 )
+sides = 12
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
+transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
+operation = 2
+sides = 12
+
+[node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
+shape = SubResource( 6 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings"]
+editor/display_folded = true
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 9.19172, -25.2047, -228.503 )
+sides = 12
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder2"]
+transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
+operation = 2
+sides = 12
+
+[node name="Area" type="Area" parent="Boost Rings/CSGCylinder2"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder2/Area"]
+shape = SubResource( 6 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Boost Rings"]
+editor/display_folded = true
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 8.00992, 12.2982, -440.216 )
+sides = 12
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder3"]
+transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
+operation = 2
+sides = 12
+
+[node name="Area" type="Area" parent="Boost Rings/CSGCylinder3"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder3/Area"]
+shape = SubResource( 6 )
+
+[node name="CSGCylinder4" type="CSGCylinder" parent="Boost Rings"]
+editor/display_folded = true
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 20.8152, 21.2227, -440.216 )
+sides = 12
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder4"]
+transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
+operation = 2
+sides = 12
+
+[node name="Area" type="Area" parent="Boost Rings/CSGCylinder4"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder4/Area"]
+shape = SubResource( 6 )
+
+[node name="Scene Root2" parent="." instance=ExtResource( 11 )]
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -26.3912, -39.7137, -319.554 )
+
+[node name="Level 1" parent="." instance=ExtResource( 12 )]
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -19.2798, -105.064, -251.096 )
+
+[node name="Scene Root" parent="." instance=ExtResource( 13 )]
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -17.4773, -47.906, -322.706 )
+
+[node name="track" parent="." instance=ExtResource( 14 )]
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -20.6932, -43.7418, -406.293 )
+visible = false
+
+[node name="Scene Root3" parent="." instance=ExtResource( 15 )]
+transform = Transform( 18.7175, 0, 0, 0, 33.3337, 0, 0, 0, 24.743, 0.879242, -51.2237, -118.333 )
+
+[node name="Scene Root11" parent="." instance=ExtResource( 15 )]
+transform = Transform( 15.3257, 0, 0, 0, 21.7328, 0, 0, 0, 24.743, -313.938, -58.1048, -664.93 )
+
+[node name="Scene Root15" parent="." instance=ExtResource( 15 )]
+transform = Transform( 7.12621, 0, 21.9054, 0, 21.7328, 0, -13.5681, 0, 11.5051, -275.307, -58.1048, -623.312 )
+
+[node name="Scene Root16" parent="." instance=ExtResource( 15 )]
+transform = Transform( -5.22064, 0, 23.2631, 0, 21.7328, 0, -14.4091, 0, -8.42861, -169.3, -58.1048, -636.962 )
+
+[node name="Scene Root17" parent="." instance=ExtResource( 15 )]
+transform = Transform( -14.5478, 0, 7.78256, 0, 21.7328, 0, -4.82048, 0, -23.4872, -83.4354, -58.1048, -764.934 )
+
+[node name="Scene Root18" parent="." instance=ExtResource( 15 )]
+transform = Transform( -0.613068, 0, 24.7232, 0, 21.7328, 0, -15.3134, 0, -0.989785, -19.2888, -58.1048, -847.305 )
+
+[node name="Scene Root22" parent="." instance=ExtResource( 15 )]
+transform = Transform( 15.2356, 0, 2.679, 0, 21.7328, 0, -1.65936, 0, 24.5975, -40.8294, -58.1048, -955.604 )
+
+[node name="Scene Root23" parent="." instance=ExtResource( 15 )]
+transform = Transform( 11.3158, 0, -16.687, 0, 21.7328, 0, 10.3358, 0, 18.2691, -27.2171, -58.1048, -1033.27 )
+
+[node name="Scene Root24" parent="." instance=ExtResource( 15 )]
+transform = Transform( -4.35341, 0, -23.7237, 0, 21.7328, 0, 14.6944, 0, -7.0285, 49.6204, -58.1048, -1058.49 )
+
+[node name="Scene Root25" parent="." instance=ExtResource( 15 )]
+transform = Transform( -12.4597, 0, -14.4071, 0, 21.7328, 0, 8.92366, 0, -20.116, 90.7792, -58.1048, -1019.4 )
+
+[node name="Scene Root27" parent="." instance=ExtResource( 15 )]
+transform = Transform( -10.9006, 0, -17.3925, 0, 21.7328, 0, 10.7728, 0, -17.5988, 194.793, -58.1048, -907.539 )
+
+[node name="Scene Root28" parent="." instance=ExtResource( 15 )]
+transform = Transform( -13.7044, 0, -11.076, 0, 21.7328, 0, 6.86039, 0, -22.1255, 235.012, -58.1048, -869.448 )
+
+[node name="Scene Root29" parent="." instance=ExtResource( 15 )]
+transform = Transform( -15.3244, 0, -0.314348, 0, 21.7328, 0, 0.194709, 0, -24.741, 235.012, -58.3274, -835.356 )
+
+[node name="Scene Root30" parent="." instance=ExtResource( 15 )]
+transform = Transform( -15.3244, 0, -0.314348, 0, 21.7328, 0, 0.194709, 0, -24.741, 235.012, -58.3274, -784.696 )
+
+[node name="Scene Root31" parent="." instance=ExtResource( 15 )]
+transform = Transform( -15.0441, 0, 4.72143, 0, 21.7328, 0, -2.92443, 0, -24.2883, 224.475, -58.3274, -735.803 )
+
+[node name="Scene Root32" parent="." instance=ExtResource( 15 )]
+transform = Transform( -12.8761, 0, 13.4188, 0, 21.7328, 0, -8.31155, 0, -20.7882, 197.616, -58.3274, -680.309 )
+
+[node name="Scene Root33" parent="." instance=ExtResource( 15 )]
+transform = Transform( -7.53203, 0, 21.5486, 0, 21.7328, 0, -13.3471, 0, -12.1603, 155.536, -59.0743, -631.09 )
+
+[node name="Scene Root34" parent="." instance=ExtResource( 15 )]
+transform = Transform( -1.87297, 0, 24.5575, 0, 21.7328, 0, -15.2108, 0, -3.02387, 126.088, -59.0743, -616.496 )
+
+[node name="Scene Root26" parent="." instance=ExtResource( 15 )]
+transform = Transform( -10.4831, 0, -18.049, 0, 21.7328, 0, 11.1794, 0, -16.9248, 148.244, -58.1048, -960.457 )
+
+[node name="Scene Root19" parent="." instance=ExtResource( 15 )]
+transform = Transform( -9.76091, 0, 19.0755, 0, 21.7328, 0, -11.8153, 0, -15.7588, 71.025, -58.1048, -830.71 )
+
+[node name="Scene Root20" parent="." instance=ExtResource( 15 )]
+transform = Transform( -13.1276, 0, -12.7678, 0, 21.7328, 0, 7.90833, 0, -21.1943, 71.025, -58.1048, -882.563 )
+
+[node name="Scene Root21" parent="." instance=ExtResource( 15 )]
+transform = Transform( -0.731564, 0, -24.7148, 0, 21.7328, 0, 15.3082, 0, -1.1811, 11.307, -58.1048, -902.205 )
+
+[node name="Scene Root12" parent="." instance=ExtResource( 15 )]
+transform = Transform( 8.38409, 0, -20.7122, 0, 21.7328, 0, 12.829, 0, 13.5359, -284.106, -59.7925, -725.67 )
+
+[node name="Scene Root13" parent="." instance=ExtResource( 15 )]
+transform = Transform( -1.52535, 0, -24.6201, 0, 27.5711, 0, 15.2496, 0, -2.46265, -226.929, -66.5097, -740.254 )
+
+[node name="Scene Root14" parent="." instance=ExtResource( 15 )]
+transform = Transform( -5.05965, 0, -23.3557, 0, 27.5711, 0, 14.4664, 0, -8.16871, -173.837, -31.744, -727.886 )
+
+[node name="Scene Root4" parent="." instance=ExtResource( 15 )]
+transform = Transform( 17.0384, 0, -10.2429, 0, 33.3337, 0, 7.74857, 0, 22.5233, 0.879242, -51.2237, -2.08778 )
+
+[node name="Scene Root5" parent="." instance=ExtResource( 15 )]
+transform = Transform( 17.0384, 0, -10.2429, 0, 33.3337, 0, 7.74857, 0, 22.5233, -82.8149, -51.2237, 92.1766 )
+
+[node name="Scene Root6" parent="." instance=ExtResource( 15 )]
+transform = Transform( 17.0384, 0, -10.2429, 0, 33.3337, 0, 7.74857, 0, 22.5233, -199.816, -40.5738, -174.38 )
+
+[node name="Scene Root35" parent="." instance=ExtResource( 15 )]
+transform = Transform( 18.0943, 0, -6.33198, 0, 33.3337, 0, 4.79001, 0, 23.9191, -241.66, -40.5738, -105.602 )
+
+[node name="Scene Root7" parent="." instance=ExtResource( 15 )]
+transform = Transform( 18.4448, 0, -4.20857, 0, 33.3337, 0, 3.1837, 0, 24.3824, -152.749, -48.7944, -266.953 )
+
+[node name="Scene Root10" parent="." instance=ExtResource( 15 )]
+transform = Transform( 18.3454, 0, 4.9093, 0, 33.3337, 0, -3.71378, 0, 24.2511, -243.025, -9.95285, -55.257 )
+
+[node name="Scene Root36" parent="." instance=ExtResource( 15 )]
+transform = Transform( 17.3879, 0, 9.1593, 0, 33.3337, 0, -6.92882, 0, 22.9853, -233.772, 10.649, 29.5064 )
+
+[node name="Scene Root37" parent="." instance=ExtResource( 15 )]
+transform = Transform( 13.4135, 0, 17.2571, 0, 33.3337, 0, -13.0546, 0, 17.7315, -160.68, 12.1038, 95.1554 )
+
+[node name="Scene Root8" parent="." instance=ExtResource( 15 )]
+transform = Transform( 18.5966, 0, -2.80791, 0, 33.3337, 0, 2.12412, 0, 24.5831, -136.143, -3.55694, -370.256 )
+
+[node name="Scene Root9" parent="." instance=ExtResource( 15 )]
+transform = Transform( 14.9334, 0, -14.9172, 0, 33.3337, 0, 11.2845, 0, 19.7406, -146.213, -23.628, -435.524 )
+
+[connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
+[connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]
+[connection signal="body_entered" from="Lap Marker/Lap Tracker 02" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
+
+[editable path="vehicles/vehicle1"]
+
+[editable path="vehicles/vehicle2"]
+
+[editable path="SplitscreenCamera"]

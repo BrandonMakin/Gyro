@@ -1,0 +1,341 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://floor5.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/models/rock01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/models/rock02.tscn" type="PackedScene" id=3]
+[ext_resource path="res://art/models/rock04.tscn" type="PackedScene" id=4]
+[ext_resource path="res://art/models/rock03.tscn" type="PackedScene" id=5]
+[ext_resource path="res://art/models/plant01.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art/models/plant02.tscn" type="PackedScene" id=7]
+[ext_resource path="res://art/models/plant03.tscn" type="PackedScene" id=8]
+[ext_resource path="res://art/models/plant04.tscn" type="PackedScene" id=9]
+[ext_resource path="res://art/models/grass03.tscn" type="PackedScene" id=10]
+[ext_resource path="res://art/models/grass05.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ship.tscn" type="PackedScene" id=12]
+
+[node name="Level 1" type="Spatial"]
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
+transform = Transform( 0.990376, -0.0198939, 0.136966, -0.135592, 0.0589949, 0.989007, -0.0277555, -0.99806, 0.0557297, -7.31915, 80.7429, -4.12468 )
+light_color = Color( 0.278431, 0.478431, 0.886275, 1 )
+light_indirect_energy = 3.6
+
+[node name="OmniLight2" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 24.0351, 27.1276, -44.5955 )
+omni_range = 4096.0
+
+[node name="OmniLight3" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, -21.4957, 27.1276, -44.5955 )
+omni_range = 4096.0
+
+[node name="OmniLight4" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, -31.9415, 27.1276, 10.5153 )
+omni_range = 4096.0
+
+[node name="OmniLight5" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 11.7809, 27.1276, 30.4754 )
+omni_range = 4096.0
+
+[node name="OmniLight6" type="OmniLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, 76.8202, 27.1276, 30.4754 )
+omni_range = 4096.0
+
+[node name="Scene Root3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3.50353e-05, 0.00423868, -0.999991, 0.00827559, 0.999957, 0.00423882, 0.999966, -0.00827566, -4.37099e-08, 8.75083, 3.64627, -7.41002 )
+
+[node name="Plane" parent="Scene Root3" index="0"]
+transform = Transform( 54.059, 0, 2.51021e-10, 0, 1, -1.5583e-07, 8.66748e-10, 2.69064e-09, 63.5702, 5.45982, 0, 0 )
+visible = false
+
+[node name="rock01" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 13.7614, -0.0331857, -0.000127939, -0.0331852, 9.75177, -0.0154569, -0.000127935, -0.0154569, 13.398, 55.9343, 6.62145, 51.7066 )
+
+[node name="rock02" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 28.5999, -0.155989, -0.000128592, -0.155988, 9.75278, -0.015457, -0.000128584, -0.0154569, 13.3981, -5.26566, 7.34564, -74.7467 )
+
+[node name="rock04" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 13.1257, -1.21413, 3.70024, 1.57352, 9.67595, 0.403223, -3.82308, 0.018119, 12.8707, 63.0215, 5.87718, 28.2961 )
+
+[node name="rock08" parent="Scene Root3" instance=ExtResource( 4 )]
+transform = Transform( 3.44082, 0.142429, -12.9713, 1.58138, 9.67012, 0.58175, 13.2301, -1.25188, 3.30374, 72.6569, 7.93208, -56.7594 )
+
+[node name="rock09" parent="Scene Root3" instance=ExtResource( 4 )]
+transform = Transform( -11.2768, -5.1379, -2.84958, -7.1228, 8.28806, -1.66401, 3.38763, 0.0929723, -12.9854, 46.9494, 8.22242, -75.0607 )
+
+[node name="rock10" parent="Scene Root3" instance=ExtResource( 4 )]
+transform = Transform( -9.20613, 4.96093, 14.0989, -4.94436, 14.3819, -6.82333, -13.8393, 0.216842, -6.75471, -51.5675, 7.75673, -39.0647 )
+
+[node name="Icosphere4" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( 10.4411, 0.31947, -39.437, 2.55981, 15.6817, 1.10461, 13.2345, -1.22639, 3.30504, 8.7963, 7.76177, 69.8522 )
+
+[node name="Icosphere17" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( 13.1257, -1.21413, 3.70024, 1.57352, 9.67596, 0.403223, -3.82308, 0.0181189, 12.8707, 61.9276, 3.55791, -21.1502 )
+
+[node name="Icosphere18" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( 3.44083, 0.142433, -12.9713, 1.58139, 9.67011, 0.581754, 13.2302, -1.25188, 3.30374, 61.8968, -0.211063, -37.8766 )
+
+[node name="Icosphere19" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( 3.44083, 0.142433, -12.9713, 1.58139, 9.67011, 0.581754, 13.2302, -1.25188, 3.30374, -43.0041, 0.751203, -60.1044 )
+
+[node name="rock07" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 13.1257, -1.21413, 3.70024, 1.57352, 9.67596, 0.403223, -3.82308, 0.018119, 12.8707, -54.9009, 6.68389, 68.2146 )
+
+[node name="rock05" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 3.62004, 0.124869, -12.9253, 1.5801, 9.67026, 0.580623, 13.1823, -1.25261, 3.47964, 63.0392, 8.02211, 3.47151 )
+
+[node name="rock06" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 3.62005, 0.124869, -12.9253, 1.5801, 9.67026, 0.580623, 13.1823, -1.25261, 3.47964, -60.1561, 5.3334, 3.4558 )
+
+[node name="rock03" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 13.7613, -0.0331857, -0.00012794, -0.0331851, 9.75177, -0.015457, -0.000127935, -0.0154569, 13.3981, -63.3874, 7.76226, 37.6114 )
+
+[node name="rock11" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 5.80634, -0.0138728, -3.56887, -0.0444695, 2.30239, 0.0152231, 3.64909, -0.0445124, 5.67849, -30.8077, 2.19682, 63.9745 )
+
+[node name="rock12" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 1.48484, 0.0107122, -2.01366, -0.00859715, 1.74779, 0.0190867, 2.54149, -0.0186115, 1.1765, -22.7876, 0.984262, 14.3935 )
+
+[node name="rock13" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859716, 1.74779, 0.0190867, 2.54149, -0.0186115, 1.1765, -34.5937, 1.23499, -21.7041 )
+
+[node name="rock14" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859717, 1.74779, 0.0190867, 2.5415, -0.0186115, 1.1765, 39.9202, 1.63985, -36.8502 )
+
+[node name="rock16" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859718, 1.74779, 0.0190867, 2.5415, -0.0186115, 1.1765, 2.91248, 2.01391, -52.8412 )
+
+[node name="rock17" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859719, 1.74779, 0.0190867, 2.5415, -0.0186115, 1.1765, 38.5644, 1.09472, -0.807079 )
+
+[node name="plant01" parent="Scene Root3/rock17" instance=ExtResource( 6 )]
+transform = Transform( 0.0715129, -0.00594758, 0.000750329, 0.0126614, 0.0974249, -0.0167797, 0.00162205, 0.0134075, 0.0701417, -1.38104, -0.784851, 0.671624 )
+
+[node name="plant02" parent="Scene Root3/rock17/plant01" instance=ExtResource( 7 )]
+transform = Transform( 1.45718, -0.136885, -0.0483718, 0.0753019, 0.781757, -0.112038, -0.0720142, 0.28152, 1.52509, 9.72525, -0.562908, 10.3924 )
+
+[node name="plant03" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 8 )]
+transform = Transform( 0.549203, 0.127913, 0.281494, -0.603102, 0.978905, 0.579047, -0.151908, -0.251574, 0.496949, -13.0503, 0.795897, -13.8514 )
+
+[node name="plant04" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 8 )]
+transform = Transform( 0.191691, 0.141409, 0.547879, -0.683827, 0.975124, 0.339414, -0.576684, -0.248512, 0.243759, -33.4462, -22.474, -78.6456 )
+
+[node name="plant05" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 8 )]
+transform = Transform( -0.801663, 0.274748, 0.841814, -0.756845, 1.7336, 0.198116, -1.00901, -0.467579, -0.45331, -95.8657, 0.739775, -79.4587 )
+
+[node name="plant02" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 7 )]
+transform = Transform( 0.810987, 0.134812, 0.388568, -0.226071, 0.977505, -0.193533, -0.573086, 0.059582, 0.927157, -20.5978, -23.4256, -74.8431 )
+
+[node name="plant06" parent="Scene Root3/rock17/plant01/plant02" instance=ExtResource( 7 )]
+transform = Transform( -0.00127435, 0.338956, 0.71417, -0.218261, 0.844299, -0.666871, -1.17479, -0.0386009, 0.274786, -86.867, -0.481461, -80.477 )
+
+[node name="plant02" parent="Scene Root3/rock17" instance=ExtResource( 6 )]
+transform = Transform( 0.0658477, -0.00117708, 0.0232964, 0.0128642, 0.0973753, -0.0169387, -0.0351624, 0.0157508, 0.0636173, -5.14745, -0.478728, -8.41159 )
+
+[node name="plant03" parent="Scene Root3/rock17" instance=ExtResource( 6 )]
+transform = Transform( 0.0131402, 0.000368956, 0.0556775, 0.006094, 0.099462, -0.000585428, -0.0890308, 0.00422012, 0.0120403, -11.1372, -0.873927, -5.33606 )
+
+[node name="rock18" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.0085972, 1.74779, 0.0190868, 2.5415, -0.0186115, 1.1765, 38.5635, 0.985533, 32.4496 )
+
+[node name="rock19" parent="Scene Root3" instance=ExtResource( 2 )]
+transform = Transform( 1.48484, 0.0107122, -2.01367, -0.00859721, 1.74779, 0.0190868, 2.5415, -0.0186115, 1.1765, 20.2318, 1.05874, 50.9696 )
+
+[node name="rock20" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 0.904712, 0.00498015, -1.22694, -0.00559034, 0.878028, 0.0113904, 1.26669, -0.00924667, 0.586369, 37.4351, 0.609989, -6.13188 )
+
+[node name="rock21" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 0.904712, 0.00498015, -1.22694, -0.00559034, 0.878028, 0.0113904, 1.26669, -0.00924667, 0.586369, 37.4347, 0.563507, 4.83405 )
+
+[node name="rock27" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.19141, 0.0200136, -0.681087, 0.0128803, 0.877862, 0.0143477, 1.00171, 0.000421033, -1.17696, 33.0816, 0.481431, 32.6947 )
+
+[node name="rock32" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.31405, 0.0142543, 0.91702, 0.0216776, 0.877849, 0.000389496, -0.834168, 0.0148823, -1.00419, -16.1777, 2.16872, 48.1929 )
+
+[node name="rock34" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.55065, 0.0186117, 0.350995, 0.02067, 0.877832, 0.00638635, -0.134569, 0.0104049, -1.31381, -16.5272, 2.3156, 14.2254 )
+
+[node name="rock37" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.51464, 0.0201353, -0.0787261, 0.0182817, 0.877836, 0.0101283, 0.358553, 0.00650939, -1.35758, -6.00074, 2.42662, -32.5143 )
+
+[node name="rock25" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 0.904711, 0.00498015, -1.22694, -0.00559034, 0.878027, 0.0113904, 1.26669, -0.00924667, 0.586369, 45.4796, 0.916132, 19.5638 )
+
+[node name="rock28" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.19141, 0.0200136, -0.681087, 0.0128803, 0.877862, 0.0143477, 1.00171, 0.000421034, -1.17696, 19.0371, 1.0404, 41.8734 )
+
+[node name="rock30" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.31405, 0.0142543, 0.91702, 0.0216776, 0.877848, 0.000389489, -0.834168, 0.0148823, -1.00419, -14.9031, -0.095335, 37.5533 )
+
+[node name="rock35" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.55065, 0.0186117, 0.350995, 0.02067, 0.877831, 0.00638634, -0.13457, 0.0104049, -1.31381, -20.2974, 0.0907502, 4.18608 )
+
+[node name="rock36" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.51464, 0.0201353, -0.0787261, 0.0182817, 0.877836, 0.0101283, 0.358553, 0.00650939, -1.35758, -12.727, 0.219096, -40.8712 )
+
+[node name="rock39" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.51464, 0.0201353, -0.0787261, 0.0182817, 0.877836, 0.0101283, 0.358553, 0.00650939, -1.35758, -24.5487, 0.316932, -40.8712 )
+
+[node name="rock26" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.11693, 0.0197458, -0.763299, 0.0119145, 0.877868, 0.0148094, 1.08414, -0.000479799, -1.12538, 47.7792, 0.808276, 7.36398 )
+
+[node name="rock29" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -1.16859, 0.0124367, 1.06181, 0.0212958, 0.87786, -0.00146387, -1.02809, 0.015832, -0.849646, 31.378, 0.792081, 43.2052 )
+
+[node name="rock31" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 0.628207, -0.00272301, 1.13012, 0.00810469, 0.878001, -0.0088371, -1.4242, 0.0123023, 0.756367, -26.7245, 0.752903, 49.7269 )
+
+[node name="rock33" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -0.0988973, 0.00235584, 1.35154, 0.0146699, 0.877944, -0.00810069, -1.5534, 0.0159405, 0.150352, -46.013, 1.02992, 22.0354 )
+
+[node name="rock38" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( -0.581067, 0.00643535, 1.33052, 0.0181964, 0.877907, -0.00609783, -1.44398, 0.0168638, -0.281093, -31.5487, 1.07083, -15.8554 )
+
+[node name="rock22" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 0.904712, 0.00498015, -1.22694, -0.00559034, 0.878027, 0.0113904, 1.26669, -0.00924667, 0.586369, 18.0115, -1.17344, 4.82601 )
+
+[node name="rock23" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 0.904711, 0.00498015, -1.22694, -0.00559034, 0.878027, 0.0113904, 1.26669, -0.00924668, 0.586369, 27.4162, 0.854378, -9.34198 )
+
+[node name="rock24" parent="Scene Root3" instance=ExtResource( 3 )]
+transform = Transform( 0.904711, 0.00498015, -1.22694, -0.00559034, 0.878026, 0.0113903, 1.26669, -0.00924668, 0.586369, 27.4085, -0.074393, -40.3838 )
+
+[node name="Icosphere" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( 1.0001, 0.0120609, 2.54006e-05, 0.0120609, 2.45735, 0.0030653, 2.54007e-05, 0.00306536, 1.73429, 35.0697, -0.116359, 1.11252 )
+
+[node name="Icosphere11" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -0.721666, 0.0313968, -1.19993, 0.0233765, 2.45716, 0.0256546, 0.692097, 0.00999629, -1.25191, -19.985, 1.00064, 18.627 )
+
+[node name="Icosphere15" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -0.721667, 0.0313968, -1.19993, 0.0233766, 2.45716, 0.0256546, 0.692097, 0.00999631, -1.25191, -9.35802, -1.32021, -38.8106 )
+
+[node name="rock02" parent="Scene Root3/Icosphere15" instance=ExtResource( 4 )]
+transform = Transform( 1, -1.11759e-08, 5.96046e-08, 9.31323e-10, 1, 0, 5.96046e-08, 9.31323e-10, 1, -25.9054, 1.65678, -37.4355 )
+
+[node name="rock03" parent="Scene Root3/Icosphere15" instance=ExtResource( 4 )]
+transform = Transform( 1, -2.32831e-08, 5.96046e-08, 9.31323e-10, 1, 0, 5.96046e-08, 1.39698e-09, 1, -34.6786, 1.73806, -24.6421 )
+
+[node name="rock04" parent="Scene Root3/Icosphere15" instance=ExtResource( 4 )]
+transform = Transform( 0.822139, -0.00271298, 0.98724, 0.00286333, 1.00001, -0.00741647, -0.328227, 0.00347031, 0.822151, -38.3108, 1.71012, -10.9581 )
+
+[node name="rock05" parent="Scene Root3/Icosphere15" instance=ExtResource( 4 )]
+transform = Transform( -0.184528, 0.00257793, 1.70445, 0.0122051, 0.999938, -0.00908467, -0.566637, 0.00971082, -0.18455, 2.19733, 1.26668, 14.5644 )
+
+[node name="rock06" parent="Scene Root3/Icosphere15" instance=ExtResource( 4 )]
+transform = Transform( -0.734785, 0.00473188, 4.19859, 0.0286392, 1.9874, -0.0255203, -1.44125, 0.0211549, -0.189191, -6.91413, 1.37504, 6.79109 )
+
+[node name="rock07" parent="Scene Root3/Icosphere15" instance=ExtResource( 4 )]
+transform = Transform( -2.60211, 0.0334436, 1.07104, 0.0382962, 1.98717, 0.00951651, -0.0737154, 0.0189906, -2.34849, 31.6561, 0.925912, -7.84865 )
+
+[node name="rock08" parent="Scene Root3/Icosphere15" instance=ExtResource( 4 )]
+transform = Transform( -2.33576, 0.040211, -1.0454, 0.0329583, 1.98714, 0.0270482, 0.665509, 0.0128888, -2.35228, 69.7022, 0.65988, -19.3695 )
+
+[node name="rock09" parent="Scene Root3/Icosphere15" instance=ExtResource( 4 )]
+transform = Transform( 0.196131, 0.518662, -4.14939, -0.100917, 1.96321, 0.234201, 1.49202, 0.266113, -0.296723, 16.5966, -0.120117, -39.5214 )
+
+[node name="Icosphere6" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( 0.369458, -0.00791933, 1.61153, -0.922909, 0.242926, 0.6387, -0.109934, -2.44533, 0.0529768, 22.4337, -2.80587, 17.2664 )
+
+[node name="Icosphere8" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -0.206462, 1.70183, -1.18885, -0.920023, 0.21095, 0.657531, 0.333582, 1.76011, 1.07798, -41.1808, 0.910538, -1.77262 )
+
+[node name="Icosphere14" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -0.206462, 1.70183, -1.18885, -0.920023, 0.21095, 0.657531, 0.333582, 1.76011, 1.07798, -19.2841, 0.927272, -48.4698 )
+
+[node name="Icosphere2" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( 0.43317, 0.00851154, -0.901272, 0.000870389, 0.999951, 0.00986178, 0.901312, -0.00505628, 0.433142, 35.715, -0.0974386, -4.61085 )
+
+[node name="Icosphere7" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -0.936263, 0.0145365, 0.350998, 0.0175117, 0.999833, 0.0053034, -0.350863, 0.011112, -0.936362, -16.4897, 1.04609, 40.1856 )
+
+[node name="Icosphere5" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( 0.998125, -0.000243917, 0.0612037, 0.000274946, 1, -0.000498588, -0.0612034, 0.000514479, 0.998124, 19.7199, -1.8077, 9.01549 )
+
+[node name="Icosphere9" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -0.678078, 0.0170025, -0.734793, 0.0107724, 0.999855, 0.0131948, 0.734912, 0.00103166, -0.678162, -14.3967, 0.00856328, -8.26369 )
+
+[node name="Icosphere13" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -0.678078, 0.0170025, -0.734794, 0.0107724, 0.999855, 0.0131948, 0.734912, 0.00103167, -0.678162, 7.50512, 0.638315, -54.9583 )
+
+[node name="Icosphere16" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -1.92151, 0.0611666, -2.08229, 0.0432997, 4.40227, 0.0442381, 2.1326, 0.0093561, -1.96784, 23.6197, 2.85864, -54.9483 )
+
+[node name="Icosphere3" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( 1.47485, 0.0558717, -3.06797, 0.0337223, 6.65404, 0.0492042, 2.15721, 0.00596112, 1.03669, 48.2503, 3.7387, 11.506 )
+
+[node name="Icosphere10" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -2.55653, 0.0698803, 1.49796, 0.0785046, 6.65376, 0.0279833, -0.536541, 0.0448208, -2.8714, -41.0894, 4.01252, 53.3847 )
+
+[node name="Icosphere12" parent="Scene Root3" instance=ExtResource( 5 )]
+transform = Transform( -2.56088, 0.0374324, 1.47603, -0.446283, 2.73303, -2.62184, -0.269527, -6.067, -1.1987, -25.5014, 2.07206, -35.9232 )
+
+[node name="plant04" parent="Scene Root3" instance=ExtResource( 9 )]
+transform = Transform( -0.00133407, 0.00377442, -0.254788, 0.00175364, 0.324203, 0.00357822, 0.221923, -0.000367007, -0.0224543, 34.9471, 0.0360324, 3.548 )
+
+[node name="l_grass01" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.393507, 0.0462719, -0.0278491, 0.0461595, 5.96992, 0.0250466, -0.00127141, 0.0248264, 0.116174, -6.78225, 4.22926, -3.7207 )
+
+[node name="l_grass04" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.393507, 0.046272, -0.0278492, 0.0461595, 5.96992, 0.0250466, -0.00127141, 0.0248264, 0.116175, -56.503, 4.66922, -10.4368 )
+
+[node name="l_grass02" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.393507, 0.046272, -0.0278492, 0.0461595, 5.96992, 0.0250466, -0.00127141, 0.0248264, 0.116175, -2.72892, 4.20321, -5.48891 )
+
+[node name="l_grass03" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.393507, 0.046272, -0.0278492, 0.0461596, 5.96993, 0.0250467, -0.00127141, 0.0248265, 0.116175, -52.4496, 4.64317, -12.205 )
+
+[node name="l_grass05" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.345736, 0.0464217, 0.0300975, 0.0471444, 5.96991, 0.0245511, -0.140353, 0.0259615, 0.119945, -153.896, 6.35612, -38.6173 )
+
+[node name="l_grass11" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.0373689, 0.0485524, 0.129513, 0.0505295, 5.9699, 0.0240068, -0.336847, 0.0278661, 0.054266, -185.163, 1.56088, 26.2691 )
+
+[node name="l_grass06" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.345736, 0.0464217, 0.0300975, 0.0471444, 5.96991, 0.0245511, -0.140353, 0.0259615, 0.119945, -77.1756, 7.09769, -65.4323 )
+
+[node name="l_grass12" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.037369, 0.0485523, 0.129513, 0.0505295, 5.9699, 0.0240068, -0.336847, 0.0278661, 0.054266, -162.941, 7.64676, -27.5168 )
+
+[node name="l_grass07" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.345736, 0.0464217, 0.0300976, 0.0471445, 5.96992, 0.0245511, -0.140353, 0.0259616, 0.119945, -138.206, 6.07979, -43.7448 )
+
+[node name="l_grass10" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.0373689, 0.0485524, 0.129513, 0.0505296, 5.96991, 0.0240068, -0.336848, 0.0278661, 0.0542661, -186.941, 6.88872, -0.175552 )
+
+[node name="l_grass08" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.345736, 0.0464217, 0.0300975, 0.0471444, 5.96991, 0.024551, -0.140353, 0.0259615, 0.119945, -94.974, 8.18942, -48.7367 )
+
+[node name="l_grass09" parent="Scene Root3/plant04" instance=ExtResource( 10 )]
+transform = Transform( 0.239796, 0.0470772, 0.0823343, 0.0485032, 5.96992, 0.0241894, -0.254033, 0.0269729, 0.103308, -163.22, 5.58835, -15.0603 )
+
+[node name="plant05" parent="Scene Root3" instance=ExtResource( 9 )]
+transform = Transform( 0.107993, 0.00416388, -0.293435, 0.00163281, 0.460795, 0.00385566, 0.303658, -0.00108582, 0.124139, 47.7584, 0.74836, -20.8466 )
+
+[node name="plant06" parent="Scene Root3" instance=ExtResource( 9 )]
+transform = Transform( 0.199929, 0.00316767, -0.237911, 0.00108759, 0.460803, 0.00302396, 0.252785, -0.00103699, 0.21194, 32.7313, -0.192335, -33.6395 )
+
+[node name="l_grass02" parent="Scene Root3" instance=ExtResource( 11 )]
+transform = Transform( -0.00695907, 0.0347917, -0.161477, 0.0329905, 4.11394, 0.0187954, 0.263443, 0.0152788, -0.0043688, 39.8767, 2.29612, -5.57604 )
+
+[node name="l_grass05" parent="Scene Root3" instance=ExtResource( 11 )]
+transform = Transform( 0.100739, 0.0338489, -0.149318, 0.0321832, 4.11394, 0.0184145, 0.243629, 0.0151626, 0.0617432, 48.5278, 4.15328, -30.7615 )
+
+[node name="l_grass07" parent="Scene Root3" instance=ExtResource( 11 )]
+transform = Transform( 0.258029, 0.0320548, -0.0331526, 0.0316838, 4.11395, 0.0170438, 0.0543741, 0.0163195, 0.158296, 24.9806, 3.90958, -48.244 )
+
+[node name="l_grass03" parent="Scene Root3" instance=ExtResource( 11 )]
+transform = Transform( -0.00695907, 0.0347917, -0.161477, 0.0329905, 4.11394, 0.0187954, 0.263443, 0.0152788, -0.0043688, 39.8745, 2.0304, 6.70482 )
+
+[node name="l_grass04" parent="Scene Root3" instance=ExtResource( 11 )]
+transform = Transform( 0.100739, 0.0338489, -0.149318, 0.0321832, 4.11394, 0.0184145, 0.243628, 0.0151626, 0.0617432, 52.0528, 3.82329, -10.206 )
+
+[node name="l_grass06" parent="Scene Root3" instance=ExtResource( 11 )]
+transform = Transform( 0.258028, 0.0320548, -0.0331526, 0.0316837, 4.11395, 0.0170438, 0.054374, 0.0163195, 0.158296, 43.9509, 3.97916, -31.1584 )
+
+[node name="ship" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85825, 3.8651, 0.179522 )
+
+
+[editable path="Scene Root3"]

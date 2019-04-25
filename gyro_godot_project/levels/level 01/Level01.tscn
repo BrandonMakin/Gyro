@@ -134,7 +134,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.4188 )
 
 [node name="floor" type="MeshInstance" parent="."]
 transform = Transform( 6.12061, 0, 0, 0, 1, 0, 0, 0, 6.12061, 0, 0, 0 )
-visible = false
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -154,6 +153,7 @@ editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -35.8057, -111.134 )
 
 [node name="Ship" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 transform = Transform( -6.55671e-07, 0, 15, 0, 15, 0, -15, 0, -6.55671e-07, -24.7094, -47.4327, -280.337 )
 
 [node name="Lights" type="Node" parent="."]
@@ -315,14 +315,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
 shape = SubResource( 4 )
 
 [node name="SplitscreenCamera" parent="." instance=ExtResource( 6 )]
-
-[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer1/Viewport1" index="1"]
-frame = 0
-
-[node name="AnimatedSpeedlines" parent="SplitscreenCamera/Viewports/ViewportContainer2/Viewport2" index="1"]
-frame = 0
+editor/display_folded = true
 
 [node name="GUI" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Stoplight" type="Control" parent="GUI"]
 anchor_left = 0.5
@@ -393,8 +389,8 @@ autoplay = "FinishedSign"
 anims/FinishedSign = SubResource( 6 )
 
 [node name="Racetrack" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 56.7785, -31.6155, -65.3272 )
-visible = false
 
 [node name="Path" type="Path" parent="Racetrack"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00136566, 0.330706, 0.00197697 )

@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/dubloon_with_normal.obj-9e86a474cd03271451852e335a894842.mesh"
+
+[deps]
+
+files=[ "res://.import/dubloon_with_normal.obj-9e86a474cd03271451852e335a894842.mesh" ]
+
+source_file="res://art/dubloooooon/dubloon with normal/dubloon_with_normal.obj"
+dest_files=[ "res://.import/dubloon_with_normal.obj-9e86a474cd03271451852e335a894842.mesh", "res://.import/dubloon_with_normal.obj-9e86a474cd03271451852e335a894842.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

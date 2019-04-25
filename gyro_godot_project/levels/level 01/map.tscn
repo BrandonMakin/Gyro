@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/track_final.dae" type="PackedScene" id=1]
+[ext_resource path="res://floor.tres" type="Material" id=2]
+
+[node name="Scene Root" index="0" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.63586, 0 )
+
+[node name="Plane" parent="." index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="Sphere022" parent="." index="1"]
+visible = false
+
+[node name="ship" parent="." index="3"]
+visible = false
+
