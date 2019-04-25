@@ -7,7 +7,7 @@
 [ext_resource path="res://menus/wright menu.jpeg" type="Texture" id=5]
 [ext_resource path="res://art/Fonts/Times.tres" type="DynamicFont" id=6]
 [ext_resource path="res://menus/MenuObserver.gd" type="Script" id=7]
-[ext_resource path="res://levels/level 01/Level01.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/level 01/Level01_final.tscn" type="PackedScene" id=8]
 [ext_resource path="res://levels/level 02/Level02.tscn" type="PackedScene" id=9]
 
 [node name="StartMenu" type="Control"]
