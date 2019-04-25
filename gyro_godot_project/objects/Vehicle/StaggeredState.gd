@@ -16,8 +16,12 @@ func _state_physics_process(delta):
 	else:
 		fish_king.speed_level = 0
 
-#func _on_rotate(angle, tilt):
-#	pass
+#warning-ignore:unused_argument
+#warning-ignore:unused_argument
+func _on_rotate(angle, tilt):
+	pass
 
-#func _on_button(angle, tilt):
-#	pass
+#warning-ignore:unused_argument
+#warning-ignore:unused_argument
+func _on_button(angle, tilt):
+	pass

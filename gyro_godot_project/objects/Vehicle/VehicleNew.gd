@@ -10,7 +10,9 @@ var drifting_direction : float = 0
 var min_drifting_speed_level : float = .2 # minimum fish_king.speed_level wherein drifting is still possible [no units, range: 0-1]
 var min_drafting_speed_level : float = .5 # minimum fish_king.speed_level wherein drafting is allowed [no units, range: 0-1]
 var is_side_drifting : bool = false
+var shot_template = preload("res://art/models/projectile_standin.tscn")
 onready var fish_king = $"../.."
+
 
 export(int) var seconds_for_zero_to_max = 5 # time it takes to accelerate from zero to max_speed [seconds]
 export(int) var seconds_for_max_to_zero = 5 # time it takes to brake from max_speed to zero [seconds]
@@ -117,7 +119,7 @@ func stop_drifting():
 		
 #Called when a player is shooting another player.  One raycast per call
 func shoot():
-	var shot = preload("res://art/models/projectile_standin.tscn").instance()
+	var shot = shot_template.instance()
 	var offset = -fish_king.transform.basis.z * 3
 	print("FISH_KING: %s" % fish_king.global_transform.origin)
 	shot.global_transform.origin = fish_king.global_transform.origin + offset
