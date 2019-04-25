@@ -7,8 +7,9 @@ script/source = "extends Node
 
 func get_cam_gui(id):
 	match id:
+		0: return get_node(\"Viewports/CamView0/GUI\")
 		1: return get_node(\"Viewports/CamView1/GUI\")
-		2: return get_node(\"Viewports/CamView2/GUI\")"
+		_: printerr(\"get_cam_gui(ID): Unkown camera ID\")"
 
 [node name="Splitscreen Camera" type="Node"]
 script = SubResource( 1 )
@@ -18,10 +19,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
 
-[node name="CamView1" parent="Viewports" instance=ExtResource( 1 )]
+[node name="CamView0" parent="Viewports" instance=ExtResource( 1 )]
 
-[node name="CamView2" parent="Viewports" instance=ExtResource( 1 )]
+[node name="CamView1" parent="Viewports" instance=ExtResource( 1 )]
 margin_left = 514.0
 margin_right = 1024.0
-id = 2
+id = 1
 

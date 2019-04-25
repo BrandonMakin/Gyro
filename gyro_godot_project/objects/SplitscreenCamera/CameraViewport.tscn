@@ -56,14 +56,13 @@ tracks/0/keys = {
 "values": [ Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ) ]
 }
 
-[node name="CamView1" type="ViewportContainer"]
+[node name="CamView0" type="ViewportContainer"]
 margin_right = 510.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 script = SubResource( 3 )
-id = 1
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 510, 600 )
@@ -81,6 +80,7 @@ script = ExtResource( 1 )
 visible = false
 scale = Vector2( 0.301, 0.305 )
 frames = SubResource( 2 )
+frame = 1
 
 [node name="Lap" type="Panel" parent="Viewport"]
 anchor_bottom = 1.0
