@@ -62,8 +62,8 @@ func _on_Lap_Tracker_00_body_entered(body):
 func _on_Lap_Tracker_body_entered(body, tracker_number):
 	if body.is_in_group("vehicles"):
 		var id = body.vehicle_number
-#		print("previous tracker number: " + str(vehicles[id].progress_in_lap))
-#		print("previous == expected: " + str(vehicles[id].progress_in_lap == tracker_number-1))
+		print("previous tracker number: " + str(vehicles[id].progress_in_lap))
+		print("previous == expected: " + str(vehicles[id].progress_in_lap == tracker_number-1))
 		if vehicles[id].progress_in_lap == tracker_number-1:
 			vehicles[id].progress_in_lap = tracker_number
 
