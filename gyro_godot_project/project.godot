@@ -9,24 +9,12 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "ResourceFormatLoader",
-"class": "HTerrainDataLoader",
-"language": "GDScript",
-"path": "res://addons/zylann.hterrain/hterrain_resource_loader.gd"
-}, {
-"base": "ResourceFormatSaver",
-"class": "HTerrainDataSaver",
-"language": "GDScript",
-"path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
-}, {
 "base": "Node",
 "class": "VehicleState",
 "language": "GDScript",
 "path": "res://objects/Vehicle/VehicleState.gd"
 } ]
 _global_script_class_icons={
-"HTerrainDataLoader": "",
-"HTerrainDataSaver": "",
 "VehicleState": ""
 }
 
@@ -43,7 +31,7 @@ ControlKeyboard="*res://scripts/controls/Control With Keyboard.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "choose_controls", "zylann.hterrain" )
+enabled=PoolStringArray( "choose_controls" )
 
 [input]
 

@@ -1,6 +1,8 @@
 extends Spatial
 
 export(String) var START_STATE
+#warning-ignore:unused_class_variable
+export(int) var vehicle_number
 var state_name : String
 var current_state = null
 var swim_state #Here so Collectible.gd has a guaranteed reference to swim_state to appropriately modify max_speed as necessary
@@ -38,10 +40,11 @@ func _on_rotate(id, angle, tilt):
 	current_state._on_rotate(angle, tilt)
 
 #Called on phone button press via player_button_pressed signal
-func _on_button(id, angle, tilt):
+func _on_button(id, bname, state):
 	if id != player_id:
 		return
-	current_state._on_button(angle, tilt)
+#	print("BUTTON! " + bname + ", " + state)	
+	current_state._on_button(bname, state)
 
 #Called when state needs to be changed
 func change_state(new_state_name):

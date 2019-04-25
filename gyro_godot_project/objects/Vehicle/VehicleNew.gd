@@ -6,8 +6,7 @@ export var sharpest_steering_radius : float = .1
 export var speed : float = 0
 var desired_rotation : Vector3 = Vector3(0,0,0)
 var steering_wheel_angle : float = 0
-var drifting_direction_x : float = 0
-var drifting_direction_y : float = 0
+var drifting_direction : float = 0
 var min_drifting_speed_level : float = .2 # minimum fish_king.speed_level wherein drifting is still possible [no units, range: 0-1]
 var min_drafting_speed_level : float = .5 # minimum fish_king.speed_level wherein drafting is allowed [no units, range: 0-1]
 var is_side_drifting : bool = false
@@ -31,13 +30,13 @@ func _on_rotate(angle, tilt):
 	steering_wheel_angle = angle # max(min(angle*1.7, .5), -.5) # ranges from -.5 to .5
 
 #Called when button is pressed from VehicleStateMachine
-func _on_button(name, state): #3 possible names for a button: accel, shoot, shock
+func _on_button(bname, state): #3 possible names for a button: accel, shoot, shock
 	#2 states for a button: "on", "off"
 	
 #	print("button: " + name + "! (" + state + ")")
 	
 	#ACCEL button
-	if name == "accel": # set ACCELERATING bit of current_movement_input
+	if bname == "accel": # set ACCELERATING bit of current_movement_input
 		if state == "on":
 			current_movement_input |= MovementInputFlags.ACCELERATING  # Add accelerating flag when player presses accelerate
 			current_movement_input &= ~ MovementInputFlags.BRAKING  # Remove braking flag when player presses accelerate
@@ -46,12 +45,12 @@ func _on_button(name, state): #3 possible names for a button: accel, shoot, shoc
 			current_movement_input &= ~ MovementInputFlags.ACCELERATING #Remove accelerating flag when player isn't pressing accelerate
 	
 	#SHOCK button (But actually shoot)
-	if name == "shock" and state == "on":
+	if bname == "shock" and state == "on":
 		shoot()
 		#get_tree().reload_current_scene()
 	
 	#SHOOT button (But actually drifting right now and probably going to become drifting)
-	if name == "shoot":
+	if bname == "shoot":
 		if state == "on":
 			start_drifting()
 		else:
@@ -92,8 +91,8 @@ func _state_physics_process(delta):
 	$"../../Fish".rotation.z = lerp($"../../Fish".rotation.z, -desired_rotation.z, delta*15)
 	
 	#handle fish_king.rotation around the y axis (this is the complex one) 
-	if drifting_direction_y != 0 && fish_king.speed_level > min_drifting_speed_level:
-		fish_king.rotation.y += .015 * drifting_direction_y
+	if drifting_direction != 0 && fish_king.speed_level > min_drifting_speed_level:
+		fish_king.rotation.y += .015 * drifting_direction
 	fish_king.rotation.y -= steering_wheel_angle * delta / (2 * PI * sharpest_steering_radius)
 	fish_king.move_and_slide(-fish_king.transform.basis.z * speed)
 
@@ -106,14 +105,14 @@ func reset():
 func start_drifting():
 	if sign(desired_rotation.y) != 0:
 		is_side_drifting = true
-		drifting_direction_y = sign(desired_rotation.y)
-		$"../../Fish".rotate_y(PI/5 * drifting_direction_y) #Eventually change this out for an animation instead of an instant rotation
+		drifting_direction = sign(-1 * desired_rotation.y)
+		$"../../Fish".rotation = Vector3(0, PI/5 * drifting_direction, $"../../Fish".rotation.z)
 
 #Called when a player ceases drifting, and returns their model to normal
 func stop_drifting():
 	if (is_side_drifting):
-		$"../../Fish".rotation = Vector3(-PI, 0, $"../../Fish".rotation.z)
-		drifting_direction_y = 0
+		$"../../Fish".rotation = Vector3(0, 0, $"../../Fish".rotation.z)
+		drifting_direction = 0
 		is_side_drifting = false
 		
 #Called when a player is shooting another player.  One raycast per call
