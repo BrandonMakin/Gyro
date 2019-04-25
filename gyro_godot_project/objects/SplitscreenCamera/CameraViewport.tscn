@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://objects/SplitscreenCamera/Camera.gd" type="Script" id=1]
-[ext_resource path="res://objects/AnimatedSpeedlines.tscn" type="PackedScene" id=2]
-[ext_resource path="res://art/img/speedlines/speedlines1-01.png" type="Texture" id=3]
-[ext_resource path="res://art/img/speedlines/speedlines2-01.png" type="Texture" id=4]
-[ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=5]
-[ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=6]
-[ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=7]
+[ext_resource path="res://art/environments/env1.tres" type="Environment" id=1]
+[ext_resource path="res://objects/SplitscreenCamera/Camera.gd" type="Script" id=2]
+[ext_resource path="res://objects/AnimatedSpeedlines.tscn" type="PackedScene" id=3]
+[ext_resource path="res://art/img/speedlines/speedlines1-01.png" type="Texture" id=4]
+[ext_resource path="res://art/img/speedlines/speedlines2-01.png" type="Texture" id=5]
+[ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=6]
+[ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=7]
+[ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=8]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends ViewportContainer
@@ -16,7 +17,7 @@ export var id : int = 0"
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -70,17 +71,17 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Camera" type="InterpolatedCamera" parent="Viewport"]
+environment = ExtResource( 1 )
 current = true
 far = 900.0
 speed = 5.0
 enabled = true
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
-[node name="AnimatedSpeedlines" parent="Viewport" instance=ExtResource( 2 )]
+[node name="AnimatedSpeedlines" parent="Viewport" instance=ExtResource( 3 )]
 visible = false
 scale = Vector2( 0.301, 0.305 )
 frames = SubResource( 2 )
-frame = 1
 
 [node name="Lap" type="Panel" parent="Viewport"]
 anchor_bottom = 1.0
@@ -97,17 +98,17 @@ margin_bottom = 40.0
 [node name="Lap3" type="Sprite" parent="GUI/LapAlerts"]
 visible = false
 position = Vector2( 226.908, 168.716 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Lap2" type="Sprite" parent="GUI/LapAlerts"]
 visible = false
 position = Vector2( 226.529, 171.253 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="RaceFinished" type="Sprite" parent="GUI/LapAlerts"]
 visible = false
 position = Vector2( 225.803, 170.789 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="RaceFinishedSignAnimationPlayer" type="AnimationPlayer" parent="GUI/LapAlerts"]
 autoplay = "FinishedSign"
