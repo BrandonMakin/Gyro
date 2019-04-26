@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://art/environments/env1.tres" type="Environment" id=1]
 [ext_resource path="res://objects/SplitscreenCamera/Camera.gd" type="Script" id=2]
@@ -57,6 +57,23 @@ tracks/0/keys = {
 "values": [ Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ) ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "Finished"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1, 1.3, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ) ]
+}
+
 [node name="CamView0" type="ViewportContainer"]
 margin_right = 510.0
 margin_bottom = 600.0
@@ -82,6 +99,7 @@ script = ExtResource( 2 )
 visible = false
 scale = Vector2( 0.301, 0.305 )
 frames = SubResource( 2 )
+frame = 1
 
 [node name="Lap" type="Panel" parent="Viewport"]
 anchor_bottom = 1.0
@@ -115,6 +133,7 @@ autoplay = "FinishedSign"
 anims/FinishedSign = SubResource( 4 )
 
 [node name="Lap" type="ColorRect" parent="GUI"]
+editor/display_folded = true
 margin_left = 7.76692
 margin_top = 551.175
 margin_right = 124.767
@@ -138,4 +157,28 @@ valign = 1
 
 [node name="Animation" type="AnimationPlayer" parent="GUI/Lap/Inside"]
 anims/Finished = SubResource( 5 )
+
+[node name="Rank" type="ColorRect" parent="GUI"]
+margin_left = 386.146
+margin_top = 551.175
+margin_right = 503.146
+margin_bottom = 591.175
+
+[node name="Inside" type="ColorRect" parent="GUI/Rank"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="GUI/Rank/Inside"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+align = 1
+valign = 1
+
+[node name="Animation" type="AnimationPlayer" parent="GUI/Rank/Inside"]
+anims/Finished = SubResource( 6 )
 

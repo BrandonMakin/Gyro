@@ -28,7 +28,7 @@ func _ready():
 func _process(delta):
 	placements.sort_custom(self, "sort")
 	for i in range(placements.size()):
-		splitscreen.get_cam_gui(placements[i]).get_node("Lap/Inside/Label").text = str(i+1)
+		splitscreen.get_cam_gui(placements[i]).get_node("Rank/Inside/Label").text = str(i+1) + get_ordinal(i+1) + " place"
 
 func race_start():
 	for i in range(vehicle_count):
@@ -41,13 +41,11 @@ func race_finish(id): # id == VehicleNumber
 	vehicles[id].rank = players_finished
 	
 	splitscreen.get_cam_gui(id).get_node("LapAlerts/RaceFinished").visible = true
-	var ordinal = "th"
-	match players_finished:
-		1: ordinal = "st"
-		2: ordinal = "nd"
-		3: ordinal = "rd"
-	splitscreen.get_cam_gui(id).get_node("Lap/Inside/Label").text = str(players_finished) + ordinal + " Place"
+	set_process(false)
+	var ordinal = get_ordinal(players_finished)
+	splitscreen.get_cam_gui(id).get_node("Rank/Inside/Label").text = str(players_finished) + ordinal + " Place"
 	splitscreen.get_cam_gui(id).get_node("Lap/Inside/Animation").play("Finished")
+	splitscreen.get_cam_gui(id).get_node("Rank/Inside/Animation").play("Finished")
 	
 
 func _on_Lap_Tracker_00_body_entered(body):
@@ -84,8 +82,17 @@ func lap_completed(body):
 	elif laps == 4:
 		race_finish(id)
 
+func get_ordinal(rank):
+	match rank:
+		1: return "st"
+		2: return "nd"
+		3: return "rd"
+		_: return "th"
+
 func sort(id1, id2):
-	if vehicles[id1].progress_in_lap != vehicles[id2].progress_in_lap:
+	if vehicles[id1].current_lap != vehicles[id2].current_lap:
+		return vehicles[id1].current_lap > vehicles[id2].current_lap
+	elif vehicles[id1].progress_in_lap != vehicles[id2].progress_in_lap:
 		return vehicles[id1].progress_in_lap > vehicles[id2].progress_in_lap
 	else:
 		# find who is closest to next lap marker
