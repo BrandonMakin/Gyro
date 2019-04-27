@@ -76,20 +76,28 @@ tracks/0/keys = {
 "values": [ Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ) ]
 }
 
-[node name="CamView0" type="ViewportContainer"]
-margin_right = 510.0
-margin_bottom = 600.0
+[node name="CamView0" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 script = SubResource( 1 )
 
-[node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 510, 600 )
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1024, 600 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Camera" type="InterpolatedCamera" parent="Viewport"]
+[node name="Camera" type="InterpolatedCamera" parent="ViewportContainer/Viewport"]
 environment = ExtResource( 1 )
 current = true
 far = 900.0
@@ -97,19 +105,20 @@ speed = 5.0
 enabled = true
 script = ExtResource( 2 )
 
-[node name="AnimatedSpeedlines" parent="Viewport" instance=ExtResource( 3 )]
+[node name="AnimatedSpeedlines" parent="ViewportContainer/Viewport" instance=ExtResource( 3 )]
 visible = false
 scale = Vector2( 0.301, 0.305 )
 frames = SubResource( 2 )
 frame = 1
 
-[node name="Lap" type="Panel" parent="Viewport"]
+[node name="Lap" type="Panel" parent="ViewportContainer/Viewport"]
 anchor_bottom = 1.0
 
 [node name="GUI" type="Control" parent="."]
 anchor_right = 1.0
-margin_right = -470.0
-margin_bottom = 40.0
+anchor_bottom = 1.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
 
 [node name="LapAlerts" type="Control" parent="GUI"]
 editor/display_folded = true
@@ -137,10 +146,13 @@ anims/FinishedSign = SubResource( 3 )
 
 [node name="Lap" type="ColorRect" parent="GUI"]
 editor/display_folded = true
-margin_left = 7.76692
-margin_top = 551.175
-margin_right = 124.767
-margin_bottom = 591.175
+anchor_top = 1.0
+anchor_right = 0.3
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = -52.0
+margin_bottom = -7.0
+size_flags_horizontal = 3
 
 [node name="Inside" type="ColorRect" parent="GUI/Lap"]
 anchor_right = 1.0
@@ -163,10 +175,15 @@ anims/Finished = SubResource( 4 )
 
 [node name="Rank" type="ColorRect" parent="GUI"]
 editor/display_folded = true
-margin_left = 386.146
-margin_top = 551.175
-margin_right = 503.146
-margin_bottom = 591.175
+anchor_left = 0.7
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -52.0
+margin_right = -7.0
+margin_bottom = -7.0
+rect_min_size = Vector2( 0, 45 )
+size_flags_horizontal = 3
 
 [node name="Inside" type="ColorRect" parent="GUI/Rank"]
 anchor_right = 1.0
@@ -180,6 +197,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="Label" type="Label" parent="GUI/Rank/Inside"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+text = "Rank"
 align = 1
 valign = 1
 
