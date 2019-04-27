@@ -12,7 +12,7 @@
 [ext_resource path="res://art/img/collision_lines/collision_lines.tres" type="SpriteFrames" id=10]
 
 [sub_resource type="GDScript" id=1]
-script/source = "extends ViewportContainer
+script/source = "extends Control
 
 #warning-ignore:unused_class_variable
 export var id : int = 0"
@@ -79,10 +79,9 @@ tracks/0/keys = {
 [node name="CamView0" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = SubResource( 1 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 anchor_right = 1.0
@@ -90,7 +89,6 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
-script = SubResource( 1 )
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
 size = Vector2( 1024, 600 )
@@ -109,7 +107,6 @@ script = ExtResource( 2 )
 visible = false
 scale = Vector2( 0.301, 0.305 )
 frames = SubResource( 2 )
-frame = 1
 
 [node name="Lap" type="Panel" parent="ViewportContainer/Viewport"]
 anchor_bottom = 1.0

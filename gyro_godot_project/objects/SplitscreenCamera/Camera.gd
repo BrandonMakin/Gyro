@@ -1,6 +1,6 @@
 extends InterpolatedCamera
 
-onready var id : int = $"../..".id
+onready var id : int = $"../../..".id
 
 var world = null
 var cam_offset : Vector3
@@ -13,7 +13,7 @@ var max_speed_fov : int = 70
 
 
 func _ready():
-	world = get_node("../../../../..")
+	world = get_node("../../../../../..")
 	#Camera target is dependent on camera ID
 	target_vehicle = world.get_node("vehicles/vehicle%s" % id)
 	set_target(world.get_node("vehicles/vehicle%s/CamTarget" % id))

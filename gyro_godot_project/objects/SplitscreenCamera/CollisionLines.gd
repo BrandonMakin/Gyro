@@ -5,7 +5,7 @@ var camera
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite.position = Vector2(0, -260) # Include this line if using hit_lines_on_fish()
-	camera = $"../../Viewport/Camera"
+	camera = $"../../ViewportContainer/Viewport/Camera"
 	camera.target_vehicle.connect("collision", self, "collision_animation")
 	#warning-ignore:return_value_discarded
 	$Sprite.connect("animation_finished", self, "animation_finished")
