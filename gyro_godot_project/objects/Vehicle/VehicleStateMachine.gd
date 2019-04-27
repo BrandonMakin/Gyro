@@ -16,6 +16,8 @@ export(float) var speed_level = 0 # represents some the current speed at value f
 								# ...but depending on your interpolation, the values in between may not correlate linearly to the speeds they represent. [no units, range: 0-1]
 var state_stack : Array =  []
 
+signal collision(collision, vehicle_position)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group("players")

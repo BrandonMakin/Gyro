@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://art/environments/env1.tres" type="Environment" id=1]
 [ext_resource path="res://objects/SplitscreenCamera/Camera.gd" type="Script" id=2]
@@ -8,8 +8,10 @@
 [ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=6]
 [ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=7]
 [ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=8]
+[ext_resource path="res://objects/SplitscreenCamera/CollisionLines.gd" type="Script" id=9]
+[ext_resource path="res://art/img/collision_lines/collision_lines.tres" type="SpriteFrames" id=10]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=1]
 script/source = "extends ViewportContainer
 
 #warning-ignore:unused_class_variable
@@ -23,7 +25,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "FinishedSign"
 length = 4.0
 loop = true
@@ -40,7 +42,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Finished"
 length = 2.0
 loop = true
@@ -57,7 +59,7 @@ tracks/0/keys = {
 "values": [ Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.4, 0.364706, 0.227451, 1 ), Color( 0.764706, 0.698039, 0.435294, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "Finished"
 length = 2.0
 loop = true
@@ -80,7 +82,7 @@ margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
-script = SubResource( 3 )
+script = SubResource( 1 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 510, 600 )
@@ -110,6 +112,7 @@ margin_right = -470.0
 margin_bottom = 40.0
 
 [node name="LapAlerts" type="Control" parent="GUI"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -130,7 +133,7 @@ texture = ExtResource( 8 )
 
 [node name="RaceFinishedSignAnimationPlayer" type="AnimationPlayer" parent="GUI/LapAlerts"]
 autoplay = "FinishedSign"
-anims/FinishedSign = SubResource( 4 )
+anims/FinishedSign = SubResource( 3 )
 
 [node name="Lap" type="ColorRect" parent="GUI"]
 editor/display_folded = true
@@ -156,9 +159,10 @@ align = 1
 valign = 1
 
 [node name="Animation" type="AnimationPlayer" parent="GUI/Lap/Inside"]
-anims/Finished = SubResource( 5 )
+anims/Finished = SubResource( 4 )
 
 [node name="Rank" type="ColorRect" parent="GUI"]
+editor/display_folded = true
 margin_left = 386.146
 margin_top = 551.175
 margin_right = 503.146
@@ -180,5 +184,15 @@ align = 1
 valign = 1
 
 [node name="Animation" type="AnimationPlayer" parent="GUI/Rank/Inside"]
-anims/Finished = SubResource( 6 )
+anims/Finished = SubResource( 5 )
+
+[node name="CollisionLines" type="Node2D" parent="GUI"]
+position = Vector2( 251.831, 433.691 )
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 9 )
+
+[node name="Sprite" type="AnimatedSprite" parent="GUI/CollisionLines"]
+visible = false
+modulate = Color( 1, 1, 1, 0.454902 )
+frames = ExtResource( 10 )
 

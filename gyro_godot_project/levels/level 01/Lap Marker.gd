@@ -22,7 +22,7 @@ func _ready():
 		if i == 0:
 			continue # skip the Lap Tracker #0 because it's a special case.
 		# connect the signal to the function and bind i as an extra argument. 
-#warning-ignore:return_value_discarded
+		#warning-ignore:return_value_discarded
 		get_child(i).connect("body_entered", self, "_on_Lap_Tracker_body_entered", [i])
 
 func _process(delta):
@@ -49,6 +49,8 @@ func race_finish(id): # id == VehicleNumber
 	
 
 func _on_Lap_Tracker_00_body_entered(body):
+#	if not vehicles.has(id):
+#		return
 	if body.is_in_group("vehicles"):
 		var id = body.vehicle_number
 		if vehicles[id].progress_in_lap == get_child_count() - 1:

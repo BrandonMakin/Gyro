@@ -9,6 +9,12 @@ func get_cam_gui(id):
 	match id:
 		0: return get_node(\"Viewports/CamView0/GUI\")
 		1: return get_node(\"Viewports/CamView1/GUI\")
+		_: printerr(\"get_cam_gui(ID): Unkown camera ID\")
+
+func get_cam(id):
+	match id:
+		0: return get_node(\"Viewports/CamView0/Viewport/Camera\")
+		1: return get_node(\"Viewports/CamView1/Viewport/Camera\")
 		_: printerr(\"get_cam_gui(ID): Unkown camera ID\")"
 
 [node name="Splitscreen Camera" type="Node"]
