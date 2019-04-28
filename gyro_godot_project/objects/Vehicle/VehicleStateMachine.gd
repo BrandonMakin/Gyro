@@ -33,6 +33,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+
 	current_state._state_physics_process(delta)
 
 #Called on phone rotation via player_rotated signal
@@ -51,6 +52,8 @@ func _on_button(id, bname, state):
 #Called when state needs to be changed
 func change_state(new_state_name):
 	current_state = get_node("States/" + new_state_name)
+	state_name = new_state_name
+	state_stack[0] = state_name
 
 #Called when state needs to be pushed onto the state_stack
 func push_state(new_state_name):
