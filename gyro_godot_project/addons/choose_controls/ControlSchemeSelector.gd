@@ -6,7 +6,7 @@ var ControlLocal = "res://scripts/controls/Control With Local Server.gd"
 var ControlRemote = "res://scripts/controls/Control With Remote Server.gd"
 
 func _enter_tree():
-#warning-ignore:return_value_discarded
+	#warning-ignore:return_value_discarded
 	connect("item_selected", self, "_item_selected")
 	clear()
 	add_item("Keep last control scheme used")

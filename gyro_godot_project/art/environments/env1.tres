@@ -1,0 +1,19 @@
+[gd_resource type="Environment" load_steps=3 format=2]
+
+[ext_resource path="res://art/img/skies/sky-pano-3.png" type="Texture" id=1]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
+fog_enabled = true
+fog_color = Color( 0.14902, 0.329412, 0.513726, 1 )
+fog_sun_color = Color( 0.623529, 0.627451, 0.862745, 1 )
+fog_depth_end = 1023.3
+fog_depth_curve = 1.7411
+fog_transmit_enabled = true
+dof_blur_far_enabled = true
+dof_blur_far_distance = 150.0
+

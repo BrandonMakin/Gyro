@@ -10,6 +10,8 @@ var drifting_direction : float = 0
 var min_drifting_speed_level : float = .2 # minimum fish_king.speed_level wherein drifting is still possible [no units, range: 0-1]
 var min_drafting_speed_level : float = .5 # minimum fish_king.speed_level wherein drafting is allowed [no units, range: 0-1]
 var is_side_drifting : bool = false
+var shot_template = preload("res://art/models/projectile_standin.tscn")
+var previous_collision_normal
 onready var fish_king = $"../.."
 
 export(int) var seconds_for_zero_to_max = 5 # time it takes to accelerate from zero to max_speed [seconds]
@@ -95,6 +97,13 @@ func _state_physics_process(delta):
 		fish_king.rotation.y += .015 * drifting_direction
 	fish_king.rotation.y -= steering_wheel_angle * delta / (2 * PI * sharpest_steering_radius)
 	fish_king.move_and_slide(-fish_king.transform.basis.z * speed)
+	if fish_king.get_slide_count() > 0:
+		var collision = fish_king.get_slide_collision(0)
+		if !previous_collision_normal || collision.normal.dot(previous_collision_normal) < .5:
+			fish_king.emit_signal("collision", collision, fish_king.translation)
+			previous_collision_normal = collision.normal
+	else:
+		previous_collision_normal = null
 
 func reset():
 	print("RESET")
@@ -117,7 +126,7 @@ func stop_drifting():
 		
 #Called when a player is shooting another player.  One raycast per call
 func shoot():
-	var shot = preload("res://art/models/projectile_standin.tscn").instance()
+	var shot = shot_template.instance()
 	var offset = -fish_king.transform.basis.z * 3
 	print("FISH_KING: %s" % fish_king.global_transform.origin)
 	shot.global_transform.origin = fish_king.global_transform.origin + offset

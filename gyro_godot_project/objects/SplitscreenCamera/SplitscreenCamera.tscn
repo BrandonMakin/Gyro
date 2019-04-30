@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://objects/SplitscreenCamera/CameraViewport.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/SplitscreenCamera/CameraView.tscn" type="PackedScene" id=1]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
@@ -9,6 +9,12 @@ func get_cam_gui(id):
 	match id:
 		0: return get_node(\"Viewports/CamView0/GUI\")
 		1: return get_node(\"Viewports/CamView1/GUI\")
+		_: printerr(\"get_cam_gui(ID): Unkown camera ID\")
+
+func get_cam(id):
+	match id:
+		0: return get_node(\"Viewports/CamView0/ViewportContainer/Viewport/Camera\")
+		1: return get_node(\"Viewports/CamView1/ViewportContainer/Viewport/Camera\")
 		_: printerr(\"get_cam_gui(ID): Unkown camera ID\")"
 
 [node name="Splitscreen Camera" type="Node"]
@@ -20,9 +26,16 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="CamView0" parent="Viewports" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 510.0
+margin_bottom = 600.0
 
 [node name="CamView1" parent="Viewports" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 514.0
 margin_right = 1024.0
+margin_bottom = 600.0
 id = 1
 
