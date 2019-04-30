@@ -11,7 +11,7 @@
 [ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=9]
 [ext_resource path="res://road2.tscn" type="PackedScene" id=10]
 [ext_resource path="res://track_last.tscn" type="PackedScene" id=11]
-[ext_resource path="res://levels/level 01/Level01_Ali2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/level 01/old/Level01_Ali2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/level 01/map.tscn" type="PackedScene" id=13]
 [ext_resource path="res://boarder.tscn" type="PackedScene" id=14]
 [ext_resource path="res://arrow.tscn" type="PackedScene" id=15]
