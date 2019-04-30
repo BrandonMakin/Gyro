@@ -27,6 +27,7 @@ anchor_bottom = 0.0
 margin_top = 302.0
 margin_right = 512.0
 margin_bottom = 600.0
+id = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Viewports"]
 margin_left = 516.0
@@ -39,6 +40,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 512.0
 margin_bottom = 298.0
+id = 1
 
 [node name="CamView3" parent="Viewports/VBoxContainer2" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -46,4 +48,5 @@ anchor_bottom = 0.0
 margin_top = 302.0
 margin_right = 512.0
 margin_bottom = 600.0
+id = 3
 
