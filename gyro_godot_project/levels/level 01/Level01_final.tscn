@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=24 format=2]
-=======
-[gd_scene load_steps=25 format=2]
->>>>>>> e22c9644c5092b9dc911c85587e8aa08281e8fd6
 
 [ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Vehicle/Vehicle.tscn" type="PackedScene" id=2]
@@ -29,16 +25,8 @@
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 31.6908, 21.478, 1 )
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 31.6908, 30.9399, 1 )
-
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 39.3009, 34.0528, 1 )
-
-[sub_resource type="BoxShape" id=9]
-extents = Vector3( 44.5765, 45.0293, 1 )
-
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
+resource_name = "Stoplight"
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Light0:color")
@@ -103,7 +91,8 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
+resource_name = "FinishedSign"
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -131,7 +120,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="SphereShape" id=8]
+[sub_resource type="SphereShape" id=6]
 
 [node name="Level 1" type="Spatial"]
 
@@ -143,18 +132,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.4188 )
 [node name="vehicles" type="Spatial" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
-[node name="vehicle0" parent="vehicles" groups=[
+[node name="vehicle1" parent="vehicles" groups=[
 "vehicles",
 ] instance=ExtResource( 2 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -35.8057, -111.134 )
 
-[node name="vehicle1" parent="vehicles" groups=[
+[node name="vehicle2" parent="vehicles" groups=[
 "vehicles",
 ] instance=ExtResource( 2 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -35.8057, -111.134 )
-vehicle_number = 1
 
 [node name="Lights" type="Node" parent="."]
 editor/display_folded = true
@@ -288,6 +276,7 @@ script = ExtResource( 4 )
 
 [node name="Lap Tracker 00" type="Area" parent="Lap Marker"]
 editor/display_folded = true
+visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Lap Marker/Lap Tracker 00"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
@@ -296,122 +285,24 @@ shape = SubResource( 3 )
 [node name="Lap Tracker 01" type="Area" parent="Lap Marker"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42747, -8.35034 )
+visible = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 01"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
 shape = SubResource( 3 )
 
 [node name="Lap Tracker 02" type="Area" parent="Lap Marker"]
-transform = Transform( 0.842903, 0, 0.538065, 0, 1, 0, -0.538065, 0, 0.842903, 1.04199, 70.0442, -380.376 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.36666, 12.1235 )
+visible = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 02"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 4 )
-
-[node name="Lap Tracker 03" type="Area" parent="Lap Marker"]
-transform = Transform( 0.258842, 0, 0.96592, 0, 1, 0, -0.96592, 0, 0.258842, -79.3782, 39.1914, -608.489 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 03"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 04" type="Area" parent="Lap Marker"]
-transform = Transform( 0.258842, 0, 0.96592, 0, 1, 0, -0.96592, 0, 0.258842, -232.884, -10.1671, -655.19 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 04"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 05" type="Area" parent="Lap Marker"]
-transform = Transform( 0.914255, 0, 0.405139, 0, 1, 0, -0.405139, 0, 0.914255, -295.177, -10.1671, -536.226 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 05"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 06" type="Area" parent="Lap Marker"]
-transform = Transform( -0.104792, 0, 0.994494, 0, 1, 0, -0.994494, 0, -0.104792, -181.4, -13.4324, -534.927 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 06"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 07" type="Area" parent="Lap Marker"]
-transform = Transform( -0.722528, 0, 0.691342, 0, 1, 0, -0.691342, 0, -0.722528, -51.9167, -6.48395, -739.336 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 07"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-<<<<<<< HEAD
-=======
-[node name="Lap Tracker 08" type="Area" parent="Lap Marker/Lap Tracker 07"]
-transform = Transform( 0.771651, 0, 0.636046, 0, 1, 0, -0.636046, 0, 0.771651, -81.7651, -14.5657, 75.7618 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 07/Lap Tracker 08"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 09" type="Area" parent="Lap Marker"]
-transform = Transform( -0.857902, 0, -0.513814, 0, 1, 0, 0.513814, 0, -0.857902, -57.4152, -19.2581, -832.188 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 09"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 10" type="Area" parent="Lap Marker"]
-transform = Transform( -0.434797, 0, -0.900528, 0, 1, 0, 0.900528, 0, -0.434797, 55.9906, -19.2581, -933.214 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 10"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 11" type="Area" parent="Lap Marker"]
-transform = Transform( -0.999638, 0, -0.0268807, 0, 1, 0, 0.0268807, 0, -0.999638, 229.34, -14.9556, -725.626 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 11"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 12" type="Area" parent="Lap Marker"]
-transform = Transform( -0.340126, 0, 0.94038, 0, 1, 0, -0.94038, 0, -0.340126, 156.221, -20.997, -515.82 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 12"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 13" type="Area" parent="Lap Marker"]
-transform = Transform( -0.965681, 0, 0.259732, 0, 1, 0, -0.259732, 0, -0.965681, -177.002, 34.1169, -340.693 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 13"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 14" type="Area" parent="Lap Marker"]
-transform = Transform( -0.965681, 0, 0.259732, 0, 1, 0, -0.259732, 0, -0.965681, -275.455, 41.623, -0.488701 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 14"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 15" type="Area" parent="Lap Marker"]
-transform = Transform( -0.553376, 0, -0.832932, 0, 1, 0, 0.832932, 0, -0.553376, -112.48, 80.9488, 254.992 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 15"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5457, 4.37741, -16.8826 )
-shape = SubResource( 5 )
-
-[node name="Lap Tracker 16" type="Area" parent="Lap Marker"]
-transform = Transform( -0.553376, 0, -0.832932, 0, 1, 0, 0.832932, 0, -0.553376, 1.58125, -14.3093, 134.351 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 16"]
-transform = Transform( 0.155395, 0, 0.987852, 0, 1, 0, -0.987852, 0, 0.155395, 56.7922, 4.37741, 31.2903 )
-shape = SubResource( 9 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
+shape = SubResource( 3 )
 
 [node name="SplitscreenCamera" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 
->>>>>>> e22c9644c5092b9dc911c85587e8aa08281e8fd6
 [node name="GUI" type="Node" parent="."]
 editor/display_folded = true
 
@@ -443,7 +334,7 @@ margin_bottom = 180.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="StoplightAnimationPlayer" type="AnimationPlayer" parent="GUI/Stoplight"]
-anims/Stoplight = SubResource( 6 )
+anims/Stoplight = SubResource( 4 )
 script = ExtResource( 6 )
 
 [node name="LapMessages" type="Node" parent="GUI"]
@@ -481,13 +372,13 @@ texture = ExtResource( 9 )
 
 [node name="RaceFinishedSignAnimationPlayer" type="AnimationPlayer" parent="GUI/LapMessages"]
 autoplay = "FinishedSign"
-anims/FinishedSign = SubResource( 7 )
+anims/FinishedSign = SubResource( 5 )
 
 [node name="Boost Rings" type="Node" parent="."]
 
 [node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
 editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 0, -25.2047, -155.199 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 0, -25.2047, -155.199 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
@@ -496,15 +387,15 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings"]
 editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 9.19172, -25.2047, -228.503 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 9.19172, -25.2047, -228.503 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder2"]
@@ -513,15 +404,15 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder2"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder2/Area"]
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="CSGCylinder3" type="CSGCylinder" parent="Boost Rings"]
 editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 8.00992, 12.2982, -440.216 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 8.00992, 12.2982, -440.216 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder3"]
@@ -530,15 +421,15 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder3"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder3/Area"]
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="CSGCylinder4" type="CSGCylinder" parent="Boost Rings"]
 editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 20.8152, 21.2227, -440.216 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 20.8152, 21.2227, -440.216 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder4"]
@@ -547,16 +438,15 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder4"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder4/Area"]
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="Scene Root2" parent="." instance=ExtResource( 11 )]
-transform = Transform( -6.99382e-007, 0, 16, 0, 16, 0, -16, 0, -6.99382e-007, -26.3912, -39.7137, -319.554 )
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -26.3912, -39.7137, -319.554 )
 
-<<<<<<< HEAD
 [node name="ship" parent="." instance=ExtResource( 12 )]
 transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -33.8763, -40.8172, -422.488 )
 
@@ -569,16 +459,6 @@ transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -17.
 [node name="track" parent="." instance=ExtResource( 15 )]
 transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -20.6932, -43.7418, -406.293 )
 visible = false
-=======
-[node name="Level 1" parent="." instance=ExtResource( 12 )]
-transform = Transform( -6.99382e-007, 0, 16, 0, 16, 0, -16, 0, -6.99382e-007, -19.2798, -105.064, -251.096 )
-
-[node name="Scene Root" parent="." instance=ExtResource( 13 )]
-transform = Transform( -6.99382e-007, 0, 16, 0, 16, 0, -16, 0, -6.99382e-007, -17.4773, -47.906, -322.706 )
-
-[node name="track" parent="." instance=ExtResource( 14 )]
-transform = Transform( -6.99382e-007, 0, 16, 0, 16, 0, -16, 0, -6.99382e-007, -20.6932, -43.7418, -406.293 )
->>>>>>> e22c9644c5092b9dc911c85587e8aa08281e8fd6
 
 [node name="Scene Root3" parent="." instance=ExtResource( 16 )]
 transform = Transform( 18.7175, 0, 0, 0, 35.5476, 0, 0, 0, 24.743, 0.879242, -41.8928, -118.333 )
@@ -647,7 +527,7 @@ transform = Transform( -13.1276, 0, -12.7678, 0, 23.1762, 0, 7.90833, 0, -21.194
 transform = Transform( -0.731564, 0, -24.7148, 0, 23.1762, 0, 15.3082, 0, -1.1811, 11.307, -49.2309, -902.205 )
 
 [node name="Scene Root12" parent="." instance=ExtResource( 16 )]
-transform = Transform( 8.38409, 0, -20.7122, 0, 23.1762, 0, 12.829, 0, 13.5359, -284.106, -51.0307, -725.67 )
+transform = Transform( 8.38409, 0, -20.7122, 0, 23.1762, 0, 12.829, 0, 13.5359, -297.17, -51.0307, -725.67 )
 
 [node name="Scene Root13" parent="." instance=ExtResource( 16 )]
 transform = Transform( -1.52535, 0, -24.6201, 0, 29.4023, 0, 15.2496, 0, -2.46265, -226.929, -58.1941, -731.819 )
@@ -712,19 +592,9 @@ transform = Transform( 0.0637513, 0, 2.99932, 0, 3.19925, 0, -2.99932, 0, 0.0637
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 02" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 03" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 04" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 05" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 06" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 07" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 07/Lap Tracker 08" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 09" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 10" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 11" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 12" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 13" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 14" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 15" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
-[connection signal="body_entered" from="Lap Marker/Lap Tracker 16" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
 
 [editable path="vehicles/vehicle1"]
+
+[editable path="vehicles/vehicle2"]
+
+[editable path="SplitscreenCamera"]
