@@ -6,3 +6,5 @@ export_presets.cfg
 
 # Mono-specific ignores
 .mono/
+gyro_godot_project/levels/level 01/Level01_final.tscn
+gyro_godot_project/levels/level 01/Level01_final.tscn

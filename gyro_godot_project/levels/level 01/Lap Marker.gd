@@ -3,13 +3,20 @@ extends Spatial
 var vehicles = {}
 var placements = []
 var players_finished = 0
-onready var vehicle_count = $"../vehicles".get_child_count()
-onready var splitscreen = $"../SplitscreenCamera"
+var splitscreen
 
+#signal race_finished(vehicle_id)
+#signal ranking_changed(vehicle_id, rank)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(vehicle_count):
+	set_process(false)
+
+func initialize():
+	set_process(true)
+	
+	splitscreen = $"../Splitscreen Camera"
+	for i in range($"../vehicles".get_child_count()):
 		placements.append(i)
 		vehicles[i] = {}
 		vehicles[i].finished = false
@@ -31,7 +38,7 @@ func _process(delta):
 		splitscreen.get_cam_gui(placements[i]).get_node("Rank/Inside/Label").text = str(i+1) + get_ordinal(i+1) + " place"
 
 func race_start():
-	for i in range(vehicle_count):
+	for i in range($"../vehicles".get_child_count()):
 		vehicles[i].start_time = OS.get_ticks_msec()
 
 func race_finish(id): # id == VehicleNumber
