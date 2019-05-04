@@ -18,6 +18,7 @@ func _ready():
 	yield(get_tree().create_timer(1), "timeout")
 	Global.players.append(id)
 	Global.emit_signal("player_connected", id)
+	Global.emit_signal("color_scheme", id, 0)
 	set_process_input(true)
 
 func _input(event):

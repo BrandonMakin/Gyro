@@ -70,6 +70,9 @@ func _process(delta):
 				var angle = clean_angle_data(data.a)
 				var tilt = clean_tilt_data(data.t)
 				Global.emit_signal("player_rotated", data.id, angle, tilt)
+			"5": # On obtaining the color scheme
+				var data = JSON.parse(packet).result
+				Global.emit_signal("color_scheme", data.id, data.scheme_id)
 			"7": # On obtaining this game's id
 				Global.game_id = packet
 				print("Game ID: " + packet)
