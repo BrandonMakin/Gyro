@@ -10,8 +10,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.63586, 0 )
 material/0 = ExtResource( 2 )
 
 [node name="Sphere022" parent="." index="1"]
+transform = Transform( 0.0504375, -0.0285463, 0.039157, 0.0367321, 0.0680731, 0.000859997, -0.0448247, 0.0236624, 0.0447649, 6.24627, -41.9239, -1.09022 )
 visible = false
 
 [node name="ship" parent="." index="3"]
+transform = Transform( 0.194824, -8.89383e-08, -0.0547793, -0.0452068, -3.24465e-07, -0.236078, 3.48978e-10, 7.62011, -1.06916e-08, -23.7924, -74.9816, 0.176253 )
 visible = false
 

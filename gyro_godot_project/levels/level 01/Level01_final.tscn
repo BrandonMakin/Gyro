@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/SetOf8Vehicles/SetOf8Vehicles.tscn" type="PackedScene" id=2]
@@ -10,11 +10,12 @@
 [ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=8]
 [ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=9]
 [ext_resource path="res://road2.tscn" type="PackedScene" id=10]
-[ext_resource path="res://track_last.tscn" type="PackedScene" id=11]
-[ext_resource path="res://levels/level 01/old/Level01_Ali2.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/level 01/map.tscn" type="PackedScene" id=13]
-[ext_resource path="res://boarder.tscn" type="PackedScene" id=14]
-[ext_resource path="res://arrow.tscn" type="PackedScene" id=15]
+[ext_resource path="res://final_track.tscn" type="PackedScene" id=11]
+[ext_resource path="res://track_last.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/level 01/old/Level01_Ali2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/level 01/map.tscn" type="PackedScene" id=14]
+[ext_resource path="res://boarder.tscn" type="PackedScene" id=15]
+[ext_resource path="res://arrow.tscn" type="PackedScene" id=16]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -353,10 +354,11 @@ autoplay = "FinishedSign"
 anims/FinishedSign = SubResource( 5 )
 
 [node name="Boost Rings" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
 editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 0, -25.2047, -155.199 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 0, -25.2047, -155.199 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
@@ -365,7 +367,7 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
@@ -373,7 +375,7 @@ shape = SubResource( 6 )
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings"]
 editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 9.19172, -25.2047, -228.503 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 9.19172, -25.2047, -228.503 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder2"]
@@ -382,7 +384,7 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder2"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder2/Area"]
@@ -390,7 +392,7 @@ shape = SubResource( 6 )
 
 [node name="CSGCylinder3" type="CSGCylinder" parent="Boost Rings"]
 editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 8.00992, 12.2982, -440.216 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 8.00992, 12.2982, -440.216 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder3"]
@@ -399,7 +401,7 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder3"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder3/Area"]
@@ -407,7 +409,7 @@ shape = SubResource( 6 )
 
 [node name="CSGCylinder4" type="CSGCylinder" parent="Boost Rings"]
 editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 20.8152, 21.2227, -440.216 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 20.8152, 21.2227, -440.216 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder4"]
@@ -416,151 +418,155 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder4"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder4/Area"]
 shape = SubResource( 6 )
 
 [node name="Scene Root2" parent="." instance=ExtResource( 10 )]
-transform = Transform( -6.99382e-007, 0, 16, 0, 16, 0, -16, 0, -6.99382e-007, -26.3912, -39.7137, -319.554 )
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -26.3912, -39.7137, -319.554 )
 
-[node name="ship" parent="." instance=ExtResource( 11 )]
-transform = Transform( -6.99382e-007, 0, 16, 0, 16, 0, -16, 0, -6.99382e-007, -33.8763, -40.8172, -422.488 )
+[node name="Scene Root46" parent="." instance=ExtResource( 11 )]
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -31.8295, -52.9088, -325.594 )
+visible = false
 
-[node name="Level 1" parent="." instance=ExtResource( 12 )]
-transform = Transform( -6.99382e-007, 0, 16, 0, 16, 0, -16, 0, -6.99382e-007, -19.2798, -105.064, -251.096 )
+[node name="ship" parent="." instance=ExtResource( 12 )]
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -33.8763, -40.8172, -422.488 )
 
-[node name="Scene Root" parent="." instance=ExtResource( 13 )]
-transform = Transform( -6.99382e-007, 0, 16, 0, 16, 0, -16, 0, -6.99382e-007, -17.4773, -47.906, -322.706 )
+[node name="Level 1" parent="." instance=ExtResource( 13 )]
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -19.2798, -105.064, -251.096 )
 
-[node name="Scene Root3" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root" parent="." instance=ExtResource( 14 )]
+transform = Transform( -6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -17.4773, -47.906, -322.706 )
+
+[node name="Scene Root3" parent="." instance=ExtResource( 15 )]
 transform = Transform( 18.7175, 0, 0, 0, 35.5476, 0, 0, 0, 24.743, 0.879242, -41.8928, -118.333 )
 
-[node name="Scene Root11" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root11" parent="." instance=ExtResource( 15 )]
 transform = Transform( 15.3257, 0, 0, 0, 23.1762, 0, 0, 0, 24.743, -331.773, -49.2309, -664.93 )
 
-[node name="Scene Root15" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root15" parent="." instance=ExtResource( 15 )]
 transform = Transform( 7.12621, 0, 21.9054, 0, 23.1762, 0, -13.5681, 0, 11.5051, -275.307, -49.2309, -617.104 )
 
-[node name="Scene Root16" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root16" parent="." instance=ExtResource( 15 )]
 transform = Transform( -5.22064, 0, 23.2631, 0, 23.1762, 0, -14.4091, 0, -8.42861, -169.3, -49.2309, -636.962 )
 
-[node name="Scene Root17" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root17" parent="." instance=ExtResource( 15 )]
 transform = Transform( -14.5478, 0, 7.78256, 0, 23.1762, 0, -4.82048, 0, -23.4872, -99.4339, -49.2309, -764.934 )
 
-[node name="Scene Root18" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root18" parent="." instance=ExtResource( 15 )]
 transform = Transform( -0.613068, 0, 24.7232, 0, 23.1762, 0, -15.3134, 0, -0.989785, -19.2888, -49.2309, -847.305 )
 
-[node name="Scene Root22" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root22" parent="." instance=ExtResource( 15 )]
 transform = Transform( 15.2356, 0, 2.679, 0, 23.1762, 0, -1.65936, 0, 24.5975, -40.8294, -49.2309, -955.604 )
 
-[node name="Scene Root23" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root23" parent="." instance=ExtResource( 15 )]
 transform = Transform( 11.3158, 0, -16.687, 0, 23.1762, 0, 10.3358, 0, 18.2691, -27.2171, -49.2309, -1033.27 )
 
-[node name="Scene Root24" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root24" parent="." instance=ExtResource( 15 )]
 transform = Transform( -4.35341, 0, -23.7237, 0, 23.1762, 0, 14.6944, 0, -7.0285, 49.6204, -49.2309, -1058.49 )
 
-[node name="Scene Root25" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root25" parent="." instance=ExtResource( 15 )]
 transform = Transform( -12.4597, 0, -14.4071, 0, 23.1762, 0, 8.92366, 0, -20.116, 90.7792, -49.2309, -1019.4 )
 
-[node name="Scene Root27" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root27" parent="." instance=ExtResource( 15 )]
 transform = Transform( -10.9006, 0, -17.3925, 0, 23.1762, 0, 10.7728, 0, -17.5988, 194.793, -49.2309, -907.539 )
 
-[node name="Scene Root28" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root28" parent="." instance=ExtResource( 15 )]
 transform = Transform( -13.7044, 0, -11.076, 0, 23.1762, 0, 6.86039, 0, -22.1255, 235.012, -49.2309, -869.448 )
 
-[node name="Scene Root29" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root29" parent="." instance=ExtResource( 15 )]
 transform = Transform( -15.3244, 0, -0.314348, 0, 23.1762, 0, 0.194709, 0, -24.741, 235.012, -49.4683, -835.356 )
 
-[node name="Scene Root30" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root30" parent="." instance=ExtResource( 15 )]
 transform = Transform( -15.3244, 0, -0.314348, 0, 23.1762, 0, 0.194709, 0, -24.741, 235.012, -49.4683, -784.696 )
 
-[node name="Scene Root31" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root31" parent="." instance=ExtResource( 15 )]
 transform = Transform( -15.0441, 0, 4.72143, 0, 23.1762, 0, -2.92443, 0, -24.2883, 224.475, -49.4683, -735.803 )
 
-[node name="Scene Root32" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root32" parent="." instance=ExtResource( 15 )]
 transform = Transform( -12.8761, 0, 13.4188, 0, 23.1762, 0, -8.31155, 0, -20.7882, 197.616, -49.4683, -680.309 )
 
-[node name="Scene Root33" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root33" parent="." instance=ExtResource( 15 )]
 transform = Transform( -7.53203, 0, 21.5486, 0, 23.1762, 0, -13.3471, 0, -12.1603, 155.536, -50.2648, -631.09 )
 
-[node name="Scene Root34" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root34" parent="." instance=ExtResource( 15 )]
 transform = Transform( -1.87297, 0, 24.5575, 0, 23.1762, 0, -15.2108, 0, -3.02387, 126.088, -50.2648, -616.496 )
 
-[node name="Scene Root26" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root26" parent="." instance=ExtResource( 15 )]
 transform = Transform( -10.4831, 0, -18.049, 0, 23.1762, 0, 11.1794, 0, -16.9248, 148.244, -49.2309, -960.457 )
 
-[node name="Scene Root19" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root19" parent="." instance=ExtResource( 15 )]
 transform = Transform( -9.76091, 0, 19.0755, 0, 23.1762, 0, -11.8153, 0, -15.7588, 71.025, -49.2309, -830.71 )
 
-[node name="Scene Root20" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root20" parent="." instance=ExtResource( 15 )]
 transform = Transform( -13.1276, 0, -12.7678, 0, 23.1762, 0, 7.90833, 0, -21.1943, 71.025, -49.2309, -882.563 )
 
-[node name="Scene Root21" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root21" parent="." instance=ExtResource( 15 )]
 transform = Transform( -0.731564, 0, -24.7148, 0, 23.1762, 0, 15.3082, 0, -1.1811, 11.307, -49.2309, -902.205 )
 
-[node name="Scene Root12" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root12" parent="." instance=ExtResource( 15 )]
 transform = Transform( 8.38409, 0, -20.7122, 0, 23.1762, 0, 12.829, 0, 13.5359, -297.17, -51.0307, -725.67 )
 
-[node name="Scene Root13" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root13" parent="." instance=ExtResource( 15 )]
 transform = Transform( -1.52535, 0, -24.6201, 0, 29.4023, 0, 15.2496, 0, -2.46265, -226.929, -58.1941, -731.819 )
 
-[node name="Scene Root14" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root14" parent="." instance=ExtResource( 15 )]
 transform = Transform( -5.05965, 0, -23.3557, 0, 29.4023, 0, 14.4664, 0, -8.16871, -173.837, -21.1194, -722.471 )
 
-[node name="Scene Root4" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root4" parent="." instance=ExtResource( 15 )]
 transform = Transform( 17.0384, 0, -10.2429, 0, 35.5476, 0, 7.74857, 0, 22.5233, 0.879242, -41.8928, -2.08777 )
 
-[node name="Scene Root5" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root5" parent="." instance=ExtResource( 15 )]
 transform = Transform( 17.0384, 0, -10.2429, 0, 35.5476, 0, 7.74857, 0, 22.5233, -82.8149, -41.8928, 92.1766 )
 
-[node name="Scene Root6" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root6" parent="." instance=ExtResource( 15 )]
 transform = Transform( 17.0384, 0, -10.2429, 0, 35.5476, 0, 7.74857, 0, 22.5233, -199.816, -30.5356, -174.38 )
 
-[node name="Scene Root35" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root35" parent="." instance=ExtResource( 15 )]
 transform = Transform( 18.0943, 0, -6.33198, 0, 35.5476, 0, 4.79001, 0, 23.9191, -241.66, -30.5356, -105.602 )
 
-[node name="Scene Root7" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root7" parent="." instance=ExtResource( 15 )]
 transform = Transform( 18.4448, 0, -4.20857, 0, 35.5476, 0, 3.1837, 0, 24.3824, -152.749, -39.3022, -266.953 )
 
-[node name="Scene Root10" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root10" parent="." instance=ExtResource( 15 )]
 transform = Transform( 18.3454, 0, 4.9093, 0, 35.5476, 0, -3.71378, 0, 24.2511, -243.025, 2.11907, -55.257 )
 
-[node name="Scene Root36" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root36" parent="." instance=ExtResource( 15 )]
 transform = Transform( 17.3879, 0, 9.1593, 0, 35.5476, 0, -6.92882, 0, 22.9853, -233.772, 24.0892, 29.5064 )
 
-[node name="Scene Root37" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root37" parent="." instance=ExtResource( 15 )]
 transform = Transform( 13.4135, 0, 17.2571, 0, 35.5476, 0, -13.0546, 0, 17.7315, -160.68, 25.6406, 95.1554 )
 
-[node name="Scene Root8" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root8" parent="." instance=ExtResource( 15 )]
 transform = Transform( 18.5966, 0, -2.80791, 0, 35.5476, 0, 2.12412, 0, 24.5831, -136.143, 8.93977, -370.256 )
 
-[node name="Scene Root9" parent="." instance=ExtResource( 14 )]
+[node name="Scene Root9" parent="." instance=ExtResource( 15 )]
 transform = Transform( 14.9334, 0, -14.9172, 0, 35.5476, 0, 11.2845, 0, 19.7406, -146.213, -12.4643, -435.524 )
 
-[node name="Scene Root38" parent="." instance=ExtResource( 15 )]
+[node name="Scene Root38" parent="." instance=ExtResource( 16 )]
 transform = Transform( 0.993281, 0, -2.83079, 0, 3.19925, 0, 2.83079, 0, 0.993281, 34.591, 51.8185, -425.871 )
 
-[node name="Scene Root39" parent="." instance=ExtResource( 15 )]
+[node name="Scene Root39" parent="." instance=ExtResource( 16 )]
 transform = Transform( 0.993281, 0, -2.83079, 0, 3.19925, 0, 2.83079, 0, 0.993281, 3.46148, 51.8185, -425.871 )
 
-[node name="Scene Root40" parent="." instance=ExtResource( 15 )]
+[node name="Scene Root40" parent="." instance=ExtResource( 16 )]
 transform = Transform( -2.82159, 0, 1.01914, 0, 3.19925, 0, -1.01914, 0, -2.82159, -24.2523, -29.8043, -225.583 )
 
-[node name="Scene Root41" parent="." instance=ExtResource( 15 )]
+[node name="Scene Root41" parent="." instance=ExtResource( 16 )]
 transform = Transform( -2.82159, 0, 1.01914, 0, 3.19925, 0, -1.01914, 0, -2.82159, -21.0221, -30.4713, -241.542 )
 
-[node name="Scene Root42" parent="." instance=ExtResource( 15 )]
+[node name="Scene Root42" parent="." instance=ExtResource( 16 )]
 transform = Transform( -1.89632, 0, 2.32465, 0, 3.19925, 0, -2.32465, 0, -1.89632, -38.9935, -30.4713, -216.077 )
 
-[node name="Scene Root43" parent="." instance=ExtResource( 15 )]
+[node name="Scene Root43" parent="." instance=ExtResource( 16 )]
 transform = Transform( 0.0637513, 0, 2.99932, 0, 3.19925, 0, -2.99932, 0, 0.0637513, -49.8558, -11.1231, -344.225 )
 
-[node name="Scene Root45" parent="." instance=ExtResource( 15 )]
+[node name="Scene Root45" parent="." instance=ExtResource( 16 )]
 transform = Transform( -0.196542, 0, -2.99355, 0, 3.19925, 0, 2.99355, 0, -0.196542, -25.705, 6.59839, -722.435 )
 
-[node name="Scene Root44" parent="." instance=ExtResource( 15 )]
+[node name="Scene Root44" parent="." instance=ExtResource( 16 )]
 transform = Transform( 0.0637513, 0, 2.99932, 0, 3.19925, 0, -2.99932, 0, 0.0637513, -30.8396, -11.1231, -347.657 )
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
