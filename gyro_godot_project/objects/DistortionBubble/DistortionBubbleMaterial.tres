@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://objects/DistortionBubble/DistortionBubble.shader" type="Shader" id=1]
+[ext_resource path="res://art/img/distortion_bubble/distortion_normal.jpg" type="Texture" id=2]
+
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/brightness = 1.5
+shader_param/uv_offset_texture = ExtResource( 2 )
+
