@@ -1,10 +1,51 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://objects/SplitscreenCamera/CameraView.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+var active_cameras = 0
+
+func _ready():
+	for i in range(8):
+		get_cam_gui(i).get_node(\"Lap\").color = Global.color_schemes[i]
+		get_cam_gui(i).get_node(\"Rank\").color = Global.color_schemes[i]
+		get_cam_gui(i).get_node(\"PlayerColor\").color = Global.color_schemes[i]
+		
+		if i < active_cameras:
+			continue
+		get_cam_gui(i).get_node(\"BlackRect\").visible = true
+
+func get_cam_gui(id):
+	match id:
+		0: return $VBoxContainer/HBoxContainer/CamView0/GUI
+		1: return $VBoxContainer/HBoxContainer/CamView1/GUI
+		2: return $VBoxContainer/HBoxContainer/CamView2/GUI
+		3: return $VBoxContainer/HBoxContainer2/CamView3/GUI
+		4: return $VBoxContainer/HBoxContainer2/CamView4/GUI
+		5: return $VBoxContainer/HBoxContainer3/CamView5/GUI
+		6: return $VBoxContainer/HBoxContainer3/CamView6/GUI
+		7: return $VBoxContainer/HBoxContainer3/CamView7/GUI
+		_: printerr(\"get_cam_gui(ID): Unkown camera ID\")
+
+func get_cam(id):
+	match id:
+		
+		0: return $VBoxContainer/HBoxContainer/CamView0/ViewportContainer/Viewport/Camera
+		1: return $VBoxContainer/HBoxContainer/CamView1/ViewportContainer/Viewport/Camera
+		2: return $VBoxContainer/HBoxContainer/CamView2/ViewportContainer/Viewport/Camera
+		3: return $VBoxContainer/HBoxContainer2/CamView3/ViewportContainer/Viewport/Camera
+		4: return $VBoxContainer/HBoxContainer2/CamView4/ViewportContainer/Viewport/Camera
+		5: return $VBoxContainer/HBoxContainer3/CamView5/ViewportContainer/Viewport/Camera
+		6: return $VBoxContainer/HBoxContainer3/CamView6/ViewportContainer/Viewport/Camera
+		7: return $VBoxContainer/HBoxContainer3/CamView7/ViewportContainer/Viewport/Camera
+		_: printerr(\"get_cam_gui(ID): Unkown camera ID\")"
 
 [node name="Splitscreen Camera" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0

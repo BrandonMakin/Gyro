@@ -321,7 +321,7 @@ transform = Transform( -0.99743, 0, -0.0716536, 0, 1, 0, 0.0716536, 0, -0.99743,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9446, 13.4098, -0.232544 )
 shape = SubResource( 4 )
 
-[node name="GUI" type="Node" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Stoplight" type="Control" parent="GUI"]
 anchor_left = 0.5
@@ -358,7 +358,7 @@ script = ExtResource( 5 )
 editor/display_folded = true
 
 [node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-09, 2.78262, 0, -0.0687474, -4.37114e-08, 0, -25.2047, -155.199 )
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 0, -25.2047, -155.199 )
 sides = 12
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
@@ -367,7 +367,7 @@ operation = 2
 sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]

@@ -56,9 +56,14 @@ func add_splitscreen_camera():
 	if player_count_in_this_level <= 2:
 		get_parent().call_deferred("add_child", splitscreen2.instance())
 	elif player_count_in_this_level <= 4:
-		get_parent().call_deferred("add_child", splitscreen4.instance())
+		var ss = splitscreen4.instance()
+		ss.active_cameras = player_count_in_this_level
+		get_parent().call_deferred("add_child", ss)
 	else:
-		get_parent().call_deferred("add_child", splitscreen8.instance())
+		var ss = splitscreen8.instance()
+		ss.active_cameras = player_count_in_this_level
+		get_parent().call_deferred("add_child", ss)
+	
 	$"../Lap Marker".initialize()
 
 #func _fill_vehicles():

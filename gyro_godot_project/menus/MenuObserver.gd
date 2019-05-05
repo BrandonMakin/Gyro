@@ -22,8 +22,6 @@ func _on_connect(id):
 	add_child(players[id])
 
 func _on_rotate(id, angle, tilt):
-#	print("angle: " + str(angle) + ", tilt: " + str(tilt))
-	print(typeof(id))
 	if players.has(id):
 		players[id]._move(angle, tilt)
 

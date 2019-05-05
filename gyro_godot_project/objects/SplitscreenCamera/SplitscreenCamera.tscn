@@ -5,6 +5,12 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
 
+func _ready():
+	for i in range(2):
+		get_cam_gui(i).get_node(\"Lap\").color = Global.color_schemes[i]
+		get_cam_gui(i).get_node(\"Rank\").color = Global.color_schemes[i]
+		get_cam_gui(i).get_node(\"PlayerColor\").color = Global.color_schemes[i]
+
 func get_cam_gui(id):
 	match id:
 		0: return get_node(\"Viewports/CamView0/GUI\")

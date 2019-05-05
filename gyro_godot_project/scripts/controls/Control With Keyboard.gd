@@ -10,7 +10,6 @@ var id = "a1"
 var rotation = Vector2()
 
 func _ready():
-	print("Hey baby")
 	OS.center_window()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	set_process_input(false)
