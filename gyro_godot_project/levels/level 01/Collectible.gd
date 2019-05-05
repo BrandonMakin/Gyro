@@ -9,7 +9,8 @@ func _ready():
 func _on_body_enter(body):
 	if body.is_in_group("players"): #Using groups so this code only operates on players
 		print("%s Collectible Obtained!" % body.name)
-		body.coins_collected += 1
+		if body.coins_collected < 10:
+			body.coins_collected += 1
 		print("%s Collectibles collected: %d" % [body.name, body.coins_collected])
 		body.swim_state.max_speed += 5
 		print("%s Max Speed: %d" % [body.name, body.swim_state.max_speed])

@@ -34,3 +34,13 @@ func _process(delta):
 		$"../AnimatedSpeedlines".visible = true
 	else:
 		$"../AnimatedSpeedlines".visible = false
+	
+	for i in range($"../../../GUI/coins_laps".get_child_count()):
+		if i == 0:
+			continue
+		var c = $"../../../GUI/coins_laps".get_child(i)
+		if i-1 == target_vehicle.coins_collected:
+			c.visible = true
+			return
+		else:
+			c.visible = false
