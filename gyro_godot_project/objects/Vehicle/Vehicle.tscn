@@ -37,6 +37,7 @@ transform = Transform( 1, 0, 0, 0, 1, 1.98952e-013, 0, -1.98952e-013, 1, 0, 3, 1
 visible = false
 
 [node name="Fish" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="swim" parent="Fish" instance=ExtResource( 6 )]
 transform = Transform( -1.31134e-008, -0.2, 1.74846e-008, 0, -8.74228e-009, -0.4, 0.3, -8.74228e-009, 7.64274e-016, 0, 0, 0 )
@@ -50,6 +51,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.
 shape = SubResource( 1 )
 
 [node name="DraftBox" type="Area" parent="."]
+editor/display_folded = true
 script = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="DraftBox"]

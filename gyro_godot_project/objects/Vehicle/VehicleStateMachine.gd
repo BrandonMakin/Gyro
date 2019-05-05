@@ -77,3 +77,4 @@ func set_color():
 	mat.albedo_color = Global.color_schemes[player_id.to_int()]
 	$"Fish/swim/basic swimmer/Skeleton/mesh".material_override = mat
 	$"Fish/drift_left/drift left/Skeleton/mesh".material_override = mat
+#	.material_override = mat

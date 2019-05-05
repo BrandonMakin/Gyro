@@ -19,6 +19,13 @@ func _ready():
 	player_count_in_this_level = max(1, min(max_players, Global.players.size()))
 	_fill_vehicles()
 	add_splitscreen_camera()
+	for i in range(max_players):
+		if i < player_count_in_this_level:
+			continue
+		var v = vehicle_parent.get_child(i)
+		v.visible = false
+		v.collision_layer = 0
+		v.collision_mask = 0
 
 func _on_connect(new_id):
 	_add_vehicle(new_id)
