@@ -6,8 +6,9 @@
 [ext_resource path="res://levels/level 01/Collectible.gd" type="Script" id=4]
 [ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=5]
 [ext_resource path="res://objects/SplitscreenCamera/SplitscreenCamera.tscn" type="PackedScene" id=6]
-[ext_resource path="res://levels/level 01/StoplightAnimationPlayer.gd" type="Script" id=7]
+[ext_resource path="res://levels/level 01/CountdownAnimationPlayer.gd" type="Script" id=7]
 [ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=8]
+
 
 [sub_resource type="PlaneMesh" id=1]
 

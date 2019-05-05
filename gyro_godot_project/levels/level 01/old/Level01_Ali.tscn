@@ -6,7 +6,7 @@
 [ext_resource path="res://levels/level 01/Collectible.gd" type="Script" id=4]
 [ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=5]
 [ext_resource path="res://objects/SplitscreenCamera/SplitscreenCamera.tscn" type="PackedScene" id=6]
-[ext_resource path="res://levels/level 01/StoplightAnimationPlayer.gd" type="Script" id=7]
+[ext_resource path="res://levels/level 01/CountdownAnimationPlayer.gd" type="Script" id=7]
 [ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=8]
 [ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=9]
 [ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=10]
@@ -32,6 +32,7 @@
 [ext_resource path="res://art/models/grass001.tscn" type="PackedScene" id=30]
 [ext_resource path="res://track02.tscn" type="PackedScene" id=31]
 [ext_resource path="res://track_thick.tscn" type="PackedScene" id=32]
+
 
 [sub_resource type="PlaneMesh" id=1]
 

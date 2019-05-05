@@ -1,12 +1,16 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/SetOf8Vehicles/SetOf8Vehicles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/level 01/Collectible.gd" type="Script" id=3]
 [ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=4]
-[ext_resource path="res://levels/level 01/StoplightAnimationPlayer.gd" type="Script" id=5]
-[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=6]
-[ext_resource path="res://levels/level 02/terrain/level_03.dae" type="PackedScene" id=7]
+[ext_resource path="res://art/img/gui/countdown/countdown3.png" type="Texture" id=5]
+[ext_resource path="res://art/img/gui/countdown/countdown2.png" type="Texture" id=6]
+[ext_resource path="res://art/img/gui/countdown/countdown1.png" type="Texture" id=7]
+[ext_resource path="res://art/img/gui/countdown/go.png" type="Texture" id=8]
+[ext_resource path="res://levels/level 01/CountdownAnimationPlayer.gd" type="Script" id=9]
+[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=10]
+[ext_resource path="res://levels/level 02/terrain/level_03.dae" type="PackedScene" id=11]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -21,64 +25,65 @@ extents = Vector3( 83.5927, 111.185, 1 )
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 148.229, 150.257, 1 )
 
-[sub_resource type="Animation" id=6]
-length = 3.5
+[sub_resource type="Animation" id=7]
+length = 6.0
+step = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Light0:color")
+tracks/0/path = NodePath("countdown3:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0.694118, 0, 0, 1 ) ]
+"values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Light1:color")
+tracks/1/path = NodePath("countdown2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0.956863, 0.85098, 0, 1 ) ]
+"values": [ false, true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Light2:color")
+tracks/2/path = NodePath("countdown1:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 3, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0.45098, 0.254902, 1 ) ]
+"values": [ false, true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath(".:visible")
+tracks/3/path = NodePath("go:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 3.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 4.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true, false ]
 }
 tracks/4/type = "method"
-tracks/4/path = NodePath("StoplightAnimationPlayer")
+tracks/4/path = NodePath("CountdownAnimationPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 3 ),
+"times": PoolRealArray( 4.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -86,7 +91,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="SphereShape" id=7]
+[sub_resource type="SphereShape" id=8]
 
 [node name="Level 2" type="Spatial"]
 
@@ -323,36 +328,71 @@ shape = SubResource( 4 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="Stoplight" type="Control" parent="GUI"]
+[node name="Countdown" type="Control" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="countdown3" type="TextureRect" parent="GUI/Countdown"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -46.0
-margin_top = -90.0
-margin_right = 46.0
-margin_bottom = 90.0
+margin_left = -93.5
+margin_top = -79.0
+margin_right = 93.5
+margin_bottom = 79.0
+rect_min_size = Vector2( 187, 158 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
 
-[node name="Light0" type="ColorRect" parent="GUI/Stoplight"]
-anchor_right = 1.0
-margin_bottom = 60.0
-color = Color( 0, 0, 0, 1 )
+[node name="countdown2" type="TextureRect" parent="GUI/Countdown"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -76.0
+margin_right = 88.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 176, 152 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
 
-[node name="Light1" type="ColorRect" parent="GUI/Stoplight"]
-anchor_right = 1.0
-margin_top = 60.0
-margin_bottom = 120.0
-color = Color( 0, 0, 0, 1 )
+[node name="countdown1" type="TextureRect" parent="GUI/Countdown"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -75.0
+margin_right = 68.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 136, 150 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
 
-[node name="Light2" type="ColorRect" parent="GUI/Stoplight"]
-anchor_right = 1.0
-margin_top = 120.0
-margin_bottom = 180.0
-color = Color( 0, 0, 0, 1 )
+[node name="go" type="TextureRect" parent="GUI/Countdown"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -227.0
+margin_top = -86.0
+margin_right = 227.0
+margin_bottom = 86.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
 
-[node name="StoplightAnimationPlayer" type="AnimationPlayer" parent="GUI/Stoplight"]
-anims/Stoplight = SubResource( 6 )
-script = ExtResource( 5 )
+[node name="CountdownAnimationPlayer" type="AnimationPlayer" parent="GUI/Countdown"]
+anims/Stoplight = SubResource( 7 )
+script = ExtResource( 9 )
 
 [node name="Boost Rings" type="Node" parent="."]
 editor/display_folded = true
@@ -368,13 +408,13 @@ sides = 12
 
 [node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
 transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 6 )
+script = ExtResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
-[node name="Terrain" parent="." instance=ExtResource( 7 )]
+[node name="Terrain" parent="." instance=ExtResource( 11 )]
 editor/display_folded = true
-transform = Transform( 5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0 )
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0 )
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
