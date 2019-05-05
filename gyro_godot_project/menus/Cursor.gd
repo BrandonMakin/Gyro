@@ -6,10 +6,11 @@ var color
 var speed = 1000
 var velocity = Vector2()
 var radius = 20
+var player_id
 
 func _ready():
 #	randomize() # reseed random number generator 
-	color = Color()
+	color = Global.color_schemes[player_id]
 #
 #	color.v = 1
 #	color.s = .8
@@ -17,8 +18,9 @@ func _ready():
 #	update()
 
 func _on_color_scheme(color_id):
-	color = Global.color_schemes[color_id]
-	update()
+	pass
+#	color = Global.color_schemes[color_id]
+#	update()
 
 func _process(delta):
 	if (velocity.y > 0 and position.y + radius >= get_viewport_rect().size.y) \

@@ -14,21 +14,18 @@ func _ready():
 	Global.connect("player_rotated", self, "_on_rotate")
 	#warning-ignore:return_value_discarded
 	Global.connect("player_button_pressed", self, "_on_button")
-	#warning-ignore:return_value_discarded
-	Global.connect("color_scheme", self, "_on_color_scheme")
 
 func _on_connect(id):
 	players[id] = cursor.instance()
 	players[id].position = Vector2(700, 500)
+	players[id].player_id = id.to_int()
 	add_child(players[id])
 
 func _on_rotate(id, angle, tilt):
 #	print("angle: " + str(angle) + ", tilt: " + str(tilt))
+	print(typeof(id))
 	if players.has(id):
 		players[id]._move(angle, tilt)
-
-func _on_color_scheme(player_id, scheme_id):
-	players[player_id]._on_color_scheme(scheme_id)
 
 #warning-ignore:unused_argument
 func _on_button(id, button_name, state):

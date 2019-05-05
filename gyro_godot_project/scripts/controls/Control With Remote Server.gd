@@ -43,6 +43,7 @@ func _process(delta):
 #		var packet = tcp.get_utf8_string(tcp.get_available_bytes())
 		var code = packet.left(1)
 		packet = packet.right(1)
+#		print(packet)
 		match code:
 #			"9":
 #				#print("pongeval $(/home/ec2-user/.linuxbrew/bin/brew shellenv)")
@@ -54,6 +55,7 @@ func _process(delta):
 #			"0":
 #				Global.emit_signal("_on_message", packet)
 			"1": # On player connect
+#				var data = JSON.parse(packet)
 				Global.players.append(packet)
 				print("Global - Global.players: " + str(Global.players))
 				Global.emit_signal("player_connected", packet)
@@ -72,7 +74,8 @@ func _process(delta):
 				Global.emit_signal("player_rotated", data.id, angle, tilt)
 			"5": # On obtaining the color scheme
 				var data = JSON.parse(packet).result
-				Global.emit_signal("color_scheme", data.id, data.scheme_id)
+				print(data.scheme)
+				Global.emit_signal("color_scheme", data.id, data.scheme)
 			"7": # On obtaining this game's id
 				Global.game_id = packet
 				print("Game ID: " + packet)

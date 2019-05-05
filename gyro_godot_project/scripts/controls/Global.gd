@@ -38,5 +38,5 @@ var color_schemes = [
 	Color("e7e7e7"),
 	Color("222222"),
 	Color("c54700"),
-	Color("6be400"),
+	Color("6be400")
 ]
