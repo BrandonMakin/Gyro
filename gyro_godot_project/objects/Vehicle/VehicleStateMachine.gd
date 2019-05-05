@@ -20,6 +20,7 @@ signal collision(collision, vehicle_position)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_color()
 	add_to_group("players")
 	swim_state = get_node("States/Swimming")
 	state_stack.push_front(START_STATE)
@@ -70,3 +71,9 @@ func pop_state():
 	state_stack.pop_front()
 	state_name = state_stack.front()
 	change_state(state_name)
+
+func set_color():
+	var mat = SpatialMaterial.new()
+	mat.albedo_color = Global.color_schemes[player_id.to_int()]
+	$"Fish/swim/basic swimmer/Skeleton/mesh".material_override = mat
+	$"Fish/drift_left/drift left/Skeleton/mesh".material_override = mat

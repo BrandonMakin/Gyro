@@ -5,7 +5,7 @@ and exists for the entirety of the game.
 
 extends Node
 
-var id = "1337" # can be anything.
+var id = "a1"
 
 var rotation = Vector2()
 

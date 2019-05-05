@@ -40,9 +40,13 @@ func _on_button(bname, state): #3 possible names for a button: accel, shoot, sho
 	#ACCEL button
 	if bname == "accel": # set ACCELERATING bit of current_movement_input
 		if state == "on":
+			if not is_side_drifting:
+				$"../../Fish/swim".visible = true
+				$"../../Fish/swim/AnimationPlayer".play("swim")
 			current_movement_input |= MovementInputFlags.ACCELERATING  # Add accelerating flag when player presses accelerate
 			current_movement_input &= ~ MovementInputFlags.BRAKING  # Remove braking flag when player presses accelerate
 		else:
+			$"../../Fish/swim/AnimationPlayer".play("still")
 			current_movement_input |= MovementInputFlags.BRAKING #Add braking flag when player isn't accelerating (For the vehicle to slow down)
 			current_movement_input &= ~ MovementInputFlags.ACCELERATING #Remove accelerating flag when player isn't pressing accelerate
 	
@@ -69,7 +73,7 @@ func _state_physics_process(delta):
 		# Set the speed based on the fish_king.speed_level.  If you want to control the BRACKING acceleration curve, do it here:
 		speed = fish_king.speed_level * max_speed
 	
-	elif current_movement_input & MovementInputFlags.ACCELERATING == MovementInputFlags.ACCELERATING: # else check for ACCELERATING flag
+	elif current_movement_input & MovementInputFlags.ACCELERATING == MovementInputFlags.ACCELERATING and not is_side_drifting: # else check for ACCELERATING flag
 		
 		#Apply drafting speed boost if necessary (120% at the moment).
 		if fish_king.is_drafting && fish_king.speed_level > min_drafting_speed_level:
@@ -112,17 +116,28 @@ func reset():
 
 #Called when a player begins drifting, and rotates their model appropriately
 func start_drifting():
+	$"../../Fish/drift_left/AnimationPlayer".play("left drift in")
+	$"../../Fish/swim".visible = false
+	$"../../Fish/drift_left".visible = true
+	$"../../Fish/swim/AnimationPlayer".play("still")
 	if sign(desired_rotation.y) != 0:
 		is_side_drifting = true
 		drifting_direction = sign(-1 * desired_rotation.y)
-		$"../../Fish".rotation = Vector3(0, PI/5 * drifting_direction, $"../../Fish".rotation.z)
+		$"../../Fish/drift_left".scale.z = abs($"../../Fish/drift_left".scale.y)
+		if drifting_direction > 0:
+			$"../../Fish/drift_left".scale.z *= -1
+#		$"../../Fish".rotation = Vector3(0, PI/5 * drifting_direction, $"../../Fish".rotation.z)
 
 #Called when a player ceases drifting, and returns their model to normal
 func stop_drifting():
+	$"../../Fish/swim".visible = true
+	$"../../Fish/drift_left".visible = false
 	if (is_side_drifting):
 		$"../../Fish".rotation = Vector3(0, 0, $"../../Fish".rotation.z)
 		drifting_direction = 0
 		is_side_drifting = false
+		if current_movement_input & MovementInputFlags.ACCELERATING > 0:
+			$"../../Fish/swim/AnimationPlayer".play("swim")
 		
 #Called when a player is shooting another player.  One raycast per call
 func shoot():
