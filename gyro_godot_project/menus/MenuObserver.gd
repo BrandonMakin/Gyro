@@ -28,10 +28,10 @@ func _on_rotate(id, angle, tilt):
 #warning-ignore:unused_argument
 func _on_button(id, button_name, state):
 	if button_name == "accel":
-		if $"../Level1 Start Button".get_rect().has_point( players[id].position ) :
+		if $"../level1".get_rect().has_point( players[id].position ) :
 			#warning-ignore:return_value_discarded
 			get_tree().change_scene_to(level_1)
-		elif $"../Level2 Start Button".get_rect().has_point( players[id].position ) :
+		elif $"../level2".get_rect().has_point( players[id].position ) :
 			#warning-ignore:return_value_discarded
 			get_tree().change_scene_to(level_2)
 func _on_disconnect(id):

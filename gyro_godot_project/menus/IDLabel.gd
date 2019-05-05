@@ -11,6 +11,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(Global.game_id != ""):
-		set_text("https://gyro.brandonmakin.com\nRoom id: " + Global.game_id)
+		set_text("room id : " + Global.game_id)
 	else:
 		set_text("")
