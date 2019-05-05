@@ -7,7 +7,7 @@
 [ext_resource path="res://art/img/gui/countdown/countdown2.png" type="Texture" id=5]
 [ext_resource path="res://art/img/gui/countdown/countdown1.png" type="Texture" id=6]
 [ext_resource path="res://art/img/gui/countdown/go.png" type="Texture" id=7]
-[ext_resource path="res://levels/level 01/CountdownAnimationPlayer.gd" type="Script" id=8]
+[ext_resource path="res://objects/Countdown/CountdownAnimationPlayer.gd" type="Script" id=8]
 [ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=9]
 [ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=10]
 [ext_resource path="res://levels/level 02/terrain/level_03.dae" type="PackedScene" id=11]
@@ -16,7 +16,7 @@
 
 [sub_resource type="SphereShape" id=2]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 length = 6.0
 step = 1.5
 tracks/0/type = "value"
@@ -82,15 +82,15 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="SphereShape" id=8]
-
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 36.7627, 39.6933, 1 )
-
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 83.5927, 111.185, 1 )
+[sub_resource type="SphereShape" id=4]
 
 [sub_resource type="BoxShape" id=5]
+extents = Vector3( 36.7627, 39.6933, 1 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 83.5927, 111.185, 1 )
+
+[sub_resource type="BoxShape" id=7]
 extents = Vector3( 148.229, 150.257, 1 )
 
 [node name="Level 2" type="Spatial"]
@@ -294,7 +294,7 @@ expand = true
 stretch_mode = 6
 
 [node name="CountdownAnimationPlayer" type="AnimationPlayer" parent="GUI/Countdown"]
-anims/Stoplight = SubResource( 7 )
+anims/Stoplight = SubResource( 3 )
 script = ExtResource( 8 )
 
 [node name="Boost Rings" type="Node" parent="."]
@@ -314,7 +314,7 @@ transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
-shape = SubResource( 8 )
+shape = SubResource( 4 )
 
 [node name="Lap Marker" type="Spatial" parent="."]
 editor/display_folded = true
@@ -326,7 +326,7 @@ editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Lap Marker/Lap Tracker 00"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Lap Tracker 01" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -334,7 +334,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4635, -14.6655, -150.19 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 01"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 13.4098, -0.232544 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Lap Tracker 02" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -342,7 +342,7 @@ transform = Transform( 0.650271, 0, -0.759703, 0, 1, 0, 0.759703, 0, 0.650271, 1
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 02"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 0.644201, -0.232544 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Lap Tracker 03" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -350,7 +350,7 @@ transform = Transform( 0.0201521, 0, -0.999797, 0, 1, 0, 0.999797, 0, 0.0201521,
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 03"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9446, 13.4098, -0.232544 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Lap Tracker 04" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -358,7 +358,7 @@ transform = Transform( -0.937674, 0, -0.347517, 0, 1, 0, 0.347517, 0, -0.937674,
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 04"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9446, 13.4098, -0.232544 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Lap Tracker 05" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -366,7 +366,7 @@ transform = Transform( 0.971859, 0, -0.235565, 0, 1, 0, 0.235565, 0, 0.971859, 2
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 05"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 0.644201, -0.232544 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Lap Tracker 06" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -374,7 +374,7 @@ transform = Transform( 0.673926, 0, 0.738799, 0, 1, 0, -0.738799, 0, 0.673926, 3
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 06"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5373, 0.644201, -0.232544 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Lap Tracker 07" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -382,7 +382,7 @@ transform = Transform( -0.99743, 0, -0.0716536, 0, 1, 0, 0.0716536, 0, -0.99743,
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 07"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9446, 13.4098, -0.232544 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Lap Tracker 08" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -390,7 +390,7 @@ transform = Transform( -0.783184, 0, 0.62179, 0, 1, 0, -0.62179, 0, -0.783184, 3
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 08"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9446, 13.4098, -0.232544 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Lap Tracker 09" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -398,7 +398,7 @@ transform = Transform( 0.108171, 0, 0.994132, 0, 1, 0, -0.994132, 0, 0.108171, 1
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 09"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9446, 13.4098, -0.232544 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Lap Tracker 10" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -406,7 +406,7 @@ transform = Transform( 0.939952, 0, 0.341305, 0, 1, 0, -0.341305, 0, 0.939952, -
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 10"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9446, 13.4098, -0.232544 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Lap Tracker 11" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -414,7 +414,7 @@ transform = Transform( -0.99743, 0, -0.0716536, 0, 1, 0, 0.0716536, 0, -0.99743,
 
 [node name="CollisionShape2" type="CollisionShape" parent="Lap Marker/Lap Tracker 11"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9446, 13.4098, -0.232544 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Terrain" parent="." instance=ExtResource( 11 )]
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0 )
