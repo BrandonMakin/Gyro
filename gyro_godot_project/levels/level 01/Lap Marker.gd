@@ -13,9 +13,6 @@ func _ready():
 	set_process(false)
 
 func initialize():
-	set_process(true)
-	
-	splitscreen = $"../Splitscreen Camera"
 	for i in range($"../vehicles".get_child_count()):
 		placements.append(i)
 		vehicles[i] = {}
@@ -23,6 +20,10 @@ func initialize():
 		vehicles[i].current_lap = 1
 		vehicles[i].progress_in_lap = 0
 		vehicles[i].rank = 0
+		
+	yield(get_tree().create_timer(0.5), "timeout")
+	splitscreen = get_parent().get_child(get_parent().get_child_count()-1)#("../Splitscreen Camera")
+	set_process(true)
 	
 	# connect all the children's body_entered to _on_Lap_Tracker_body_entered
 	for i in range(get_child_count()):
@@ -33,9 +34,11 @@ func initialize():
 		get_child(i).connect("body_entered", self, "_on_Lap_Tracker_body_entered", [i])
 
 func _process(delta):
+	if not splitscreen:
+		return
 	placements.sort_custom(self, "sort")
-	for i in range(placements.size()):
-		splitscreen.get_cam_gui(placements[i]).get_node("Rank/Inside/Label").text = str(i+1) + get_ordinal(i+1) + " place"
+#	for i in range(placements.size()):
+#		splitscreen.get_cam_gui(placements[i]).get_node("Rank/Inside/Label").text = str(i+1) + get_ordinal(i+1) + " place"
 
 func race_start():
 	for i in range($"../vehicles".get_child_count()):
@@ -47,10 +50,10 @@ func race_finish(id): # id == VehicleNumber
 	players_finished += 1
 	vehicles[id].rank = players_finished
 	
-	splitscreen.get_cam_gui(id).get_node("LapAlerts/RaceFinished").visible = true
+	splitscreen.get_cam_gui(id).get_node("LapAlerts/Finish").visible = true
 	set_process(false)
 	var ordinal = get_ordinal(players_finished)
-	splitscreen.get_cam_gui(id).get_node("Rank/Inside/Label").text = str(players_finished) + ordinal + " Place"
+#	splitscreen.get_cam_gui(id).get_node("Rank/Inside/Label").text = str(players_finished) + ordinal + " Place"
 	splitscreen.get_cam_gui(id).get_node("Lap/Inside/Animation").play("Finished")
 	splitscreen.get_cam_gui(id).get_node("Rank/Inside/Animation").play("Finished")
 	
@@ -79,12 +82,14 @@ func lap_completed(body):
 	vehicles[id].current_lap += 1
 	var laps = vehicles[id].current_lap
 	if laps == 2:
-		splitscreen.get_cam_gui(id).get_node("Lap/Inside/Label").text = "Lap 2/3"
+		splitscreen.get_cam_gui(id).get_node("coins_laps/lap1").visible = false
+		splitscreen.get_cam_gui(id).get_node("coins_laps/lap2").visible = true
 		splitscreen.get_cam_gui(id).get_node("LapAlerts/Lap2").visible = true
 		yield(get_tree().create_timer(.5), "timeout") # wait for 0.5s
 		splitscreen.get_cam_gui(id).get_node("LapAlerts/Lap2").visible = false
 	elif laps == 3:
-		splitscreen.get_cam_gui(id).get_node("Lap/Inside/Label").text = "Lap 3/3"
+		splitscreen.get_cam_gui(id).get_node("coins_laps/lap2").visible = false
+		splitscreen.get_cam_gui(id).get_node("coins_laps/lap3").visible = true
 		splitscreen.get_cam_gui(id).get_node("LapAlerts/Lap3").visible = true
 		yield(get_tree().create_timer(.5), "timeout") # wait for 0.5s
 		splitscreen.get_cam_gui(id).get_node("LapAlerts/Lap3").visible = false

@@ -15,7 +15,9 @@ extents = Vector3( 1.83558, 1.61688, 0.660998 )
 
 [sub_resource type="BoxShape" id=2]
 
-[node name="Vehicle" type="KinematicBody"]
+[node name="Vehicle" type="KinematicBody" groups=[
+"vehicles",
+]]
 script = ExtResource( 1 )
 START_STATE = "BeforeRace"
 

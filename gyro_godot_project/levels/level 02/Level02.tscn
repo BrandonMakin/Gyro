@@ -3,27 +3,18 @@
 [ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/SetOf8Vehicles/SetOf8Vehicles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/level 01/Collectible.gd" type="Script" id=3]
-[ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=4]
-[ext_resource path="res://art/img/gui/countdown/countdown3.png" type="Texture" id=5]
-[ext_resource path="res://art/img/gui/countdown/countdown2.png" type="Texture" id=6]
-[ext_resource path="res://art/img/gui/countdown/countdown1.png" type="Texture" id=7]
-[ext_resource path="res://art/img/gui/countdown/go.png" type="Texture" id=8]
-[ext_resource path="res://levels/level 01/CountdownAnimationPlayer.gd" type="Script" id=9]
-[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=10]
+[ext_resource path="res://art/img/gui/countdown/countdown3.png" type="Texture" id=4]
+[ext_resource path="res://art/img/gui/countdown/countdown2.png" type="Texture" id=5]
+[ext_resource path="res://art/img/gui/countdown/countdown1.png" type="Texture" id=6]
+[ext_resource path="res://art/img/gui/countdown/go.png" type="Texture" id=7]
+[ext_resource path="res://levels/level 01/CountdownAnimationPlayer.gd" type="Script" id=8]
+[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=9]
+[ext_resource path="res://levels/level 01/Lap Marker.gd" type="Script" id=10]
 [ext_resource path="res://levels/level 02/terrain/level_03.dae" type="PackedScene" id=11]
 
 [sub_resource type="SphereMesh" id=1]
 
 [sub_resource type="SphereShape" id=2]
-
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 36.7627, 39.6933, 1 )
-
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 83.5927, 111.185, 1 )
-
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 148.229, 150.257, 1 )
 
 [sub_resource type="Animation" id=7]
 length = 6.0
@@ -92,6 +83,15 @@ tracks/4/keys = {
 }
 
 [sub_resource type="SphereShape" id=8]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 36.7627, 39.6933, 1 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 83.5927, 111.185, 1 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 148.229, 150.257, 1 )
 
 [node name="Level 2" type="Spatial"]
 
@@ -227,9 +227,99 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible6"]
 shape = SubResource( 2 )
 
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Countdown" type="Control" parent="GUI"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="countdown3" type="TextureRect" parent="GUI/Countdown"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -93.5
+margin_top = -79.0
+margin_right = 93.5
+margin_bottom = 79.0
+rect_min_size = Vector2( 187, 158 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="countdown2" type="TextureRect" parent="GUI/Countdown"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -76.0
+margin_right = 88.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 176, 152 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="countdown1" type="TextureRect" parent="GUI/Countdown"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -75.0
+margin_right = 68.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 136, 150 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="go" type="TextureRect" parent="GUI/Countdown"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -227.0
+margin_top = -86.0
+margin_right = 227.0
+margin_bottom = 86.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="CountdownAnimationPlayer" type="AnimationPlayer" parent="GUI/Countdown"]
+anims/Stoplight = SubResource( 7 )
+script = ExtResource( 8 )
+
+[node name="Boost Rings" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 0, -25.2047, -155.199 )
+sides = 12
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
+transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
+operation = 2
+sides = 12
+
+[node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
+shape = SubResource( 8 )
+
 [node name="Lap Marker" type="Spatial" parent="."]
 editor/display_folded = true
-script = ExtResource( 4 )
+transform = Transform( 1.27273, 0, 0, 0, 1.27273, 0, 0, 0, 1.27273, 0, 0, 0 )
+script = ExtResource( 10 )
 
 [node name="Lap Tracker 00" type="Area" parent="Lap Marker"]
 editor/display_folded = true
@@ -326,95 +416,7 @@ transform = Transform( -0.99743, 0, -0.0716536, 0, 1, 0, 0.0716536, 0, -0.99743,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9446, 13.4098, -0.232544 )
 shape = SubResource( 4 )
 
-[node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="Countdown" type="Control" parent="GUI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="countdown3" type="TextureRect" parent="GUI/Countdown"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -93.5
-margin_top = -79.0
-margin_right = 93.5
-margin_bottom = 79.0
-rect_min_size = Vector2( 187, 158 )
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 6
-
-[node name="countdown2" type="TextureRect" parent="GUI/Countdown"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -88.0
-margin_top = -76.0
-margin_right = 88.0
-margin_bottom = 76.0
-rect_min_size = Vector2( 176, 152 )
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 6
-
-[node name="countdown1" type="TextureRect" parent="GUI/Countdown"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -68.0
-margin_top = -75.0
-margin_right = 68.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 136, 150 )
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 6
-
-[node name="go" type="TextureRect" parent="GUI/Countdown"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -227.0
-margin_top = -86.0
-margin_right = 227.0
-margin_bottom = 86.0
-texture = ExtResource( 8 )
-expand = true
-stretch_mode = 6
-
-[node name="CountdownAnimationPlayer" type="AnimationPlayer" parent="GUI/Countdown"]
-anims/Stoplight = SubResource( 7 )
-script = ExtResource( 9 )
-
-[node name="Boost Rings" type="Node" parent="."]
-editor/display_folded = true
-
-[node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 0, -25.2047, -155.199 )
-sides = 12
-
-[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
-transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
-operation = 2
-sides = 12
-
-[node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 10 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
-shape = SubResource( 8 )
-
 [node name="Terrain" parent="." instance=ExtResource( 11 )]
-editor/display_folded = true
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0 )
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
