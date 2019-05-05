@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://art/environments/env1.tres" type="Environment" id=1]
 [ext_resource path="res://objects/SplitscreenCamera/Camera.gd" type="Script" id=2]
@@ -8,8 +8,25 @@
 [ext_resource path="res://levels/level 01/lap3.png" type="Texture" id=6]
 [ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=7]
 [ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=8]
-[ext_resource path="res://objects/SplitscreenCamera/CollisionLines.gd" type="Script" id=9]
-[ext_resource path="res://art/img/collision_lines/collision_lines.tres" type="SpriteFrames" id=10]
+[ext_resource path="res://art/img/gui/coin_icon.png" type="Texture" id=9]
+[ext_resource path="res://art/img/gui/coins1.png" type="Texture" id=10]
+[ext_resource path="res://art/img/gui/coins2.png" type="Texture" id=11]
+[ext_resource path="res://art/img/gui/coins3.png" type="Texture" id=12]
+[ext_resource path="res://art/img/gui/coins4.png" type="Texture" id=13]
+[ext_resource path="res://art/img/gui/coins5.png" type="Texture" id=14]
+[ext_resource path="res://art/img/gui/coins6.png" type="Texture" id=15]
+[ext_resource path="res://art/img/gui/coins7.png" type="Texture" id=16]
+[ext_resource path="res://art/img/gui/coins8.png" type="Texture" id=17]
+[ext_resource path="res://art/img/gui/coins9.png" type="Texture" id=18]
+[ext_resource path="res://art/img/gui/coins10.png" type="Texture" id=19]
+[ext_resource path="res://art/img/gui/lap_icon.png" type="Texture" id=20]
+[ext_resource path="res://art/img/gui/lap1.png" type="Texture" id=21]
+[ext_resource path="res://art/img/gui/lap2.png" type="Texture" id=22]
+[ext_resource path="res://art/img/gui/lap3.png" type="Texture" id=23]
+[ext_resource path="res://objects/SplitscreenCamera/CollisionLines.gd" type="Script" id=24]
+[ext_resource path="res://art/img/collision_lines/collision_lines.tres" type="SpriteFrames" id=25]
+[ext_resource path="res://art/img/gui/speedometer.png" type="Texture" id=26]
+[ext_resource path="res://art/img/gui/speedometer_dial.png" type="Texture" id=27]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -107,6 +124,7 @@ script = ExtResource( 2 )
 visible = false
 scale = Vector2( 0.301, 0.305 )
 frames = SubResource( 2 )
+frame = 1
 
 [node name="Lap" type="Panel" parent="ViewportContainer/Viewport"]
 anchor_bottom = 1.0
@@ -140,8 +158,171 @@ texture = ExtResource( 8 )
 autoplay = "FinishedSign"
 anims/FinishedSign = SubResource( 3 )
 
+[node name="coins_laps" type="HBoxContainer" parent="GUI"]
+editor/display_folded = true
+anchor_top = 0.9
+anchor_right = 0.4
+anchor_bottom = 1.0
+
+[node name="coin_icon" type="TextureRect" parent="GUI/coins_laps"]
+margin_right = 78.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="coins1" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+margin_left = 77.0
+margin_right = 150.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="coins2" type="TextureRect" parent="GUI/coins_laps"]
+margin_left = 82.0
+margin_right = 160.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="coins3" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+margin_left = 77.0
+margin_right = 150.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="coins4" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="coins5" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="coins6" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+
+[node name="coins7" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="coins8" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="coins9" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="coins10" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+
+[node name="divider" type="Control" parent="GUI/coins_laps"]
+margin_left = 164.0
+margin_right = 242.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="lap_icon" type="TextureRect" parent="GUI/coins_laps"]
+margin_left = 246.0
+margin_right = 324.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="lap1" type="TextureRect" parent="GUI/coins_laps"]
+margin_left = 328.0
+margin_right = 409.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="lap2" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+margin_left = 231.0
+margin_right = 307.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
+[node name="lap3" type="TextureRect" parent="GUI/coins_laps"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 157.874
+margin_right = 157.874
+size_flags_horizontal = 3
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
 [node name="Lap" type="ColorRect" parent="GUI"]
 editor/display_folded = true
+visible = false
 anchor_top = 1.0
 anchor_right = 0.3
 anchor_bottom = 1.0
@@ -171,6 +352,7 @@ anims/Finished = SubResource( 4 )
 
 [node name="Rank" type="ColorRect" parent="GUI"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.7
 anchor_top = 1.0
 anchor_right = 1.0
@@ -203,12 +385,12 @@ anims/Finished = SubResource( 5 )
 [node name="CollisionLines" type="Node2D" parent="GUI"]
 position = Vector2( 251.831, 433.691 )
 scale = Vector2( 0.4, 0.4 )
-script = ExtResource( 9 )
+script = ExtResource( 24 )
 
 [node name="Sprite" type="AnimatedSprite" parent="GUI/CollisionLines"]
 visible = false
 modulate = Color( 1, 1, 1, 0.454902 )
-frames = ExtResource( 10 )
+frames = ExtResource( 25 )
 
 [node name="PlayerColor" type="ColorRect" parent="GUI"]
 anchor_right = 1.0
@@ -219,4 +401,23 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="speedometer" type="Control" parent="GUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="sprite" type="Sprite" parent="GUI/speedometer"]
+position = Vector2( -61.6011, -36.2043 )
+scale = Vector2( 0.166502, 0.166502 )
+texture = ExtResource( 26 )
+
+[node name="dial" type="Node2D" parent="GUI/speedometer"]
+position = Vector2( -65.072, -13.4382 )
+scale = Vector2( 0.166502, 0.166502 )
+
+[node name="sprite" type="Sprite" parent="GUI/speedometer/dial"]
+position = Vector2( 20.8467, -150.948 )
+texture = ExtResource( 27 )
 

@@ -28,6 +28,7 @@ func _process(delta):
 	# For fov to be exactly proportional to the actual speed, lerp by something like target_vehicle.speed_level / target_vehicle.max_speed, probably.
 	desired_fov = lerp(min_speed_fov, max_speed_fov, target_vehicle.speed_level * target_vehicle.speed_level) 
 	fov = lerp(fov, desired_fov, .1)
+	$"../../../GUI/speedometer/dial".rotation_degrees = lerp(-90, 18, target_vehicle.speed_level)
 	
 	if target_vehicle.speed_level > 1.2:
 		$"../AnimatedSpeedlines".visible = true
