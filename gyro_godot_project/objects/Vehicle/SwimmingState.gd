@@ -105,6 +105,7 @@ func _state_physics_process(delta):
 		var collision = fish_king.get_slide_collision(0)
 		if !previous_collision_normal || collision.normal.dot(previous_collision_normal) < .5:
 			fish_king.emit_signal("collision", collision, fish_king.translation)
+			fish_king.speed_level -= 0.3
 			previous_collision_normal = collision.normal
 	else:
 		previous_collision_normal = null
