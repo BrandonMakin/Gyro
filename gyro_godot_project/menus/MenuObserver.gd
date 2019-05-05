@@ -18,10 +18,12 @@ func _ready():
 func _on_connect(id):
 	players[id] = cursor.instance()
 	players[id].position = Vector2(700, 500)
+	players[id].player_id = id.to_int()
 	add_child(players[id])
 
 func _on_rotate(id, angle, tilt):
 #	print("angle: " + str(angle) + ", tilt: " + str(tilt))
+	print(typeof(id))
 	if players.has(id):
 		players[id]._move(angle, tilt)
 
@@ -32,6 +34,7 @@ func _on_button(id, button_name, state):
 			#warning-ignore:return_value_discarded
 			get_tree().change_scene_to(level_1)
 		elif $"../Level2 Start Button".get_rect().has_point( players[id].position ) :
+			#warning-ignore:return_value_discarded
 			get_tree().change_scene_to(level_2)
 func _on_disconnect(id):
 	players[id].queue_free()

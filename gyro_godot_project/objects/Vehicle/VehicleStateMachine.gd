@@ -31,6 +31,8 @@ func _ready():
 	Global.connect("player_button_pressed", self, "_on_button")
 	is_drafting = false
 	
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 

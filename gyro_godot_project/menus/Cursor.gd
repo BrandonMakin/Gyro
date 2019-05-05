@@ -6,15 +6,21 @@ var color
 var speed = 1000
 var velocity = Vector2()
 var radius = 20
+var player_id
 
 func _ready():
-	randomize() # reseed random number generator 
-	color = Color()
-	
-	color.v = 1
-	color.s = .8
-	color.h = randf()
-	update()
+#	randomize() # reseed random number generator 
+	color = Global.color_schemes[player_id]
+#
+#	color.v = 1
+#	color.s = .8
+#	color.h = randf()
+#	update()
+
+func _on_color_scheme(color_id):
+	pass
+#	color = Global.color_schemes[color_id]
+#	update()
 
 func _process(delta):
 	if (velocity.y > 0 and position.y + radius >= get_viewport_rect().size.y) \
@@ -32,14 +38,16 @@ func _move(x, y):
 	velocity = velocity + (Vector2(x,y) - velocity) * .5
 
 func _draw():
-	# draw circle outline to add contrast:	
+	# draw circle outline to add contrast:
+	var c2 = color.contrasted()
+	c2.s = 0	
 	draw_circle(Vector2(), 20, Color())
-	draw_circle(Vector2(), 18, color.contrasted())
+	draw_circle(Vector2(), 18, c2)
 	draw_circle(Vector2(), 14, Color())
 	# draw rest of cursor:
 	draw_circle(Vector2(), 12, color)
 	draw_line(- Vector2(14, 0), Vector2(14, 0), Color(), 6)
-	draw_line(- Vector2(14, 0), Vector2(14, 0), color.contrasted(), 4)
+	draw_line(- Vector2(14, 0), Vector2(14, 0), c2, 4)
 	
 	
 	
