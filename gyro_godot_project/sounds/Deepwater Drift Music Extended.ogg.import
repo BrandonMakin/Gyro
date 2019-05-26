@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Deepwater Drift Music Extended.ogg-27759faa994d487f5769644cc1fdc02c.oggstr"
+
+[deps]
+
+source_file="res://sounds/Deepwater Drift Music Extended.ogg"
+dest_files=[ "res://.import/Deepwater Drift Music Extended.ogg-27759faa994d487f5769644cc1fdc02c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -542,7 +542,6 @@ transform = Transform( 0.867072, 0, -0.498183, 0, 1, 0, 0.498183, 0, 0.867072, -
 shape = SubResource( 3 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="LapMessages" type="Node" parent="GUI"]
 editor/display_folded = true
@@ -1199,6 +1198,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.5674, 45.3224, 51.4791 )
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 02" to="Lap Marker" method="_on_Lap_Tracker_02_body_entered"]
+
+[editable path="GUI/Countdown"]
 
 [editable path="Scene Root2"]
 
