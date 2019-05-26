@@ -3,9 +3,6 @@ extends KinematicBody
 var direction : Vector3
 var speed : float = 10
 
-func _ready():
-	add_to_group("projectiles")
-
 #warning-ignore:unused_argument
 func _process(delta):
 	var collision = move_and_collide(direction * speed)
