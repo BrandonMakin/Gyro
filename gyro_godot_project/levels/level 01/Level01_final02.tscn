@@ -92,11 +92,13 @@ transform = Transform( 1, 0, 0, 0, 0.97989, -0.199538, 0, 0.199538, 0.97989, -57
 omni_range = 200.301
 
 [node name="Collectibles" type="Node" parent="."]
+
+[node name="Set1" type="Spatial" parent="Collectibles"]
 editor/display_folded = true
 
-[node name="Collectible1" type="RigidBody" parent="Collectibles"]
+[node name="Collectible1" type="RigidBody" parent="Collectibles/Set1"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -35.4915, -129.869 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6795, -16.4915, -274.869 )
 contacts_reported = 1
 contact_monitor = true
 axis_lock_linear_x = true
@@ -104,16 +106,16 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 script = ExtResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible1"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set1/Collectible1"]
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible1"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set1/Collectible1"]
 shape = SubResource( 2 )
 
-[node name="Collectible2" type="RigidBody" parent="Collectibles"]
+[node name="Collectible2" type="RigidBody" parent="Collectibles/Set1"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -34.4915, -135.869 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6795, -15.4915, -280.869 )
 contacts_reported = 1
 contact_monitor = true
 axis_lock_linear_x = true
@@ -121,16 +123,16 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 script = ExtResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible2"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set1/Collectible2"]
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible2"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set1/Collectible2"]
 shape = SubResource( 2 )
 
-[node name="Collectible3" type="RigidBody" parent="Collectibles"]
+[node name="Collectible3" type="RigidBody" parent="Collectibles/Set1"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -33.4915, -141.869 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6795, -14.4915, -286.869 )
 contacts_reported = 1
 contact_monitor = true
 axis_lock_linear_x = true
@@ -138,16 +140,16 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 script = ExtResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible3"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set1/Collectible3"]
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible3"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set1/Collectible3"]
 shape = SubResource( 2 )
 
-[node name="Collectible4" type="RigidBody" parent="Collectibles"]
+[node name="Collectible4" type="RigidBody" parent="Collectibles/Set1"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -32.4915, -146.869 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6795, -13.4915, -291.869 )
 contacts_reported = 1
 contact_monitor = true
 axis_lock_linear_x = true
@@ -155,16 +157,16 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 script = ExtResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible4"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set1/Collectible4"]
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible4"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set1/Collectible4"]
 shape = SubResource( 2 )
 
-[node name="Collectible5" type="RigidBody" parent="Collectibles"]
+[node name="Collectible5" type="RigidBody" parent="Collectibles/Set1"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -31.4915, -151.869 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6795, -12.4915, -296.869 )
 contacts_reported = 1
 contact_monitor = true
 axis_lock_linear_x = true
@@ -172,15 +174,16 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 script = ExtResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible5"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set1/Collectible5"]
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible5"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set1/Collectible5"]
 shape = SubResource( 2 )
 
-[node name="Collectible6" type="RigidBody" parent="Collectibles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67948, -30.4915, -156.869 )
+[node name="Collectible6" type="RigidBody" parent="Collectibles/Set1"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6795, -11.4915, -301.869 )
 contacts_reported = 1
 contact_monitor = true
 axis_lock_linear_x = true
@@ -188,11 +191,329 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 script = ExtResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Collectible6"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set1/Collectible6"]
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Collectible6"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set1/Collectible6"]
+shape = SubResource( 2 )
+
+[node name="Set2" type="Spatial" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( 0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, -254, -38, -741 )
+
+[node name="Collectible1" type="RigidBody" parent="Collectibles/Set2"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -16.4915, 12.131 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set2/Collectible1"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set2/Collectible1"]
+shape = SubResource( 2 )
+
+[node name="Collectible2" type="RigidBody" parent="Collectibles/Set2"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -15.4915, 6.13098 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set2/Collectible2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set2/Collectible2"]
+shape = SubResource( 2 )
+
+[node name="Collectible3" type="RigidBody" parent="Collectibles/Set2"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -14.4915, 0.130981 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set2/Collectible3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set2/Collectible3"]
+shape = SubResource( 2 )
+
+[node name="Collectible4" type="RigidBody" parent="Collectibles/Set2"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -13.4915, -4.86902 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set2/Collectible4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set2/Collectible4"]
+shape = SubResource( 2 )
+
+[node name="Collectible5" type="RigidBody" parent="Collectibles/Set2"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -12.4915, -9.86902 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set2/Collectible5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set2/Collectible5"]
+shape = SubResource( 2 )
+
+[node name="Collectible6" type="RigidBody" parent="Collectibles/Set2"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -11.4915, -14.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set2/Collectible6"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set2/Collectible6"]
+shape = SubResource( 2 )
+
+[node name="Set3" type="Spatial" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( -0.674354, -0.0759994, -0.734486, -0.292555, 0.940788, 0.171258, 0.677981, 0.330366, -0.656659, -309, -39, -637 )
+
+[node name="Collectible1" type="RigidBody" parent="Collectibles/Set3"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -16.4915, 12.131 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set3/Collectible1"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set3/Collectible1"]
+shape = SubResource( 2 )
+
+[node name="Collectible2" type="RigidBody" parent="Collectibles/Set3"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -15.4915, 6.13098 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set3/Collectible2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set3/Collectible2"]
+shape = SubResource( 2 )
+
+[node name="Collectible3" type="RigidBody" parent="Collectibles/Set3"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -14.4915, 0.130981 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set3/Collectible3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set3/Collectible3"]
+shape = SubResource( 2 )
+
+[node name="Collectible4" type="RigidBody" parent="Collectibles/Set3"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -13.4915, -4.86902 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set3/Collectible4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set3/Collectible4"]
+shape = SubResource( 2 )
+
+[node name="Collectible5" type="RigidBody" parent="Collectibles/Set3"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -12.4915, -9.86902 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set3/Collectible5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set3/Collectible5"]
+shape = SubResource( 2 )
+
+[node name="Collectible6" type="RigidBody" parent="Collectibles/Set3"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -11.4915, -14.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set3/Collectible6"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set3/Collectible6"]
+shape = SubResource( 2 )
+
+[node name="Set4" type="Spatial" parent="Collectibles"]
+editor/display_folded = true
+transform = Transform( -0.784781, -0.338544, 0.51914, -0.496055, 0.845257, -0.198669, -0.371549, -0.413434, -0.831278, -193, -17, -217 )
+
+[node name="Collectible1" type="RigidBody" parent="Collectibles/Set4"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -16.4915, 12.131 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set4/Collectible1"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set4/Collectible1"]
+shape = SubResource( 2 )
+
+[node name="Collectible2" type="RigidBody" parent="Collectibles/Set4"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -15.4915, 6.13098 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set4/Collectible2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set4/Collectible2"]
+shape = SubResource( 2 )
+
+[node name="Collectible3" type="RigidBody" parent="Collectibles/Set4"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -14.4915, 0.130981 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set4/Collectible3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set4/Collectible3"]
+shape = SubResource( 2 )
+
+[node name="Collectible4" type="RigidBody" parent="Collectibles/Set4"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -13.4915, -4.86902 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set4/Collectible4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set4/Collectible4"]
+shape = SubResource( 2 )
+
+[node name="Collectible5" type="RigidBody" parent="Collectibles/Set4"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -12.4915, -9.86902 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set4/Collectible5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set4/Collectible5"]
+shape = SubResource( 2 )
+
+[node name="Collectible6" type="RigidBody" parent="Collectibles/Set4"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67947, -11.4915, -14.869 )
+contacts_reported = 1
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectibles/Set4/Collectible6"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectibles/Set4/Collectible6"]
 shape = SubResource( 2 )
 
 [node name="Lap Marker" type="Spatial" parent="."]
@@ -221,6 +542,7 @@ transform = Transform( 0.867072, 0, -0.498183, 0, 1, 0, 0.498183, 0, 0.867072, -
 shape = SubResource( 3 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="LapMessages" type="Node" parent="GUI"]
 editor/display_folded = true
@@ -264,10 +586,25 @@ anims/FinishedSign = SubResource( 4 )
 [node name="Boost Rings" type="Node" parent="."]
 
 [node name="Boost Ring" parent="Boost Rings" instance=ExtResource( 9 )]
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, -8.33924, -35.0344, -125.865 )
+transform = Transform( 3.64921, -0.00838437, -0.0909328, 0, -0.0480415, 7.25707, -4.79651, -0.125695, -1.36323, -167.488, 42.1091, 124.409 )
+
+[node name="Boost Ring7" parent="Boost Rings" instance=ExtResource( 9 )]
+transform = Transform( 3.64921, -0.00838437, -0.0909328, 0, -0.0480415, 7.25707, -4.79651, -0.125695, -1.36323, -210.488, 40.1091, 80.409 )
+
+[node name="Boost Ring5" parent="Boost Rings" instance=ExtResource( 9 )]
+transform = Transform( 4.17393, 0, 0, 0, -0.0266897, 4.03171, 0, -0.0664049, -0.720195, -165.488, 22.1091, -371.591 )
+
+[node name="Boost Ring6" parent="Boost Rings" instance=ExtResource( 9 )]
+transform = Transform( 5.14785, 0, 0, 0, -0.0329173, 4.97244, 0, -0.0664049, -0.720195, -129.488, 23.1091, -368.591 )
+
+[node name="Boost Ring3" parent="Boost Rings" instance=ExtResource( 9 )]
+transform = Transform( 2.78262, 0, 0, 0, -0.0177931, 2.6878, 0, -0.0664049, -0.720195, -232.488, 42.1091, 13.409 )
+
+[node name="Boost Ring4" parent="Boost Rings" instance=ExtResource( 9 )]
+transform = Transform( 2.78262, 0, 0, 0, -0.0177931, 2.6878, 0, -0.0664049, -0.720195, -270.488, 6.10907, -98.591 )
 
 [node name="Boost Ring2" parent="Boost Rings" instance=ExtResource( 9 )]
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, -15.4591, -35.0344, -174.091 )
+transform = Transform( 5.67319, 0, 0, 0, -1.70482e-008, 5.67319, 0, -0.0687474, -4.37114e-008, -11.563, -28.6078, -187.817 )
 
 [node name="Scene Root2" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
