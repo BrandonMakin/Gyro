@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://objects/FishRentalService/FishRentalService.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/SetOf8Vehicles/SetOf8Vehicles.tscn" type="PackedScene" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://levels/level 01/lap2.png" type="Texture" id=6]
 [ext_resource path="res://levels/level 01/race_finished.png" type="Texture" id=7]
 [ext_resource path="res://objects/Countdown/Countdown.tscn" type="PackedScene" id=8]
-[ext_resource path="res://levels/level 01/BoostRing.gd" type="Script" id=9]
+[ext_resource path="res://objects/Boost Ring/Boost Ring.tscn" type="PackedScene" id=9]
 [ext_resource path="res://road2.tscn" type="PackedScene" id=10]
 [ext_resource path="res://final_track02.tscn" type="PackedScene" id=11]
 [ext_resource path="res://track_last.tscn" type="PackedScene" id=12]
@@ -55,8 +55,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
-
-[sub_resource type="SphereShape" id=5]
 
 [sub_resource type="CylinderMesh" id=6]
 
@@ -262,77 +260,14 @@ autoplay = "FinishedSign"
 anims/FinishedSign = SubResource( 4 )
 
 [node name="Countdown" parent="GUI" instance=ExtResource( 8 )]
-editor/display_folded = false
 
 [node name="Boost Rings" type="Node" parent="."]
-editor/display_folded = true
 
-[node name="CSGCylinder" type="CSGCylinder" parent="Boost Rings"]
-editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 0, -25.2047, -155.199 )
-sides = 12
+[node name="Boost Ring" parent="Boost Rings" instance=ExtResource( 9 )]
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, -8.33924, -35.0344, -125.865 )
 
-[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder"]
-transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
-operation = 2
-sides = 12
-
-[node name="Area" type="Area" parent="Boost Rings/CSGCylinder"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 9 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder/Area"]
-shape = SubResource( 5 )
-
-[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings"]
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 9.19172, -25.2047, -228.503 )
-sides = 12
-
-[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder2"]
-transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
-operation = 2
-sides = 12
-
-[node name="Area" type="Area" parent="Boost Rings/CSGCylinder2"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 9 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder2/Area"]
-shape = SubResource( 5 )
-
-[node name="CSGCylinder3" type="CSGCylinder" parent="Boost Rings"]
-editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, 1.60625, 12.2982, -434.231 )
-sides = 12
-
-[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder3"]
-transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
-operation = 2
-sides = 12
-
-[node name="Area" type="Area" parent="Boost Rings/CSGCylinder3"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 9 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder3/Area"]
-shape = SubResource( 5 )
-
-[node name="CSGCylinder4" type="CSGCylinder" parent="Boost Rings"]
-editor/display_folded = true
-transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, -1.00915, 21.2227, -431.931 )
-sides = 12
-
-[node name="CSGCylinder2" type="CSGCylinder" parent="Boost Rings/CSGCylinder4"]
-transform = Transform( 0.933712, 0, 0, 0, 1.07358, 0, 0, 0, 0.933712, 0, 0, 0 )
-operation = 2
-sides = 12
-
-[node name="Area" type="Area" parent="Boost Rings/CSGCylinder4"]
-transform = Transform( 1, 0, 0, 0, 1, -5.68434e-014, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 9 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Boost Rings/CSGCylinder4/Area"]
-shape = SubResource( 5 )
+[node name="Boost Ring2" parent="Boost Rings" instance=ExtResource( 9 )]
+transform = Transform( 2.78262, 0, 0, 0, -8.36188e-009, 2.78262, 0, -0.0687474, -4.37114e-008, -15.4591, -35.0344, -174.091 )
 
 [node name="Scene Root2" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
@@ -921,6 +856,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 129.988, 87.7358, -67.8402 )
 
 [node name="Scene Root87" parent="." instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.5674, 45.3224, 51.4791 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 00" to="Lap Marker" method="_on_Lap_Tracker_00_body_entered"]
 [connection signal="body_entered" from="Lap Marker/Lap Tracker 01" to="Lap Marker" method="_on_Lap_Tracker_01_body_entered"]

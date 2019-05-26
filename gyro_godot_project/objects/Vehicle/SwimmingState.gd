@@ -103,9 +103,11 @@ func _state_physics_process(delta):
 	fish_king.move_and_slide(-fish_king.transform.basis.z * speed)
 	if fish_king.get_slide_count() > 0:
 		var collision = fish_king.get_slide_collision(0)
-		if !previous_collision_normal || collision.normal.dot(previous_collision_normal) < .5:
+		if (!previous_collision_normal || collision.normal.dot(previous_collision_normal) < .5) && !(collision.collider.is_in_group("projectiles")):
 			fish_king.emit_signal("collision", collision, fish_king.translation)
 			fish_king.speed_level -= 0.3
+			if ! $"../../CrashSound".playing:
+				$"../../CrashSound".play(0)
 			previous_collision_normal = collision.normal
 	else:
 		previous_collision_normal = null
@@ -117,6 +119,8 @@ func reset():
 
 #Called when a player begins drifting, and rotates their model appropriately
 func start_drifting():
+	if not $"../../DriftSound".playing:
+		$"../../DriftSound".play(0);
 	$"../../Fish/drift_left/AnimationPlayer".play("left drift in")
 	$"../../Fish/swim".visible = false
 	$"../../Fish/drift_left".visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://objects/Vehicle/VehicleStateMachine.gd" type="Script" id=1]
 [ext_resource path="res://objects/Vehicle/VehicleState.gd" type="Script" id=2]
@@ -9,11 +9,17 @@
 [ext_resource path="res://art/models/fish/fish_drift_left.tscn" type="PackedScene" id=7]
 [ext_resource path="res://levels/level 01/DraftBox.gd" type="Script" id=8]
 [ext_resource path="res://objects/Vehicle/ShootingLine.gd" type="Script" id=9]
+[ext_resource path="res://sounds/crash.wav" type="AudioStream" id=10]
+[ext_resource path="res://sounds/drift.wav" type="AudioStream" id=11]
+[ext_resource path="res://sounds/coin.wav" type="AudioStream" id=12]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.83558, 1.61688, 0.660998 )
 
 [sub_resource type="BoxShape" id=2]
+
+[sub_resource type="AudioStreamRandomPitch" id=3]
+audio_stream = ExtResource( 12 )
 
 [node name="Vehicle" type="KinematicBody" groups=[
 "vehicles",
@@ -64,4 +70,13 @@ shape = SubResource( 2 )
 enabled = true
 cast_to = Vector3( 0, 0, -100 )
 script = ExtResource( 9 )
+
+[node name="CrashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="DriftSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 3 )
 

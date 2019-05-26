@@ -14,5 +14,6 @@ func _on_body_enter(body):
 		print("%s Collectibles collected: %d" % [body.name, body.coins_collected])
 		body.swim_state.max_speed += 5
 		print("%s Max Speed: %d" % [body.name, body.swim_state.max_speed])
+		body.get_node("CoinSound").play(0)
 		get_parent().remove_child(self)
 	
